@@ -1,0 +1,44 @@
+#MF_CONFIG=Debug
+# CPPFLAGS += -DDBMGR_SELFTEST
+# CPPFLAGS += -DDBMGR_REMOVE_OLD_TABLES_ANYWAY
+# CPPFLAGS += -DWORKERTHREAD_SELFTEST
+
+USE_MYSQL=1
+USE_XML=0
+BUILD_TIME_FILE = main \
+
+BIN = entitydb
+SRCS =	./entitydata/main ./entitydata/entitydb \
+		./entitydata/sqlite3database ./entitydata/sqlite3_wrapper \
+		./entitydata/sqlite3_prepared ./entitydata/sqlite3_typemapping \
+		../../../common/des			\
+		../../../../../src/lib/chunk/station_graph \
+		../../../../../src/lib/chunk/unique_id
+#ifdef DBMGR_USE
+CPPFLAGS += -DMF_SERVER_DBMGR
+#endif
+
+
+INSTALL_DIR = $(MF_ROOT)/bigworld/src/server/tools/datatool/bin
+
+USE_PYTHON = 1
+USE_OPENSSL = 1
+
+ifndef MF_ROOT
+export MF_ROOT := $(subst /bigworld/src/server/$(BIN),,$(CURDIR))
+endif
+
+include common.mak
+
+LDLIBS += '-lz' -L/home/hsq/love3/trunk/src/lib/third_party/sqlite-3.6.23.1 -lsqlite3 -L./Python-2.5
+LDLIBS += ./lib/libpyscript.a ./lib/libserver.a ./lib/libentitydef.a ./lib/libnetwork.a ./lib/libmath.a ./lib/libresmgr.a ./lib/libcstdmf.a 
+CPPFLAGS += -I/home/hsq/love3/trunk/src/lib/third_party/sqlite-3.6.23.1
+CPPFLAGS += -DMF_SERVER_DBMGR
+
+all:: ./bin/ResMgr.so
+
+./bin/ResMgr.so: $(MF_CONFIG)/entitydb.o $(MF_CONFIG)/des.o $(MF_CONFIG)/sqlite3database.o $(MF_CONFIG)/sqlite3_prepared.o 	$(MF_CONFIG)/sqlite3_typemapping.o $(MF_CONFIG)/sqlite3_wrapper.o $(MF_CONFIG)/station_graph.o $(MF_CONFIG)/unique_id.o 
+	$(CXX) $(LDFLAGS) -g -shared -o ./$@ $^ \
+		 ./lib/libentitydef.a ./lib/libpyscript.a ./lib/libnetwork.a \
+		./lib/libserver.a ./lib/libresmgr.a ./lib/libmath.a ./lib/libcstdmf.a -lzip -lsqlite3 
+

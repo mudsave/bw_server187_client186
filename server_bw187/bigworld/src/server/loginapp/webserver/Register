@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.gyyx.cn/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.gyyx.cn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.gyyx.cn/">
+      <s:element name="Register">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serverIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientIp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="tns:GameAutoActivateResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GameAutoActivateResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="tns:AutoActResultCode" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPresentee" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAdult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="AutoActResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="UnknownError" />
+          <s:enumeration value="Succeed" />
+          <s:enumeration value="ParameterIsNull" />
+          <s:enumeration value="UsernameOrPasswordNoSuited" />
+          <s:enumeration value="GameInterfaceError" />
+          <s:enumeration value="GameInterfaceException" />
+          <s:enumeration value="ServerNoActivate" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AutoActivateSoap">
+    <wsdl:operation name="Register">
+      <wsdl:input message="tns:RegisterSoapIn" />
+      <wsdl:output message="tns:RegisterSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AutoActivateSoap" type="tns:AutoActivateSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://www.gyyx.cn/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AutoActivateSoap12" type="tns:AutoActivateSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://www.gyyx.cn/Register" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AutoActivate">
+    <wsdl:port name="AutoActivateSoap" binding="tns:AutoActivateSoap">
+      <soap:address location="http://transfer.gyyx.cn:81/CsServiceV2/AutoActivate.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AutoActivateSoap12" binding="tns:AutoActivateSoap12">
+      <soap12:address location="http://transfer.gyyx.cn:81/CsServiceV2/AutoActivate.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

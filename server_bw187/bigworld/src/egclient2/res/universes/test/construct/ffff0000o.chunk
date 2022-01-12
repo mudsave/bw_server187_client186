@@ -1,0 +1,3262 @@
+<root>
+	<terrain>
+		<resource>	ffff0000.terrain	</resource>
+	</terrain>
+	<boundary>
+		<normal>	1.000000 0.000000 0.000000	</normal>
+		<d>	0.000000	</d>
+	</boundary>
+	<boundary>
+		<normal>	-1.000000 0.000000 0.000000	</normal>
+		<d>	-100.000000	</d>
+		<portal>
+			<chunk>	00000000o	</chunk>
+			<uAxis>	0.000000 0.000000 1.000000	</uAxis>
+			<point>	0.000000 -100.000000 0.000000	</point>
+			<point>	0.000000 100.000000 0.000000	</point>
+			<point>	100.000000 100.000000 0.000000	</point>
+			<point>	100.000000 -100.000000 0.000000	</point>
+		</portal>
+	</boundary>
+	<boundary>
+		<normal>	0.000000 1.000000 0.000000	</normal>
+		<d>	-200.000000	</d>
+		<portal>
+			<chunk>	earth	</chunk>
+			<uAxis>	0.000000 0.000000 1.000000	</uAxis>
+			<point>	0.000000 0.000000 0.000000	</point>
+			<point>	0.000000 100.000000 0.000000	</point>
+			<point>	100.000000 100.000000 0.000000	</point>
+			<point>	100.000000 0.000000 0.000000	</point>
+		</portal>
+	</boundary>
+	<boundary>
+		<normal>	0.000000 -1.000000 0.000000	</normal>
+		<d>	-200.000000	</d>
+		<portal>
+			<chunk>	heaven	</chunk>
+			<uAxis>	1.000000 0.000000 0.000000	</uAxis>
+			<point>	0.000000 0.000000 0.000000	</point>
+			<point>	0.000000 100.000000 0.000000	</point>
+			<point>	100.000000 100.000000 0.000000	</point>
+			<point>	100.000000 0.000000 0.000000	</point>
+		</portal>
+	</boundary>
+	<boundary>
+		<normal>	0.000000 0.000000 1.000000	</normal>
+		<d>	0.000000	</d>
+		<portal>
+			<chunk>	ffffffffo	</chunk>
+			<uAxis>	1.000000 0.000000 0.000000	</uAxis>
+			<point>	0.000000 -100.000000 0.000000	</point>
+			<point>	0.000000 100.000000 0.000000	</point>
+			<point>	100.000000 100.000000 0.000000	</point>
+			<point>	100.000000 -100.000000 0.000000	</point>
+		</portal>
+	</boundary>
+	<boundary>
+		<normal>	0.000000 0.000000 -1.000000	</normal>
+		<d>	-100.000000	</d>
+	</boundary>
+	<transform>
+		<row0>	1.000000 0.000000 0.000000	</row0>
+		<row1>	0.000000 1.000000 0.000000	</row1>
+		<row2>	0.000000 0.000000 1.000000	</row2>
+		<row3>	-100.000000 0.000000 0.000000	</row3>
+	</transform>
+	<boundingBox>
+		<min>	-100.000000 -200.000000 0.000000	</min>
+		<max>	0.000000 200.000000 100.000000	</max>
+	</boundingBox>
+	<waypointSet>	1
+		<girth>	0.500000	</girth>
+		<waypoint>	1
+			<minHeight>	13.329500	</minHeight>
+			<height>	14.996374	</height>
+			<vertex>	0.599998 94.599998 4.000000	</vertex>
+			<vertex>	-5.400002 94.599998 2.000000	</vertex>
+			<vertex>	-5.400002 100.099998 0.000000	</vertex>
+			<vertex>	0.599998 100.099998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	2
+			<minHeight>	12.448500	</minHeight>
+			<height>	14.449843	</height>
+			<vertex>	-5.400002 94.599998 3.000000	</vertex>
+			<vertex>	-11.900002 94.599998 7.000000	</vertex>
+			<vertex>	-11.900002 100.099998 0.000000	</vertex>
+			<vertex>	-5.400002 100.099998 1.000000	</vertex>
+		</waypoint>
+		<waypoint>	3
+			<minHeight>	10.570124	</minHeight>
+			<height>	13.329500	</height>
+			<vertex>	-5.400002 88.099998 11.000000	</vertex>
+			<vertex>	-11.900002 88.099998 6.000000	</vertex>
+			<vertex>	-11.900002 94.599998 2.000000	</vertex>
+			<vertex>	-5.400002 94.599998 4.000000	</vertex>
+			<vertex>	-5.400002 92.599998 5.000000	</vertex>
+		</waypoint>
+		<waypoint>	4
+			<minHeight>	12.182123	</minHeight>
+			<height>	14.327000	</height>
+			<vertex>	0.599998 88.099998 9.000000	</vertex>
+			<vertex>	-0.900002 88.099998 5.000000	</vertex>
+			<vertex>	-5.400002 92.599998 3.000000	</vertex>
+			<vertex>	-5.400002 94.599998 1.000000	</vertex>
+			<vertex>	0.599998 94.599998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	5
+			<minHeight>	11.247686	</minHeight>
+			<height>	13.087000	</height>
+			<vertex>	-0.900002 88.099998 9.000000	</vertex>
+			<vertex>	-5.400002 88.099998 3.000000	</vertex>
+			<vertex>	-5.400002 92.599998 4.000000	</vertex>
+		</waypoint>
+		<waypoint>	6
+			<minHeight>	10.570124	</minHeight>
+			<height>	12.933063	</height>
+			<vertex>	-11.900002 88.099998 21.000000	</vertex>
+			<vertex>	-12.900002 88.099998 15.000000	</vertex>
+			<vertex>	-13.400002 88.099998 16.000000	</vertex>
+			<vertex>	-13.900002 88.099998 17.000000	</vertex>
+			<vertex>	-14.400002 88.099998 18.000000	</vertex>
+			<vertex>	-14.900002 88.099998 19.000000	</vertex>
+			<vertex>	-24.400002 88.099998 30.000000	</vertex>
+			<vertex>	-24.400002 94.599998 7.000000	</vertex>
+			<vertex>	-11.900002 94.599998 3.000000	</vertex>
+		</waypoint>
+		<waypoint>	7
+			<minHeight>	12.066999	</minHeight>
+			<height>	13.007406	</height>
+			<vertex>	-11.900002 94.599998 6.000000	</vertex>
+			<vertex>	-24.400002 94.599998 27.000000	</vertex>
+			<vertex>	-24.400002 100.099998 0.000000	</vertex>
+			<vertex>	-11.900002 100.099998 2.000000	</vertex>
+		</waypoint>
+		<waypoint>	8
+			<minHeight>	6.751499	</minHeight>
+			<height>	9.489498	</height>
+			<vertex>	0.599998 75.599998 53.000000	</vertex>
+			<vertex>	-0.400002 75.599998 -1360.000000	</vertex>
+			<vertex>	-0.900002 75.599998 54.000000	</vertex>
+			<vertex>	-4.400002 75.599998 56.000000	</vertex>
+			<vertex>	-5.400002 75.599998 13.000000	</vertex>
+			<vertex>	-5.400002 81.599998 12.000000	</vertex>
+			<vertex>	-5.400002 84.099998 10.000000	</vertex>
+			<vertex>	0.599998 84.099998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	9
+			<minHeight>	10.364750	</minHeight>
+			<height>	12.414061	</height>
+			<vertex>	0.599998 86.099998 10.000000	</vertex>
+			<vertex>	-5.400002 86.099998 11.000000	</vertex>
+			<vertex>	-5.400002 88.099998 5.000000	</vertex>
+			<vertex>	-0.900002 88.099998 4.000000	</vertex>
+			<vertex>	0.599998 88.099998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	10
+			<minHeight>	9.254999	</minHeight>
+			<height>	11.029499	</height>
+			<vertex>	0.599998 84.099998 8.000000	</vertex>
+			<vertex>	-5.400002 84.099998 11.000000	</vertex>
+			<vertex>	-5.400002 86.099998 9.000000	</vertex>
+			<vertex>	0.599998 86.099998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	11
+			<minHeight>	9.100843	</minHeight>
+			<height>	11.247686	</height>
+			<vertex>	-5.400002 84.099998 12.000000	</vertex>
+			<vertex>	-11.900002 84.099998 25.000000	</vertex>
+			<vertex>	-11.900002 86.099998 23.000000	</vertex>
+			<vertex>	-11.900002 88.099998 3.000000	</vertex>
+			<vertex>	-5.400002 88.099998 9.000000	</vertex>
+			<vertex>	-5.400002 86.099998 10.000000	</vertex>
+		</waypoint>
+		<waypoint>	12
+			<minHeight>	7.784218	</minHeight>
+			<height>	9.554124	</height>
+			<vertex>	-5.400002 81.599998 13.000000	</vertex>
+			<vertex>	-11.900002 81.599998 26.000000	</vertex>
+			<vertex>	-11.900002 82.099998 25.000000	</vertex>
+			<vertex>	-11.900002 84.099998 11.000000	</vertex>
+			<vertex>	-5.400002 84.099998 8.000000	</vertex>
+		</waypoint>
+		<waypoint>	13
+			<minHeight>	6.062499	</minHeight>
+			<height>	8.470499	</height>
+			<vertex>	-5.400002 75.599998 58.000000	</vertex>
+			<vertex>	-6.400002 75.599998 14.000000	</vertex>
+			<vertex>	-11.900002 81.099998 26.000000	</vertex>
+			<vertex>	-11.900002 81.599998 12.000000	</vertex>
+			<vertex>	-5.400002 81.599998 8.000000	</vertex>
+		</waypoint>
+		<waypoint>	14
+			<minHeight>	5.265500	</minHeight>
+			<height>	7.520468	</height>
+			<vertex>	-6.400002 75.599998 58.000000	</vertex>
+			<vertex>	-11.900002 75.599998 26.000000	</vertex>
+			<vertex>	-11.900002 81.099998 13.000000	</vertex>
+		</waypoint>
+		<waypoint>	15
+			<minHeight>	8.052999	</minHeight>
+			<height>	10.769687	</height>
+			<vertex>	-24.400002 76.599998 45.000000	</vertex>
+			<vertex>	-24.400002 77.099998 16.000000	</vertex>
+			<vertex>	-13.400002 88.099998 6.000000	</vertex>
+			<vertex>	-12.900002 88.099998 21.000000	</vertex>
+			<vertex>	-23.400002 77.599998 22.000000	</vertex>
+		</waypoint>
+		<waypoint>	16
+			<minHeight>	8.382999	</minHeight>
+			<height>	10.847187	</height>
+			<vertex>	-24.400002 77.099998 45.000000	</vertex>
+			<vertex>	-24.400002 77.599998 17.000000	</vertex>
+			<vertex>	-13.900002 88.099998 6.000000	</vertex>
+			<vertex>	-13.400002 88.099998 15.000000	</vertex>
+		</waypoint>
+		<waypoint>	17
+			<minHeight>	8.712999	</minHeight>
+			<height>	10.924686	</height>
+			<vertex>	-24.400002 77.599998 45.000000	</vertex>
+			<vertex>	-24.400002 78.099998 18.000000	</vertex>
+			<vertex>	-14.400002 88.099998 6.000000	</vertex>
+			<vertex>	-13.900002 88.099998 16.000000	</vertex>
+		</waypoint>
+		<waypoint>	18
+			<minHeight>	9.042999	</minHeight>
+			<height>	11.002187	</height>
+			<vertex>	-24.400002 78.099998 45.000000	</vertex>
+			<vertex>	-24.400002 78.599998 20.000000	</vertex>
+			<vertex>	-18.900002 84.099998 19.000000	</vertex>
+			<vertex>	-14.900002 88.099998 6.000000	</vertex>
+			<vertex>	-14.400002 88.099998 17.000000	</vertex>
+		</waypoint>
+		<waypoint>	19
+			<minHeight>	10.647999	</minHeight>
+			<height>	12.522375	</height>
+			<vertex>	-18.900002 84.099998 20.000000	</vertex>
+			<vertex>	-24.400002 84.099998 43.000000	</vertex>
+			<vertex>	-24.400002 88.099998 6.000000	</vertex>
+			<vertex>	-14.900002 88.099998 18.000000	</vertex>
+		</waypoint>
+		<waypoint>	20
+			<minHeight>	9.372999	</minHeight>
+			<height>	11.287312	</height>
+			<vertex>	-24.400002 78.599998 42.000000	</vertex>
+			<vertex>	-24.400002 81.599998 44.000000	</vertex>
+			<vertex>	-24.400002 83.599998 43.000000	</vertex>
+			<vertex>	-24.400002 84.099998 19.000000	</vertex>
+			<vertex>	-18.900002 84.099998 18.000000	</vertex>
+		</waypoint>
+		<waypoint>	21
+			<minHeight>	8.681250	</minHeight>
+			<height>	10.692187	</height>
+			<vertex>	-22.400002 77.599998 22.000000	</vertex>
+			<vertex>	-23.400002 77.599998 15.000000	</vertex>
+			<vertex>	-12.900002 88.099998 6.000000	</vertex>
+			<vertex>	-11.900002 88.099998 23.000000	</vertex>
+			<vertex>	-20.900002 79.099998 24.000000	</vertex>
+		</waypoint>
+		<waypoint>	22
+			<minHeight>	7.266999	</minHeight>
+			<height>	8.742000	</height>
+			<vertex>	-24.400002 75.599998 45.000000	</vertex>
+			<vertex>	-24.400002 76.599998 15.000000	</vertex>
+			<vertex>	-23.400002 77.599998 21.000000	</vertex>
+			<vertex>	-22.400002 77.599998 24.000000	</vertex>
+		</waypoint>
+		<waypoint>	23
+			<minHeight>	8.839531	</minHeight>
+			<height>	10.570124	</height>
+			<vertex>	-18.900002 79.099998 24.000000	</vertex>
+			<vertex>	-20.900002 79.099998 21.000000	</vertex>
+			<vertex>	-11.900002 88.099998 11.000000	</vertex>
+			<vertex>	-11.900002 86.099998 25.000000	</vertex>
+		</waypoint>
+		<waypoint>	24
+			<minHeight>	7.258999	</minHeight>
+			<height>	9.656248	</height>
+			<vertex>	-22.400002 75.599998 -272.000000	</vertex>
+			<vertex>	-23.900002 75.599998 67.000000	</vertex>
+			<vertex>	-24.400002 75.599998 22.000000	</vertex>
+			<vertex>	-22.400002 77.599998 21.000000	</vertex>
+			<vertex>	-20.900002 79.099998 23.000000	</vertex>
+			<vertex>	-18.900002 79.099998 25.000000	</vertex>
+		</waypoint>
+		<waypoint>	25
+			<minHeight>	7.075999	</minHeight>
+			<height>	9.799218	</height>
+			<vertex>	-18.400002 75.599998 66.000000	</vertex>
+			<vertex>	-20.400002 75.599998 -1877.000000	</vertex>
+			<vertex>	-22.400002 75.599998 24.000000	</vertex>
+			<vertex>	-18.900002 79.099998 23.000000	</vertex>
+			<vertex>	-11.900002 86.099998 11.000000	</vertex>
+			<vertex>	-11.900002 84.099998 12.000000	</vertex>
+			<vertex>	-11.900002 82.099998 26.000000	</vertex>
+		</waypoint>
+		<waypoint>	26
+			<minHeight>	5.431000	</minHeight>
+			<height>	8.047968	</height>
+			<vertex>	-11.900002 75.599998 66.000000	</vertex>
+			<vertex>	-18.400002 75.599998 25.000000	</vertex>
+			<vertex>	-11.900002 82.099998 12.000000	</vertex>
+			<vertex>	-11.900002 81.599998 13.000000	</vertex>
+			<vertex>	-11.900002 81.099998 14.000000	</vertex>
+		</waypoint>
+		<waypoint>	27
+			<minHeight>	10.702249	</minHeight>
+			<height>	12.844251	</height>
+			<vertex>	-24.400002 94.599998 30.000000	</vertex>
+			<vertex>	-30.900002 94.599998 28.000000	</vertex>
+			<vertex>	-30.900002 100.099998 0.000000	</vertex>
+			<vertex>	-24.400002 100.099998 7.000000	</vertex>
+		</waypoint>
+		<waypoint>	28
+			<minHeight>	9.979499	</minHeight>
+			<height>	12.046782	</height>
+			<vertex>	-30.900002 94.599998 33.000000	</vertex>
+			<vertex>	-33.900002 94.599998 29.000000	</vertex>
+			<vertex>	-37.400002 98.099998 36.000000	</vertex>
+			<vertex>	-37.400002 100.099998 0.000000	</vertex>
+			<vertex>	-30.900002 100.099998 27.000000	</vertex>
+		</waypoint>
+		<waypoint>	29
+			<minHeight>	8.985500	</minHeight>
+			<height>	10.320999	</height>
+			<vertex>	-33.900002 94.599998 33.000000	</vertex>
+			<vertex>	-37.400002 94.599998 36.000000	</vertex>
+			<vertex>	-37.400002 98.099998 28.000000	</vertex>
+		</waypoint>
+		<waypoint>	30
+			<minHeight>	10.409749	</minHeight>
+			<height>	12.354876	</height>
+			<vertex>	-24.400002 88.099998 43.000000	</vertex>
+			<vertex>	-25.400002 88.099998 31.000000	</vertex>
+			<vertex>	-30.900002 93.599998 33.000000	</vertex>
+			<vertex>	-30.900002 94.599998 27.000000	</vertex>
+			<vertex>	-24.400002 94.599998 6.000000	</vertex>
+		</waypoint>
+		<waypoint>	31
+			<minHeight>	9.327531	</minHeight>
+			<height>	11.566187	</height>
+			<vertex>	-25.400002 88.099998 43.000000	</vertex>
+			<vertex>	-28.900002 88.099998 44.000000	</vertex>
+			<vertex>	-30.900002 88.099998 33.000000	</vertex>
+			<vertex>	-30.900002 93.599998 30.000000	</vertex>
+		</waypoint>
+		<waypoint>	32
+			<minHeight>	5.569405	</minHeight>
+			<height>	8.096155	</height>
+			<vertex>	-33.400002 88.099998 52.000000	</vertex>
+			<vertex>	-35.900002 88.099998 50.000000	</vertex>
+			<vertex>	-36.400002 88.099998 49.000000	</vertex>
+			<vertex>	-36.900002 88.099998 48.000000	</vertex>
+			<vertex>	-37.400002 88.099998 40.000000	</vertex>
+			<vertex>	-37.400002 89.099998 39.000000	</vertex>
+			<vertex>	-37.400002 92.099998 34.000000	</vertex>
+		</waypoint>
+		<waypoint>	33
+			<minHeight>	7.749249	</minHeight>
+			<height>	10.702249	</height>
+			<vertex>	-30.900002 88.099998 51.000000	</vertex>
+			<vertex>	-31.900002 88.099998 34.000000	</vertex>
+			<vertex>	-37.400002 93.599998 39.000000	</vertex>
+			<vertex>	-37.400002 94.599998 29.000000	</vertex>
+			<vertex>	-33.900002 94.599998 28.000000	</vertex>
+			<vertex>	-30.900002 94.599998 30.000000	</vertex>
+			<vertex>	-30.900002 93.599998 31.000000	</vertex>
+		</waypoint>
+		<waypoint>	34
+			<minHeight>	7.082999	</minHeight>
+			<height>	9.127844	</height>
+			<vertex>	-31.900002 88.099998 51.000000	</vertex>
+			<vertex>	-33.400002 88.099998 32.000000	</vertex>
+			<vertex>	-37.400002 92.099998 39.000000	</vertex>
+			<vertex>	-37.400002 93.599998 33.000000	</vertex>
+		</waypoint>
+		<waypoint>	35
+			<minHeight>	4.745905	</minHeight>
+			<height>	7.701626	</height>
+			<vertex>	-40.900002 94.599998 39.000000	</vertex>
+			<vertex>	-42.900002 94.599998 40.000000	</vertex>
+			<vertex>	-43.900002 94.599998 38.000000	</vertex>
+			<vertex>	-49.900002 94.599998 116.000000	</vertex>
+			<vertex>	-49.900002 100.099998 0.000000	</vertex>
+			<vertex>	-46.400002 100.099998 37.000000	</vertex>
+		</waypoint>
+		<waypoint>	36
+			<minHeight>	8.156033	</minHeight>
+			<height>	11.129375	</height>
+			<vertex>	-37.400002 94.599998 39.000000	</vertex>
+			<vertex>	-38.400002 94.599998 37.000000	</vertex>
+			<vertex>	-43.900002 100.099998 0.000000	</vertex>
+			<vertex>	-37.400002 100.099998 28.000000	</vertex>
+			<vertex>	-37.400002 98.099998 29.000000	</vertex>
+		</waypoint>
+		<waypoint>	37
+			<minHeight>	7.145094	</minHeight>
+			<height>	8.792250	</height>
+			<vertex>	-38.400002 94.599998 39.000000	</vertex>
+			<vertex>	-40.900002 94.599998 35.000000	</vertex>
+			<vertex>	-46.400002 100.099998 0.000000	</vertex>
+			<vertex>	-43.900002 100.099998 36.000000	</vertex>
+		</waypoint>
+		<waypoint>	38
+			<minHeight>	4.572406	</minHeight>
+			<height>	6.663376	</height>
+			<vertex>	-37.400002 88.099998 41.000000	</vertex>
+			<vertex>	-49.900002 88.099998 118.000000	</vertex>
+			<vertex>	-49.900002 94.599998 35.000000	</vertex>
+			<vertex>	-43.900002 94.599998 40.000000	</vertex>
+		</waypoint>
+		<waypoint>	39
+			<minHeight>	6.237249	</minHeight>
+			<height>	8.985500	</height>
+			<vertex>	-37.400002 89.099998 40.000000	</vertex>
+			<vertex>	-42.900002 94.599998 35.000000	</vertex>
+			<vertex>	-40.900002 94.599998 37.000000	</vertex>
+			<vertex>	-38.400002 94.599998 36.000000	</vertex>
+			<vertex>	-37.400002 94.599998 33.000000	</vertex>
+			<vertex>	-37.400002 93.599998 34.000000	</vertex>
+			<vertex>	-37.400002 92.099998 32.000000	</vertex>
+		</waypoint>
+		<waypoint>	40
+			<minHeight>	5.569405	</minHeight>
+			<height>	6.963500	</height>
+			<vertex>	-37.400002 88.099998 38.000000	</vertex>
+			<vertex>	-43.900002 94.599998 35.000000	</vertex>
+			<vertex>	-42.900002 94.599998 39.000000	</vertex>
+			<vertex>	-37.400002 89.099998 32.000000	</vertex>
+		</waypoint>
+		<waypoint>	41
+			<minHeight>	4.754406	</minHeight>
+			<height>	6.345500	</height>
+			<vertex>	-37.400002 75.599998 100.000000	</vertex>
+			<vertex>	-39.900002 75.599998 99.000000	</vertex>
+			<vertex>	-49.900002 75.599998 132.000000	</vertex>
+			<vertex>	-49.900002 88.099998 38.000000	</vertex>
+			<vertex>	-37.400002 88.099998 48.000000	</vertex>
+			<vertex>	-37.400002 87.099998 47.000000	</vertex>
+		</waypoint>
+		<waypoint>	42
+			<minHeight>	7.904500	</minHeight>
+			<height>	10.459999	</height>
+			<vertex>	-24.400002 78.599998 45.000000	</vertex>
+			<vertex>	-30.900002 85.099998 51.000000	</vertex>
+			<vertex>	-30.900002 88.099998 44.000000	</vertex>
+			<vertex>	-24.400002 81.599998 20.000000	</vertex>
+		</waypoint>
+		<waypoint>	43
+			<minHeight>	9.641999	</minHeight>
+			<height>	12.354876	</height>
+			<vertex>	-24.400002 83.599998 44.000000	</vertex>
+			<vertex>	-28.900002 88.099998 31.000000	</vertex>
+			<vertex>	-25.400002 88.099998 30.000000	</vertex>
+			<vertex>	-24.400002 88.099998 19.000000	</vertex>
+			<vertex>	-24.400002 84.099998 20.000000	</vertex>
+		</waypoint>
+		<waypoint>	44
+			<minHeight>	8.946999	</minHeight>
+			<height>	10.814999	</height>
+			<vertex>	-24.400002 81.599998 42.000000	</vertex>
+			<vertex>	-30.900002 88.099998 31.000000	</vertex>
+			<vertex>	-28.900002 88.099998 43.000000	</vertex>
+			<vertex>	-24.400002 83.599998 20.000000	</vertex>
+		</waypoint>
+		<waypoint>	45
+			<minHeight>	6.955749	</minHeight>
+			<height>	9.599249	</height>
+			<vertex>	-24.400002 75.599998 -256.000000	</vertex>
+			<vertex>	-25.900002 75.599998 46.000000	</vertex>
+			<vertex>	-30.900002 80.599998 48.000000	</vertex>
+			<vertex>	-30.900002 82.099998 49.000000	</vertex>
+			<vertex>	-30.900002 82.599998 50.000000	</vertex>
+			<vertex>	-30.900002 83.099998 51.000000	</vertex>
+			<vertex>	-30.900002 85.099998 42.000000	</vertex>
+			<vertex>	-24.400002 78.599998 18.000000	</vertex>
+			<vertex>	-24.400002 78.099998 17.000000	</vertex>
+			<vertex>	-24.400002 77.599998 16.000000	</vertex>
+			<vertex>	-24.400002 77.099998 15.000000	</vertex>
+			<vertex>	-24.400002 76.599998 22.000000	</vertex>
+		</waypoint>
+		<waypoint>	46
+			<minHeight>	5.660499	</minHeight>
+			<height>	7.647376	</height>
+			<vertex>	-25.900002 75.599998 -273.000000	</vertex>
+			<vertex>	-27.900002 75.599998 88.000000	</vertex>
+			<vertex>	-30.400002 75.599998 87.000000	</vertex>
+			<vertex>	-30.900002 75.599998 47.000000	</vertex>
+			<vertex>	-30.900002 80.599998 45.000000	</vertex>
+		</waypoint>
+		<waypoint>	47
+			<minHeight>	4.482502	</minHeight>
+			<height>	7.245249	</height>
+			<vertex>	-30.900002 75.599998 86.000000	</vertex>
+			<vertex>	-37.400002 75.599998 41.000000	</vertex>
+			<vertex>	-37.400002 87.099998 48.000000	</vertex>
+			<vertex>	-30.900002 80.599998 46.000000	</vertex>
+		</waypoint>
+		<waypoint>	48
+			<minHeight>	5.276000	</minHeight>
+			<height>	7.397750	</height>
+			<vertex>	-30.900002 80.599998 47.000000	</vertex>
+			<vertex>	-37.400002 87.099998 41.000000	</vertex>
+			<vertex>	-37.400002 88.099998 32.000000	</vertex>
+			<vertex>	-36.900002 88.099998 49.000000	</vertex>
+			<vertex>	-30.900002 82.099998 45.000000	</vertex>
+		</waypoint>
+		<waypoint>	49
+			<minHeight>	5.516000	</minHeight>
+			<height>	7.420249	</height>
+			<vertex>	-30.900002 82.099998 48.000000	</vertex>
+			<vertex>	-36.900002 88.099998 32.000000	</vertex>
+			<vertex>	-36.400002 88.099998 50.000000	</vertex>
+			<vertex>	-30.900002 82.599998 45.000000	</vertex>
+		</waypoint>
+		<waypoint>	50
+			<minHeight>	5.676905	</minHeight>
+			<height>	7.466499	</height>
+			<vertex>	-30.900002 82.599998 49.000000	</vertex>
+			<vertex>	-36.400002 88.099998 32.000000	</vertex>
+			<vertex>	-35.900002 88.099998 52.000000	</vertex>
+			<vertex>	-33.400002 85.599998 51.000000	</vertex>
+			<vertex>	-30.900002 83.099998 45.000000	</vertex>
+		</waypoint>
+		<waypoint>	51
+			<minHeight>	7.114999	</minHeight>
+			<height>	9.327531	</height>
+			<vertex>	-30.900002 83.099998 50.000000	</vertex>
+			<vertex>	-33.400002 85.599998 52.000000	</vertex>
+			<vertex>	-33.400002 88.099998 34.000000	</vertex>
+			<vertex>	-31.900002 88.099998 33.000000	</vertex>
+			<vertex>	-30.900002 88.099998 42.000000	</vertex>
+			<vertex>	-30.900002 85.099998 45.000000	</vertex>
+		</waypoint>
+		<waypoint>	52
+			<minHeight>	5.781529	</minHeight>
+			<height>	7.846718	</height>
+			<vertex>	-33.400002 85.599998 50.000000	</vertex>
+			<vertex>	-35.900002 88.099998 32.000000	</vertex>
+			<vertex>	-33.400002 88.099998 51.000000	</vertex>
+		</waypoint>
+		<waypoint>	53
+			<minHeight>	8.382748	</minHeight>
+			<height>	9.676844	</height>
+			<vertex>	0.599998 69.099998 62.000000	</vertex>
+			<vertex>	-0.400002 69.099998 0.000000	</vertex>
+			<vertex>	-0.400002 75.599998 8.000000	</vertex>
+			<vertex>	0.599998 75.599998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	54
+			<minHeight>	6.106499	</minHeight>
+			<height>	8.735249	</height>
+			<vertex>	-3.150002 73.349998 55.000000	</vertex>
+			<vertex>	-4.400002 74.599998 56.000000	</vertex>
+			<vertex>	-4.400002 75.599998 8.000000	</vertex>
+			<vertex>	-0.900002 75.599998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	55
+			<minHeight>	4.716436	</minHeight>
+			<height>	6.518999	</height>
+			<vertex>	-4.400002 72.099998 57.000000	</vertex>
+			<vertex>	-4.400002 72.599998 56.000000	</vertex>
+			<vertex>	-4.400002 74.599998 54.000000	</vertex>
+			<vertex>	-3.150002 73.349998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	56
+			<minHeight>	4.823999	</minHeight>
+			<height>	7.273999	</height>
+			<vertex>	-4.400002 72.599998 57.000000	</vertex>
+			<vertex>	-5.400002 72.599998 58.000000	</vertex>
+			<vertex>	-5.400002 75.599998 8.000000	</vertex>
+			<vertex>	-4.400002 75.599998 54.000000	</vertex>
+			<vertex>	-4.400002 74.599998 55.000000	</vertex>
+		</waypoint>
+		<waypoint>	57
+			<minHeight>	3.203749	</minHeight>
+			<height>	5.008999	</height>
+			<vertex>	-4.400002 69.099998 65.000000	</vertex>
+			<vertex>	-5.400002 69.099998 59.000000	</vertex>
+			<vertex>	-5.400002 72.599998 56.000000	</vertex>
+			<vertex>	-4.400002 72.599998 55.000000	</vertex>
+			<vertex>	-4.400002 72.099998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	58
+			<minHeight>	4.013000	</minHeight>
+			<height>	6.751499	</height>
+			<vertex>	-5.400002 72.599998 59.000000	</vertex>
+			<vertex>	-11.900002 72.599998 73.000000	</vertex>
+			<vertex>	-11.900002 73.099998 72.000000	</vertex>
+			<vertex>	-11.900002 73.599998 71.000000	</vertex>
+			<vertex>	-11.900002 74.099998 70.000000	</vertex>
+			<vertex>	-11.900002 74.599998 68.000000	</vertex>
+			<vertex>	-11.900002 75.099998 66.000000	</vertex>
+			<vertex>	-11.900002 75.599998 14.000000	</vertex>
+			<vertex>	-6.400002 75.599998 13.000000	</vertex>
+			<vertex>	-5.400002 75.599998 56.000000	</vertex>
+		</waypoint>
+		<waypoint>	59
+			<minHeight>	2.363249	</minHeight>
+			<height>	4.823999	</height>
+			<vertex>	-5.400002 69.099998 60.000000	</vertex>
+			<vertex>	-11.900002 69.099998 75.000000	</vertex>
+			<vertex>	-11.900002 70.099998 77.000000	</vertex>
+			<vertex>	-11.900002 70.599998 76.000000	</vertex>
+			<vertex>	-11.900002 72.099998 74.000000	</vertex>
+			<vertex>	-11.900002 72.599998 58.000000	</vertex>
+			<vertex>	-5.400002 72.599998 57.000000	</vertex>
+		</waypoint>
+		<waypoint>	60
+			<minHeight>	0.361000	</minHeight>
+			<height>	3.203749	</height>
+			<vertex>	-5.400002 62.599998 81.000000	</vertex>
+			<vertex>	-11.900002 62.599998 79.000000	</vertex>
+			<vertex>	-11.900002 65.599998 78.000000	</vertex>
+			<vertex>	-11.900002 69.099998 59.000000	</vertex>
+			<vertex>	-5.400002 69.099998 65.000000	</vertex>
+			<vertex>	-5.400002 64.099998 64.000000	</vertex>
+		</waypoint>
+		<waypoint>	61
+			<minHeight>	2.104623	</minHeight>
+			<height>	2.526997	</height>
+			<vertex>	-3.400002 63.599998 0.000000	</vertex>
+			<vertex>	-3.900002 63.599998 64.000000	</vertex>
+			<vertex>	-3.900002 64.099998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	62
+			<minHeight>	6.871999	</minHeight>
+			<height>	9.028749	</height>
+			<vertex>	0.599998 64.599998 63.000000	</vertex>
+			<vertex>	-0.400002 65.599998 0.000000	</vertex>
+			<vertex>	-0.400002 69.099998 53.000000	</vertex>
+			<vertex>	0.599998 69.099998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	63
+			<minHeight>	5.796997	</minHeight>
+			<height>	7.096655	</height>
+			<vertex>	0.099998 63.599998 0.000000	</vertex>
+			<vertex>	-0.400002 63.599998 0.000000	</vertex>
+			<vertex>	-0.400002 65.599998 62.000000	</vertex>
+			<vertex>	0.599998 64.599998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+			<vertex>	0.599998 64.099998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	64
+			<minHeight>	1.355499	</minHeight>
+			<height>	2.428644	</height>
+			<vertex>	-3.900002 62.599998 82.000000	</vertex>
+			<vertex>	-5.400002 62.599998 60.000000	</vertex>
+			<vertex>	-5.400002 64.099998 65.000000	</vertex>
+			<vertex>	-4.400002 64.099998 -1360.000000	</vertex>
+			<vertex>	-3.900002 64.099998 61.000000	</vertex>
+			<vertex>	-3.900002 63.599998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	65
+			<minHeight>	1.586999	</minHeight>
+			<height>	3.316249	</height>
+			<vertex>	-4.400002 64.099998 64.000000	</vertex>
+			<vertex>	-5.400002 64.099998 60.000000	</vertex>
+			<vertex>	-5.400002 69.099998 57.000000	</vertex>
+			<vertex>	-4.400002 69.099998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	66
+			<minHeight>	5.076437	</minHeight>
+			<height>	7.632121	</height>
+			<vertex>	-11.900002 75.099998 68.000000	</vertex>
+			<vertex>	-19.900002 75.099998 -1296.000000	</vertex>
+			<vertex>	-20.400002 75.599998 25.000000	</vertex>
+			<vertex>	-18.400002 75.599998 26.000000	</vertex>
+			<vertex>	-11.900002 75.599998 58.000000	</vertex>
+		</waypoint>
+		<waypoint>	67
+			<minHeight>	6.636373	</minHeight>
+			<height>	7.562622	</height>
+			<vertex>	-23.900002 75.099998 0.000000	</vertex>
+			<vertex>	-24.400002 75.599998 24.000000	</vertex>
+			<vertex>	-23.900002 75.599998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	68
+			<minHeight>	4.867687	</minHeight>
+			<height>	6.962468	</height>
+			<vertex>	-11.900002 74.599998 70.000000	</vertex>
+			<vertex>	-19.900002 74.599998 -1535.000000	</vertex>
+			<vertex>	-19.900002 75.099998 66.000000	</vertex>
+			<vertex>	-11.900002 75.099998 58.000000	</vertex>
+		</waypoint>
+		<waypoint>	69
+			<minHeight>	5.953999	</minHeight>
+			<height>	6.507467	</height>
+			<vertex>	-19.900002 74.099998 71.000000	</vertex>
+			<vertex>	-20.400002 74.099998 0.000000	</vertex>
+			<vertex>	-19.900002 74.599998 70.000000	</vertex>
+		</waypoint>
+		<waypoint>	70
+			<minHeight>	4.658937	</minHeight>
+			<height>	6.507467	</height>
+			<vertex>	-11.900002 74.099998 71.000000	</vertex>
+			<vertex>	-19.900002 74.099998 69.000000	</vertex>
+			<vertex>	-19.900002 74.599998 68.000000	</vertex>
+			<vertex>	-11.900002 74.599998 58.000000	</vertex>
+		</waypoint>
+		<waypoint>	71
+			<minHeight>	4.450187	</minHeight>
+			<height>	6.065937	</height>
+			<vertex>	-11.900002 73.599998 72.000000	</vertex>
+			<vertex>	-20.900002 73.599998 0.000000	</vertex>
+			<vertex>	-20.400002 74.099998 69.000000	</vertex>
+			<vertex>	-19.900002 74.099998 70.000000	</vertex>
+			<vertex>	-11.900002 74.099998 58.000000	</vertex>
+		</waypoint>
+		<waypoint>	72
+			<minHeight>	4.241437	</minHeight>
+			<height>	5.862187	</height>
+			<vertex>	-11.900002 73.099998 73.000000	</vertex>
+			<vertex>	-21.400002 73.099998 0.000000	</vertex>
+			<vertex>	-20.900002 73.599998 71.000000	</vertex>
+			<vertex>	-11.900002 73.599998 58.000000	</vertex>
+		</waypoint>
+		<waypoint>	73
+			<minHeight>	4.032688	</minHeight>
+			<height>	5.658437	</height>
+			<vertex>	-11.900002 72.599998 74.000000	</vertex>
+			<vertex>	-21.900002 72.599998 0.000000	</vertex>
+			<vertex>	-21.400002 73.099998 72.000000	</vertex>
+			<vertex>	-11.900002 73.099998 58.000000	</vertex>
+		</waypoint>
+		<waypoint>	74
+			<minHeight>	3.545337	</minHeight>
+			<height>	5.454687	</height>
+			<vertex>	-11.900002 72.099998 76.000000	</vertex>
+			<vertex>	-22.400002 72.099998 0.000000	</vertex>
+			<vertex>	-21.900002 72.599998 73.000000	</vertex>
+			<vertex>	-11.900002 72.599998 59.000000	</vertex>
+		</waypoint>
+		<waypoint>	75
+			<minHeight>	1.913749	</minHeight>
+			<height>	4.567623	</height>
+			<vertex>	-11.900002 69.099998 78.000000	</vertex>
+			<vertex>	-24.400002 69.099998 92.000000	</vertex>
+			<vertex>	-24.400002 70.099998 77.000000	</vertex>
+			<vertex>	-11.900002 70.099998 59.000000	</vertex>
+		</waypoint>
+		<waypoint>	76
+			<minHeight>	2.337499	</minHeight>
+			<height>	5.326593	</height>
+			<vertex>	-11.900002 70.599998 77.000000	</vertex>
+			<vertex>	-24.400002 70.599998 92.000000	</vertex>
+			<vertex>	-24.400002 72.099998 0.000000	</vertex>
+			<vertex>	-22.400002 72.099998 74.000000	</vertex>
+			<vertex>	-11.900002 72.099998 59.000000	</vertex>
+		</waypoint>
+		<waypoint>	77
+			<minHeight>	2.196249	</minHeight>
+			<height>	4.771374	</height>
+			<vertex>	-11.900002 70.099998 75.000000	</vertex>
+			<vertex>	-24.400002 70.099998 92.000000	</vertex>
+			<vertex>	-24.400002 70.599998 76.000000	</vertex>
+			<vertex>	-11.900002 70.599998 59.000000	</vertex>
+		</waypoint>
+		<waypoint>	78
+			<minHeight>	1.249375	</minHeight>
+			<height>	4.197625	</height>
+			<vertex>	-11.900002 65.599998 79.000000	</vertex>
+			<vertex>	-24.400002 65.599998 95.000000	</vertex>
+			<vertex>	-24.400002 69.099998 75.000000	</vertex>
+			<vertex>	-11.900002 69.099998 60.000000	</vertex>
+		</waypoint>
+		<waypoint>	79
+			<minHeight>	0.530000	</minHeight>
+			<height>	2.830312	</height>
+			<vertex>	-11.900002 62.599998 80.000000	</vertex>
+			<vertex>	-24.400002 62.599998 95.000000	</vertex>
+			<vertex>	-24.400002 65.599998 78.000000	</vertex>
+			<vertex>	-11.900002 65.599998 60.000000	</vertex>
+		</waypoint>
+		<waypoint>	80
+			<minHeight>	0.010000	</minHeight>
+			<height>	1.577499	</height>
+			<vertex>	-11.900002 50.099998 248.000000	</vertex>
+			<vertex>	-24.400002 50.099998 105.000000	</vertex>
+			<vertex>	-24.400002 62.599998 79.000000	</vertex>
+			<vertex>	-11.900002 62.599998 81.000000	</vertex>
+		</waypoint>
+		<waypoint>	81
+			<minHeight>	0.010000	</minHeight>
+			<height>	1.355499	</height>
+			<vertex>	-5.400002 50.099998 243.000000	</vertex>
+			<vertex>	-11.900002 50.099998 80.000000	</vertex>
+			<vertex>	-11.900002 62.599998 60.000000	</vertex>
+			<vertex>	-5.400002 62.599998 82.000000	</vertex>
+			<vertex>	-5.400002 60.099998 85.000000	</vertex>
+			<vertex>	-5.400002 59.599998 84.000000	</vertex>
+		</waypoint>
+		<waypoint>	82
+			<minHeight>	0.119968	</minHeight>
+			<height>	1.587123	</height>
+			<vertex>	-3.900002 60.099998 85.000000	</vertex>
+			<vertex>	-5.400002 60.099998 81.000000	</vertex>
+			<vertex>	-5.400002 62.599998 64.000000	</vertex>
+			<vertex>	-3.900002 62.599998 0.000000	</vertex>
+			<vertex>	-3.900002 60.599998 83.000000	</vertex>
+		</waypoint>
+		<waypoint>	83
+			<minHeight>	0.351592	</minHeight>
+			<height>	0.572623	</height>
+			<vertex>	-3.400002 60.099998 85.000000	</vertex>
+			<vertex>	-3.900002 60.099998 82.000000	</vertex>
+			<vertex>	-3.900002 60.599998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	84
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.239500	</height>
+			<vertex>	0.599998 50.099998 244.000000	</vertex>
+			<vertex>	-5.400002 50.099998 81.000000	</vertex>
+			<vertex>	-5.400002 59.599998 85.000000	</vertex>
+			<vertex>	-3.400002 59.599998 0.000000	</vertex>
+			<vertex>	0.599998 59.599998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	85
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.572623	</height>
+			<vertex>	-3.400002 59.599998 84.000000	</vertex>
+			<vertex>	-5.400002 59.599998 81.000000	</vertex>
+			<vertex>	-5.400002 60.099998 82.000000	</vertex>
+			<vertex>	-3.900002 60.099998 83.000000	</vertex>
+			<vertex>	-3.400002 60.099998 -1360.000000	</vertex>
+		</waypoint>
+		<waypoint>	86
+			<minHeight>	3.032750	</minHeight>
+			<height>	5.660499	</height>
+			<vertex>	-30.900002 69.099998 97.000000	</vertex>
+			<vertex>	-37.400002 69.099998 100.000000	</vertex>
+			<vertex>	-37.400002 75.599998 47.000000	</vertex>
+			<vertex>	-30.900002 75.599998 87.000000	</vertex>
+			<vertex>	-30.900002 72.599998 93.000000	</vertex>
+			<vertex>	-30.900002 72.099998 92.000000	</vertex>
+		</waypoint>
+		<waypoint>	87
+			<minHeight>	3.612998	</minHeight>
+			<height>	5.832999	</height>
+			<vertex>	-30.400002 72.599998 93.000000	</vertex>
+			<vertex>	-30.900002 72.599998 86.000000	</vertex>
+			<vertex>	-30.900002 75.599998 46.000000	</vertex>
+			<vertex>	-30.400002 75.599998 88.000000	</vertex>
+			<vertex>	-30.400002 73.099998 -1375.000000	</vertex>
+		</waypoint>
+		<waypoint>	88
+			<minHeight>	4.346121	</minHeight>
+			<height>	6.764872	</height>
+			<vertex>	-30.400002 73.099998 87.000000	</vertex>
+			<vertex>	-30.400002 75.599998 46.000000	</vertex>
+			<vertex>	-27.900002 75.599998 90.000000	</vertex>
+			<vertex>	-28.400002 75.099998 89.000000	</vertex>
+			<vertex>	-29.400002 74.099998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	89
+			<minHeight>	5.060498	</minHeight>
+			<height>	6.281121	</height>
+			<vertex>	-28.400002 74.099998 -3967.000000	</vertex>
+			<vertex>	-29.400002 74.099998 88.000000	</vertex>
+			<vertex>	-28.400002 75.099998 90.000000	</vertex>
+		</waypoint>
+		<waypoint>	90
+			<minHeight>	4.085499	</minHeight>
+			<height>	6.764872	</height>
+			<vertex>	-27.900002 73.099998 91.000000	</vertex>
+			<vertex>	-28.400002 73.099998 0.000000	</vertex>
+			<vertex>	-28.400002 74.099998 89.000000	</vertex>
+			<vertex>	-28.400002 75.099998 88.000000	</vertex>
+			<vertex>	-27.900002 75.599998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	91
+			<minHeight>	3.597999	</minHeight>
+			<height>	4.126593	</height>
+			<vertex>	-27.900002 72.599998 93.000000	</vertex>
+			<vertex>	-28.400002 72.599998 -3551.000000	</vertex>
+			<vertex>	-28.400002 73.099998 90.000000	</vertex>
+			<vertex>	-27.900002 73.099998 -93.000000	</vertex>
+		</waypoint>
+		<waypoint>	92
+			<minHeight>	1.448749	</minHeight>
+			<height>	3.423870	</height>
+			<vertex>	-24.400002 69.099998 95.000000	</vertex>
+			<vertex>	-30.900002 69.099998 86.000000	</vertex>
+			<vertex>	-30.900002 72.099998 93.000000	</vertex>
+			<vertex>	-27.900002 72.099998 94.000000	</vertex>
+			<vertex>	-27.400002 72.099998 0.000000	</vertex>
+			<vertex>	-24.400002 72.099998 76.000000	</vertex>
+			<vertex>	-24.400002 70.599998 77.000000	</vertex>
+			<vertex>	-24.400002 70.099998 75.000000	</vertex>
+		</waypoint>
+		<waypoint>	93
+			<minHeight>	3.220186	</minHeight>
+			<height>	3.862371	</height>
+			<vertex>	-27.900002 72.099998 92.000000	</vertex>
+			<vertex>	-30.900002 72.099998 86.000000	</vertex>
+			<vertex>	-30.900002 72.599998 87.000000	</vertex>
+			<vertex>	-30.400002 72.599998 -3548.000000	</vertex>
+			<vertex>	-28.400002 72.599998 91.000000	</vertex>
+			<vertex>	-27.900002 72.599998 94.000000	</vertex>
+		</waypoint>
+		<waypoint>	94
+			<minHeight>	3.261279	</minHeight>
+			<height>	3.639093	</height>
+			<vertex>	-27.400002 72.099998 92.000000	</vertex>
+			<vertex>	-27.900002 72.099998 93.000000	</vertex>
+			<vertex>	-27.900002 72.599998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	95
+			<minHeight>	1.034907	</minHeight>
+			<height>	3.041500	</height>
+			<vertex>	-24.400002 62.599998 105.000000	</vertex>
+			<vertex>	-30.900002 62.599998 96.000000	</vertex>
+			<vertex>	-30.900002 68.599998 97.000000	</vertex>
+			<vertex>	-30.900002 69.099998 92.000000	</vertex>
+			<vertex>	-24.400002 69.099998 78.000000	</vertex>
+			<vertex>	-24.400002 65.599998 79.000000	</vertex>
+		</waypoint>
+		<waypoint>	96
+			<minHeight>	1.820999	</minHeight>
+			<height>	3.113875	</height>
+			<vertex>	-30.900002 62.599998 107.000000	</vertex>
+			<vertex>	-36.900002 62.599998 -3549.000000	</vertex>
+			<vertex>	-36.400002 63.099998 98.000000	</vertex>
+			<vertex>	-35.900002 63.599998 97.000000	</vertex>
+			<vertex>	-30.900002 68.599998 95.000000	</vertex>
+		</waypoint>
+		<waypoint>	97
+			<minHeight>	2.936186	</minHeight>
+			<height>	3.709876	</height>
+			<vertex>	-35.900002 63.599998 98.000000	</vertex>
+			<vertex>	-36.400002 63.599998 -4095.000000	</vertex>
+			<vertex>	-37.400002 63.599998 101.000000	</vertex>
+			<vertex>	-37.400002 66.099998 102.000000	</vertex>
+			<vertex>	-37.400002 69.099998 86.000000	</vertex>
+			<vertex>	-30.900002 69.099998 95.000000	</vertex>
+			<vertex>	-30.900002 68.599998 96.000000	</vertex>
+		</waypoint>
+		<waypoint>	98
+			<minHeight>	2.659311	</minHeight>
+			<height>	3.034311	</height>
+			<vertex>	-36.400002 63.099998 -3548.000000	</vertex>
+			<vertex>	-36.400002 63.599998 97.000000	</vertex>
+			<vertex>	-35.900002 63.599998 96.000000	</vertex>
+		</waypoint>
+		<waypoint>	99
+			<minHeight>	4.696625	</minHeight>
+			<height>	7.117001	</height>
+			<vertex>	-39.900002 69.099998 104.000000	</vertex>
+			<vertex>	-44.400002 69.099998 103.000000	</vertex>
+			<vertex>	-49.900002 69.099998 169.000000	</vertex>
+			<vertex>	-49.900002 75.599998 41.000000	</vertex>
+			<vertex>	-39.900002 75.599998 100.000000	</vertex>
+		</waypoint>
+		<waypoint>	100
+			<minHeight>	3.580500	</minHeight>
+			<height>	5.827562	</height>
+			<vertex>	-37.400002 69.099998 102.000000	</vertex>
+			<vertex>	-38.900002 69.099998 104.000000	</vertex>
+			<vertex>	-39.900002 69.099998 99.000000	</vertex>
+			<vertex>	-39.900002 75.599998 41.000000	</vertex>
+			<vertex>	-37.400002 75.599998 86.000000	</vertex>
+		</waypoint>
+		<waypoint>	101
+			<minHeight>	3.177498	</minHeight>
+			<height>	4.513812	</height>
+			<vertex>	-37.400002 63.599998 0.000000	</vertex>
+			<vertex>	-39.900002 63.599998 102.000000	</vertex>
+			<vertex>	-37.400002 66.099998 97.000000	</vertex>
+		</waypoint>
+		<waypoint>	102
+			<minHeight>	3.513938	</minHeight>
+			<height>	6.028656	</height>
+			<vertex>	-40.900002 62.599998 108.000000	</vertex>
+			<vertex>	-42.900002 62.599998 110.000000	</vertex>
+			<vertex>	-43.900002 62.599998 111.000000	</vertex>
+			<vertex>	-45.400002 62.599998 103.000000	</vertex>
+			<vertex>	-44.400002 63.599998 104.000000	</vertex>
+			<vertex>	-38.900002 69.099998 100.000000	</vertex>
+			<vertex>	-37.400002 69.099998 97.000000	</vertex>
+			<vertex>	-37.400002 66.099998 101.000000	</vertex>
+			<vertex>	-39.900002 63.599998 -1911.000000	</vertex>
+		</waypoint>
+		<waypoint>	103
+			<minHeight>	5.409061	</minHeight>
+			<height>	7.675532	</height>
+			<vertex>	-45.400002 62.599998 111.000000	</vertex>
+			<vertex>	-49.900002 62.599998 171.000000	</vertex>
+			<vertex>	-49.900002 69.099998 99.000000	</vertex>
+			<vertex>	-44.400002 69.099998 104.000000	</vertex>
+			<vertex>	-44.400002 63.599998 102.000000	</vertex>
+		</waypoint>
+		<waypoint>	104
+			<minHeight>	4.117937	</minHeight>
+			<height>	6.123126	</height>
+			<vertex>	-44.400002 63.599998 103.000000	</vertex>
+			<vertex>	-44.400002 69.099998 99.000000	</vertex>
+			<vertex>	-39.900002 69.099998 100.000000	</vertex>
+			<vertex>	-38.900002 69.099998 102.000000	</vertex>
+		</waypoint>
+		<waypoint>	105
+			<minHeight>	0.135001	</minHeight>
+			<height>	2.914500	</height>
+			<vertex>	-24.400002 50.099998 259.000000	</vertex>
+			<vertex>	-30.900002 50.099998 106.000000	</vertex>
+			<vertex>	-30.900002 55.099998 107.000000	</vertex>
+			<vertex>	-30.900002 62.599998 95.000000	</vertex>
+			<vertex>	-24.400002 62.599998 80.000000	</vertex>
+		</waypoint>
+		<waypoint>	106
+			<minHeight>	1.767501	</minHeight>
+			<height>	3.687000	</height>
+			<vertex>	-30.900002 50.099998 257.000000	</vertex>
+			<vertex>	-37.400002 50.099998 113.000000	</vertex>
+			<vertex>	-37.400002 53.099998 115.000000	</vertex>
+			<vertex>	-37.400002 55.099998 107.000000	</vertex>
+			<vertex>	-30.900002 55.099998 105.000000	</vertex>
+		</waypoint>
+		<waypoint>	107
+			<minHeight>	0.506000	</minHeight>
+			<height>	2.335436	</height>
+			<vertex>	-30.900002 55.099998 106.000000	</vertex>
+			<vertex>	-37.400002 55.099998 115.000000	</vertex>
+			<vertex>	-37.400002 60.099998 109.000000	</vertex>
+			<vertex>	-37.400002 62.099998 -1372.000000	</vertex>
+			<vertex>	-36.900002 62.599998 96.000000	</vertex>
+			<vertex>	-30.900002 62.599998 105.000000	</vertex>
+		</waypoint>
+		<waypoint>	108
+			<minHeight>	3.246311	</minHeight>
+			<height>	4.502249	</height>
+			<vertex>	-42.900002 60.599998 110.000000	</vertex>
+			<vertex>	-42.900002 62.599998 102.000000	</vertex>
+			<vertex>	-40.900002 62.599998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	109
+			<minHeight>	0.376999	</minHeight>
+			<height>	1.909311	</height>
+			<vertex>	-37.400002 60.099998 115.000000	</vertex>
+			<vertex>	-39.400002 60.099998 0.000000	</vertex>
+			<vertex>	-37.400002 62.099998 107.000000	</vertex>
+		</waypoint>
+		<waypoint>	110
+			<minHeight>	2.341843	</minHeight>
+			<height>	4.934186	</height>
+			<vertex>	-42.900002 60.099998 114.000000	</vertex>
+			<vertex>	-46.400002 60.099998 112.000000	</vertex>
+			<vertex>	-45.400002 61.099998 111.000000	</vertex>
+			<vertex>	-43.900002 62.599998 102.000000	</vertex>
+			<vertex>	-42.900002 62.599998 108.000000	</vertex>
+			<vertex>	-42.900002 60.599998 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	111
+			<minHeight>	4.136498	</minHeight>
+			<height>	6.770186	</height>
+			<vertex>	-45.400002 61.099998 112.000000	</vertex>
+			<vertex>	-49.900002 61.099998 177.000000	</vertex>
+			<vertex>	-49.900002 62.599998 103.000000	</vertex>
+			<vertex>	-45.400002 62.599998 102.000000	</vertex>
+			<vertex>	-43.900002 62.599998 110.000000	</vertex>
+		</waypoint>
+		<waypoint>	112
+			<minHeight>	3.734812	</minHeight>
+			<height>	5.632249	</height>
+			<vertex>	-46.400002 60.099998 114.000000	</vertex>
+			<vertex>	-49.900002 60.099998 177.000000	</vertex>
+			<vertex>	-49.900002 61.099998 111.000000	</vertex>
+			<vertex>	-45.400002 61.099998 110.000000	</vertex>
+		</waypoint>
+		<waypoint>	113
+			<minHeight>	2.261188	</minHeight>
+			<height>	3.770125	</height>
+			<vertex>	-37.400002 50.099998 255.000000	</vertex>
+			<vertex>	-49.900002 50.099998 178.000000	</vertex>
+			<vertex>	-49.900002 53.099998 114.000000	</vertex>
+			<vertex>	-49.400002 53.099998 115.000000	</vertex>
+			<vertex>	-37.400002 53.099998 106.000000	</vertex>
+		</waypoint>
+		<waypoint>	114
+			<minHeight>	1.999343	</minHeight>
+			<height>	4.937781	</height>
+			<vertex>	-49.400002 53.099998 113.000000	</vertex>
+			<vertex>	-49.900002 53.099998 178.000000	</vertex>
+			<vertex>	-49.900002 60.099998 112.000000	</vertex>
+			<vertex>	-46.400002 60.099998 110.000000	</vertex>
+			<vertex>	-42.900002 60.099998 -3549.000000	</vertex>
+			<vertex>	-42.400002 60.099998 115.000000	</vertex>
+		</waypoint>
+		<waypoint>	115
+			<minHeight>	0.243376	</minHeight>
+			<height>	3.033688	</height>
+			<vertex>	-37.400002 53.099998 113.000000	</vertex>
+			<vertex>	-49.400002 53.099998 114.000000	</vertex>
+			<vertex>	-42.400002 60.099998 0.000000	</vertex>
+			<vertex>	-39.400002 60.099998 109.000000	</vertex>
+			<vertex>	-37.400002 60.099998 107.000000	</vertex>
+			<vertex>	-37.400002 55.099998 106.000000	</vertex>
+		</waypoint>
+		<waypoint>	116
+			<minHeight>	3.264625	</minHeight>
+			<height>	5.856593	</height>
+			<vertex>	-49.900002 94.599998 118.000000	</vertex>
+			<vertex>	-56.400002 94.599998 117.000000	</vertex>
+			<vertex>	-56.400002 100.099998 0.000000	</vertex>
+			<vertex>	-49.900002 100.099998 35.000000	</vertex>
+		</waypoint>
+		<waypoint>	117
+			<minHeight>	2.599187	</minHeight>
+			<height>	4.866251	</height>
+			<vertex>	-56.400002 94.599998 120.000000	</vertex>
+			<vertex>	-62.900002 94.599998 125.000000	</vertex>
+			<vertex>	-62.900002 95.099998 126.000000	</vertex>
+			<vertex>	-62.900002 100.099998 0.000000	</vertex>
+			<vertex>	-56.400002 100.099998 116.000000	</vertex>
+		</waypoint>
+		<waypoint>	118
+			<minHeight>	3.894938	</minHeight>
+			<height>	5.457062	</height>
+			<vertex>	-49.900002 88.099998 132.000000	</vertex>
+			<vertex>	-56.400002 88.099998 120.000000	</vertex>
+			<vertex>	-56.400002 94.599998 116.000000	</vertex>
+			<vertex>	-49.900002 94.599998 38.000000	</vertex>
+		</waypoint>
+		<waypoint>	119
+			<minHeight>	5.194751	</minHeight>
+			<height>	7.092220	</height>
+			<vertex>	-58.400002 88.099998 134.000000	</vertex>
+			<vertex>	-62.900002 88.099998 130.000000	</vertex>
+			<vertex>	-62.900002 90.099998 131.000000	</vertex>
+			<vertex>	-62.900002 92.599998 120.000000	</vertex>
+		</waypoint>
+		<waypoint>	120
+			<minHeight>	3.939501	</minHeight>
+			<height>	5.745657	</height>
+			<vertex>	-56.400002 88.099998 134.000000	</vertex>
+			<vertex>	-58.400002 88.099998 119.000000	</vertex>
+			<vertex>	-62.900002 92.599998 131.000000	</vertex>
+			<vertex>	-62.900002 94.599998 117.000000	</vertex>
+			<vertex>	-56.400002 94.599998 118.000000	</vertex>
+		</waypoint>
+		<waypoint>	121
+			<minHeight>	8.720280	</minHeight>
+			<height>	11.633501	</height>
+			<vertex>	-70.400002 94.599998 129.000000	</vertex>
+			<vertex>	-72.900002 94.599998 128.000000	</vertex>
+			<vertex>	-74.400002 94.599998 127.000000	</vertex>
+			<vertex>	-75.400002 94.599998 139.000000	</vertex>
+			<vertex>	-75.400002 95.599998 140.000000	</vertex>
+			<vertex>	-75.400002 96.599998 141.000000	</vertex>
+			<vertex>	-75.400002 99.599998 122.000000	</vertex>
+		</waypoint>
+		<waypoint>	122
+			<minHeight>	6.963002	</minHeight>
+			<height>	9.663406	</height>
+			<vertex>	-67.400002 94.599998 130.000000	</vertex>
+			<vertex>	-70.400002 94.599998 121.000000	</vertex>
+			<vertex>	-75.400002 99.599998 141.000000	</vertex>
+			<vertex>	-75.400002 100.099998 0.000000	</vertex>
+			<vertex>	-72.900002 100.099998 123.000000	</vertex>
+		</waypoint>
+		<waypoint>	123
+			<minHeight>	5.595376	</minHeight>
+			<height>	8.118001	</height>
+			<vertex>	-64.900002 94.599998 131.000000	</vertex>
+			<vertex>	-67.400002 94.599998 122.000000	</vertex>
+			<vertex>	-72.900002 100.099998 0.000000	</vertex>
+			<vertex>	-70.400002 100.099998 124.000000	</vertex>
+		</waypoint>
+		<waypoint>	124
+			<minHeight>	4.881001	</minHeight>
+			<height>	6.968001	</height>
+			<vertex>	-63.400002 94.599998 131.000000	</vertex>
+			<vertex>	-64.900002 94.599998 123.000000	</vertex>
+			<vertex>	-70.400002 100.099998 0.000000	</vertex>
+			<vertex>	-68.900002 100.099998 125.000000	</vertex>
+		</waypoint>
+		<waypoint>	125
+			<minHeight>	4.542501	</minHeight>
+			<height>	6.278001	</height>
+			<vertex>	-62.900002 94.599998 131.000000	</vertex>
+			<vertex>	-63.400002 94.599998 124.000000	</vertex>
+			<vertex>	-68.900002 100.099998 0.000000	</vertex>
+			<vertex>	-67.900002 100.099998 126.000000	</vertex>
+			<vertex>	-62.900002 95.099998 117.000000	</vertex>
+		</waypoint>
+		<waypoint>	126
+			<minHeight>	3.073219	</minHeight>
+			<height>	6.013500	</height>
+			<vertex>	-62.900002 95.099998 125.000000	</vertex>
+			<vertex>	-67.900002 100.099998 0.000000	</vertex>
+			<vertex>	-62.900002 100.099998 117.000000	</vertex>
+		</waypoint>
+		<waypoint>	127
+			<minHeight>	9.549751	</minHeight>
+			<height>	12.057375	</height>
+			<vertex>	-67.900002 88.099998 137.000000	</vertex>
+			<vertex>	-68.900002 88.099998 136.000000	</vertex>
+			<vertex>	-73.400002 88.099998 135.000000	</vertex>
+			<vertex>	-75.400002 88.099998 143.000000	</vertex>
+			<vertex>	-75.400002 94.599998 121.000000	</vertex>
+			<vertex>	-74.400002 94.599998 128.000000	</vertex>
+		</waypoint>
+		<waypoint>	128
+			<minHeight>	9.011562	</minHeight>
+			<height>	11.068501	</height>
+			<vertex>	-66.400002 88.099998 137.000000	</vertex>
+			<vertex>	-67.900002 88.099998 127.000000	</vertex>
+			<vertex>	-74.400002 94.599998 121.000000	</vertex>
+			<vertex>	-72.900002 94.599998 129.000000	</vertex>
+		</waypoint>
+		<waypoint>	129
+			<minHeight>	7.655501	</minHeight>
+			<height>	10.340376	</height>
+			<vertex>	-63.900002 88.099998 138.000000	</vertex>
+			<vertex>	-65.400002 88.099998 137.000000	</vertex>
+			<vertex>	-66.400002 88.099998 128.000000	</vertex>
+			<vertex>	-72.900002 94.599998 121.000000	</vertex>
+			<vertex>	-70.400002 94.599998 130.000000	</vertex>
+		</waypoint>
+		<waypoint>	130
+			<minHeight>	6.527001	</minHeight>
+			<height>	8.913000	</height>
+			<vertex>	-62.900002 88.099998 138.000000	</vertex>
+			<vertex>	-63.900002 88.099998 129.000000	</vertex>
+			<vertex>	-70.400002 94.599998 122.000000	</vertex>
+			<vertex>	-67.400002 94.599998 131.000000	</vertex>
+			<vertex>	-62.900002 90.099998 119.000000	</vertex>
+		</waypoint>
+		<waypoint>	131
+			<minHeight>	4.866251	</minHeight>
+			<height>	7.103501	</height>
+			<vertex>	-62.900002 90.099998 130.000000	</vertex>
+			<vertex>	-67.400002 94.599998 123.000000	</vertex>
+			<vertex>	-64.900002 94.599998 124.000000	</vertex>
+			<vertex>	-63.400002 94.599998 125.000000	</vertex>
+			<vertex>	-62.900002 94.599998 120.000000	</vertex>
+			<vertex>	-62.900002 92.599998 119.000000	</vertex>
+		</waypoint>
+		<waypoint>	132
+			<minHeight>	4.633843	</minHeight>
+			<height>	6.669001	</height>
+			<vertex>	-49.900002 75.599998 169.000000	</vertex>
+			<vertex>	-56.400002 75.599998 133.000000	</vertex>
+			<vertex>	-56.400002 77.599998 134.000000	</vertex>
+			<vertex>	-56.400002 88.099998 118.000000	</vertex>
+			<vertex>	-49.900002 88.099998 41.000000	</vertex>
+		</waypoint>
+		<waypoint>	133
+			<minHeight>	6.304501	</minHeight>
+			<height>	8.731502	</height>
+			<vertex>	-56.400002 75.599998 170.000000	</vertex>
+			<vertex>	-62.900002 75.599998 138.000000	</vertex>
+			<vertex>	-62.900002 84.099998 134.000000	</vertex>
+			<vertex>	-56.400002 77.599998 132.000000	</vertex>
+		</waypoint>
+		<waypoint>	134
+			<minHeight>	4.679751	</minHeight>
+			<height>	7.576627	</height>
+			<vertex>	-56.400002 77.599998 133.000000	</vertex>
+			<vertex>	-62.900002 84.099998 138.000000	</vertex>
+			<vertex>	-62.900002 88.099998 119.000000	</vertex>
+			<vertex>	-58.400002 88.099998 120.000000	</vertex>
+			<vertex>	-56.400002 88.099998 132.000000	</vertex>
+		</waypoint>
+		<waypoint>	135
+			<minHeight>	11.080000	</minHeight>
+			<height>	13.256001	</height>
+			<vertex>	-73.400002 75.599998 173.000000	</vertex>
+			<vertex>	-75.400002 75.599998 150.000000	</vertex>
+			<vertex>	-75.400002 88.099998 127.000000	</vertex>
+			<vertex>	-73.400002 88.099998 136.000000	</vertex>
+		</waypoint>
+		<waypoint>	136
+			<minHeight>	9.693251	</minHeight>
+			<height>	12.216814	</height>
+			<vertex>	-68.900002 75.599998 173.000000	</vertex>
+			<vertex>	-73.400002 75.599998 135.000000	</vertex>
+			<vertex>	-73.400002 88.099998 127.000000	</vertex>
+			<vertex>	-68.900002 88.099998 137.000000	</vertex>
+		</waypoint>
+		<waypoint>	137
+			<minHeight>	8.444063	</minHeight>
+			<height>	10.526688	</height>
+			<vertex>	-65.400002 75.599998 173.000000	</vertex>
+			<vertex>	-68.900002 75.599998 136.000000	</vertex>
+			<vertex>	-68.900002 88.099998 127.000000	</vertex>
+			<vertex>	-67.900002 88.099998 128.000000	</vertex>
+			<vertex>	-66.400002 88.099998 129.000000	</vertex>
+			<vertex>	-65.400002 88.099998 138.000000	</vertex>
+		</waypoint>
+		<waypoint>	138
+			<minHeight>	7.092220	</minHeight>
+			<height>	9.439094	</height>
+			<vertex>	-62.900002 75.599998 173.000000	</vertex>
+			<vertex>	-65.400002 75.599998 137.000000	</vertex>
+			<vertex>	-65.400002 88.099998 129.000000	</vertex>
+			<vertex>	-63.900002 88.099998 130.000000	</vertex>
+			<vertex>	-62.900002 88.099998 134.000000	</vertex>
+			<vertex>	-62.900002 84.099998 133.000000	</vertex>
+		</waypoint>
+		<waypoint>	139
+			<minHeight>	10.252002	</minHeight>
+			<height>	13.202501	</height>
+			<vertex>	-75.400002 94.599998 143.000000	</vertex>
+			<vertex>	-81.900002 94.599998 142.000000	</vertex>
+			<vertex>	-81.900002 100.099998 0.000000	</vertex>
+			<vertex>	-79.900002 100.099998 140.000000	</vertex>
+			<vertex>	-75.400002 95.599998 121.000000	</vertex>
+		</waypoint>
+		<waypoint>	140
+			<minHeight>	9.862001	</minHeight>
+			<height>	11.904844	</height>
+			<vertex>	-75.400002 95.599998 139.000000	</vertex>
+			<vertex>	-79.900002 100.099998 0.000000	</vertex>
+			<vertex>	-78.900002 100.099998 141.000000	</vertex>
+			<vertex>	-75.400002 96.599998 121.000000	</vertex>
+		</waypoint>
+		<waypoint>	141
+			<minHeight>	8.504126	</minHeight>
+			<height>	11.035501	</height>
+			<vertex>	-75.400002 96.599998 140.000000	</vertex>
+			<vertex>	-78.900002 100.099998 0.000000	</vertex>
+			<vertex>	-75.400002 100.099998 122.000000	</vertex>
+			<vertex>	-75.400002 99.599998 121.000000	</vertex>
+		</waypoint>
+		<waypoint>	142
+			<minHeight>	12.125126	</minHeight>
+			<height>	14.345032	</height>
+			<vertex>	-81.900002 94.599998 144.000000	</vertex>
+			<vertex>	-88.400002 94.599998 145.000000	</vertex>
+			<vertex>	-88.400002 100.099998 0.000000	</vertex>
+			<vertex>	-81.900002 100.099998 139.000000	</vertex>
+		</waypoint>
+		<waypoint>	143
+			<minHeight>	11.633501	</minHeight>
+			<height>	14.278251	</height>
+			<vertex>	-75.400002 88.099998 150.000000	</vertex>
+			<vertex>	-81.900002 88.099998 144.000000	</vertex>
+			<vertex>	-81.900002 94.599998 139.000000	</vertex>
+			<vertex>	-75.400002 94.599998 127.000000	</vertex>
+		</waypoint>
+		<waypoint>	144
+			<minHeight>	13.202501	</minHeight>
+			<height>	14.824250	</height>
+			<vertex>	-81.900002 88.099998 152.000000	</vertex>
+			<vertex>	-88.400002 88.099998 148.000000	</vertex>
+			<vertex>	-88.400002 94.599998 142.000000	</vertex>
+			<vertex>	-81.900002 94.599998 143.000000	</vertex>
+		</waypoint>
+		<waypoint>	145
+			<minHeight>	10.594218	</minHeight>
+			<height>	13.499500	</height>
+			<vertex>	-88.400002 94.599998 148.000000	</vertex>
+			<vertex>	-93.900002 94.599998 149.000000	</vertex>
+			<vertex>	-95.400002 94.599998 146.000000	</vertex>
+			<vertex>	-95.400002 100.099998 0.000000	</vertex>
+			<vertex>	-88.400002 100.099998 142.000000	</vertex>
+		</waypoint>
+		<waypoint>	146
+			<minHeight>	8.993499	</minHeight>
+			<height>	11.372999	</height>
+			<vertex>	-95.400002 94.599998 149.000000	</vertex>
+			<vertex>	-95.900002 94.599998 147.000000	</vertex>
+			<vertex>	-99.900002 94.599998 0.000000	</vertex>
+			<vertex>	-99.900002 100.099998 0.000000	</vertex>
+			<vertex>	-95.400002 100.099998 145.000000	</vertex>
+		</waypoint>
+		<waypoint>	147
+			<minHeight>	8.513530	</minHeight>
+			<height>	11.422874	</height>
+			<vertex>	-95.900002 88.099998 163.000000	</vertex>
+			<vertex>	-97.900002 88.099998 161.000000	</vertex>
+			<vertex>	-98.400002 88.099998 160.000000	</vertex>
+			<vertex>	-98.900002 88.099998 157.000000	</vertex>
+			<vertex>	-99.400002 88.099998 156.000000	</vertex>
+			<vertex>	-99.900002 88.099998 0.000000	</vertex>
+			<vertex>	-99.900002 94.599998 146.000000	</vertex>
+			<vertex>	-95.900002 94.599998 149.000000	</vertex>
+		</waypoint>
+		<waypoint>	148
+			<minHeight>	12.264500	</minHeight>
+			<height>	14.338436	</height>
+			<vertex>	-88.400002 88.099998 158.000000	</vertex>
+			<vertex>	-93.400002 88.099998 162.000000	</vertex>
+			<vertex>	-93.900002 88.099998 149.000000	</vertex>
+			<vertex>	-93.900002 94.599998 145.000000	</vertex>
+			<vertex>	-88.400002 94.599998 144.000000	</vertex>
+		</waypoint>
+		<waypoint>	149
+			<minHeight>	11.155030	</minHeight>
+			<height>	12.705999	</height>
+			<vertex>	-93.900002 88.099998 162.000000	</vertex>
+			<vertex>	-95.400002 88.099998 163.000000	</vertex>
+			<vertex>	-95.900002 88.099998 147.000000	</vertex>
+			<vertex>	-95.900002 94.599998 146.000000	</vertex>
+			<vertex>	-95.400002 94.599998 145.000000	</vertex>
+			<vertex>	-93.900002 94.599998 148.000000	</vertex>
+		</waypoint>
+		<waypoint>	150
+			<minHeight>	11.510000	</minHeight>
+			<height>	14.356499	</height>
+			<vertex>	-75.400002 75.599998 151.000000	</vertex>
+			<vertex>	-81.900002 82.099998 152.000000	</vertex>
+			<vertex>	-81.900002 88.099998 143.000000	</vertex>
+			<vertex>	-75.400002 88.099998 135.000000	</vertex>
+		</waypoint>
+		<waypoint>	151
+			<minHeight>	10.056999	</minHeight>
+			<height>	12.973000	</height>
+			<vertex>	-75.400002 75.599998 186.000000	</vertex>
+			<vertex>	-81.900002 75.599998 155.000000	</vertex>
+			<vertex>	-81.900002 77.099998 154.000000	</vertex>
+			<vertex>	-81.900002 79.099998 153.000000	</vertex>
+			<vertex>	-81.900002 80.599998 152.000000	</vertex>
+			<vertex>	-81.900002 82.099998 150.000000	</vertex>
+		</waypoint>
+		<waypoint>	152
+			<minHeight>	12.039249	</minHeight>
+			<height>	14.573532	</height>
+			<vertex>	-81.900002 80.599998 153.000000	</vertex>
+			<vertex>	-88.400002 80.599998 158.000000	</vertex>
+			<vertex>	-88.400002 88.099998 144.000000	</vertex>
+			<vertex>	-81.900002 88.099998 150.000000	</vertex>
+			<vertex>	-81.900002 82.099998 151.000000	</vertex>
+		</waypoint>
+		<waypoint>	153
+			<minHeight>	11.186468	</minHeight>
+			<height>	13.450186	</height>
+			<vertex>	-81.900002 79.099998 154.000000	</vertex>
+			<vertex>	-88.400002 79.099998 158.000000	</vertex>
+			<vertex>	-88.400002 80.599998 152.000000	</vertex>
+			<vertex>	-81.900002 80.599998 151.000000	</vertex>
+		</waypoint>
+		<waypoint>	154
+			<minHeight>	10.111467	</minHeight>
+			<height>	12.582265	</height>
+			<vertex>	-81.900002 77.099998 155.000000	</vertex>
+			<vertex>	-88.400002 77.099998 157.000000	</vertex>
+			<vertex>	-88.400002 77.599998 159.000000	</vertex>
+			<vertex>	-88.400002 79.099998 153.000000	</vertex>
+			<vertex>	-81.900002 79.099998 151.000000	</vertex>
+		</waypoint>
+		<waypoint>	155
+			<minHeight>	9.429186	</minHeight>
+			<height>	11.462999	</height>
+			<vertex>	-81.900002 75.599998 188.000000	</vertex>
+			<vertex>	-88.400002 75.599998 164.000000	</vertex>
+			<vertex>	-88.400002 76.599998 156.000000	</vertex>
+			<vertex>	-88.400002 77.099998 154.000000	</vertex>
+			<vertex>	-81.900002 77.099998 151.000000	</vertex>
+		</waypoint>
+		<waypoint>	156
+			<minHeight>	8.513530	</minHeight>
+			<height>	11.380999	</height>
+			<vertex>	-88.400002 76.599998 164.000000	</vertex>
+			<vertex>	-94.900002 83.099998 165.000000	</vertex>
+			<vertex>	-99.900002 88.099998 147.000000	</vertex>
+			<vertex>	-99.400002 88.099998 157.000000	</vertex>
+			<vertex>	-88.400002 77.099998 155.000000	</vertex>
+		</waypoint>
+		<waypoint>	157
+			<minHeight>	8.791561	</minHeight>
+			<height>	11.725998	</height>
+			<vertex>	-88.400002 77.099998 156.000000	</vertex>
+			<vertex>	-99.400002 88.099998 147.000000	</vertex>
+			<vertex>	-98.900002 88.099998 160.000000	</vertex>
+			<vertex>	-93.400002 82.599998 159.000000	</vertex>
+			<vertex>	-88.400002 77.599998 154.000000	</vertex>
+		</waypoint>
+		<waypoint>	158
+			<minHeight>	12.201999	</minHeight>
+			<height>	14.485781	</height>
+			<vertex>	-88.400002 79.099998 159.000000	</vertex>
+			<vertex>	-93.400002 84.099998 162.000000	</vertex>
+			<vertex>	-93.400002 88.099998 148.000000	</vertex>
+			<vertex>	-88.400002 88.099998 152.000000	</vertex>
+			<vertex>	-88.400002 80.599998 153.000000	</vertex>
+		</waypoint>
+		<waypoint>	159
+			<minHeight>	11.461999	</minHeight>
+			<height>	12.760998	</height>
+			<vertex>	-88.400002 77.599998 157.000000	</vertex>
+			<vertex>	-93.400002 82.599998 160.000000	</vertex>
+			<vertex>	-93.400002 83.099998 161.000000	</vertex>
+			<vertex>	-93.400002 83.599998 162.000000	</vertex>
+			<vertex>	-93.400002 84.099998 158.000000	</vertex>
+			<vertex>	-88.400002 79.099998 154.000000	</vertex>
+		</waypoint>
+		<waypoint>	160
+			<minHeight>	9.150311	</minHeight>
+			<height>	12.048498	</height>
+			<vertex>	-93.400002 82.599998 157.000000	</vertex>
+			<vertex>	-98.900002 88.099998 147.000000	</vertex>
+			<vertex>	-98.400002 88.099998 161.000000	</vertex>
+			<vertex>	-93.400002 83.099998 159.000000	</vertex>
+		</waypoint>
+		<waypoint>	161
+			<minHeight>	9.509061	</minHeight>
+			<height>	12.175999	</height>
+			<vertex>	-93.400002 83.099998 160.000000	</vertex>
+			<vertex>	-98.400002 88.099998 147.000000	</vertex>
+			<vertex>	-97.900002 88.099998 163.000000	</vertex>
+			<vertex>	-95.400002 85.599998 162.000000	</vertex>
+			<vertex>	-93.400002 83.599998 159.000000	</vertex>
+		</waypoint>
+		<waypoint>	162
+			<minHeight>	10.893998	</minHeight>
+			<height>	13.063786	</height>
+			<vertex>	-93.400002 83.599998 161.000000	</vertex>
+			<vertex>	-95.400002 85.599998 163.000000	</vertex>
+			<vertex>	-95.400002 88.099998 149.000000	</vertex>
+			<vertex>	-93.900002 88.099998 148.000000	</vertex>
+			<vertex>	-93.400002 88.099998 158.000000	</vertex>
+			<vertex>	-93.400002 84.099998 159.000000	</vertex>
+		</waypoint>
+		<waypoint>	163
+			<minHeight>	9.867811	</minHeight>
+			<height>	11.632437	</height>
+			<vertex>	-95.400002 85.599998 161.000000	</vertex>
+			<vertex>	-97.900002 88.099998 147.000000	</vertex>
+			<vertex>	-95.900002 88.099998 149.000000	</vertex>
+			<vertex>	-95.400002 88.099998 162.000000	</vertex>
+		</waypoint>
+		<waypoint>	164
+			<minHeight>	8.925999	</minHeight>
+			<height>	11.105498	</height>
+			<vertex>	-88.400002 75.599998 204.000000	</vertex>
+			<vertex>	-88.900002 75.599998 200.000000	</vertex>
+			<vertex>	-89.400002 75.599998 197.000000	</vertex>
+			<vertex>	-90.400002 75.599998 167.000000	</vertex>
+			<vertex>	-94.900002 80.099998 165.000000	</vertex>
+			<vertex>	-94.900002 83.099998 156.000000	</vertex>
+			<vertex>	-88.400002 76.599998 155.000000	</vertex>
+		</waypoint>
+		<waypoint>	165
+			<minHeight>	7.816467	</minHeight>
+			<height>	10.540998	</height>
+			<vertex>	-94.900002 80.099998 167.000000	</vertex>
+			<vertex>	-99.900002 85.099998 0.000000	</vertex>
+			<vertex>	-99.900002 88.099998 156.000000	</vertex>
+			<vertex>	-94.900002 83.099998 164.000000	</vertex>
+		</waypoint>
+		<waypoint>	166
+			<minHeight>	3.470467	</minHeight>
+			<height>	5.906749	</height>
+			<vertex>	-95.400002 75.599998 210.000000	</vertex>
+			<vertex>	-95.900002 75.599998 211.000000	</vertex>
+			<vertex>	-99.900002 75.599998 0.000000	</vertex>
+			<vertex>	-99.900002 80.099998 168.000000	</vertex>
+		</waypoint>
+		<waypoint>	167
+			<minHeight>	6.623467	</minHeight>
+			<height>	9.404999	</height>
+			<vertex>	-90.400002 75.599998 197.000000	</vertex>
+			<vertex>	-93.400002 75.599998 168.000000	</vertex>
+			<vertex>	-99.900002 82.099998 0.000000	</vertex>
+			<vertex>	-99.900002 85.099998 165.000000	</vertex>
+			<vertex>	-94.900002 80.099998 164.000000	</vertex>
+		</waypoint>
+		<waypoint>	168
+			<minHeight>	5.662999	</minHeight>
+			<height>	7.293999	</height>
+			<vertex>	-93.400002 75.599998 195.000000	</vertex>
+			<vertex>	-93.900002 75.599998 193.000000	</vertex>
+			<vertex>	-94.400002 75.599998 194.000000	</vertex>
+			<vertex>	-94.900002 75.599998 202.000000	</vertex>
+			<vertex>	-95.400002 75.599998 166.000000	</vertex>
+			<vertex>	-99.900002 80.099998 0.000000	</vertex>
+			<vertex>	-99.900002 82.099998 167.000000	</vertex>
+		</waypoint>
+		<waypoint>	169
+			<minHeight>	6.224031	</minHeight>
+			<height>	8.245501	</height>
+			<vertex>	-49.900002 69.099998 171.000000	</vertex>
+			<vertex>	-56.400002 69.099998 170.000000	</vertex>
+			<vertex>	-56.400002 75.599998 132.000000	</vertex>
+			<vertex>	-49.900002 75.599998 99.000000	</vertex>
+		</waypoint>
+		<waypoint>	170
+			<minHeight>	6.669001	</minHeight>
+			<height>	9.404501	</height>
+			<vertex>	-56.400002 69.099998 172.000000	</vertex>
+			<vertex>	-62.900002 69.099998 173.000000	</vertex>
+			<vertex>	-62.900002 75.599998 133.000000	</vertex>
+			<vertex>	-56.400002 75.599998 169.000000	</vertex>
+		</waypoint>
+		<waypoint>	171
+			<minHeight>	6.770186	</minHeight>
+			<height>	9.709690	</height>
+			<vertex>	-49.900002 62.599998 176.000000	</vertex>
+			<vertex>	-51.900002 62.599998 175.000000	</vertex>
+			<vertex>	-56.400002 62.599998 172.000000	</vertex>
+			<vertex>	-56.400002 69.099998 169.000000	</vertex>
+			<vertex>	-49.900002 69.099998 103.000000	</vertex>
+		</waypoint>
+		<waypoint>	172
+			<minHeight>	8.245501	</minHeight>
+			<height>	11.210781	</height>
+			<vertex>	-56.400002 62.599998 180.000000	</vertex>
+			<vertex>	-57.900002 62.599998 179.000000	</vertex>
+			<vertex>	-62.900002 62.599998 174.000000	</vertex>
+			<vertex>	-62.900002 69.099998 170.000000	</vertex>
+			<vertex>	-56.400002 69.099998 171.000000	</vertex>
+		</waypoint>
+		<waypoint>	173
+			<minHeight>	8.731502	</minHeight>
+			<height>	11.510000	</height>
+			<vertex>	-62.900002 69.099998 174.000000	</vertex>
+			<vertex>	-75.400002 69.099998 186.000000	</vertex>
+			<vertex>	-75.400002 75.599998 135.000000	</vertex>
+			<vertex>	-73.400002 75.599998 136.000000	</vertex>
+			<vertex>	-68.900002 75.599998 137.000000	</vertex>
+			<vertex>	-65.400002 75.599998 138.000000	</vertex>
+			<vertex>	-62.900002 75.599998 170.000000	</vertex>
+		</waypoint>
+		<waypoint>	174
+			<minHeight>	7.737187	</minHeight>
+			<height>	10.569655	</height>
+			<vertex>	-62.900002 62.599998 184.000000	</vertex>
+			<vertex>	-75.400002 62.599998 191.000000	</vertex>
+			<vertex>	-75.400002 69.099998 173.000000	</vertex>
+			<vertex>	-62.900002 69.099998 172.000000	</vertex>
+		</waypoint>
+		<waypoint>	175
+			<minHeight>	6.237249	</minHeight>
+			<height>	8.787000	</height>
+			<vertex>	-56.400002 58.099998 181.000000	</vertex>
+			<vertex>	-56.400002 61.599998 180.000000	</vertex>
+			<vertex>	-56.400002 62.599998 171.000000	</vertex>
+			<vertex>	-51.900002 62.599998 176.000000	</vertex>
+		</waypoint>
+		<waypoint>	176
+			<minHeight>	5.383157	</minHeight>
+			<height>	7.361374	</height>
+			<vertex>	-56.400002 56.099998 182.000000	</vertex>
+			<vertex>	-56.400002 57.599998 181.000000	</vertex>
+			<vertex>	-56.400002 58.099998 175.000000	</vertex>
+			<vertex>	-51.900002 62.599998 171.000000	</vertex>
+			<vertex>	-49.900002 62.599998 177.000000	</vertex>
+		</waypoint>
+		<waypoint>	177
+			<minHeight>	4.584001	</minHeight>
+			<height>	6.770186	</height>
+			<vertex>	-56.400002 53.599998 182.000000	</vertex>
+			<vertex>	-56.400002 56.099998 176.000000	</vertex>
+			<vertex>	-49.900002 62.599998 111.000000	</vertex>
+			<vertex>	-49.900002 61.099998 112.000000	</vertex>
+			<vertex>	-49.900002 60.099998 178.000000	</vertex>
+		</waypoint>
+		<waypoint>	178
+			<minHeight>	3.025250	</minHeight>
+			<height>	4.937781	</height>
+			<vertex>	-49.900002 50.099998 282.000000	</vertex>
+			<vertex>	-56.400002 50.099998 182.000000	</vertex>
+			<vertex>	-56.400002 53.599998 177.000000	</vertex>
+			<vertex>	-49.900002 60.099998 114.000000	</vertex>
+			<vertex>	-49.900002 53.099998 113.000000	</vertex>
+		</waypoint>
+		<waypoint>	179
+			<minHeight>	8.256938	</minHeight>
+			<height>	10.756874	</height>
+			<vertex>	-62.900002 57.599998 184.000000	</vertex>
+			<vertex>	-62.900002 62.599998 172.000000	</vertex>
+			<vertex>	-57.900002 62.599998 180.000000	</vertex>
+		</waypoint>
+		<waypoint>	180
+			<minHeight>	7.208000	</minHeight>
+			<height>	9.285625	</height>
+			<vertex>	-62.900002 55.099998 185.000000	</vertex>
+			<vertex>	-62.900002 55.599998 184.000000	</vertex>
+			<vertex>	-62.900002 57.599998 179.000000	</vertex>
+			<vertex>	-57.900002 62.599998 172.000000	</vertex>
+			<vertex>	-56.400002 62.599998 175.000000	</vertex>
+			<vertex>	-56.400002 61.599998 181.000000	</vertex>
+		</waypoint>
+		<waypoint>	181
+			<minHeight>	5.784000	</minHeight>
+			<height>	8.131999	</height>
+			<vertex>	-62.900002 51.099998 183.000000	</vertex>
+			<vertex>	-62.900002 53.599998 185.000000	</vertex>
+			<vertex>	-62.900002 55.099998 180.000000	</vertex>
+			<vertex>	-56.400002 61.599998 175.000000	</vertex>
+			<vertex>	-56.400002 58.099998 176.000000	</vertex>
+			<vertex>	-56.400002 57.599998 182.000000	</vertex>
+		</waypoint>
+		<waypoint>	182
+			<minHeight>	4.254251	</minHeight>
+			<height>	6.219750	</height>
+			<vertex>	-56.400002 50.099998 282.000000	</vertex>
+			<vertex>	-62.900002 50.099998 183.000000	</vertex>
+			<vertex>	-62.900002 51.099998 181.000000	</vertex>
+			<vertex>	-56.400002 57.599998 176.000000	</vertex>
+			<vertex>	-56.400002 56.099998 177.000000	</vertex>
+			<vertex>	-56.400002 53.599998 178.000000	</vertex>
+		</waypoint>
+		<waypoint>	183
+			<minHeight>	5.952250	</minHeight>
+			<height>	8.549500	</height>
+			<vertex>	-62.900002 50.099998 285.000000	</vertex>
+			<vertex>	-75.400002 50.099998 224.000000	</vertex>
+			<vertex>	-75.400002 52.599998 223.000000	</vertex>
+			<vertex>	-75.400002 53.599998 185.000000	</vertex>
+			<vertex>	-62.900002 53.599998 181.000000	</vertex>
+			<vertex>	-62.900002 51.099998 182.000000	</vertex>
+		</waypoint>
+		<waypoint>	184
+			<minHeight>	7.615001	</minHeight>
+			<height>	10.464437	</height>
+			<vertex>	-62.900002 55.599998 185.000000	</vertex>
+			<vertex>	-75.400002 55.599998 222.000000	</vertex>
+			<vertex>	-75.400002 60.099998 221.000000	</vertex>
+			<vertex>	-75.400002 60.599998 220.000000	</vertex>
+			<vertex>	-75.400002 62.599998 174.000000	</vertex>
+			<vertex>	-62.900002 62.599998 179.000000	</vertex>
+			<vertex>	-62.900002 57.599998 180.000000	</vertex>
+		</waypoint>
+		<waypoint>	185
+			<minHeight>	6.912375	</minHeight>
+			<height>	9.318249	</height>
+			<vertex>	-62.900002 53.599998 183.000000	</vertex>
+			<vertex>	-75.400002 53.599998 223.000000	</vertex>
+			<vertex>	-75.400002 55.099998 222.000000	</vertex>
+			<vertex>	-75.400002 55.599998 184.000000	</vertex>
+			<vertex>	-62.900002 55.599998 180.000000	</vertex>
+			<vertex>	-62.900002 55.099998 181.000000	</vertex>
+		</waypoint>
+		<waypoint>	186
+			<minHeight>	9.822499	</minHeight>
+			<height>	11.720875	</height>
+			<vertex>	-75.400002 69.099998 191.000000	</vertex>
+			<vertex>	-75.900002 69.099998 187.000000	</vertex>
+			<vertex>	-81.900002 75.099998 188.000000	</vertex>
+			<vertex>	-81.900002 75.599998 151.000000	</vertex>
+			<vertex>	-75.400002 75.599998 173.000000	</vertex>
+		</waypoint>
+		<waypoint>	187
+			<minHeight>	8.597750	</minHeight>
+			<height>	10.092031	</height>
+			<vertex>	-75.900002 69.099998 191.000000	</vertex>
+			<vertex>	-81.900002 69.099998 188.000000	</vertex>
+			<vertex>	-81.900002 75.099998 186.000000	</vertex>
+		</waypoint>
+		<waypoint>	188
+			<minHeight>	8.136999	</minHeight>
+			<height>	10.748373	</height>
+			<vertex>	-81.900002 69.099998 190.000000	</vertex>
+			<vertex>	-85.400002 72.599998 189.000000	</vertex>
+			<vertex>	-88.400002 75.599998 155.000000	</vertex>
+			<vertex>	-81.900002 75.599998 186.000000	</vertex>
+			<vertex>	-81.900002 75.099998 187.000000	</vertex>
+		</waypoint>
+		<waypoint>	189
+			<minHeight>	8.153998	</minHeight>
+			<height>	10.478998	</height>
+			<vertex>	-85.400002 72.599998 190.000000	</vertex>
+			<vertex>	-88.400002 72.599998 205.000000	</vertex>
+			<vertex>	-88.400002 73.599998 204.000000	</vertex>
+			<vertex>	-88.400002 75.599998 188.000000	</vertex>
+		</waypoint>
+		<waypoint>	190
+			<minHeight>	6.623999	</minHeight>
+			<height>	8.597750	</height>
+			<vertex>	-81.900002 69.099998 192.000000	</vertex>
+			<vertex>	-88.400002 69.099998 214.000000	</vertex>
+			<vertex>	-88.400002 69.599998 203.000000	</vertex>
+			<vertex>	-88.400002 71.599998 205.000000	</vertex>
+			<vertex>	-88.400002 72.599998 189.000000	</vertex>
+			<vertex>	-85.400002 72.599998 188.000000	</vertex>
+		</waypoint>
+		<waypoint>	191
+			<minHeight>	7.227375	</minHeight>
+			<height>	10.092031	</height>
+			<vertex>	-75.400002 62.599998 220.000000	</vertex>
+			<vertex>	-76.400002 62.599998 225.000000	</vertex>
+			<vertex>	-76.900002 62.599998 227.000000	</vertex>
+			<vertex>	-78.400002 62.599998 230.000000	</vertex>
+			<vertex>	-81.900002 62.599998 192.000000	</vertex>
+			<vertex>	-81.900002 69.099998 187.000000	</vertex>
+			<vertex>	-75.900002 69.099998 186.000000	</vertex>
+			<vertex>	-75.400002 69.099998 174.000000	</vertex>
+		</waypoint>
+		<waypoint>	192
+			<minHeight>	6.268437	</minHeight>
+			<height>	8.906436	</height>
+			<vertex>	-81.900002 62.599998 232.000000	</vertex>
+			<vertex>	-88.400002 62.599998 216.000000	</vertex>
+			<vertex>	-88.400002 69.099998 190.000000	</vertex>
+			<vertex>	-81.900002 69.099998 191.000000	</vertex>
+		</waypoint>
+		<waypoint>	193
+			<minHeight>	4.495967	</minHeight>
+			<height>	6.893999	</height>
+			<vertex>	-93.900002 72.099998 -255.000000	</vertex>
+			<vertex>	-94.400002 72.099998 194.000000	</vertex>
+			<vertex>	-94.400002 75.599998 168.000000	</vertex>
+			<vertex>	-93.900002 75.599998 195.000000	</vertex>
+		</waypoint>
+		<waypoint>	194
+			<minHeight>	4.034717	</minHeight>
+			<height>	6.493999	</height>
+			<vertex>	-94.400002 72.099998 -255.000000	</vertex>
+			<vertex>	-94.900002 72.099998 202.000000	</vertex>
+			<vertex>	-94.900002 75.599998 168.000000	</vertex>
+			<vertex>	-94.400002 75.599998 193.000000	</vertex>
+		</waypoint>
+		<waypoint>	195
+			<minHeight>	4.957217	</minHeight>
+			<height>	7.293999	</height>
+			<vertex>	-93.400002 72.099998 -3583.000000	</vertex>
+			<vertex>	-93.900002 72.099998 193.000000	</vertex>
+			<vertex>	-93.900002 75.599998 168.000000	</vertex>
+			<vertex>	-93.400002 75.599998 198.000000	</vertex>
+			<vertex>	-93.400002 74.599998 196.000000	</vertex>
+		</waypoint>
+		<waypoint>	196
+			<minHeight>	5.256499	</minHeight>
+			<height>	7.288248	</height>
+			<vertex>	-93.400002 71.599998 -1367.000000	</vertex>
+			<vertex>	-93.400002 72.099998 195.000000	</vertex>
+			<vertex>	-93.400002 74.599998 198.000000	</vertex>
+			<vertex>	-91.900002 73.099998 201.000000	</vertex>
+			<vertex>	-92.150002 72.849998 199.000000	</vertex>
+		</waypoint>
+		<waypoint>	197
+			<minHeight>	7.293999	</minHeight>
+			<height>	9.918999	</height>
+			<vertex>	-91.400002 73.599998 198.000000	</vertex>
+			<vertex>	-93.400002 75.599998 167.000000	</vertex>
+			<vertex>	-90.400002 75.599998 164.000000	</vertex>
+			<vertex>	-89.400002 75.599998 200.000000	</vertex>
+			<vertex>	-90.900002 74.099998 201.000000	</vertex>
+		</waypoint>
+		<waypoint>	198
+			<minHeight>	6.653998	</minHeight>
+			<height>	7.805748	</height>
+			<vertex>	-91.900002 73.099998 196.000000	</vertex>
+			<vertex>	-93.400002 74.599998 195.000000	</vertex>
+			<vertex>	-93.400002 75.599998 197.000000	</vertex>
+			<vertex>	-91.400002 73.599998 201.000000	</vertex>
+		</waypoint>
+		<waypoint>	199
+			<minHeight>	4.730248	</minHeight>
+			<height>	7.029498	</height>
+			<vertex>	-93.900002 70.599998 -1919.000000	</vertex>
+			<vertex>	-93.900002 71.099998 -2047.000000	</vertex>
+			<vertex>	-93.400002 71.599998 196.000000	</vertex>
+			<vertex>	-92.150002 72.849998 201.000000	</vertex>
+			<vertex>	-91.900002 72.599998 206.000000	</vertex>
+			<vertex>	-93.400002 71.099998 207.000000	</vertex>
+		</waypoint>
+		<waypoint>	200
+			<minHeight>	8.302749	</minHeight>
+			<height>	10.209623	</height>
+			<vertex>	-90.400002 74.099998 201.000000	</vertex>
+			<vertex>	-90.900002 74.099998 197.000000	</vertex>
+			<vertex>	-89.400002 75.599998 164.000000	</vertex>
+			<vertex>	-88.900002 75.599998 204.000000	</vertex>
+		</waypoint>
+		<waypoint>	201
+			<minHeight>	7.029498	</minHeight>
+			<height>	8.593374	</height>
+			<vertex>	-91.900002 72.599998 199.000000	</vertex>
+			<vertex>	-92.150002 72.849998 196.000000	</vertex>
+			<vertex>	-91.900002 73.099998 198.000000	</vertex>
+			<vertex>	-91.400002 73.599998 197.000000	</vertex>
+			<vertex>	-90.900002 74.099998 200.000000	</vertex>
+			<vertex>	-90.400002 74.099998 204.000000	</vertex>
+			<vertex>	-90.650002 73.849998 203.000000	</vertex>
+			<vertex>	-91.650002 72.849998 206.000000	</vertex>
+		</waypoint>
+		<waypoint>	202
+			<minHeight>	3.773998	</minHeight>
+			<height>	6.093998	</height>
+			<vertex>	-94.900002 72.099998 -4095.000000	</vertex>
+			<vertex>	-95.400002 72.599998 210.000000	</vertex>
+			<vertex>	-95.400002 75.599998 168.000000	</vertex>
+			<vertex>	-94.900002 75.599998 194.000000	</vertex>
+		</waypoint>
+		<waypoint>	203
+			<minHeight>	6.546499	</minHeight>
+			<height>	8.323999	</height>
+			<vertex>	-88.400002 69.599998 206.000000	</vertex>
+			<vertex>	-91.650002 72.849998 201.000000	</vertex>
+			<vertex>	-90.650002 73.849998 204.000000	</vertex>
+			<vertex>	-90.400002 73.599998 205.000000	</vertex>
+			<vertex>	-88.400002 71.599998 190.000000	</vertex>
+		</waypoint>
+		<waypoint>	204
+			<minHeight>	8.323999	</minHeight>
+			<height>	10.478998	</height>
+			<vertex>	-88.400002 73.599998 205.000000	</vertex>
+			<vertex>	-90.400002 73.599998 203.000000	</vertex>
+			<vertex>	-90.650002 73.849998 201.000000	</vertex>
+			<vertex>	-90.400002 74.099998 200.000000	</vertex>
+			<vertex>	-88.900002 75.599998 164.000000	</vertex>
+			<vertex>	-88.400002 75.599998 189.000000	</vertex>
+		</waypoint>
+		<waypoint>	205
+			<minHeight>	7.448999	</minHeight>
+			<height>	8.928999	</height>
+			<vertex>	-88.400002 71.599998 203.000000	</vertex>
+			<vertex>	-90.400002 73.599998 204.000000	</vertex>
+			<vertex>	-88.400002 73.599998 189.000000	</vertex>
+			<vertex>	-88.400002 72.599998 190.000000	</vertex>
+		</waypoint>
+		<waypoint>	206
+			<minHeight>	5.224280	</minHeight>
+			<height>	7.246499	</height>
+			<vertex>	-88.400002 69.599998 214.000000	</vertex>
+			<vertex>	-91.900002 69.599998 207.000000	</vertex>
+			<vertex>	-93.400002 71.099998 199.000000	</vertex>
+			<vertex>	-91.900002 72.599998 201.000000	</vertex>
+			<vertex>	-91.650002 72.849998 203.000000	</vertex>
+		</waypoint>
+		<waypoint>	207
+			<minHeight>	3.810874	</minHeight>
+			<height>	5.389624	</height>
+			<vertex>	-91.900002 69.599998 214.000000	</vertex>
+			<vertex>	-92.900002 69.599998 215.000000	</vertex>
+			<vertex>	-94.900002 69.599998 0.000000	</vertex>
+			<vertex>	-93.900002 70.599998 199.000000	</vertex>
+			<vertex>	-93.400002 71.099998 206.000000	</vertex>
+		</waypoint>
+		<waypoint>	208
+			<minHeight>	1.020936	</minHeight>
+			<height>	3.346499	</height>
+			<vertex>	-95.400002 69.599998 213.000000	</vertex>
+			<vertex>	-99.900002 69.599998 0.000000	</vertex>
+			<vertex>	-99.900002 71.099998 212.000000	</vertex>
+			<vertex>	-95.900002 71.099998 209.000000	</vertex>
+			<vertex>	-95.400002 71.099998 -3421.000000	</vertex>
+		</waypoint>
+		<waypoint>	209
+			<minHeight>	2.989029	</minHeight>
+			<height>	3.346499	</height>
+			<vertex>	-95.400002 71.099998 208.000000	</vertex>
+			<vertex>	-95.900002 71.099998 211.000000	</vertex>
+			<vertex>	-95.900002 71.599998 -3421.000000	</vertex>
+		</waypoint>
+		<waypoint>	210
+			<minHeight>	3.463998	</minHeight>
+			<height>	5.693998	</height>
+			<vertex>	-95.400002 72.599998 -3583.000000	</vertex>
+			<vertex>	-95.900002 72.599998 211.000000	</vertex>
+			<vertex>	-95.900002 75.599998 166.000000	</vertex>
+			<vertex>	-95.400002 75.599998 202.000000	</vertex>
+		</waypoint>
+		<waypoint>	211
+			<minHeight>	2.667999	</minHeight>
+			<height>	5.383998	</height>
+			<vertex>	-95.900002 71.099998 212.000000	</vertex>
+			<vertex>	-99.900002 75.099998 0.000000	</vertex>
+			<vertex>	-99.900002 75.599998 166.000000	</vertex>
+			<vertex>	-95.900002 75.599998 210.000000	</vertex>
+			<vertex>	-95.900002 72.599998 -1285.000000	</vertex>
+			<vertex>	-95.900002 71.599998 209.000000	</vertex>
+		</waypoint>
+		<waypoint>	212
+			<minHeight>	1.455937	</minHeight>
+			<height>	3.231717	</height>
+			<vertex>	-95.900002 71.099998 208.000000	</vertex>
+			<vertex>	-99.900002 71.099998 0.000000	</vertex>
+			<vertex>	-99.900002 75.099998 211.000000	</vertex>
+		</waypoint>
+		<waypoint>	213
+			<minHeight>	0.875937	</minHeight>
+			<height>	3.547749	</height>
+			<vertex>	-94.900002 69.099998 218.000000	</vertex>
+			<vertex>	-97.900002 69.099998 219.000000	</vertex>
+			<vertex>	-99.900002 69.099998 0.000000	</vertex>
+			<vertex>	-99.900002 69.599998 208.000000	</vertex>
+			<vertex>	-95.400002 69.599998 215.000000	</vertex>
+		</waypoint>
+		<waypoint>	214
+			<minHeight>	4.678999	</minHeight>
+			<height>	6.788999	</height>
+			<vertex>	-88.400002 69.099998 216.000000	</vertex>
+			<vertex>	-91.900002 69.099998 217.000000	</vertex>
+			<vertex>	-92.400002 69.099998 215.000000	</vertex>
+			<vertex>	-92.900002 69.599998 207.000000	</vertex>
+			<vertex>	-91.900002 69.599998 206.000000	</vertex>
+			<vertex>	-88.400002 69.599998 190.000000	</vertex>
+		</waypoint>
+		<waypoint>	215
+			<minHeight>	3.151499	</minHeight>
+			<height>	4.752749	</height>
+			<vertex>	-92.400002 69.099998 217.000000	</vertex>
+			<vertex>	-94.900002 69.099998 213.000000	</vertex>
+			<vertex>	-95.400002 69.599998 -3549.000000	</vertex>
+			<vertex>	-94.900002 69.599998 207.000000	</vertex>
+			<vertex>	-92.900002 69.599998 214.000000	</vertex>
+		</waypoint>
+		<waypoint>	216
+			<minHeight>	4.263656	</minHeight>
+			<height>	6.634500	</height>
+			<vertex>	-88.400002 62.599998 237.000000	</vertex>
+			<vertex>	-90.900002 62.599998 236.000000	</vertex>
+			<vertex>	-91.900002 62.599998 217.000000	</vertex>
+			<vertex>	-91.900002 69.099998 214.000000	</vertex>
+			<vertex>	-88.400002 69.099998 192.000000	</vertex>
+		</waypoint>
+		<waypoint>	217
+			<minHeight>	2.924749	</minHeight>
+			<height>	4.924280	</height>
+			<vertex>	-91.900002 62.599998 236.000000	</vertex>
+			<vertex>	-93.400002 62.599998 239.000000	</vertex>
+			<vertex>	-94.900002 62.599998 218.000000	</vertex>
+			<vertex>	-94.900002 69.099998 215.000000	</vertex>
+			<vertex>	-92.400002 69.099998 214.000000	</vertex>
+			<vertex>	-91.900002 69.099998 216.000000	</vertex>
+		</waypoint>
+		<waypoint>	218
+			<minHeight>	1.332312	</minHeight>
+			<height>	3.547749	</height>
+			<vertex>	-94.900002 62.599998 239.000000	</vertex>
+			<vertex>	-97.400002 62.599998 240.000000	</vertex>
+			<vertex>	-97.900002 62.599998 219.000000	</vertex>
+			<vertex>	-97.900002 69.099998 213.000000	</vertex>
+			<vertex>	-94.900002 69.099998 217.000000	</vertex>
+		</waypoint>
+		<waypoint>	219
+			<minHeight>	0.257343	</minHeight>
+			<height>	1.904810	</height>
+			<vertex>	-97.900002 62.599998 240.000000	</vertex>
+			<vertex>	-99.400002 62.599998 242.000000	</vertex>
+			<vertex>	-99.900002 62.599998 0.000000	</vertex>
+			<vertex>	-99.900002 69.099998 213.000000	</vertex>
+			<vertex>	-97.900002 69.099998 218.000000	</vertex>
+		</waypoint>
+		<waypoint>	220
+			<minHeight>	7.316000	</minHeight>
+			<height>	8.048560	</height>
+			<vertex>	-76.400002 59.599998 225.000000	</vertex>
+			<vertex>	-76.400002 62.599998 191.000000	</vertex>
+			<vertex>	-75.400002 62.599998 184.000000	</vertex>
+			<vertex>	-75.400002 60.599998 221.000000	</vertex>
+		</waypoint>
+		<waypoint>	221
+			<minHeight>	7.610250	</minHeight>
+			<height>	7.976124	</height>
+			<vertex>	-76.400002 59.099998 225.000000	</vertex>
+			<vertex>	-76.400002 59.599998 220.000000	</vertex>
+			<vertex>	-75.400002 60.599998 184.000000	</vertex>
+			<vertex>	-75.400002 60.099998 222.000000	</vertex>
+		</waypoint>
+		<waypoint>	222
+			<minHeight>	7.732749	</minHeight>
+			<height>	9.629874	</height>
+			<vertex>	-75.400002 55.099998 223.000000	</vertex>
+			<vertex>	-76.400002 56.099998 225.000000	</vertex>
+			<vertex>	-76.400002 59.099998 221.000000	</vertex>
+			<vertex>	-75.400002 60.099998 184.000000	</vertex>
+			<vertex>	-75.400002 55.599998 185.000000	</vertex>
+		</waypoint>
+		<waypoint>	223
+			<minHeight>	7.621624	</minHeight>
+			<height>	9.349249	</height>
+			<vertex>	-75.400002 52.599998 224.000000	</vertex>
+			<vertex>	-76.400002 52.599998 225.000000	</vertex>
+			<vertex>	-76.400002 56.099998 222.000000	</vertex>
+			<vertex>	-75.400002 55.099998 185.000000	</vertex>
+			<vertex>	-75.400002 53.599998 183.000000	</vertex>
+		</waypoint>
+		<waypoint>	224
+			<minHeight>	6.293499	</minHeight>
+			<height>	7.678874	</height>
+			<vertex>	-75.400002 50.099998 293.000000	</vertex>
+			<vertex>	-76.400002 50.099998 226.000000	</vertex>
+			<vertex>	-76.400002 52.599998 223.000000	</vertex>
+			<vertex>	-75.400002 52.599998 183.000000	</vertex>
+		</waypoint>
+		<waypoint>	225
+			<minHeight>	7.227375	</minHeight>
+			<height>	9.349247	</height>
+			<vertex>	-76.400002 52.599998 226.000000	</vertex>
+			<vertex>	-76.900002 52.599998 228.000000	</vertex>
+			<vertex>	-76.900002 55.099998 227.000000	</vertex>
+			<vertex>	-76.900002 62.599998 191.000000	</vertex>
+			<vertex>	-76.400002 62.599998 220.000000	</vertex>
+			<vertex>	-76.400002 59.599998 221.000000	</vertex>
+			<vertex>	-76.400002 59.099998 222.000000	</vertex>
+			<vertex>	-76.400002 56.099998 223.000000	</vertex>
+		</waypoint>
+		<waypoint>	226
+			<minHeight>	6.134748	</minHeight>
+			<height>	7.652999	</height>
+			<vertex>	-76.400002 50.099998 293.000000	</vertex>
+			<vertex>	-76.900002 50.099998 229.000000	</vertex>
+			<vertex>	-76.900002 51.599998 228.000000	</vertex>
+			<vertex>	-76.900002 52.599998 225.000000	</vertex>
+			<vertex>	-76.400002 52.599998 224.000000	</vertex>
+		</waypoint>
+		<waypoint>	227
+			<minHeight>	7.006124	</minHeight>
+			<height>	9.046747	</height>
+			<vertex>	-76.900002 55.099998 228.000000	</vertex>
+			<vertex>	-78.400002 55.099998 231.000000	</vertex>
+			<vertex>	-78.400002 60.099998 230.000000	</vertex>
+			<vertex>	-78.400002 62.599998 191.000000	</vertex>
+			<vertex>	-76.900002 62.599998 225.000000	</vertex>
+		</waypoint>
+		<waypoint>	228
+			<minHeight>	6.870998	</minHeight>
+			<height>	8.895498	</height>
+			<vertex>	-76.900002 51.599998 229.000000	</vertex>
+			<vertex>	-78.400002 51.599998 231.000000	</vertex>
+			<vertex>	-78.400002 55.099998 227.000000	</vertex>
+			<vertex>	-76.900002 55.099998 225.000000	</vertex>
+			<vertex>	-76.900002 52.599998 226.000000	</vertex>
+		</waypoint>
+		<waypoint>	229
+			<minHeight>	5.772248	</minHeight>
+			<height>	7.005998	</height>
+			<vertex>	-76.900002 50.099998 293.000000	</vertex>
+			<vertex>	-78.400002 50.099998 231.000000	</vertex>
+			<vertex>	-78.400002 51.599998 228.000000	</vertex>
+			<vertex>	-76.900002 51.599998 226.000000	</vertex>
+		</waypoint>
+		<waypoint>	230
+			<minHeight>	6.832781	</minHeight>
+			<height>	9.157374	</height>
+			<vertex>	-81.900002 56.599998 232.000000	</vertex>
+			<vertex>	-81.900002 62.599998 191.000000	</vertex>
+			<vertex>	-78.400002 62.599998 227.000000	</vertex>
+			<vertex>	-78.400002 60.099998 231.000000	</vertex>
+		</waypoint>
+		<waypoint>	231
+			<minHeight>	5.345123	</minHeight>
+			<height>	8.139248	</height>
+			<vertex>	-78.400002 50.099998 293.000000	</vertex>
+			<vertex>	-81.400002 50.099998 294.000000	</vertex>
+			<vertex>	-81.900002 50.099998 233.000000	</vertex>
+			<vertex>	-81.900002 51.599998 232.000000	</vertex>
+			<vertex>	-81.900002 56.599998 230.000000	</vertex>
+			<vertex>	-78.400002 60.099998 227.000000	</vertex>
+			<vertex>	-78.400002 55.099998 228.000000	</vertex>
+			<vertex>	-78.400002 51.599998 229.000000	</vertex>
+		</waypoint>
+		<waypoint>	232
+			<minHeight>	6.468999	</minHeight>
+			<height>	8.906436	</height>
+			<vertex>	-81.900002 51.599998 233.000000	</vertex>
+			<vertex>	-88.400002 58.099998 237.000000	</vertex>
+			<vertex>	-88.400002 62.599998 192.000000	</vertex>
+			<vertex>	-81.900002 62.599998 230.000000	</vertex>
+			<vertex>	-81.900002 56.599998 231.000000	</vertex>
+		</waypoint>
+		<waypoint>	233
+			<minHeight>	5.106247	</minHeight>
+			<height>	7.390531	</height>
+			<vertex>	-81.900002 50.099998 295.000000	</vertex>
+			<vertex>	-83.400002 50.099998 234.000000	</vertex>
+			<vertex>	-88.400002 55.099998 238.000000	</vertex>
+			<vertex>	-88.400002 55.599998 237.000000	</vertex>
+			<vertex>	-88.400002 58.099998 232.000000	</vertex>
+			<vertex>	-81.900002 51.599998 231.000000	</vertex>
+		</waypoint>
+		<waypoint>	234
+			<minHeight>	3.890467	</minHeight>
+			<height>	6.357248	</height>
+			<vertex>	-83.400002 50.099998 295.000000	</vertex>
+			<vertex>	-85.900002 50.099998 235.000000	</vertex>
+			<vertex>	-88.400002 52.599998 238.000000	</vertex>
+			<vertex>	-88.400002 55.099998 233.000000	</vertex>
+		</waypoint>
+		<waypoint>	235
+			<minHeight>	2.967249	</minHeight>
+			<height>	4.813495	</height>
+			<vertex>	-85.900002 50.099998 295.000000	</vertex>
+			<vertex>	-87.400002 50.099998 296.000000	</vertex>
+			<vertex>	-88.400002 50.099998 241.000000	</vertex>
+			<vertex>	-88.400002 51.599998 238.000000	</vertex>
+			<vertex>	-88.400002 52.599998 234.000000	</vertex>
+		</waypoint>
+		<waypoint>	236
+			<minHeight>	3.731999	</minHeight>
+			<height>	5.281093	</height>
+			<vertex>	-90.900002 54.099998 241.000000	</vertex>
+			<vertex>	-93.400002 56.599998 239.000000	</vertex>
+			<vertex>	-93.400002 62.599998 217.000000	</vertex>
+			<vertex>	-91.900002 62.599998 216.000000	</vertex>
+			<vertex>	-90.900002 62.599998 237.000000	</vertex>
+			<vertex>	-90.900002 58.099998 238.000000	</vertex>
+		</waypoint>
+		<waypoint>	237
+			<minHeight>	4.956999	</minHeight>
+			<height>	7.251497	</height>
+			<vertex>	-88.400002 55.599998 238.000000	</vertex>
+			<vertex>	-90.900002 58.099998 236.000000	</vertex>
+			<vertex>	-90.900002 62.599998 216.000000	</vertex>
+			<vertex>	-88.400002 62.599998 232.000000	</vertex>
+			<vertex>	-88.400002 58.099998 233.000000	</vertex>
+		</waypoint>
+		<waypoint>	238
+			<minHeight>	3.510999	</minHeight>
+			<height>	5.717999	</height>
+			<vertex>	-88.400002 51.599998 241.000000	</vertex>
+			<vertex>	-90.900002 54.099998 236.000000	</vertex>
+			<vertex>	-90.900002 58.099998 237.000000	</vertex>
+			<vertex>	-88.400002 55.599998 233.000000	</vertex>
+			<vertex>	-88.400002 55.099998 234.000000	</vertex>
+			<vertex>	-88.400002 52.599998 235.000000	</vertex>
+		</waypoint>
+		<waypoint>	239
+			<minHeight>	2.058560	</minHeight>
+			<height>	4.008968	</height>
+			<vertex>	-93.400002 56.599998 241.000000	</vertex>
+			<vertex>	-96.400002 59.599998 242.000000	</vertex>
+			<vertex>	-97.400002 60.599998 240.000000	</vertex>
+			<vertex>	-97.400002 62.599998 218.000000	</vertex>
+			<vertex>	-94.900002 62.599998 217.000000	</vertex>
+			<vertex>	-93.400002 62.599998 236.000000	</vertex>
+		</waypoint>
+		<waypoint>	240
+			<minHeight>	0.698499	</minHeight>
+			<height>	2.213499	</height>
+			<vertex>	-97.400002 60.599998 242.000000	</vertex>
+			<vertex>	-99.400002 62.599998 219.000000	</vertex>
+			<vertex>	-97.900002 62.599998 218.000000	</vertex>
+			<vertex>	-97.400002 62.599998 239.000000	</vertex>
+		</waypoint>
+		<waypoint>	241
+			<minHeight>	1.744250	</minHeight>
+			<height>	4.157997	</height>
+			<vertex>	-88.400002 50.099998 297.000000	</vertex>
+			<vertex>	-96.400002 50.099998 242.000000	</vertex>
+			<vertex>	-96.400002 59.599998 239.000000	</vertex>
+			<vertex>	-93.400002 56.599998 236.000000	</vertex>
+			<vertex>	-90.900002 54.099998 238.000000	</vertex>
+			<vertex>	-88.400002 51.599998 235.000000	</vertex>
+		</waypoint>
+		<waypoint>	242
+			<minHeight>	0.440811	</minHeight>
+			<height>	2.864998	</height>
+			<vertex>	-96.400002 50.099998 297.000000	</vertex>
+			<vertex>	-99.900002 50.099998 0.000000	</vertex>
+			<vertex>	-99.900002 62.599998 219.000000	</vertex>
+			<vertex>	-99.400002 62.599998 240.000000	</vertex>
+			<vertex>	-97.400002 60.599998 239.000000	</vertex>
+			<vertex>	-96.400002 59.599998 241.000000	</vertex>
+		</waypoint>
+		<waypoint>	243
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.022375	</height>
+			<vertex>	-5.400002 43.599998 245.000000	</vertex>
+			<vertex>	-11.900002 43.599998 248.000000	</vertex>
+			<vertex>	-11.900002 50.099998 81.000000	</vertex>
+			<vertex>	-5.400002 50.099998 244.000000	</vertex>
+		</waypoint>
+		<waypoint>	244
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.366999	</height>
+			<vertex>	0.599998 43.599998 246.000000	</vertex>
+			<vertex>	-5.400002 43.599998 243.000000	</vertex>
+			<vertex>	-5.400002 50.099998 84.000000	</vertex>
+			<vertex>	0.599998 50.099998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	245
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.022375	</height>
+			<vertex>	-5.400002 37.099998 251.000000	</vertex>
+			<vertex>	-11.900002 37.099998 250.000000	</vertex>
+			<vertex>	-11.900002 43.599998 243.000000	</vertex>
+			<vertex>	-5.400002 43.599998 246.000000	</vertex>
+		</waypoint>
+		<waypoint>	246
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.625687	</height>
+			<vertex>	0.599998 37.099998 252.000000	</vertex>
+			<vertex>	-5.400002 37.099998 245.000000	</vertex>
+			<vertex>	-5.400002 43.599998 244.000000	</vertex>
+			<vertex>	0.599998 43.599998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	247
+			<minHeight>	0.829751	</minHeight>
+			<height>	3.016313	</height>
+			<vertex>	-18.900002 43.599998 250.000000	</vertex>
+			<vertex>	-22.400002 43.599998 249.000000	</vertex>
+			<vertex>	-24.400002 43.599998 259.000000	</vertex>
+			<vertex>	-24.400002 49.099998 248.000000	</vertex>
+		</waypoint>
+		<waypoint>	248
+			<minHeight>	0.010000	</minHeight>
+			<height>	1.685094	</height>
+			<vertex>	-11.900002 43.599998 250.000000	</vertex>
+			<vertex>	-18.900002 43.599998 247.000000	</vertex>
+			<vertex>	-24.400002 49.099998 259.000000	</vertex>
+			<vertex>	-24.400002 50.099998 80.000000	</vertex>
+			<vertex>	-11.900002 50.099998 243.000000	</vertex>
+		</waypoint>
+		<waypoint>	249
+			<minHeight>	0.397094	</minHeight>
+			<height>	3.152188	</height>
+			<vertex>	-15.900002 37.099998 254.000000	</vertex>
+			<vertex>	-18.400002 37.099998 253.000000	</vertex>
+			<vertex>	-24.400002 37.099998 256.000000	</vertex>
+			<vertex>	-24.400002 43.599998 247.000000	</vertex>
+			<vertex>	-22.400002 43.599998 250.000000	</vertex>
+		</waypoint>
+		<waypoint>	250
+			<minHeight>	0.019281	</minHeight>
+			<height>	2.114001	</height>
+			<vertex>	-11.900002 37.099998 254.000000	</vertex>
+			<vertex>	-15.900002 37.099998 249.000000	</vertex>
+			<vertex>	-22.400002 43.599998 247.000000	</vertex>
+			<vertex>	-18.900002 43.599998 248.000000	</vertex>
+			<vertex>	-11.900002 43.599998 245.000000	</vertex>
+		</waypoint>
+		<waypoint>	251
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.043000	</height>
+			<vertex>	-5.400002 24.600000 264.000000	</vertex>
+			<vertex>	-11.900002 24.600000 254.000000	</vertex>
+			<vertex>	-11.900002 37.099998 245.000000	</vertex>
+			<vertex>	-5.400002 37.099998 252.000000	</vertex>
+		</waypoint>
+		<waypoint>	252
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.634906	</height>
+			<vertex>	0.599998 24.600000 265.000000	</vertex>
+			<vertex>	-5.400002 24.600000 251.000000	</vertex>
+			<vertex>	-5.400002 37.099998 246.000000	</vertex>
+			<vertex>	0.599998 37.099998 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	253
+			<minHeight>	1.453438	</minHeight>
+			<height>	3.152063	</height>
+			<vertex>	-18.400002 24.600000 263.000000	</vertex>
+			<vertex>	-24.400002 24.600000 260.000000	</vertex>
+			<vertex>	-24.400002 37.099998 249.000000	</vertex>
+			<vertex>	-18.400002 37.099998 254.000000	</vertex>
+		</waypoint>
+		<waypoint>	254
+			<minHeight>	0.019281	</minHeight>
+			<height>	1.684875	</height>
+			<vertex>	-11.900002 24.600000 263.000000	</vertex>
+			<vertex>	-18.400002 24.600000 253.000000	</vertex>
+			<vertex>	-18.400002 37.099998 249.000000	</vertex>
+			<vertex>	-15.900002 37.099998 250.000000	</vertex>
+			<vertex>	-11.900002 37.099998 251.000000	</vertex>
+		</waypoint>
+		<waypoint>	255
+			<minHeight>	2.832000	</minHeight>
+			<height>	4.323375	</height>
+			<vertex>	-37.400002 37.099998 261.000000	</vertex>
+			<vertex>	-49.900002 37.099998 283.000000	</vertex>
+			<vertex>	-49.900002 43.599998 282.000000	</vertex>
+			<vertex>	-49.900002 50.099998 113.000000	</vertex>
+			<vertex>	-37.400002 50.099998 257.000000	</vertex>
+			<vertex>	-37.400002 43.599998 256.000000	</vertex>
+		</waypoint>
+		<waypoint>	256
+			<minHeight>	2.997000	</minHeight>
+			<height>	5.533125	</height>
+			<vertex>	-24.400002 37.099998 260.000000	</vertex>
+			<vertex>	-37.400002 37.099998 255.000000	</vertex>
+			<vertex>	-37.400002 43.599998 257.000000	</vertex>
+			<vertex>	-30.900002 43.599998 258.000000	</vertex>
+			<vertex>	-24.400002 43.599998 249.000000	</vertex>
+		</waypoint>
+		<waypoint>	257
+			<minHeight>	2.914500	</minHeight>
+			<height>	5.544844	</height>
+			<vertex>	-30.900002 43.599998 256.000000	</vertex>
+			<vertex>	-37.400002 43.599998 255.000000	</vertex>
+			<vertex>	-37.400002 50.099998 106.000000	</vertex>
+			<vertex>	-30.900002 50.099998 258.000000	</vertex>
+		</waypoint>
+		<waypoint>	258
+			<minHeight>	2.912001	</minHeight>
+			<height>	5.350500	</height>
+			<vertex>	-24.400002 43.599998 256.000000	</vertex>
+			<vertex>	-30.900002 43.599998 257.000000	</vertex>
+			<vertex>	-30.900002 50.099998 259.000000	</vertex>
+		</waypoint>
+		<waypoint>	259
+			<minHeight>	1.424501	</minHeight>
+			<height>	3.632001	</height>
+			<vertex>	-24.400002 43.599998 258.000000	</vertex>
+			<vertex>	-30.900002 50.099998 105.000000	</vertex>
+			<vertex>	-24.400002 50.099998 248.000000	</vertex>
+			<vertex>	-24.400002 49.099998 247.000000	</vertex>
+		</waypoint>
+		<waypoint>	260
+			<minHeight>	1.344500	</minHeight>
+			<height>	4.122125	</height>
+			<vertex>	-24.400002 24.600000 273.000000	</vertex>
+			<vertex>	-37.400002 24.600000 262.000000	</vertex>
+			<vertex>	-37.400002 28.100000 261.000000	</vertex>
+			<vertex>	-37.400002 37.099998 256.000000	</vertex>
+			<vertex>	-24.400002 37.099998 253.000000	</vertex>
+		</waypoint>
+		<waypoint>	261
+			<minHeight>	2.053500	</minHeight>
+			<height>	4.117063	</height>
+			<vertex>	-37.400002 28.100000 262.000000	</vertex>
+			<vertex>	-49.900002 28.100000 287.000000	</vertex>
+			<vertex>	-49.900002 37.099998 255.000000	</vertex>
+			<vertex>	-37.400002 37.099998 260.000000	</vertex>
+		</waypoint>
+		<waypoint>	262
+			<minHeight>	0.924937	</minHeight>
+			<height>	3.298594	</height>
+			<vertex>	-37.400002 24.600000 273.000000	</vertex>
+			<vertex>	-49.900002 24.600000 287.000000	</vertex>
+			<vertex>	-49.900002 28.100000 261.000000	</vertex>
+			<vertex>	-37.400002 28.100000 260.000000	</vertex>
+		</waypoint>
+		<waypoint>	263
+			<minHeight>	0.010000	</minHeight>
+			<height>	2.568500	</height>
+			<vertex>	-11.900002 11.600000 268.000000	</vertex>
+			<vertex>	-24.400002 11.600000 273.000000	</vertex>
+			<vertex>	-24.400002 24.600000 253.000000	</vertex>
+			<vertex>	-18.400002 24.600000 254.000000	</vertex>
+			<vertex>	-11.900002 24.600000 264.000000	</vertex>
+			<vertex>	-11.900002 18.100000 266.000000	</vertex>
+		</waypoint>
+		<waypoint>	264
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.043000	</height>
+			<vertex>	-5.400002 18.100000 266.000000	</vertex>
+			<vertex>	-11.900002 18.100000 263.000000	</vertex>
+			<vertex>	-11.900002 24.600000 251.000000	</vertex>
+			<vertex>	-5.400002 24.600000 265.000000	</vertex>
+		</waypoint>
+		<waypoint>	265
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.295000	</height>
+			<vertex>	0.599998 18.100000 267.000000	</vertex>
+			<vertex>	-5.400002 18.100000 264.000000	</vertex>
+			<vertex>	-5.400002 24.600000 252.000000	</vertex>
+			<vertex>	0.599998 24.600000 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	266
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.874969	</height>
+			<vertex>	-5.400002 11.600000 269.000000	</vertex>
+			<vertex>	-11.900002 11.600000 263.000000	</vertex>
+			<vertex>	-11.900002 18.100000 264.000000	</vertex>
+			<vertex>	-5.400002 18.100000 267.000000	</vertex>
+		</waypoint>
+		<waypoint>	267
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.673750	</height>
+			<vertex>	0.599998 11.600000 272.000000	</vertex>
+			<vertex>	0.099998 11.600000 270.000000	</vertex>
+			<vertex>	-5.400002 11.600000 266.000000	</vertex>
+			<vertex>	-5.400002 18.100000 265.000000	</vertex>
+			<vertex>	0.599998 18.100000 0.000000
+				<adjacentChunk>	00000000o	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	268
+			<minHeight>	0.010000	</minHeight>
+			<height>	1.193688	</height>
+			<vertex>	-11.900002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-24.400002 -0.900000 277.000000	</vertex>
+			<vertex>	-24.400002 -0.400000 276.000000	</vertex>
+			<vertex>	-24.400002 0.100000 275.000000	</vertex>
+			<vertex>	-24.400002 11.600000 263.000000	</vertex>
+			<vertex>	-11.900002 11.600000 269.000000	</vertex>
+		</waypoint>
+		<waypoint>	269
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.866625	</height>
+			<vertex>	-5.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-11.900002 -0.900000 268.000000	</vertex>
+			<vertex>	-11.900002 11.600000 266.000000	</vertex>
+			<vertex>	-5.400002 11.600000 270.000000	</vertex>
+		</waypoint>
+		<waypoint>	270
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.587500	</height>
+			<vertex>	0.099998 -0.900000 0.000000	</vertex>
+			<vertex>	-5.400002 -0.900000 269.000000	</vertex>
+			<vertex>	-5.400002 11.600000 267.000000	</vertex>
+			<vertex>	0.099998 11.600000 272.000000	</vertex>
+			<vertex>	0.099998 -0.400000 271.000000	</vertex>
+		</waypoint>
+		<waypoint>	271
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.010000	</height>
+			<vertex>	0.099998 -0.900000 270.000000	</vertex>
+			<vertex>	0.099998 -0.400000 272.000000	</vertex>
+			<vertex>	0.599998 -0.400000 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	272
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.587500	</height>
+			<vertex>	0.599998 -0.400000 271.000000	</vertex>
+			<vertex>	0.099998 -0.400000 270.000000	</vertex>
+			<vertex>	0.099998 11.600000 267.000000	</vertex>
+			<vertex>	0.599998 11.600000 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	273
+			<minHeight>	0.010000	</minHeight>
+			<height>	2.633750	</height>
+			<vertex>	-24.400002 11.600000 275.000000	</vertex>
+			<vertex>	-30.900002 11.600000 280.000000	</vertex>
+			<vertex>	-36.900002 11.600000 279.000000	</vertex>
+			<vertex>	-37.400002 11.600000 274.000000	</vertex>
+			<vertex>	-49.900002 11.600000 312.000000	</vertex>
+			<vertex>	-49.900002 18.100000 311.000000	</vertex>
+			<vertex>	-49.900002 24.600000 262.000000	</vertex>
+			<vertex>	-37.400002 24.600000 260.000000	</vertex>
+			<vertex>	-24.400002 24.600000 263.000000	</vertex>
+		</waypoint>
+		<waypoint>	274
+			<minHeight>	-1.090312	</minHeight>
+			<height>	0.065375	</height>
+			<vertex>	-37.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-49.900002 -0.900000 316.000000	</vertex>
+			<vertex>	-49.900002 11.600000 273.000000	</vertex>
+			<vertex>	-37.400002 11.600000 279.000000	</vertex>
+			<vertex>	-37.400002 -0.400000 278.000000	</vertex>
+		</waypoint>
+		<waypoint>	275
+			<minHeight>	0.010000	</minHeight>
+			<height>	0.954938	</height>
+			<vertex>	-24.400002 0.100000 276.000000	</vertex>
+			<vertex>	-28.900002 0.100000 -1028.000000	</vertex>
+			<vertex>	-30.900002 0.100000 280.000000	</vertex>
+			<vertex>	-30.900002 11.600000 273.000000	</vertex>
+			<vertex>	-24.400002 11.600000 268.000000	</vertex>
+		</waypoint>
+		<waypoint>	276
+			<minHeight>	0.159625	</minHeight>
+			<height>	1.193688	</height>
+			<vertex>	-24.400002 -0.400000 277.000000	</vertex>
+			<vertex>	-28.900002 -0.400000 0.000000	</vertex>
+			<vertex>	-28.900002 0.100000 275.000000	</vertex>
+			<vertex>	-24.400002 0.100000 268.000000	</vertex>
+		</waypoint>
+		<waypoint>	277
+			<minHeight>	0.360876	</minHeight>
+			<height>	1.539500	</height>
+			<vertex>	-24.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-29.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-28.900002 -0.400000 276.000000	</vertex>
+			<vertex>	-24.400002 -0.400000 268.000000	</vertex>
+		</waypoint>
+		<waypoint>	278
+			<minHeight>	-0.179000	</minHeight>
+			<height>	0.082875	</height>
+			<vertex>	-37.400002 -0.900000 274.000000	</vertex>
+			<vertex>	-37.400002 -0.400000 279.000000	</vertex>
+			<vertex>	-36.900002 -0.400000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	279
+			<minHeight>	-0.235000	</minHeight>
+			<height>	0.082875	</height>
+			<vertex>	-36.900002 -0.400000 278.000000	</vertex>
+			<vertex>	-37.400002 -0.400000 274.000000	</vertex>
+			<vertex>	-37.400002 11.600000 273.000000	</vertex>
+			<vertex>	-36.900002 11.600000 280.000000	</vertex>
+			<vertex>	-36.900002 0.100000 281.000000	</vertex>
+		</waypoint>
+		<waypoint>	280
+			<minHeight>	-0.147500	</minHeight>
+			<height>	0.205375	</height>
+			<vertex>	-30.900002 0.100000 0.000000	</vertex>
+			<vertex>	-36.400002 0.100000 281.000000	</vertex>
+			<vertex>	-36.900002 0.100000 279.000000	</vertex>
+			<vertex>	-36.900002 11.600000 273.000000	</vertex>
+			<vertex>	-30.900002 11.600000 275.000000	</vertex>
+		</waypoint>
+		<waypoint>	281
+			<minHeight>	-0.131750	</minHeight>
+			<height>	0.100375	</height>
+			<vertex>	-36.900002 -0.400000 279.000000	</vertex>
+			<vertex>	-36.900002 0.100000 280.000000	</vertex>
+			<vertex>	-36.400002 0.100000 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	282
+			<minHeight>	3.038563	</minHeight>
+			<height>	5.952250	</height>
+			<vertex>	-49.900002 43.599998 283.000000	</vertex>
+			<vertex>	-62.900002 43.599998 286.000000	</vertex>
+			<vertex>	-62.900002 47.099998 285.000000	</vertex>
+			<vertex>	-62.900002 50.099998 182.000000	</vertex>
+			<vertex>	-56.400002 50.099998 178.000000	</vertex>
+			<vertex>	-49.900002 50.099998 255.000000	</vertex>
+		</waypoint>
+		<waypoint>	283
+			<minHeight>	2.556437	</minHeight>
+			<height>	4.151500	</height>
+			<vertex>	-49.900002 37.099998 287.000000	</vertex>
+			<vertex>	-62.900002 37.099998 284.000000	</vertex>
+			<vertex>	-62.900002 43.599998 282.000000	</vertex>
+			<vertex>	-49.900002 43.599998 255.000000	</vertex>
+		</waypoint>
+		<waypoint>	284
+			<minHeight>	2.556437	</minHeight>
+			<height>	4.457000	</height>
+			<vertex>	-62.900002 37.099998 288.000000	</vertex>
+			<vertex>	-75.400002 37.099998 292.000000	</vertex>
+			<vertex>	-75.400002 43.599998 286.000000	</vertex>
+			<vertex>	-62.900002 43.599998 283.000000	</vertex>
+		</waypoint>
+		<waypoint>	285
+			<minHeight>	5.033562	</minHeight>
+			<height>	7.136062	</height>
+			<vertex>	-62.900002 47.099998 286.000000	</vertex>
+			<vertex>	-75.400002 47.099998 293.000000	</vertex>
+			<vertex>	-75.400002 50.099998 183.000000	</vertex>
+			<vertex>	-62.900002 50.099998 282.000000	</vertex>
+		</waypoint>
+		<waypoint>	286
+			<minHeight>	3.904999	</minHeight>
+			<height>	5.860625	</height>
+			<vertex>	-62.900002 43.599998 284.000000	</vertex>
+			<vertex>	-75.400002 43.599998 294.000000	</vertex>
+			<vertex>	-75.400002 44.099998 293.000000	</vertex>
+			<vertex>	-75.400002 47.099998 285.000000	</vertex>
+			<vertex>	-62.900002 47.099998 282.000000	</vertex>
+		</waypoint>
+		<waypoint>	287
+			<minHeight>	2.117750	</minHeight>
+			<height>	3.872031	</height>
+			<vertex>	-49.900002 24.600000 311.000000	</vertex>
+			<vertex>	-62.900002 24.600000 289.000000	</vertex>
+			<vertex>	-62.900002 32.099998 288.000000	</vertex>
+			<vertex>	-62.900002 37.099998 283.000000	</vertex>
+			<vertex>	-49.900002 37.099998 261.000000	</vertex>
+			<vertex>	-49.900002 28.100000 262.000000	</vertex>
+		</waypoint>
+		<waypoint>	288
+			<minHeight>	1.377125	</minHeight>
+			<height>	4.074750	</height>
+			<vertex>	-62.900002 32.099998 289.000000	</vertex>
+			<vertex>	-66.400002 32.099998 291.000000	</vertex>
+			<vertex>	-72.400002 32.099998 290.000000	</vertex>
+			<vertex>	-75.400002 32.099998 301.000000	</vertex>
+			<vertex>	-75.400002 37.099998 284.000000	</vertex>
+			<vertex>	-62.900002 37.099998 287.000000	</vertex>
+		</waypoint>
+		<waypoint>	289
+			<minHeight>	1.844000	</minHeight>
+			<height>	2.579874	</height>
+			<vertex>	-62.900002 24.600000 314.000000	</vertex>
+			<vertex>	-66.400002 24.600000 291.000000	</vertex>
+			<vertex>	-66.400002 32.099998 288.000000	</vertex>
+			<vertex>	-62.900002 32.099998 287.000000	</vertex>
+		</waypoint>
+		<waypoint>	290
+			<minHeight>	1.656845	</minHeight>
+			<height>	4.074750	</height>
+			<vertex>	-75.400002 29.100000 301.000000	</vertex>
+			<vertex>	-75.400002 32.099998 288.000000	</vertex>
+			<vertex>	-72.400002 32.099998 291.000000	</vertex>
+		</waypoint>
+		<waypoint>	291
+			<minHeight>	0.025438	</minHeight>
+			<height>	2.176875	</height>
+			<vertex>	-66.400002 24.600000 314.000000	</vertex>
+			<vertex>	-75.400002 24.600000 299.000000	</vertex>
+			<vertex>	-75.400002 26.600000 302.000000	</vertex>
+			<vertex>	-75.400002 29.100000 290.000000	</vertex>
+			<vertex>	-72.400002 32.099998 288.000000	</vertex>
+			<vertex>	-66.400002 32.099998 289.000000	</vertex>
+		</waypoint>
+		<waypoint>	292
+			<minHeight>	1.650000	</minHeight>
+			<height>	3.904999	</height>
+			<vertex>	-75.400002 37.099998 301.000000	</vertex>
+			<vertex>	-78.400002 37.099998 300.000000	</vertex>
+			<vertex>	-81.900002 37.099998 304.000000	</vertex>
+			<vertex>	-88.400002 37.099998 298.000000	</vertex>
+			<vertex>	-88.400002 43.599998 296.000000	</vertex>
+			<vertex>	-81.900002 43.599998 294.000000	</vertex>
+			<vertex>	-75.400002 43.599998 284.000000	</vertex>
+		</waypoint>
+		<waypoint>	293
+			<minHeight>	4.063562	</minHeight>
+			<height>	6.411999	</height>
+			<vertex>	-75.400002 44.099998 294.000000	</vertex>
+			<vertex>	-81.400002 50.099998 231.000000	</vertex>
+			<vertex>	-78.400002 50.099998 229.000000	</vertex>
+			<vertex>	-76.900002 50.099998 226.000000	</vertex>
+			<vertex>	-76.400002 50.099998 224.000000	</vertex>
+			<vertex>	-75.400002 50.099998 285.000000	</vertex>
+			<vertex>	-75.400002 47.099998 286.000000	</vertex>
+		</waypoint>
+		<waypoint>	294
+			<minHeight>	3.088999	</minHeight>
+			<height>	5.558249	</height>
+			<vertex>	-75.400002 43.599998 292.000000	</vertex>
+			<vertex>	-81.900002 43.599998 296.000000	</vertex>
+			<vertex>	-81.900002 44.599998 295.000000	</vertex>
+			<vertex>	-81.900002 50.099998 231.000000	</vertex>
+			<vertex>	-81.400002 50.099998 293.000000	</vertex>
+			<vertex>	-75.400002 44.099998 286.000000	</vertex>
+		</waypoint>
+		<waypoint>	295
+			<minHeight>	3.228531	</minHeight>
+			<height>	5.399810	</height>
+			<vertex>	-81.900002 44.599998 296.000000	</vertex>
+			<vertex>	-87.400002 50.099998 235.000000	</vertex>
+			<vertex>	-85.900002 50.099998 234.000000	</vertex>
+			<vertex>	-83.400002 50.099998 233.000000	</vertex>
+			<vertex>	-81.900002 50.099998 294.000000	</vertex>
+		</waypoint>
+		<waypoint>	296
+			<minHeight>	2.283031	</minHeight>
+			<height>	3.887247	</height>
+			<vertex>	-81.900002 43.599998 292.000000	</vertex>
+			<vertex>	-88.400002 43.599998 297.000000	</vertex>
+			<vertex>	-88.400002 50.099998 235.000000	</vertex>
+			<vertex>	-87.400002 50.099998 295.000000	</vertex>
+			<vertex>	-81.900002 44.599998 294.000000	</vertex>
+		</waypoint>
+		<waypoint>	297
+			<minHeight>	1.250000	</minHeight>
+			<height>	3.737878	</height>
+			<vertex>	-88.400002 43.599998 298.000000	</vertex>
+			<vertex>	-99.900002 43.599998 0.000000	</vertex>
+			<vertex>	-99.900002 50.099998 242.000000	</vertex>
+			<vertex>	-96.400002 50.099998 241.000000	</vertex>
+			<vertex>	-88.400002 50.099998 296.000000	</vertex>
+		</waypoint>
+		<waypoint>	298
+			<minHeight>	2.810003	</minHeight>
+			<height>	5.793031	</height>
+			<vertex>	-88.400002 37.099998 307.000000	</vertex>
+			<vertex>	-99.900002 37.099998 0.000000	</vertex>
+			<vertex>	-99.900002 43.599998 297.000000	</vertex>
+			<vertex>	-88.400002 43.599998 292.000000	</vertex>
+		</waypoint>
+		<waypoint>	299
+			<minHeight>	-0.424750	</minHeight>
+			<height>	2.469998	</height>
+			<vertex>	-75.400002 24.600000 322.000000	</vertex>
+			<vertex>	-81.900002 24.600000 303.000000	</vertex>
+			<vertex>	-81.900002 32.599998 305.000000	</vertex>
+			<vertex>	-81.900002 33.099998 300.000000	</vertex>
+			<vertex>	-78.400002 29.600000 302.000000	</vertex>
+			<vertex>	-75.400002 26.600000 291.000000	</vertex>
+		</waypoint>
+		<waypoint>	300
+			<minHeight>	1.414375	</minHeight>
+			<height>	2.644999	</height>
+			<vertex>	-78.400002 29.600000 299.000000	</vertex>
+			<vertex>	-81.900002 33.099998 305.000000	</vertex>
+			<vertex>	-81.900002 35.599998 304.000000	</vertex>
+			<vertex>	-81.900002 37.099998 292.000000	</vertex>
+			<vertex>	-78.400002 37.099998 301.000000	</vertex>
+			<vertex>	-78.400002 32.099998 302.000000	</vertex>
+		</waypoint>
+		<waypoint>	301
+			<minHeight>	2.176875	</minHeight>
+			<height>	4.104313	</height>
+			<vertex>	-75.400002 29.100000 302.000000	</vertex>
+			<vertex>	-78.400002 32.099998 300.000000	</vertex>
+			<vertex>	-78.400002 37.099998 292.000000	</vertex>
+			<vertex>	-75.400002 37.099998 288.000000	</vertex>
+			<vertex>	-75.400002 32.099998 290.000000	</vertex>
+		</waypoint>
+		<waypoint>	302
+			<minHeight>	1.097500	</minHeight>
+			<height>	3.345000	</height>
+			<vertex>	-75.400002 26.600000 299.000000	</vertex>
+			<vertex>	-78.400002 29.600000 300.000000	</vertex>
+			<vertex>	-78.400002 32.099998 301.000000	</vertex>
+			<vertex>	-75.400002 29.100000 291.000000	</vertex>
+		</waypoint>
+		<waypoint>	303
+			<minHeight>	-0.584563	</minHeight>
+			<height>	1.782563	</height>
+			<vertex>	-81.900002 24.600000 322.000000	</vertex>
+			<vertex>	-88.400002 24.600000 310.000000	</vertex>
+			<vertex>	-88.400002 26.100000 305.000000	</vertex>
+			<vertex>	-81.900002 32.599998 299.000000	</vertex>
+		</waypoint>
+		<waypoint>	304
+			<minHeight>	1.729500	</minHeight>
+			<height>	3.922312	</height>
+			<vertex>	-88.400002 29.100000 308.000000	</vertex>
+			<vertex>	-88.400002 30.600000 307.000000	</vertex>
+			<vertex>	-88.400002 37.099998 292.000000	</vertex>
+			<vertex>	-81.900002 37.099998 300.000000	</vertex>
+			<vertex>	-81.900002 35.599998 305.000000	</vertex>
+		</waypoint>
+		<waypoint>	305
+			<minHeight>	0.717500	</minHeight>
+			<height>	2.826500	</height>
+			<vertex>	-88.400002 26.100000 310.000000	</vertex>
+			<vertex>	-88.400002 26.600000 306.000000	</vertex>
+			<vertex>	-88.400002 28.600000 308.000000	</vertex>
+			<vertex>	-88.400002 29.100000 304.000000	</vertex>
+			<vertex>	-81.900002 35.599998 300.000000	</vertex>
+			<vertex>	-81.900002 33.099998 299.000000	</vertex>
+			<vertex>	-81.900002 32.599998 303.000000	</vertex>
+		</waypoint>
+		<waypoint>	306
+			<minHeight>	0.725000	</minHeight>
+			<height>	3.605812	</height>
+			<vertex>	-88.400002 26.600000 310.000000	</vertex>
+			<vertex>	-91.400002 26.600000 309.000000	</vertex>
+			<vertex>	-99.900002 26.600000 0.000000	</vertex>
+			<vertex>	-99.900002 28.600000 308.000000	</vertex>
+			<vertex>	-88.400002 28.600000 305.000000	</vertex>
+		</waypoint>
+		<waypoint>	307
+			<minHeight>	3.133375	</minHeight>
+			<height>	5.144719	</height>
+			<vertex>	-88.400002 30.600000 308.000000	</vertex>
+			<vertex>	-99.900002 30.600000 0.000000	</vertex>
+			<vertex>	-99.900002 37.099998 298.000000	</vertex>
+			<vertex>	-88.400002 37.099998 304.000000	</vertex>
+		</waypoint>
+		<waypoint>	308
+			<minHeight>	1.993375	</minHeight>
+			<height>	3.740875	</height>
+			<vertex>	-88.400002 28.600000 306.000000	</vertex>
+			<vertex>	-99.900002 28.600000 0.000000	</vertex>
+			<vertex>	-99.900002 30.600000 307.000000	</vertex>
+			<vertex>	-88.400002 30.600000 304.000000	</vertex>
+			<vertex>	-88.400002 29.100000 305.000000	</vertex>
+		</waypoint>
+		<waypoint>	309
+			<minHeight>	0.198501	</minHeight>
+			<height>	3.011438	</height>
+			<vertex>	-93.400002 24.600000 327.000000	</vertex>
+			<vertex>	-95.900002 24.600000 333.000000	</vertex>
+			<vertex>	-96.400002 24.600000 331.000000	</vertex>
+			<vertex>	-99.900002 24.600000 0.000000	</vertex>
+			<vertex>	-99.900002 26.600000 306.000000	</vertex>
+			<vertex>	-91.400002 26.600000 310.000000	</vertex>
+		</waypoint>
+		<waypoint>	310
+			<minHeight>	-0.685001	</minHeight>
+			<height>	1.171251	</height>
+			<vertex>	-88.400002 24.600000 326.000000	</vertex>
+			<vertex>	-92.900002 24.600000 327.000000	</vertex>
+			<vertex>	-93.400002 24.600000 309.000000	</vertex>
+			<vertex>	-91.400002 26.600000 306.000000	</vertex>
+			<vertex>	-88.400002 26.600000 305.000000	</vertex>
+			<vertex>	-88.400002 26.100000 303.000000	</vertex>
+		</waypoint>
+		<waypoint>	311
+			<minHeight>	-0.012500	</minHeight>
+			<height>	2.811125	</height>
+			<vertex>	-49.900002 18.100000 312.000000	</vertex>
+			<vertex>	-62.900002 18.100000 315.000000	</vertex>
+			<vertex>	-62.900002 20.600000 314.000000	</vertex>
+			<vertex>	-62.900002 24.600000 287.000000	</vertex>
+			<vertex>	-49.900002 24.600000 273.000000	</vertex>
+		</waypoint>
+		<waypoint>	312
+			<minHeight>	-1.554719	</minHeight>
+			<height>	0.591625	</height>
+			<vertex>	-49.900002 11.600000 316.000000	</vertex>
+			<vertex>	-62.900002 11.600000 313.000000	</vertex>
+			<vertex>	-62.900002 18.100000 311.000000	</vertex>
+			<vertex>	-49.900002 18.100000 273.000000	</vertex>
+		</waypoint>
+		<waypoint>	313
+			<minHeight>	-2.649500	</minHeight>
+			<height>	-0.012500	</height>
+			<vertex>	-62.900002 11.600000 317.000000	</vertex>
+			<vertex>	-68.400002 11.600000 321.000000	</vertex>
+			<vertex>	-75.400002 11.600000 323.000000	</vertex>
+			<vertex>	-75.400002 18.100000 315.000000	</vertex>
+			<vertex>	-62.900002 18.100000 312.000000	</vertex>
+		</waypoint>
+		<waypoint>	314
+			<minHeight>	-0.018000	</minHeight>
+			<height>	2.424374	</height>
+			<vertex>	-62.900002 20.600000 315.000000	</vertex>
+			<vertex>	-75.400002 20.600000 322.000000	</vertex>
+			<vertex>	-75.400002 24.600000 291.000000	</vertex>
+			<vertex>	-66.400002 24.600000 289.000000	</vertex>
+			<vertex>	-62.900002 24.600000 311.000000	</vertex>
+		</waypoint>
+		<waypoint>	315
+			<minHeight>	-0.637750	</minHeight>
+			<height>	1.187500	</height>
+			<vertex>	-62.900002 18.100000 313.000000	</vertex>
+			<vertex>	-75.400002 18.100000 322.000000	</vertex>
+			<vertex>	-75.400002 20.600000 314.000000	</vertex>
+			<vertex>	-62.900002 20.600000 311.000000	</vertex>
+		</waypoint>
+		<waypoint>	316
+			<minHeight>	-1.467000	</minHeight>
+			<height>	0.010000	</height>
+			<vertex>	-49.900002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-62.900002 -0.900000 319.000000	</vertex>
+			<vertex>	-62.900002 -0.400000 317.000000	</vertex>
+			<vertex>	-62.900002 11.600000 312.000000	</vertex>
+			<vertex>	-49.900002 11.600000 274.000000	</vertex>
+		</waypoint>
+		<waypoint>	317
+			<minHeight>	-1.625313	</minHeight>
+			<height>	0.062875	</height>
+			<vertex>	-62.900002 -0.400000 319.000000	</vertex>
+			<vertex>	-64.900002 -0.400000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-67.900002 -0.400000 318.000000	</vertex>
+			<vertex>	-68.400002 -0.400000 320.000000	</vertex>
+			<vertex>	-68.400002 10.600000 321.000000	</vertex>
+			<vertex>	-68.400002 11.600000 313.000000	</vertex>
+			<vertex>	-62.900002 11.600000 316.000000	</vertex>
+		</waypoint>
+		<waypoint>	318
+			<minHeight>	-0.394062	</minHeight>
+			<height>	-0.050312	</height>
+			<vertex>	-68.400002 -0.900000 320.000000	</vertex>
+			<vertex>	-68.400002 -0.400000 317.000000	</vertex>
+			<vertex>	-67.900002 -0.400000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+		</waypoint>
+		<waypoint>	319
+			<minHeight>	-1.058001	</minHeight>
+			<height>	-0.508000	</height>
+			<vertex>	-62.900002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-64.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-64.900002 -0.400000 317.000000	</vertex>
+			<vertex>	-62.900002 -0.400000 316.000000	</vertex>
+		</waypoint>
+		<waypoint>	320
+			<minHeight>	-1.832375	</minHeight>
+			<height>	0.189906	</height>
+			<vertex>	-68.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-75.400002 -0.900000 338.000000	</vertex>
+			<vertex>	-75.400002 3.600000 321.000000	</vertex>
+			<vertex>	-68.400002 10.600000 317.000000	</vertex>
+			<vertex>	-68.400002 -0.400000 318.000000	</vertex>
+		</waypoint>
+		<waypoint>	321
+			<minHeight>	-3.203625	</minHeight>
+			<height>	-1.214313	</height>
+			<vertex>	-75.400002 3.600000 338.000000	</vertex>
+			<vertex>	-75.400002 4.100000 339.000000	</vertex>
+			<vertex>	-75.400002 11.600000 313.000000	</vertex>
+			<vertex>	-68.400002 11.600000 317.000000	</vertex>
+			<vertex>	-68.400002 10.600000 320.000000	</vertex>
+		</waypoint>
+		<waypoint>	322
+			<minHeight>	-2.228250	</minHeight>
+			<height>	0.683625	</height>
+			<vertex>	-75.400002 18.100000 323.000000	</vertex>
+			<vertex>	-81.900002 18.100000 324.000000	</vertex>
+			<vertex>	-88.400002 18.100000 325.000000	</vertex>
+			<vertex>	-88.400002 23.100000 326.000000	</vertex>
+			<vertex>	-88.400002 24.600000 303.000000	</vertex>
+			<vertex>	-81.900002 24.600000 299.000000	</vertex>
+			<vertex>	-75.400002 24.600000 314.000000	</vertex>
+			<vertex>	-75.400002 20.600000 315.000000	</vertex>
+		</waypoint>
+		<waypoint>	323
+			<minHeight>	-3.097500	</minHeight>
+			<height>	-0.472374	</height>
+			<vertex>	-75.400002 11.600000 339.000000	</vertex>
+			<vertex>	-81.900002 11.600000 324.000000	</vertex>
+			<vertex>	-81.900002 18.100000 322.000000	</vertex>
+			<vertex>	-75.400002 18.100000 313.000000	</vertex>
+		</waypoint>
+		<waypoint>	324
+			<minHeight>	-4.140625	</minHeight>
+			<height>	-1.424500	</height>
+			<vertex>	-81.900002 11.600000 341.000000	</vertex>
+			<vertex>	-88.400002 11.600000 336.000000	</vertex>
+			<vertex>	-88.400002 18.100000 322.000000	</vertex>
+			<vertex>	-81.900002 18.100000 323.000000	</vertex>
+		</waypoint>
+		<waypoint>	325
+			<minHeight>	-2.623500	</minHeight>
+			<height>	-0.813125	</height>
+			<vertex>	-88.400002 18.100000 336.000000	</vertex>
+			<vertex>	-93.400002 18.100000 -3548.000000	</vertex>
+			<vertex>	-92.900002 18.600000 326.000000	</vertex>
+			<vertex>	-88.400002 23.100000 322.000000	</vertex>
+		</waypoint>
+		<waypoint>	326
+			<minHeight>	-2.140624	</minHeight>
+			<height>	-0.142749	</height>
+			<vertex>	-92.900002 18.600000 0.000000	</vertex>
+			<vertex>	-92.900002 19.600000 328.000000	</vertex>
+			<vertex>	-92.900002 24.100000 327.000000	</vertex>
+			<vertex>	-92.900002 24.600000 310.000000	</vertex>
+			<vertex>	-88.400002 24.600000 322.000000	</vertex>
+			<vertex>	-88.400002 23.100000 325.000000	</vertex>
+		</waypoint>
+		<waypoint>	327
+			<minHeight>	-0.416498	</minHeight>
+			<height>	1.772656	</height>
+			<vertex>	-95.900002 21.100000 333.000000	</vertex>
+			<vertex>	-95.900002 24.600000 309.000000	</vertex>
+			<vertex>	-93.400002 24.600000 310.000000	</vertex>
+			<vertex>	-92.900002 24.600000 326.000000	</vertex>
+			<vertex>	-92.900002 24.100000 328.000000	</vertex>
+		</waypoint>
+		<waypoint>	328
+			<minHeight>	-1.408124	</minHeight>
+			<height>	0.150407	</height>
+			<vertex>	-92.900002 19.600000 0.000000	</vertex>
+			<vertex>	-95.900002 19.600000 334.000000	</vertex>
+			<vertex>	-95.900002 20.600000 333.000000	</vertex>
+			<vertex>	-95.900002 21.100000 327.000000	</vertex>
+			<vertex>	-92.900002 24.100000 326.000000	</vertex>
+		</waypoint>
+		<waypoint>	329
+			<minHeight>	-1.058656	</minHeight>
+			<height>	1.052094	</height>
+			<vertex>	-96.900002 19.600000 -95.000000	</vertex>
+			<vertex>	-99.900002 19.600000 0.000000	</vertex>
+			<vertex>	-99.900002 22.600000 331.000000	</vertex>
+			<vertex>	-99.400002 22.100000 332.000000	</vertex>
+		</waypoint>
+		<waypoint>	330
+			<minHeight>	-1.117499	</minHeight>
+			<height>	-0.830000	</height>
+			<vertex>	-96.400002 19.100000 -272.000000	</vertex>
+			<vertex>	-96.900002 19.600000 332.000000	</vertex>
+			<vertex>	-96.400002 19.600000 334.000000	</vertex>
+		</waypoint>
+		<waypoint>	331
+			<minHeight>	0.546313	</minHeight>
+			<height>	2.218812	</height>
+			<vertex>	-96.400002 22.100000 332.000000	</vertex>
+			<vertex>	-99.400002 22.100000 329.000000	</vertex>
+			<vertex>	-99.900002 22.600000 0.000000	</vertex>
+			<vertex>	-99.900002 24.600000 309.000000	</vertex>
+			<vertex>	-96.400002 24.600000 333.000000	</vertex>
+		</waypoint>
+		<waypoint>	332
+			<minHeight>	-0.863750	</minHeight>
+			<height>	0.678500	</height>
+			<vertex>	-96.400002 19.600000 330.000000	</vertex>
+			<vertex>	-96.900002 19.600000 329.000000	</vertex>
+			<vertex>	-99.400002 22.100000 331.000000	</vertex>
+			<vertex>	-96.400002 22.100000 333.000000	</vertex>
+			<vertex>	-96.400002 20.600000 334.000000	</vertex>
+		</waypoint>
+		<waypoint>	333
+			<minHeight>	-0.109000	</minHeight>
+			<height>	1.805000	</height>
+			<vertex>	-95.900002 20.600000 334.000000	</vertex>
+			<vertex>	-96.400002 20.600000 332.000000	</vertex>
+			<vertex>	-96.400002 22.100000 331.000000	</vertex>
+			<vertex>	-96.400002 24.600000 309.000000	</vertex>
+			<vertex>	-95.900002 24.600000 327.000000	</vertex>
+			<vertex>	-95.900002 21.100000 328.000000	</vertex>
+		</waypoint>
+		<waypoint>	334
+			<minHeight>	-1.844812	</minHeight>
+			<height>	-0.089593	</height>
+			<vertex>	-95.900002 18.600000 -273.000000	</vertex>
+			<vertex>	-96.400002 19.100000 330.000000	</vertex>
+			<vertex>	-96.400002 19.600000 332.000000	</vertex>
+			<vertex>	-96.400002 20.600000 333.000000	</vertex>
+			<vertex>	-95.900002 20.600000 328.000000	</vertex>
+			<vertex>	-95.900002 19.600000 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	335
+			<minHeight>	-5.743063	</minHeight>
+			<height>	-4.240624	</height>
+			<vertex>	-99.900002 11.600000 0.000000	</vertex>
+			<vertex>	-99.900002 16.100000 0.000000	</vertex>
+			<vertex>	-95.400002 16.100000 337.000000	</vertex>
+		</waypoint>
+		<waypoint>	336
+			<minHeight>	-4.316250	</minHeight>
+			<height>	-2.228250	</height>
+			<vertex>	-88.400002 11.600000 348.000000	</vertex>
+			<vertex>	-88.900002 11.600000 337.000000	</vertex>
+			<vertex>	-94.400002 17.100000 0.000000	</vertex>
+			<vertex>	-93.400002 18.100000 325.000000	</vertex>
+			<vertex>	-88.400002 18.100000 324.000000	</vertex>
+		</waypoint>
+		<waypoint>	337
+			<minHeight>	-5.695594	</minHeight>
+			<height>	-3.400624	</height>
+			<vertex>	-88.900002 11.600000 348.000000	</vertex>
+			<vertex>	-91.400002 11.600000 350.000000	</vertex>
+			<vertex>	-99.900002 11.600000 335.000000	</vertex>
+			<vertex>	-95.400002 16.100000 0.000000	</vertex>
+			<vertex>	-94.400002 17.100000 336.000000	</vertex>
+		</waypoint>
+		<waypoint>	338
+			<minHeight>	-1.760906	</minHeight>
+			<height>	-0.112531	</height>
+			<vertex>	-75.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-81.900002 -0.900000 340.000000	</vertex>
+			<vertex>	-81.900002 4.100000 339.000000	</vertex>
+			<vertex>	-75.400002 4.100000 321.000000	</vertex>
+			<vertex>	-75.400002 3.600000 320.000000	</vertex>
+		</waypoint>
+		<waypoint>	339
+			<minHeight>	-3.298562	</minHeight>
+			<height>	-1.433063	</height>
+			<vertex>	-75.400002 4.100000 338.000000	</vertex>
+			<vertex>	-81.900002 4.100000 341.000000	</vertex>
+			<vertex>	-81.900002 11.600000 323.000000	</vertex>
+			<vertex>	-75.400002 11.600000 321.000000	</vertex>
+		</waypoint>
+		<waypoint>	340
+			<minHeight>	-2.423438	</minHeight>
+			<height>	-0.221875	</height>
+			<vertex>	-81.900002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-88.400002 -0.900000 344.000000	</vertex>
+			<vertex>	-88.400002 -0.400000 342.000000	</vertex>
+			<vertex>	-88.400002 0.100000 346.000000	</vertex>
+			<vertex>	-88.400002 2.100000 347.000000	</vertex>
+			<vertex>	-88.400002 4.100000 341.000000	</vertex>
+			<vertex>	-81.900002 4.100000 338.000000	</vertex>
+		</waypoint>
+		<waypoint>	341
+			<minHeight>	-4.111875	</minHeight>
+			<height>	-1.760906	</height>
+			<vertex>	-81.900002 4.100000 340.000000	</vertex>
+			<vertex>	-88.400002 4.100000 347.000000	</vertex>
+			<vertex>	-88.400002 4.600000 348.000000	</vertex>
+			<vertex>	-88.400002 11.600000 324.000000	</vertex>
+			<vertex>	-81.900002 11.600000 339.000000	</vertex>
+		</waypoint>
+		<waypoint>	342
+			<minHeight>	-0.398312	</minHeight>
+			<height>	0.814378	</height>
+			<vertex>	-88.400002 -0.400000 344.000000	</vertex>
+			<vertex>	-92.900002 -0.400000 0.000000	</vertex>
+			<vertex>	-92.900002 0.100000 346.000000	</vertex>
+			<vertex>	-88.400002 0.100000 340.000000	</vertex>
+		</waypoint>
+		<waypoint>	343
+			<minHeight>	-0.169437	</minHeight>
+			<height>	0.465753	</height>
+			<vertex>	-96.900002 -0.400000 0.000000	</vertex>
+			<vertex>	-96.900002 0.100000 346.000000	</vertex>
+			<vertex>	-96.400002 0.100000 0.000000	</vertex>
+		</waypoint>
+		<waypoint>	344
+			<minHeight>	-0.325000	</minHeight>
+			<height>	1.073753	</height>
+			<vertex>	-88.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-92.900002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-92.900002 -0.400000 342.000000	</vertex>
+			<vertex>	-88.400002 -0.400000 340.000000	</vertex>
+		</waypoint>
+		<waypoint>	346
+			<minHeight>	-1.597250	</minHeight>
+			<height>	0.295627	</height>
+			<vertex>	-88.400002 0.100000 342.000000	</vertex>
+			<vertex>	-92.900002 0.100000 0.000000	</vertex>
+			<vertex>	-96.400002 0.100000 343.000000	</vertex>
+			<vertex>	-96.900002 0.100000 0.000000	</vertex>
+			<vertex>	-99.900002 0.100000 0.000000	</vertex>
+			<vertex>	-99.900002 2.100000 347.000000	</vertex>
+			<vertex>	-88.400002 2.100000 340.000000	</vertex>
+		</waypoint>
+		<waypoint>	347
+			<minHeight>	-2.942500	</minHeight>
+			<height>	-1.085623	</height>
+			<vertex>	-88.400002 2.100000 346.000000	</vertex>
+			<vertex>	-99.900002 2.100000 0.000000	</vertex>
+			<vertex>	-99.900002 4.600000 349.000000	</vertex>
+			<vertex>	-98.400002 4.600000 348.000000	</vertex>
+			<vertex>	-88.400002 4.600000 341.000000	</vertex>
+			<vertex>	-88.400002 4.100000 340.000000	</vertex>
+		</waypoint>
+		<waypoint>	348
+			<minHeight>	-4.588500	</minHeight>
+			<height>	-2.710000	</height>
+			<vertex>	-88.400002 4.600000 347.000000	</vertex>
+			<vertex>	-98.400002 4.600000 349.000000	</vertex>
+			<vertex>	-95.900002 7.100000 350.000000	</vertex>
+			<vertex>	-91.400002 11.600000 337.000000	</vertex>
+			<vertex>	-88.900002 11.600000 336.000000	</vertex>
+			<vertex>	-88.400002 11.600000 341.000000	</vertex>
+		</waypoint>
+		<waypoint>	349
+			<minHeight>	-4.289000	</minHeight>
+			<height>	-2.636248	</height>
+			<vertex>	-98.400002 4.600000 347.000000	</vertex>
+			<vertex>	-99.900002 4.600000 0.000000	</vertex>
+			<vertex>	-99.900002 7.100000 350.000000	</vertex>
+			<vertex>	-95.900002 7.100000 348.000000	</vertex>
+		</waypoint>
+		<waypoint>	350
+			<minHeight>	-5.687968	</minHeight>
+			<height>	-3.823749	</height>
+			<vertex>	-95.900002 7.100000 349.000000	</vertex>
+			<vertex>	-99.900002 7.100000 0.000000	</vertex>
+			<vertex>	-99.900002 11.600000 337.000000	</vertex>
+			<vertex>	-91.400002 11.600000 348.000000	</vertex>
+		</waypoint>
+	</waypointSet>
+	<waypointSet>	2
+		<girth>	0.500000	</girth>
+		<waypoint>	345
+			<minHeight>	0.202000	</minHeight>
+			<height>	1.093253	</height>
+			<vertex>	-97.400002 -0.900000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-97.400002 -0.400000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+			<vertex>	-96.900002 -0.400000 0.000000
+				<adjacentChunk>	FFFFFFFFo	</adjacentChunk>
+			</vertex>
+		</waypoint>
+	</waypointSet>
+	<waypointGenerationTime>
+		<hi>	29567159	</hi>
+		<lo>	117492936	</lo>
+	</waypointGenerationTime>
+</root>

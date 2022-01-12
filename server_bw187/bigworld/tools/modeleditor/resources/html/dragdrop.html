@@ -1,0 +1,71 @@
+<html>
+  <head><link rel="stylesheet" type="text/css" href="style.css"></head>
+  <body background="me.bmp" style="background-repeat:no-repeat; background-position-x:right; background-position-y:bottom;">
+    <h2>Drag-and-drop</h2>
+
+    <table class="normal" cellspacing=0>
+      <tbody>
+      <tr><th class="FirstCol">Asset       </th>
+          <th class="MidCol">  Extension   </th>
+          <th class="MidCol">  Drop Target </th>
+          <th>                 Result      </th></tr>
+
+
+      <tr><td class="oddRow1stCol">      Animation                                         </td>
+          <td class="oddRow">      <code>.animation</code>                                 </td>
+          <td class="oddRow">            <b>Animations</b> tab, <b>Animation</b> list      </td>
+          <td class="oddRow">            Adds the dragged animations to selected model.    </td></tr>
+
+      <tr><td class="evnRow1stCol">       Effect                                           </td>
+          <td class="evnRow">      <code>.fx</code>                                        </td>
+          <td class="evnRow">          <b>Materials</b> tab, <b>Properties</b> table <br>
+                                          &nbsp;&nbsp;&mdash;or&ndash;               <br>
+                                          <b>Materials</b> tab, <b>Effect</b> field        </td>
+          <td class="evnRow">             Assigns the dragged file to current material.    </td></tr>
+
+      <tr><td class="oddRow1stCol">      Light                                             </td>
+          <td class="oddRow">      <code>.mvl</code>                                       </td>
+          <td class="oddRow">            Viewport                                          </td>
+          <td class="oddRow">            Applies file's lighting setup to the model.       </td></tr>
+
+      <tr><td class="evnRow1stCol">      MFM                                               </td>
+          <td class="evnRow">      <code>.mfm</code>                                       </td>
+          <td class="evnRow" colspan=2>  Same as <b>Effect</b>                             </td></tr>
+
+      <tr><td class="oddRow1stCol" rowspan=2>
+                                         Model                                             </td>
+          <td class="oddRow"       rowspan=2>
+                                   <code>.model</code>                                     </td>
+          <td class="oddRow">            <b>LOD</b> tab, <b>LOD</b> table                  </td>
+          <td class="oddRow">            Adds the dragged model as new LOD level.          </td></tr>
+
+      <tr><td class="oddRow">            Viewport                                          </td>
+          <td class="oddRow">            Opens the dragged model/shell for editing.<br>
+                                         <p><u>If <code>Ctrl</code> or <code>Alt</code> 
+                                         is pressed:</u>
+                                         <p class=lvl2>
+                                         Adds the dragged model to the viewport.<br>
+                                         (Useful for editing parts of a SuperModel)        </td></tr>
+
+      <tr><td class="evnRow1stCol">      Shell                                             </td>
+          <td class="evnRow">      <code>.model</code>                                     </td>
+          <td class="evnRow">            Viewport                                          </td>
+          <td class="evnRow">            Opens the dragged shell for editing.              </td></tr>
+
+      <tr><td class="oddRow1stCol" rowspan=2>
+                                         Texture                                           </td>
+          <td class="oddRow"      rowspan=2>
+                                   <code>.bmp</code>,<br>
+                                   <code>.tga</code>                                       </td>
+          <td class="oddRow">            <b>Display</b> tab, <b>Choose Floor</b> button    </td>
+          <td class="oddRow">            Applies the dragged texture to the floor texture. </td></tr>
+
+      <tr><td class="oddRow">            <b>Materials</b> tab, <b>Properties</b> table,<br>
+                                         any <i>map</i> field                              </td>
+          <td class="oddRow">            Assigns the dragged texture to the map field.     </td></tr>
+
+      </tbody>
+      </table>
+   </body>
+</html>
+

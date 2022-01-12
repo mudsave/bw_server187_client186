@@ -1,0 +1,9 @@
+<falloff.mfm>
+	<fx>	shaders/std_effects/lightonly.fx	</fx>
+	<fx>	resources/materials/falloff.fx	</fx>
+	<property>	diffuseMap
+		<Texture>	resources/materials/afx_streetlight.dds	</Texture>
+	</property>
+	<collisionFlags>	0	</collisionFlags>
+	<materialKind>	0	</materialKind>
+</falloff.mfm>

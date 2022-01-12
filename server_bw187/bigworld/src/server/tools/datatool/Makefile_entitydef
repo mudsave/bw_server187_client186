@@ -1,0 +1,20 @@
+LIB =	entitydef
+
+SRCS =								\
+		../../../../../src/lib/entitydef/data_description			\
+		../../../../../src/lib/entitydef/data_types					\
+		../../../../../src/lib/entitydef/entity_description			\
+		../../../../../src/lib/entitydef/entity_description_debug	\
+		../../../../../src/lib/entitydef/entity_description_map		\
+		../../../../../src/lib/entitydef/mailbox_base				\
+		../../../../../src/lib/entitydef/method_description			\
+		../../../../../src/lib/entitydef/method_response				\
+
+ifndef MF_ROOT
+export MF_ROOT := $(subst /src/lib/$(LIB),,$(CURDIR))
+endif
+ifdef DBMGR_USE
+CPPFLAGS += -DMF_SERVER_DBMGR
+endif
+
+include common.mak

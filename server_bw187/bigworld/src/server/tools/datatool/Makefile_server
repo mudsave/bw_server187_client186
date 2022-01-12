@@ -1,0 +1,22 @@
+LIB = server
+
+SRCS =									\
+	../../../../../src/lib/server/add_to_manager_helper				\
+	../../../../../src/lib/server/anonymous_channel_client			\
+	../../../../../src/lib/server/auto_backup_and_archive				\
+	../../../../../src/lib/server/backup_hash							\
+	../../../../../src/lib/server/bwconfig							\
+	../../../../../src/lib/server/cvs									\
+	../../../../../src/lib/server/deem								\
+	../../../../../src/lib/server/id_client							\
+	../../../../../src/lib/server/plugin_library						\
+	../../../../../src/lib/server/python_server						\
+	../../../../../src/lib/server/reviver_subject						\
+	../../../../../src/lib/server/time_keeper							\
+	../../../../../src/lib/server/bwservice
+
+ifndef MF_ROOT
+export MF_ROOT := $(subst /src/lib/$(LIB),,$(CURDIR))
+endif
+
+include common.mak

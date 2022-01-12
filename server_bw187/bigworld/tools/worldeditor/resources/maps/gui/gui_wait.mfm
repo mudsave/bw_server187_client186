@@ -1,0 +1,12 @@
+<gui_wait.mfm>
+	<fx>	shaders/std_effects/lightonly.fx	</fx>
+	<fx>	resources/maps/gui/gui_wait.fx	</fx>
+	<property>	selfIllumination
+		<Float>	0.490000009537	</Float>
+	</property>
+	<property>	diffuseMap
+		<Texture>	resources/maps/gui/3d_wait2.bmp	</Texture>
+	</property>
+	<collisionFlags>	0	</collisionFlags>
+	<materialKind>	0	</materialKind>
+</gui_wait.mfm>

@@ -1,0 +1,1236 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "../../lib/ual/ual_resource.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\particle_editor.ico"
+IDR_particle_editorTYPE ICON                    "res\\particle_editorDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_LOGO                BITMAP                  "res\\splashscreen.bmp"
+IDB_ABOUT               BITMAP                  "res\\aboutBoxPE.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open Particle Directory...\tCtrl+O", ID_FILE_OPEN
+        MENUITEM "Save Particle System\tCtrl+S", ID_FILE_SVEPARTICLESYSTEM
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "View"
+    BEGIN
+        MENUITEM "Show Panels\tCtrl + H",       ID_VIEW_SHOWUAL
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About Particle Editor...",   ID_APP_ABOUT
+        MENUITEM "Content Creation...",         ID_HELP_HELP
+        MENUITEM "&Keyboard Shortcuts...",      ID_APP_KEY_CUTS
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "S",            ID_FILE_SVEPARTICLESYSTEM, VIRTKEY, CONTROL, NOINVERT
+    VK_F4,          ID_PAUSE,               VIRTKEY, NOINVERT
+    VK_F2,          ID_PLAY,                VIRTKEY, NOINVERT
+    VK_F3,          ID_STOP,                VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 55, 36
+STYLE DS_SETFONT | DS_3DLOOK | DS_FIXEDSYS | WS_POPUP | WS_THICKFRAME
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+END
+
+IDD_KEY_CUTS DIALOGEX 0, 0, 512, 342
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "ParticleEditor Shortcuts"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_MAINFRAME DIALOGEX 0, 0, 330, 16
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Spawn",IDC_BUTTON_FORCE_SPAWN,0,2,50,14
+    CONTROL         "Save 'n Sync",IDC_SYNC_XBOX,"Button",BS_OWNERDRAW | NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,55,2,50,14
+END
+
+IDD_PSA_SOURCE_PROPERTIES DIALOGEX 0, 0, 212, 500
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Source"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Initial Position Generator:",IDC_STATIC,10,13,82,8
+    COMBOBOX        IDC_PSA_SOURCE_POSITION_GENERATOR,101,11,100,80,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Show",IDC_STATIC,11,27,18,8
+    CONTROL         "",IDC_PSA_SOURCE_POSITION_GENERATOR_SHOW,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,33,27,10,8
+    LTEXT           "x:",IDC_STATIC,68,30,8,8
+    EDITTEXT        IDC_PSA_SOURCE_POSITION_GENERATOR_X,76,27,31,14,ES_AUTOHSCROLL
+    LTEXT           "y:",IDC_STATIC,116,30,8,8
+    EDITTEXT        IDC_PSA_SOURCE_POSITION_GENERATOR_Y,125,27,30,14,ES_AUTOHSCROLL
+    LTEXT           "z:",IDC_STATIC,162,30,8,8
+    EDITTEXT        IDC_PSA_SOURCE_POSITION_GENERATOR_Z,171,27,30,14,ES_AUTOHSCROLL
+    LTEXT           "x:",IDC_STATIC,68,46,8,8
+    EDITTEXT        IDC_PSA_SOURCE_POSITION_GENERATOR_X2,76,43,31,14,ES_AUTOHSCROLL
+    LTEXT           "y:",IDC_STATIC,116,46,8,8
+    EDITTEXT        IDC_PSA_SOURCE_POSITION_GENERATOR_Y2,125,43,30,14,ES_AUTOHSCROLL
+    LTEXT           "z:",IDC_STATIC,162,46,8,8
+    EDITTEXT        IDC_PSA_SOURCE_POSITION_GENERATOR_Z2,171,43,30,14,ES_AUTOHSCROLL
+    LTEXT           "Initial Velocity Generator:",IDC_STATIC,9,74,82,8
+    COMBOBOX        IDC_PSA_SOURCE_VELOCITY_GENERATOR,100,73,100,80,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Show",IDC_STATIC,10,91,18,8
+    CONTROL         "",IDC_PSA_SOURCE_VELOCITY_GENERATOR_SHOW,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,92,13,8
+    LTEXT           "x:",IDC_STATIC,67,92,8,8
+    EDITTEXT        IDC_PSA_SOURCE_VELOCITY_GENERATOR_X,75,89,31,14,ES_AUTOHSCROLL
+    LTEXT           "y:",IDC_STATIC,115,92,8,8
+    EDITTEXT        IDC_PSA_SOURCE_VELOCITY_GENERATOR_Y,124,89,30,14,ES_AUTOHSCROLL
+    LTEXT           "z:",IDC_STATIC,161,92,8,8
+    EDITTEXT        IDC_PSA_SOURCE_VELOCITY_GENERATOR_Z,170,89,30,14,ES_AUTOHSCROLL
+    LTEXT           "x:",IDC_STATIC,67,108,8,8
+    EDITTEXT        IDC_PSA_SOURCE_VELOCITY_GENERATOR_X2,75,105,31,14,ES_AUTOHSCROLL
+    LTEXT           "y:",IDC_STATIC,115,108,8,8
+    EDITTEXT        IDC_PSA_SOURCE_VELOCITY_GENERATOR_Y2,124,105,30,14,ES_AUTOHSCROLL
+    LTEXT           "z:",IDC_STATIC,161,108,8,8
+    EDITTEXT        IDC_PSA_SOURCE_VELOCITY_GENERATOR_Z2,170,105,30,14,ES_AUTOHSCROLL
+    LTEXT           "Velocity Inheritance Factor:",IDC_STATIC,24,126,90,8
+    EDITTEXT        IDC_PSA_SOURCE_VELOCITY_INHERITANCE,116,123,37,14,ES_AUTOHSCROLL
+    CONTROL         "Time Trigger",IDC_PSA_SOURCE_TIMETRIGGERED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,4,158,55,10
+    LTEXT           "Emitter Rate:",IDC_STATIC,67,159,44,8
+    EDITTEXT        IDC_PSA_SOURCE_RATE,132,156,40,14,ES_AUTOHSCROLL
+    LTEXT           "Sleep Periods:",IDC_STATIC,67,193,46,8
+    LTEXT           "Active Period:",IDC_STATIC,67,176,46,8
+    LTEXT           "Min:",IDC_STATIC,116,193,14,8
+    EDITTEXT        IDC_PSA_SOURCE_SLEEPPERIOD,132,190,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PSA_SOURCE_ACTIVEPERIOD,132,173,40,14,ES_AUTOHSCROLL
+    LTEXT           "Max:",IDC_STATIC,116,210,17,8
+    EDITTEXT        IDC_PSA_SOURCE_SLEEPPERIOD_MAX,132,207,40,14,ES_AUTOHSCROLL
+    CONTROL         "Motion Trigger",IDC_PSA_SOURCE_MOTIONTRIGGERED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,4,229,62,10
+    LTEXT           "Motion Sensitivity:",IDC_STATIC,67,230,60,8
+    EDITTEXT        IDC_PSA_SOURCE_SENSITIVITY,132,227,40,14,ES_AUTOHSCROLL
+    LTEXT           "(m/part.)",IDC_STATIC,176,229,31,9
+    CONTROL         "Grounded",IDC_PSA_SOURCE_GROUNDED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,4,250,47,10
+    LTEXT           "Drop Distance:",IDC_STATIC,67,250,48,8
+    EDITTEXT        IDC_PSA_SOURCE_DROPDISTANCE,132,247,40,14,ES_AUTOHSCROLL
+    LTEXT           "(m)",IDC_STATIC,176,250,14,9
+    GROUPBOX        "Particle Size",IDC_PSA_SOURCE_SIZEBOX,0,266,212,29
+    LTEXT           "Minimum:",IDC_STATIC,6,278,30,8
+    EDITTEXT        IDC_PSA_SOURCE_MINIMUMSIZE,37,276,40,14,ES_AUTOHSCROLL
+    LTEXT           "(m)",IDC_STATIC,80,278,11,9
+    LTEXT           "Maximum:",IDC_STATIC,99,278,33,8
+    EDITTEXT        IDC_PSA_SOURCE_MAXIMUMSIZE,133,276,40,14,ES_AUTOHSCROLL
+    LTEXT           "(m)",IDC_STATIC,177,279,11,9
+    GROUPBOX        "Sprite Only",IDC_STATIC,0,295,212,65
+    LTEXT           "Initial Orientation (deg):",IDC_STATIC,5,314,78,8
+    EDITTEXT        IDC_PSA_SOURCE_SPRITE_INITORIENT,87,311,40,14,ES_AUTOHSCROLL
+    LTEXT           "Randomise",IDC_STATIC,137,302,36,8
+    EDITTEXT        IDC_PSA_SOURCE_SPRITE_INITORIENT_RAND,135,311,40,14,ES_AUTOHSCROLL
+    LTEXT           "Spin Rate (rev/s):",IDC_STATIC,6,330,58,8
+    EDITTEXT        IDC_PSA_SOURCE_SPRITE_SPINRATE,87,329,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PSA_SOURCE_SPRITE_SPINRATE_RAND,135,329,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "Mesh Only",IDC_PSA_SOURCE_MESHBOX,0,358,212,94
+    LTEXT           "Spin Rate (rev/s):",IDC_STATIC,83,366,58,8
+    CONTROL         "Random Spin",IDC_PSA_SOURCE_RANDOM_SPIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,381,57,10
+    LTEXT           "Min:",IDC_STATIC,71,381,14,8
+    EDITTEXT        IDC_PSA_SOURCE_RANDOM_SPIN_MIN,86,379,40,14,ES_AUTOHSCROLL
+    LTEXT           "Max:",IDC_STATIC,134,381,17,8
+    EDITTEXT        IDC_PSA_SOURCE_RANDOM_SPIN_MAX,153,379,40,14,ES_AUTOHSCROLL
+    LTEXT           "Initial Orientation (deg)",IDC_STATIC,14,400,76,8
+    CONTROL         "Randomise (Deg. Range)",IDC_PSA_SOURCE_INITIALORIENT_RANDOMISE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,96,399,97,10
+    LTEXT           "Pitch:",IDC_STATIC,33,416,19,8
+    EDITTEXT        IDC_PSA_SOURCE_INITIALORIENT_X,56,413,40,14,ES_AUTOHSCROLL
+    LTEXT           "Pitch:",IDC_STATIC,106,416,19,8
+    EDITTEXT        IDC_PSA_SOURCE_INITIALORIENT_RANDOMISE_MIN,128,413,33,14,ES_AUTOHSCROLL
+    LTEXT           "Yaw:",IDC_STATIC,33,435,17,8
+    EDITTEXT        IDC_PSA_SOURCE_INITIALORIENT_Y,56,432,40,14,ES_AUTOHSCROLL
+    LTEXT           "Yaw:",IDC_STATIC,106,435,17,8
+    EDITTEXT        IDC_PSA_SOURCE_INITIALORIENT_RANDOMISE_MAX,128,432,33,14,ES_AUTOHSCROLL
+    LTEXT           "Number of particles to spawn on demand (required if Emitter Rate = 0):",IDC_STATIC,9,461,142,20
+    EDITTEXT        IDC_PSA_SOURCE_FORCEDUNITSIZE,146,462,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PSA_SOURCE_ALLOWEDTIME,146,479,40,14,ES_AUTOHSCROLL
+    LTEXT           "Allowed time to create particles:",IDC_STATIC,9,482,104,8
+    LTEXT           "(part./s)",IDC_STATIC,176,159,28,8
+    LTEXT           "(s)",IDC_STATIC,176,176,10,8
+    LTEXT           "(s)",IDC_STATIC,176,193,10,8
+    LTEXT           "(s)",IDC_STATIC,176,210,10,8
+    GROUPBOX        "Triggers/Grounded",IDC_STATIC,0,145,212,120
+    GROUPBOX        "Velocity",IDC_STATIC,0,64,212,81
+    GROUPBOX        "Position",IDC_STATIC,0,0,212,64
+    GROUPBOX        "Miscellaneous",IDC_STATIC,0,452,212,46
+    LTEXT           "(These are disabled for point sprites.)",IDC_STATIC,42,347,122,8
+    LTEXT           "(s)",IDC_STATIC,191,482,10,8
+END
+
+IDD_PSA_SINK_PROPERTIES DIALOGEX 0, 0, 203, 86
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Sink"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Enter maximum age or minimum speed of particle for death to occur.",IDC_STATIC,7,8,187,18
+    LTEXT           "In both cases -1 means not in use.",IDC_STATIC,6,70,112,8
+    LTEXT           "Maximum Age:",IDC_STATIC,7,31,48,8
+    EDITTEXT        IDC_PSA_SINK_MAXIMUMAGE,61,28,40,14,ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_PSA_SINK_MAXIMUMAGE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,113,28,70,15
+    LTEXT           "Minimum Speed:",IDC_STATIC,6,51,52,8
+    EDITTEXT        IDC_PSA_SINK_MINIMUMSPEED,61,49,40,14,ES_AUTOHSCROLL
+    LTEXT           "(m/s)",IDC_STATIC,104,52,18,8
+    LTEXT           "(s)",IDC_STATIC,104,31,10,8
+END
+
+IDD_PSA_BARRIER_PROPERTIES DIALOGEX 0, 0, 145, 59
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Barrier"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Barrier Shape:",IDC_STATIC,4,26,74,8
+    COMBOBOX        IDC_PSA_BARRIER_SHAPE,58,24,81,49,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Barrier Effect:",IDC_STATIC,4,44,46,8
+    COMBOBOX        IDC_PSA_BARRIER_REACTION,58,42,81,51,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Adds a barrier against which particles can react.",IDC_STATIC,5,2,135,17
+END
+
+IDD_VIEW_OPTIONS DIALOGEX 0, 0, 185, 44
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+END
+
+IDD_PSA_TINT_SHADER_PROPERTIES DIALOGEX 0, 0, 232, 295
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "TintShader"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Select a Tint Swab to Modify:",IDC_STATIC,3,20,94,8
+    CONTROL         "",IDC_PSA_TINT_COLORS,"Static",SS_BLACKFRAME,3,34,110,171
+    LTEXT           "Tint Cycle Time:",IDC_STATIC,124,36,52,8
+    EDITTEXT        IDC_PSA_TINTSHADER_PERIOD,176,34,40,14,ES_AUTOHSCROLL
+    LTEXT           "(s)",IDC_STATIC,219,37,10,8
+    CONTROL         "Loop Tint Cycle",IDC_PSA_TINTSHADER_REPEAT,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | WS_TABSTOP,124,52,65,10
+    CONTROL         "",IDC_PSA_TINTSHADER_COLORPICKER,"Static",SS_BLACKFRAME,125,67,101,138
+    LTEXT           "Particle Life (s)",IDC_STATIC,3,206,48,8
+    LTEXT           "0",IDC_STATIC,126,207,8,8
+    LTEXT           "Alpha",IDC_STATIC,164,207,19,8
+    LTEXT           "1",IDC_STATIC,222,207,8,8
+    PUSHBUTTON      "Add New Tint",IDC_PSA_TINTSHADER_ADDNEWTINT,3,223,76,14
+    LTEXT           "R:",IDC_STATIC,118,225,8,8
+    EDITTEXT        IDC_PSA_TINTSHADER_PICKER_RED,126,223,24,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PSA_TINTSHADER_PICKER_GREEN,162,223,24,14,ES_AUTOHSCROLL
+    LTEXT           "B:",IDC_STATIC,190,225,8,8
+    EDITTEXT        IDC_PSA_TINTSHADER_PICKER_BLUE,200,223,24,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Delete Selected Tint",IDC_PSA_TINTSHADER_DELETETINT,3,244,76,14
+    LTEXT           "Alpha:",IDC_STATIC,174,247,22,8
+    EDITTEXT        IDC_PSA_TINTSHADER_PICKER_ALPHA,200,244,24,14,ES_AUTOHSCROLL
+    LTEXT           "G:",IDC_STATIC,154,225,8,8
+    LTEXT           "Visual particle systemsrequire that the visual's material\nsupport the ""ParticleMeshTint"" constant.",IDC_STATIC,30,268,178,18
+    LTEXT           "Apply a colour tint to particles.",IDC_STATIC,3,5,99,8
+END
+
+IDD_PS_PROPERTIES DIALOGEX 0, 0, 159, 73
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "System Properties"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Capacity:",IDC_STATIC,6,21,32,8
+    EDITTEXT        IDC_PS_CAPACITY,54,18,40,14,ES_AUTOHSCROLL
+    LTEXT           "(max = 65536)",IDC_STATIC,102,21,49,8
+    LTEXT           "Wind Factor:",IDC_STATIC,6,39,42,8
+    EDITTEXT        IDC_PS_WINDHALFLIFE,54,36,40,14,ES_AUTOHSCROLL
+    LTEXT           "Max Lod:",IDC_STATIC,6,57,30,8
+    EDITTEXT        IDC_PS_MAXLOD,54,54,40,14,ES_AUTOHSCROLL
+    LTEXT           "(0..1)",IDC_STATIC,102,39,20,8
+    LTEXT           "General properties of a particle sub-system.",IDC_STATIC,3,6,142,8
+    LTEXT           "(m)",IDC_STATIC,102,57,11,9
+END
+
+IDD_PSA_EMPTY DIALOGEX 0, 0, 185, 93
+STYLE DS_ABSALIGN | DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+END
+
+IDD_PSA_FORCE_PROPERTIES DIALOGEX 0, 0, 140, 73
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Force"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Apply a directional force to the particles.",IDC_STATIC,6,6,133,11
+    LTEXT           "x:",IDC_STATIC,33,21,8,8
+    EDITTEXT        IDC_PSA_FORCE_X,49,18,40,14,ES_AUTOHSCROLL
+    LTEXT           "y:",IDC_STATIC,33,39,8,8
+    EDITTEXT        IDC_PSA_FORCE_Y,49,36,40,14,ES_AUTOHSCROLL
+    LTEXT           "z:",IDC_STATIC,33,57,8,8
+    EDITTEXT        IDC_PSA_FORCE_Z,49,54,40,14,ES_AUTOHSCROLL
+END
+
+IDD_PSA_STREAM_PROPERTIES DIALOGEX 0, 0, 210, 161
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Stream"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "This creates a stream effect in the direction and magnitude given by the stream direction.\n\nThe halflife refers to the time taken to converge on the stream (-1 for no halflife).\n\nDrag can be simulated by setting the stream direction to (0, 0, 0).",IDC_STATIC,9,7,186,65
+    LTEXT           "Stream Direction:",IDC_STATIC,27,96,31,18
+    LTEXT           "x:",IDC_STATIC,79,83,8,8
+    EDITTEXT        IDC_PSA_STREAM_VECTORX,91,81,40,14,ES_AUTOHSCROLL
+    LTEXT           "y:",IDC_STATIC,79,99,8,8
+    EDITTEXT        IDC_PSA_STREAM_VECTORY,91,98,40,14,ES_AUTOHSCROLL
+    LTEXT           "z:",IDC_STATIC,79,115,8,8
+    EDITTEXT        IDC_PSA_STREAM_VECTORZ,91,114,40,14,ES_AUTOHSCROLL
+    LTEXT           "Half-life:",IDC_STATIC,27,139,28,8
+    EDITTEXT        IDC_PSA_STREAM_HALFLIFE,91,136,40,14,ES_AUTOHSCROLL
+    LTEXT           "(s)",IDC_STATIC,135,139,10,8
+END
+
+IDD_PSA_SCALER_PROPERTIES DIALOGEX 0, 0, 161, 65
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Scaler"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Scale the particle size over time.",IDC_STATIC,6,6,152,8
+    LTEXT           "Final Particle Size:",IDC_STATIC,20,26,58,8
+    LTEXT           "Rate:",IDC_STATIC,20,46,19,8
+    EDITTEXT        IDC_PSA_SCALER_SIZE,84,23,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PSA_SCALER_RATE,84,43,40,14,ES_AUTOHSCROLL
+    LTEXT           "(m)",IDC_STATIC,129,26,12,8
+    LTEXT           "(m/sec)",IDC_STATIC,129,46,25,8
+END
+
+IDD_PSA_ORBITOR_PROPERTIES DIALOGEX 0, 0, 159, 94
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Orbitor"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Create an axis around which the particles orbit.",IDC_STATIC,6,7,153,9
+    LTEXT           "Orbit Y-Axis:",IDC_STATIC,11,35,43,10
+    LTEXT           "x:",IDC_STATIC,61,26,8,8
+    EDITTEXT        IDC_PSA_ORBITOR_POINTX,76,25,40,14,ES_AUTOHSCROLL
+    LTEXT           "z:",IDC_STATIC,61,45,8,8
+    EDITTEXT        IDC_PSA_ORBITOR_POINTZ,76,43,40,14,ES_AUTOHSCROLL
+    LTEXT           "Angular Velocity:",IDC_STATIC,11,62,55,8
+    EDITTEXT        IDC_PSA_ORBITOR_ANGULARVELOCITY,76,60,40,14,ES_AUTOHSCROLL
+    CONTROL         "Affect Velocity",IDC_PSA_ORBITOR_AFFECTVELOCITY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,78,63,10
+END
+
+IDD_PSA_FLARE_PROPERTIES DIALOGEX 0, 0, 151, 102
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Flare"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Flare Name:",IDC_STATIC,6,20,40,8
+    COMBOBOX        IDC_PSA_FLARE_FLARENAME,52,18,92,160,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PSA_FLARE_FLARENAME_DIRECTORY_EDIT,52,34,70,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_PSA_FLARE_FLARENAME_DIRECTORY_BTN,126,34,18,14,BS_FLAT
+    LTEXT           "Flare Step:",IDC_STATIC,6,53,36,8
+    EDITTEXT        IDC_PSA_FLARE_FLARESTEP,52,51,40,14,ES_AUTOHSCROLL
+    CONTROL         "Colourize",IDC_PSA_FLARE_COLOURIZE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,70,45,10
+    CONTROL         "Use Particle Size",IDC_PSA_FLARE_USEPARTICLESIZE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,83,68,10
+    LTEXT           "Add a flare effect to each particle.",IDC_STATIC,6,4,112,8
+END
+
+IDD_PS_RENDERER_PROPERTIES DIALOGEX 0, 0, 226, 343
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Renderer Properties"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    CONTROL         "View Dependent",IDC_PS_RENDERER_VIEWDEPENDENT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,4,64,10
+    LTEXT           "",IDC_HLINE5,0,16,226,8,SS_SUNKEN
+    CONTROL         "Sprite:",IDC_PS_RENDERER_SPRITE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,2,30,37,10
+    COMBOBOX        IDC_PS_RENDERER_SPRITE_TEXTURENAME,43,28,82,249,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PS_RENDERER_SPRITE_TEXTURENAME_DIRECTORY_EDIT,131,28,72,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_PS_RENDERER_SPRITE_TEXTURENAME_DIRECTORY_BTN,205,28,18,14,BS_LEFT
+    LTEXT           "Blend mode:",IDC_STATIC,65,46,40,8
+    COMBOBOX        IDC_PS_RENDERER_SPRITE_MATERIALFX,131,44,72,80,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Frame Count:",IDC_PS_RENDERER_SPRITE_STATIC4,43,57,28,18
+    EDITTEXT        IDC_PS_RENDERER_SPRITE_FRAMECOUNT,83,59,42,14,ES_AUTOHSCROLL
+    LTEXT           "Frame Rate:",IDC_PS_RENDERER_SPRITE_STATIC3,131,57,21,18
+    EDITTEXT        IDC_PS_RENDERER_SPRITE_FRAMERATE,161,59,42,14,ES_AUTOHSCROLL
+    CONTROL         "Point Sprite",IDC_PS_RENDERER_SPRITE_POINTSPRITE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,43,78,53,10
+    LTEXT           "",IDC_HLINE1,0,90,226,8,SS_SUNKEN
+    CONTROL         "Mesh:",IDC_PS_RENDERER_MESH,"Button",BS_AUTORADIOBUTTON,2,104,35,10
+    COMBOBOX        IDC_PS_RENDERER_MESH_VISUALNAME,43,102,82,250,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PS_RENDERER_MESH_VISUALNAME_DIRECTORY_EDIT,131,102,72,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_PS_RENDERER_MESH_VISUALNAME_DIRECTORY_BTN,205,102,18,14,BS_LEFT
+    COMBOBOX        IDC_PS_RENDERER_MESH_MATERIALFX,131,119,72,80,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PS_RENDERER_MESH_SORT,131,135,72,80,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "",IDC_HLINE6,0,155,226,8,SS_SUNKEN
+    CONTROL         "Visual:",IDC_PS_RENDERER_VISUAL,"Button",BS_AUTORADIOBUTTON,2,166,37,10
+    COMBOBOX        IDC_PS_RENDERER_VISUAL_VISUALNAME,43,164,82,250,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PS_RENDERER_VISUAL_VISUALNAME_DIRECTORY_EDIT,131,164,72,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_PS_RENDERER_VISUAL_VISUALNAME_DIRECTORY_BTN,205,164,18,14,BS_LEFT
+    LTEXT           "",IDC_HLINE2,0,183,226,8,SS_SUNKEN
+    CONTROL         "Amp:",IDC_PS_RENDERER_AMP,"Button",BS_AUTORADIOBUTTON,2,196,33,10
+    COMBOBOX        IDC_PS_RENDERER_AMP_TEXTURENAME,43,195,82,250,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PS_RENDERER_AMP_TEXTURENAME_DIRECTORY_EDIT,131,194,72,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_PS_RENDERER_AMP_TEXTURENAME_DIRECTORY_BTN,205,194,18,14,BS_LEFT
+    LTEXT           "Width:",IDC_PS_RENDERER_AMP_STATIC1,43,215,22,8
+    EDITTEXT        IDC_PS_RENDERER_AMP_WIDTH,83,212,42,14,ES_AUTOHSCROLL
+    LTEXT           "Steps:",IDC_PS_RENDERER_AMP_STATIC3,131,215,22,8
+    EDITTEXT        IDC_PS_RENDERER_AMP_STEPS,161,212,42,14,ES_AUTOHSCROLL
+    LTEXT           "Length:",IDC_PS_RENDERER_AMP_STATIC2,43,231,26,8
+    EDITTEXT        IDC_PS_RENDERER_AMP_HEIGHT,83,228,42,14,ES_AUTOHSCROLL
+    LTEXT           "Variation:",IDC_PS_RENDERER_AMP_STATIC4,130,231,29,8
+    EDITTEXT        IDC_PS_RENDERER_AMP_VARIATION,161,228,42,14,ES_AUTOHSCROLL
+    CONTROL         "Circular",IDC_PS_RENDERER_AMP_CIRCULAR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,43,246,40,10
+    LTEXT           "",IDC_HLINE3,0,257,226,8,SS_SUNKEN
+    CONTROL         "Trail:",IDC_PS_RENDERER_TRAIL,"Button",BS_AUTORADIOBUTTON,2,267,32,10
+    COMBOBOX        IDC_PS_RENDERER_TRAIL_TEXTURENAME,43,266,82,250,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PS_RENDERER_TRAIL_TEXTURENAME_DIRECTORY_EDIT,131,266,72,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_PS_RENDERER_TRAIL_TEXTURENAME_DIRECTORY_BTN,205,266,18,14,BS_LEFT
+    LTEXT           "Width:",IDC_PS_RENDERER_TRAIL_STATIC1,43,286,22,8
+    EDITTEXT        IDC_PS_RENDERER_TRAIL_WIDTH,83,283,42,14,ES_AUTOHSCROLL
+    LTEXT           "Steps:",IDC_PS_RENDERER_TRAIL_STATIC2,131,286,22,8
+    EDITTEXT        IDC_PS_RENDERER_TRAIL_STEPS,161,283,42,14,ES_AUTOHSCROLL
+    LTEXT           "",IDC_HLINE4,0,301,226,8,SS_SUNKEN
+    CONTROL         "Blur:",IDC_PS_RENDERER_BLUR,"Button",BS_AUTORADIOBUTTON,2,312,31,10
+    COMBOBOX        IDC_PS_RENDERER_BLUR_TEXTURENAME,43,310,82,250,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PS_RENDERER_BLUR_TEXTURENAME_DIRECTORY_EDIT,131,310,72,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_PS_RENDERER_BLUR_TEXTURENAME_DIRECTORY_BTN,205,310,18,14,BS_LEFT
+    LTEXT           "Width:",IDC_PS_RENDERER_BLUR_STATIC4,43,330,22,8
+    EDITTEXT        IDC_PS_RENDERER_BLUR_WIDTH,83,327,42,14,ES_AUTOHSCROLL
+    LTEXT           "Time:",IDC_PS_RENDERER_BLUR_STATIC3,131,330,18,8
+    EDITTEXT        IDC_PS_RENDERER_BLUR_TIME,161,327,42,14,ES_AUTOHSCROLL
+    LTEXT           "Blend mode:",IDC_STATIC,65,121,40,8
+    LTEXT           "Sorting:",IDC_STATIC,65,137,26,8
+END
+
+IDD_PSA_MAGNET_PROPERTIES DIALOGEX 0, 0, 211, 86
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Magnet"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Add a particle magnet located at the origin. The magnet's effect is inversely proportional to its distance from the particle.",IDC_STATIC,7,5,195,24
+    LTEXT           "Magnet Strength:",IDC_STATIC,8,42,58,8
+    EDITTEXT        IDC_PSA_MAGNET_STRENGTH,81,39,40,14,ES_AUTOHSCROLL
+    LTEXT           "Minimum Distance For Force Calculations:",IDC_STATIC,8,59,70,23
+    EDITTEXT        IDC_PSA_MAGNET_MINDIST,81,62,40,14,ES_AUTOHSCROLL
+END
+
+IDD_PSA_JITTER_PROPERTIES DIALOGEX 0, 0, 208, 71
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Jitter"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Add a jitter to all the particles. This adds a random change to the position and velocity of all the particles each frame.",IDC_STATIC,13,8,189,19
+    CONTROL         "Affect Position:",IDC_PSA_JITTER_AFFECT_POSITION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,32,65,10
+    COMBOBOX        IDC_PSA_JITTER_POSITION_GENERATOR,83,31,80,80,CBS_DROPDOWNLIST | CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Affect Velocity:",IDC_PSA_JITTER_AFFECT_VELOCITY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,50,65,10
+    COMBOBOX        IDC_PSA_JITTER_VELOCITY_GENERATOR,83,49,80,80,CBS_DROPDOWNLIST | CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_PSA_COLLIDE_PROPERTIES DIALOGEX 0, 0, 161, 123
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Collide"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Specify how the particles should react when they collide with either the floor or an object.",IDC_STATIC,6,1,155,18
+    LTEXT           "Elasticity:",IDC_STATIC,8,27,32,8
+    EDITTEXT        IDC_PSA_COLLIDE_ELASTICITY,63,24,40,14,ES_AUTOHSCROLL
+    CONTROL         "Enable Sound",IDC_PSA_COLLIDE_SOUND_ENABLED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,48,59,10
+    LTEXT           "Sound Tag:",IDC_STATIC,10,71,38,8,WS_DISABLED
+    COMBOBOX        IDC_PSA_COLLIDE_SOUND_TAG_COMBO,65,69,80,30,CBS_DROPDOWNLIST | CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PSA_COLLIDE_SOUND_TAG_DIRECTORY_EDIT,65,85,58,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_PSA_COLLIDE_SOUND_TAG_DIRECTORY_BTN,128,85,17,14,BS_FLAT | WS_DISABLED
+    LTEXT           "Sound Src Idx:",IDC_STATIC,10,108,48,8,WS_DISABLED
+    EDITTEXT        IDC_PSA_COLLIDE_SOUND_IDX,65,105,40,14,ES_AUTOHSCROLL | WS_DISABLED
+END
+
+IDD_SPLASH DIALOGEX 0, 0, 225, 155
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         153,IDC_STATIC,"Static",SS_BITMAP,0,0,225,156
+END
+
+IDD_COLOR_PICKER DIALOGEX 0, 0, 164, 187
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Colour Picker"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,57,166,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,107,166,50,14,NOT WS_VISIBLE
+    CONTROL         "",IDC_COLOR_PICKER_DIALOG_WND,"Static",SS_BLACKFRAME,7,7,150,135
+END
+
+IDD_ACTION_SELECTION DIALOGEX 0, 0, 247, 497
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_FILTER,7,24,146,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_PARTICLETREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_EDITLABELS | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,41,145,127
+    LISTBOX         IDC_COMPONENTLIST,181,40,58,127,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "",IDC_ADD_COMP,157,88,20,14
+    PUSHBUTTON      "",ID_FILE_OPEN,138,7,15,14
+    EDITTEXT        IDC_DIR,29,7,101,14,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Properties",IDC_PROPERTIES_GRP,7,189,233,301
+    LTEXT           "",IDC_TOOLBAR,7,172,69,14,SS_SUNKEN
+    PUSHBUTTON      "",ID_FILE_SVEPARTICLESYSTEM,7,7,15,14
+    LTEXT           "Component:",IDC_STATIC,181,31,40,8
+END
+
+IDD_PSA_MATRIXSWARM_PROPERTIES DIALOGEX 0, 0, 151, 79
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "MatrixSwarm"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "The MatrixSwarm effect allows particles to be attached to a node or a list of nodes. This involves writing Python scripts in the game, in order to attach this sub-system correctly.",IDC_STATIC,5,5,137,46
+    LTEXT           "Adding a MatrixSwarm component in Particle Editor exposes the functionality in the game script.",IDC_STATIC,5,47,137,32
+END
+
+IDD_PSA_NODECLAMP_PROPERTIES DIALOGEX 0, 0, 164, 46
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "NodeClamp"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "The Node Clamp component is used to determine that the generated particles should be clamped to the origin of the particle subsystem\r\nThere are no settings for this component.",-1,5,5,158,39
+END
+
+IDD_PSA_SPLAT_PROPERTIES DIALOGEX 0, 0, 232, 126
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Splat"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Splats collided particles on the collision scene.\r\nThere are no options for this selection.",-1,12,16,137,27
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,8,7,0
+ PRODUCTVERSION 1,8,7,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "Comments", "Part of the BigWorld Technology Suite"
+            VALUE "CompanyName", "BigWorld Pty. Ltd"
+            VALUE "FileDescription", "BigWorld Particle Editor"
+            VALUE "FileVersion", "1.8.7.0"
+            VALUE "InternalName", "particle_editor.exe"
+            VALUE "LegalCopyright", "(c) 2000 - 2009, BigWorld Pty. Ltd. All Rights Reserved"
+            VALUE "OriginalFilename", "particle_editor.exe"
+            VALUE "ProductName", "ParticleEditor"
+            VALUE "ProductVersion", "1.8.7.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_VIEW_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 178
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 37
+    END
+
+    IDD_PSA_TINT_SHADER_PROPERTIES, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 294
+    END
+
+    IDD_PS_PROPERTIES, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 70
+    END
+
+    IDD_PSA_EMPTY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 178
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 86
+    END
+
+    IDD_PSA_STREAM_PROPERTIES, DIALOG
+    BEGIN
+        RIGHTMARGIN, 206
+    END
+
+    IDD_PS_RENDERER_PROPERTIES, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 323
+    END
+
+    IDD_ACTION_SELECTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 240
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 490
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""../../lib/ual/ual_resource.h""\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\particle_editor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""                       // Standard components\r\n"
+    "#include ""ual.rc""                             // UAL\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "ParticleEditor\n\nparticle_editor\n\n\nparticleeditor.Document\nparticle_editor.Document"
+    IDS_SRC_DESC            "Source of new particles."
+    IDS_SINK_DESC           "Destroy slow or old particles."
+    IDS_BARRIER_DESC        "Barrier against which particles bounce or die."
+    IDS_FORCE_DESC          "Apply a constant force."
+    IDS_STREAM_DESC         "Create a stream effect."
+    IDS_JITTER_DESC         "Add random change to pos. or velocity."
+    IDS_SCALER_DESC         "Resize particles."
+    IDS_TINT_DESC           "Add colour to particles."
+    IDS_NODECLAMP_DESC      "Damp particles to the origin."
+    IDS_ORBIT_DESC          "Set axis around which particles orbit."
+    IDS_FLARE_DESC          "Add a flare effect."
+    IDS_COLLIDE_DESC        "Collide against ground and other objects."
+    IDS_MATRIXSWARM_DESC    "Attach particles to a list of model nodes."
+    IDS_MAGNET_DESC         "Particles become attracted to a magnet."
+    IDS_SPLAT_DESC          "Splats particles onto the collision scene."
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "particle_editor"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open a directory of particle systems (Ctrl-O)"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_CONFIRMDELETE_PS    "This will remove the particle system permanently.\nAre you sure you wish to do this?"
+    ID_COLORBUTTON_ALPHA    "Change the alpha of this tab"
+    IDS_CONFIRMDELETE_COMP  "Delete particle-subsystem?"
+    ID_COLORBUTTON_DELETE   "Delete this tab"
+    ID_COLORBUTTON_COLOR    "Change the alpha of this tab"
+    IDS_AS_FILTERTEXT       "Particle System Name"
+    ID_FILE_SAVE_PARTICLE_SYSTEM "Save the active document\nSave"
+    ID_FILE_SVEPARTICLESYSTEM "Save current particle system (Ctrl-S)"
+    IDS_NOTUNIQUENAME       "The name should be unique."
+    IDS_INVALIDNAME         "The name contains invalid characters.\r\nCharacters such as ""/<>?*:"" are not allowed."
+    IDS_BLENDED             "Blended"
+    IDS_SOLID               "Solid"
+    IDS_ADDITIVE            "Additive"
+    ID_APP_KEY_CUTS         "Show the keyboard shortcuts for Particle Editor\nKeyboard Shortcuts"
+    IDS_BADPARTICLEFILE     "The file {0} could not be loaded as a particle system."
+    IDS_ADDITIVE_ALPHA      "Additive alpha"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "The Visual Exporter exported visual file to draw the mesh particles.\r\nYou can drag and drop visuals from the asset locator."
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Percentage of velocity inherited from particle system (0 for none, 1 for all)."
+END
+
+STRINGTABLE 
+BEGIN
+    ID_PERFORMANCE_PANE     "None"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BUTTON_VIEW_X        "Look at Y-Z Plane\nLook at Y-Z Plane"
+    ID_BUTTON_VIEW_Y        "Look At X-Z Plane\nLook At X-Z Plane"
+    ID_BUTTON_VIEW_Z        "Look At X-Y Plane\nLook At X-Y Plane"
+    ID_BUTTON_VIEW_ISO      "normal 3D view"
+    ID_BUTTON_VIEW_FREE     "Free Camera Movement\nFree Camera"
+    ID_BACKGROUND_COLOR     "Choose Background Colour\nBackground Colour"
+    ID_SHOW_GROUND          "Toggle Scene Visibility\nToggle Scene"
+    ID_FRAMERATE_PLACEHOLDER "Frame Rate"
+    ID_UNDO                 "Undo the last operation (Ctrl+Z)\nUndo (Ctrl+Z)"
+    ID_REDO                 "Redo the last operation (Ctrl+Y)\nRedo (Ctrl+Y)"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_FLARE_FLARENAME_DIRECTORY_BTN 
+                            "Browse for a new folder from which to get texture files."
+    IDC_PSA_COLLIDE_SOUND_TAG_DIRECTORY_BTN 
+                            "Browse for a folder containing sound files."
+    IDC_BUTTON_FORCE_SPAWN  "Force a burst of particles to be created\nSpawn Particle Burst"
+    IDC_PS_RENDERER_AMP_TEXTURENAME_DIRECTORY_BTN 
+                            "Browse for a folder containing amp textures."
+    IDC_PS_RENDERER_TRAIL_TEXTURENAME_DIRECTORY_BTN 
+                            "Browse for a folder containing trail textures."
+    IDC_PSA_SINK_MAXIMUMAGE_SLIDER 
+                            "Maximum lifetime (in seconds) of each particle."
+    IDC_PS_CAPACITY         "Maximum number of particles to be generated by the system."
+    IDC_PS_WINDHALFLIFE     "Effect of wind on the particle system (0 none..1 full)."
+    IDC_PS_MAXLOD           "Furthest distance from camera for which the particle system will still be drawn."
+    IDC_PSA_TINT_COLORS     "Tint time Tint Timeline."
+    IDC_PSA_TINTSHADER_PERIOD "Duration for the tint transition process."
+    IDC_PSA_TINTSHADER_REPEAT 
+                            "Indicates that the tint transition process should be continuously applied\r\nto the particle subsystem."
+    IDC_PSA_SOURCE_SLEEPPERIOD_MAX 
+                            "Maximum time for inactivity.\r\nIf Min is set to zero, and Max is set to -1,then particles will be\r\ncontinuously generated.\r\nIf Max is set to -1, then only the Min value is used."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_SOURCE_SPRITE_INITORIENT 
+                            "Inclination to apply to the particles (in degrees)."
+    IDC_PSA_SOURCE_SPRITE_SPINRATE 
+                            "Number of revolutions per second to apply to the particles."
+    IDC_PSA_SOURCE_SPRITE_INITORIENT_RAND 
+                            "Maximum value to be used for randomising the particles' inclination."
+    IDC_PSA_SOURCE_SPRITE_SPINRATE_RAND 
+                            "Maximum value to be used for randomising the particles' spin rate."
+    IDC_PSA_SOURCE_RANDOM_SPIN 
+                            "Indicates that the mesh-based particles should revolve randomly."
+    IDC_SYNC_XBOX           "Save current particle system and copy to the XBox for preview\nSave and Copy to XBox"
+    IDC_PSA_SOURCE_POSITION_GENERATOR_X 
+                            "From x coordinate of the initial point of the position generator."
+    IDC_PSA_SOURCE_POSITION_GENERATOR_Y 
+                            "From y coordinate of the initial point of the position generator."
+    IDC_PSA_SOURCE_POSITION_GENERATOR_Z 
+                            "From z coordinate of the initial point of the position generator."
+    IDC_PSA_SOURCE_VELOCITY_GENERATOR_X 
+                            "From x coordinate of the initial point of the velocity generator."
+    IDC_PSA_SOURCE_VELOCITY_GENERATOR_Y 
+                            "From y coordinate of the initial point of the velocity generator."
+    IDC_PSA_SOURCE_VELOCITY_GENERATOR_Z 
+                            "From z coordinate of the initial point of the velocity generator."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_SOURCE_SENSITIVITY 
+                            "How quickly the particles are released with motion, measured in\r\nmetres per particle."
+    IDC_PSA_SOURCE_ACTIVEPERIOD 
+                            "Period during which new particles will be generated."
+    IDC_PSA_SOURCE_SLEEPPERIOD 
+                            "Minimum time for inactivity.\r\nIf Min is set to zero, and Max is set to -1,then particles will be\r\ncontinuously generated.\r\nIf Max is set to -1, then only the Min value is used."
+    IDC_PSA_SOURCE_MINIMUMSIZE "Minimum value of randomly sized particle."
+    IDC_PSA_SOURCE_MAXIMUMSIZE "Maximum value of randomly sized particle."
+    IDC_PSA_SOURCE_FORCEDUNITSIZE 
+                            "Number of particles to create, for non-continuous emitters."
+    IDC_PSA_SOURCE_ALLOWEDTIME 
+                            "Allowed frame rate to create particles.\r\n(This feature is visible in the game only.)"
+    IDC_PSA_SINK_MAXIMUMAGE "Maximum lifetime (in seconds) of each particle."
+    IDC_PSA_SINK_MINIMUMSPEED 
+                            "Minimum speed (in metres per second) that the particles may have\r\nbefore being removed."
+    IDC_PS_RENDERER_MESH_VISUALNAME_DIRECTORY_BTN 
+                            "Browse for a folder containing meshes."
+    IDC_PSA_TINTSHADER_DELETETINT 
+                            "Deletes the Time Point currently selected in the Tint Timeline."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_FLARE_FLARENAME "Texture used to apply the flare effect to the particles."
+    IDC_PS_RENDERER_SPRITE_TEXTURENAME 
+                            "List of files on the folder specified in button Folder, and that are\r\nrelevant to the specified renderer.\r\nYou can drag and drop BMP, TGA and DDS files from the asset locator."
+    IDC_PSA_SOURCE_POSITION_GENERATOR "Geometry of the position generator."
+    IDC_PSA_BARRIER_SHAPE   "Shape of the barrier."
+    IDC_PSA_JITTER_POSITION_GENERATOR 
+                            "Shape within which the effect positions are created."
+    IDC_PSA_COLLIDE_SOUND_TAG_COMBO 
+                            "The selected sound to play upon collsion."
+    IDC_PSA_ORBITOR_AFFECTVELOCITY 
+                            "Indicates that the velocity should also be rotated with the particle."
+    IDC_PSA_ORBITOR_ANGULARVELOCITY 
+                            "Angular velocity of the orbit in degrees per second."
+    IDC_PS_RENDERER_AMP_TEXTURENAME 
+                            "List of files on the folder specified in button Folder, and that are\r\nrelevant to the specified renderer.\r\nYou can drag and drop BMP, TGA and DDS files from the asset locator."
+    IDC_PS_RENDERER_TRAIL_STEPS 
+                            "Number of times that the sprite will be drawn behind each particle,\r\nthus actually altering the length of the trail."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_MAGNET_STRENGTH "Strength of the magnet."
+    IDC_PSA_JITTER_AFFECT_POSITION 
+                            "Indicates that the jitter effect should be applied to the particles' positions."
+    IDC_PSA_JITTER_AFFECT_VELOCITY 
+                            "Indicates that the jitter effect should be applied to the particles' velocities."
+    IDC_PSA_JITTER_VELOCITY_GENERATOR 
+                            "Shape within which the velocity vectors are created."
+    IDC_PSA_COLLIDE_ELASTICITY 
+                            "Amount of bounce to apply to the particle when hitting the ground or other objects."
+    IDC_PSA_COLLIDE_SOUND_ENABLED "Enable a sound upon collision."
+    IDC_PSA_COLLIDE_SOUND_IDX "Index of the sound to play upon collsion."
+    IDC_PSA_COLLIDE_SOUND_TAG_DIRECTORY_EDIT 
+                            "The current directory containing sound files."
+    IDC_PS_RENDERER_MESH_VISUALNAME 
+                            "The Visual Exporter exported visual file to draw the mesh particles.\r\nYou can drag and drop visuals from the asset locator."
+    IDC_PSA_SOURCE_POSITION_GENERATOR_SHOW 
+                            "Toggles visibility of the area defined for the position generator,\r\nand of the 3D gizmos attached to its initial and final (if applicable)\r\npoints."
+    IDC_PSA_SOURCE_VELOCITY_GENERATOR_SHOW 
+                            "Toggles visibility of the area defined for the velocity generator,\r\nand of the 3D gizmos attached to its initial and final (if applicable)\r\npoints."
+    IDC_PSA_MAGNET_MINDIST  "Area around the magnet in which it will not exert force."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_SOURCE_POSITION_GENERATOR_X2 
+                            "To x coordinate of the final point of the position generator."
+    IDC_PSA_SOURCE_POSITION_GENERATOR_Y2 
+                            "To y coordinate of the final point of the position generator."
+    IDC_PSA_SOURCE_POSITION_GENERATOR_Z2 
+                            "To z coordinate of the final point of the position generator."
+    IDC_PSA_SOURCE_VELOCITY_GENERATOR_X2 
+                            "To x coordinate of the final point of the velocity generator."
+    IDC_PSA_SOURCE_VELOCITY_GENERATOR_Y2 
+                            "To y coordinate of the final point of the velocity generator."
+    IDC_PSA_SOURCE_VELOCITY_GENERATOR_Z2 
+                            "To z coordinate of the final point of the velocity generator."
+    IDC_PS_RENDERER_AMP_CIRCULAR 
+                            "Indicates that the sprites should be drawn connecting each particle to\r\nthe next, instead of connecting each particle to the point of origin."
+    IDC_ADD                 "Add a new particle system or a new sub-particle system."
+    IDC_COPY                "Copy the current selection."
+    IDC_DEL                 "Delete the current selection."
+    IDC_ADD_COMP            "Add the selected componet to the current sub-particle system."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PS_RENDERER_SPRITE_FRAMECOUNT 
+                            "Number of parts in which to cut the source file."
+    IDC_PS_RENDERER_SPRITE_FRAMERATE 
+                            "Number of frames in which the same part of a multiple frame bitmap\r\nshould be displayed."
+    IDC_PSA_SOURCE_VELOCITY_GENERATOR "Geometry of the velocity generator."
+    IDC_PSA_BARRIER_REACTION 
+                            "How the particles should interact with the barrier."
+    IDC_PSA_TINTSHADER_COLORPICKER "Colour of chosen tint."
+    IDC_PSA_TINTSHADER_PICKER_GREEN 
+                            "Green component of the tint in the selected Time Point."
+    IDC_PSA_TINTSHADER_PICKER_BLUE 
+                            "Blue component of the tint in the selected Time Point."
+    IDC_PSA_TINTSHADER_PICKER_ALPHA 
+                            "Numeric value for the alpha to be applied to the particle in the\r\nselected Time Point."
+    IDC_PSA_TINTSHADER_PICKER_RED 
+                            "Red component of the tint in the selected Time Point."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_SOURCE_MOTIONTRIGGERED 
+                            "Indicates that the particle subsystem is attached to a moving object."
+    IDC_PSA_SOURCE_TIMETRIGGERED 
+                            "Indicates that the particle sub-systems will periodically generate particles."
+    IDC_PSA_SOURCE_GROUNDED "Indicates that particles should (if possible) be spawned at ground level."
+    IDC_PSA_SOURCE_DROPDISTANCE 
+                            "Maximum distance (in metres) allowed between the ground and the\r\nparticle's initial height (specified in field Initial Position\r\nGenerator-From-y) if the particle is to begenerated."
+    IDC_PSA_SOURCE_RATE     "Number of particles to be generated per second."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PS_RENDERER_BLUR_TEXTURENAME_DIRECTORY_BTN 
+                            "Browse for a folder containing blur textures."
+    IDC_PS_RENDERER_BLUR_TEXTURENAME 
+                            "List of files on the folder specified in button Folder, and that are\r\nrelevant to the specified renderer.\r\nYou can drag and drop BMP, TGA and DDS files from the asset locator."
+    IDC_PS_RENDERER_BLUR_WIDTH 
+                            "Thickness with which to draw the image in source file."
+    IDC_PS_RENDERER_BLUR_TIME 
+                            "How long to extend the particle back along its current velocity vector."
+    IDC_PSA_SOURCE_RANDOM_SPIN_MIN 
+                            "Minimum values allowed for the randomisation of the number of\r\nrevolutions per second that the particle should perform."
+    IDC_PSA_SOURCE_RANDOM_SPIN_MAX 
+                            "Maximum values allowed for the randomisation of the number of\r\nrevolutions per second that the particle should perform."
+    IDC_PSA_SOURCE_INITIALORIENT_X 
+                            "Pitch of the initial position of the particles."
+    IDC_PSA_SOURCE_INITIALORIENT_Y 
+                            "Yaw of the initial position of the particles."
+    IDC_PSA_SOURCE_INITIALORIENT_RANDOMISE "Randomize degree range."
+    IDC_PSA_SOURCE_INITIALORIENT_RANDOMISE_MIN 
+                            "Maximum value to be used for randomising the particles' pitch."
+    IDC_PSA_SOURCE_INITIALORIENT_RANDOMISE_MAX 
+                            "Maximum value to be used for randomising the particles' yaw."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_FORCE_X         "X component of the direction/magnitude of the force to be applied\r\nto the particles in the subsystem."
+    IDC_PSA_FORCE_Y         "Y component of the direction/magnitude of the force to be applied\r\nto the particles in the subsystem."
+    IDC_PSA_FORCE_Z         "Z component of the direction/magnitude of the force to be applied\r\nto the particles in the subsystem."
+    IDC_PSA_STREAM_VECTORY  "Y coordinate for the direction/magnitude of the force to be applied\r\nto the particles."
+    IDC_PSA_STREAM_VECTORX  "X coordinate for the direction/magnitude of the force to be applied\r\nto the particles."
+    IDC_PSA_STREAM_VECTORZ  "Z coordinate for the direction/magnitude of the force to be applied\r\nto the particles."
+    IDC_PSA_STREAM_HALFLIFE "Number of seconds that the particle's velocity will take to move\r\nhalfway towards the"
+    IDC_PSA_SCALER_SIZE     "Final size of the particle."
+    IDC_PSA_SCALER_RATE     "Number of metres per seconds by which to increase or decrease the particle."
+    IDC_PSA_ORBITOR_POINTZ  "Z coordinate of the point around which the particles will orbit along the y-axis."
+    IDC_PSA_ORBITOR_POINTX  "X coordinate of the point around which the particles will orbit along the y-axis."
+    IDC_PSA_FLARE_FLARESTEP "Frequency in which to apply the flare effect to the particles."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PS_RENDERER_TRAIL_TEXTURENAME 
+                            "List of files on the folder specified in button Folder, and that are\r\nrelevant to the specified renderer.\r\nYou can drag and drop BMP, TGA and DDS files from the asset locator."
+    IDC_PS_RENDERER_SPRITE_TEXTURENAME_DIRECTORY_BTN 
+                            "Browse for a folder containing sprite textures."
+    IDC_PSA_TINTSHADER_ADDNEWTINT 
+                            "Adds a new Time Point in the Tint Timeline."
+    IDC_PS_RENDERER_TRAIL_WIDTH 
+                            "Thickness with which to draw the image in source file."
+    IDC_PS_RENDERER_AMP_WIDTH 
+                            "Thickness with which to draw the image in source file."
+    IDC_PS_RENDERER_AMP_HEIGHT 
+                            "How compressed or elongated the original texture will be when\r\nrendering the particle."
+    IDC_PS_RENDERER_AMP_STEPS "Number of kinks in each line."
+    IDC_PS_RENDERER_AMP_VARIATION "How much to bend each line."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PSA_FLARE_COLOURIZE "Uses the setting specified for the component Tint Shader (if any)\r\nto colour the particles."
+    IDC_PSA_FLARE_USEPARTICLESIZE 
+                            "Indicates that the particle should be sized as per its source file,\r\ninstead of using the size of chosen texture for the flare."
+    IDC_PSA_FLARE_FLARENAME_DIRECTORY_EDIT 
+                            "Folder from which to list the texture files."
+    IDC_PS_RENDERER_VIEWDEPENDENT 
+                            "Sets if the particle system should be drawn in the camera's\r\ncoordinate system instead of the world's coordinate system."
+    IDC_PS_RENDERER_SPRITE_MATERIALFX 
+                            "List of available modes to blend the particle."
+    IDC_PS_RENDERER_SPRITE  "A sprite is a bitmap that rotates to face the camera perspective."
+    IDC_PS_RENDERER_MESH    "Uses a Visual Exporter exported mesh (.visual file) as a particle."
+    IDC_PS_RENDERER_BLUR    "Draws a trail behind each particle, based on its velocity, but does not\r\nretain information about previous positions of each particle."
+    IDC_PS_RENDERER_AMP     "Draws a series of sprites from the particle system's origin to each particle.\r\nIdeal for electrial effects."
+    IDC_PS_RENDERER_TRAIL   "Draws a trail behind each particle, while retaining information about\r\nprevious positions of each particle, allowing you to use centrifugal\r\nforces like Orbitor."
+    IDC_PS_RENDERER_MESH_MATERIALFX "The blending mode."
+    IDC_PS_RENDERER_VISUAL  "Uses a generic visual (.visual) file to draw the particles."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PROMPTSAVE          "The current particle system has been edited. Do you want to save your changes?"
+    IDS_PROMPTSAVETITLE     "Save changes?"
+    IDS_POINT               "Point"
+    IDS_LINE                "Line"
+    IDS_CYLINDER            "Cylinder"
+    IDS_SPHERE              "Sphere"
+    166                     "Box"
+    IDS_BLENDED_COLOUR      "Blended colour"
+    BLENDED_INVERSE_COLOUR  "Blended inverse colour"
+    IDS_SHIMMER             "Shimmer"
+    IDS_SOURCE_ALPHA        "Source alpha"
+    IDS_BLENDED_INVERSE_COLOUR "Blended inverse colour"
+    IDB_SEARCHFILTER        "Filter the list of particle systems."
+    IDS_NONE                "None"
+    IDS_QUICK               "Quick"
+    IDS_ACCURATE            "Accurate"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_OPENINEXPLORER      "Open folder in Explorer"
+    IDS_COPYPATHCLIPBOARD   "Copy path to clipboard"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_FILTER              "Search filter.  Type the partial name of a particle system to filter the list."
+    IDC_DIR                 "The current particle system directory."
+    IDC_PS_RENDERER_SPRITE_TEXTURENAME_DIRECTORY_EDIT 
+                            "The currently chosen directory for sprite textures.\r\nYou can drag and drop BMP, TGA and DDS files from the asset locator."
+    IDC_PS_RENDERER_AMP_TEXTURENAME_DIRECTORY_EDIT 
+                            "The currently chosen directory for amp textures.\r\nYou can drag and drop BMP, TGA and DDS files from the asset locator."
+    IDC_PS_RENDERER_TRAIL_TEXTURENAME_DIRECTORY_EDIT 
+                            "The currently chosen directory for trail textures.\r\nYou can drag and drop BMP, TGA and DDS files from the asset locator."
+    IDC_PS_RENDERER_BLUR_TEXTURENAME_DIRECTORY_EDIT 
+                            "The currently chosen directory for blur textures.\r\nYou can drag and drop BMP, TGA and DDS files from the asset locator."
+    IDC_PS_RENDERER_MESH_VISUALNAME_DIRECTORY_EDIT 
+                            "The currently chosen directory for meshes.\r\nYou can drag and drop visuals from the asset locator."
+    IDC_PS_RENDERER_SPRITE_POINTSPRITE "Toggle point sprite usage."
+    IDC_PSA_SOURCE_VELOCITY_INHERITANCE 
+                            "Percentage of velocity inherited from particle system (0 for none, 1 for all)."
+    IDC_PS_RENDERER_MESH_MATERIAL_OVERRIDE 
+                            "If this is checked, and if a material is selected below then the mesh's visual\r\nwill use the overridden material instead."
+    IDC_PS_RENDERER_MESH_MATERIAL_DIRECTORY_BTN 
+                            "Browse to select a material folder."
+    IDC_PS_RENDERER_MESH_SORT 
+                            "The sorting applied to the particles before drawing."
+END
+
+STRINGTABLE 
+BEGIN
+    SEARCH_FILTER_ID        "Filter by particle system name."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PS_RENDERER_VISUAL_VISUALNAME 
+                            "The visual file to draw the particles.\r\nYou can drag and drop visuals from the asset locator."
+    IDC_PS_RENDERER_VISUAL_VISUALNAME_DIRECTORY_EDIT 
+                            "The currently chosen directory for visuals.\r\nYou can drag and drop visuals from the asset locator."
+    IDC_PS_RENDERER_VISUAL_VISUALNAME_DIRECTORY_BTN 
+                            "Browse for a folder containing visuals."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_COULDNTOPENFILE     "The file {0} could not be opened."
+    IDS_INVALIDFILENAME     "The filename includes invalid characters.\r\nCharacters such as ""/<>?*:"" or spaces are not allowed."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Australia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_ADDACT              BITMAP                  "res\\addact.bmp"
+IDB_ADDACTD             BITMAP                  "res\\addactd.bmp"
+IDB_OPEN                BITMAP                  "res\\open.bmp"
+IDB_OPEND               BITMAP                  "res\\opend.bmp"
+IDB_SEARCHFILTER        BITMAP                  "res\\searchfilter.bmp"
+IDB_CLEARFILTER         BITMAP                  "res\\clearfilter.bmp"
+IDR_ACTSELTB            BITMAP                  "res\\actionseltb.bmp"
+IDB_SAVE                BITMAP                  "res\\save.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+IDR_MANIFEST_LEGACY     RT_MANIFEST             "res\\particle_editor.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_ACTSELTB TOOLBAR  16, 15
+BEGIN
+    BUTTON      IDC_ADD
+    BUTTON      IDC_COPY
+    BUTTON      IDC_DELETE
+END
+
+#endif    // English (Australia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\particle_editor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"                       // Standard components
+#include "ual.rc"                             // UAL
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

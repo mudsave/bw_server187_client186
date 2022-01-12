@@ -1,0 +1,19 @@
+<navgen_settings.xml>
+	<space>	spaces/main10	</space>
+	<girth>	0.5
+		<always>	</always>
+		<width>	0.50	</width>
+		<height>	1.95	</height>
+		<depth>	0.25	</depth>
+	</girth>
+	<girth>	4.0
+		<width>	4.0	</width>
+		<height>	4.0	</height>
+		<depth>	2.0	</depth>
+	</girth>
+	<bwlockd>	oi:8168	</bwlockd>
+	<standalone>	true	</standalone>
+	<processor> 1 </processor>
+	<writeTGAs> false </writeTGAs>
+	<floodResultPath> . </floodResultPath>
+</navgen_settings.xml>

@@ -1,0 +1,10 @@
+<root>
+	<bounds>
+		<minX>	-1	</minX>
+		<minY>	-1	</minY>
+		<maxX>	1	</maxX>
+		<maxY>	1	</maxY>
+	</bounds>
+	<timeOfDay>	environments/sky.xml	</timeOfDay>
+	<skyGradientDome>	environments/sky.xml	</skyGradientDome>
+</root>

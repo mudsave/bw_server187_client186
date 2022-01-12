@@ -1,0 +1,122 @@
+<root>
+	<help>
+		<toolsReferenceGuide>	..\..\doc\content_tools_reference_guide.pdf	</toolsReferenceGuide>
+		<contentCreationManual>	..\..\doc\content_creation.chm	</contentCreationManual>
+		<shortcutsHtml>	resources/html/shortcuts.html	</shortcutsHtml>
+	</help>
+	<space>	helpers/spaces/pe	</space>
+	<camera>
+		<speed>	Slow
+			<Slow>	0.5
+				<turbo>	4	</turbo>
+			</Slow>
+			<Medium>	4
+				<turbo>	8	</turbo>
+			</Medium>
+			<Fast>	16
+				<turbo>	32	</turbo>
+			</Fast>
+			<SuperFast>	32
+				<turbo>	64	</turbo>
+			</SuperFast>
+		</speed>
+		<invert>	0	</invert>
+		<mode>	4	</mode>
+		<rotDir>	0	</rotDir>
+		<orbitSpeed>	0.5	</orbitSpeed>
+	</camera>
+	<render>
+		<environment>	1
+			<drawFog>	0	</drawFog>
+			<drawShimmer>	1	</drawShimmer>
+			<drawBloom>	1	</drawBloom>
+			<drawClouds>	0	</drawClouds>
+			<drawSky>	1	</drawSky>
+			<drawSunAndMoon>	1	</drawSunAndMoon>
+			<drawDetailObjects>	1	</drawDetailObjects>
+			<drawWater>	1	</drawWater>
+		</environment>
+		<misc>
+			<drawFog>	0	</drawFog>
+			<nearPlane>	0.01f	</nearPlane>
+			<farPlane>	250.f	</farPlane>
+		</misc>
+	</render>
+	<renderer>
+		<shadows>
+			<quality>	0	</quality>
+			<intensity>	0.4	</intensity>
+			<distance>	10.0	</distance>
+			<fadeStart>	9.0	</fadeStart>
+			<bufferSize>	1024	</bufferSize>
+			<maxCount>	2	</maxCount>
+			<modelCasters>	shaders/std_effects/shadows/caster	</modelCasters>
+			<modelReceivers>	shaders/std_effects/shadows/receiver	</modelReceivers>
+			<terrainReceiver>	shaders/std_effects/shadows/receiver_terrain.fx	</terrainReceiver>
+		</shadows>
+	</renderer>
+	<settings>
+		<showAxes>	1	</showAxes>
+		<checkForSparkles>	0	</checkForSparkles>
+		<showModel>	1	</showModel>
+		<showWireframe>	0	</showWireframe>
+		<showSkeleton>	0	</showSkeleton>
+		<showShadowing>	1	</showShadowing>
+		<showBoundingBox>	0	</showBoundingBox>
+		<showBsp>	0	</showBsp>
+		<showPortals>	1	</showPortals>
+		<centreModel>	0	</centreModel>
+		<groundModel>	0	</groundModel>
+		<useCustomLighting>	1	</useCustomLighting>
+		<zoomOnLoad>	1	</zoomOnLoad>
+		<animateZoom>	1	</animateZoom>
+		<zoomDuration>	0.3	</zoomDuration>
+		<useTerrain>	0	</useTerrain>
+		<useFloor>	1	</useFloor>
+		<bkgColour>	192.000000 192.000000 192.000000	</bkgColour>
+		<floorTexture>	helpers/maps/system/default.bmp	</floorTexture>
+		<floorGrid>	1.0	</floorGrid>
+		<floraDensity>	2	</floraDensity>
+		<showOriginalAnim>	0	</showOriginalAnim>
+		<showLightModels>	1	</showLightModels>
+		<lastNewTintFX>	1	</lastNewTintFX>
+		<showTrees>	1	</showTrees>
+		<showWater>	0	</showWater>
+		<regenBBOnLoad>	0	</regenBBOnLoad>
+		<lockLodParents>	0	</lockLodParents>
+		<gameTime>	14:15	</gameTime>
+	</settings>
+	<startup>
+		<lastLoadOK>	true	</lastLoadOK>
+		<showSplashScreen>	1	</showSplashScreen>
+		<loadLastModel>	1	</loadLastModel>
+		<loadLastLights>	1	</loadLastLights>
+		<lastView>
+			<row0>	0.989179 0.039401 0.141320	</row0>
+			<row1>	0.000000 0.963262 -0.268563	</row1>
+			<row2>	-0.146710 0.265657 0.952839	</row2>
+			<row3>	0.037569 -0.707245 2.977701	</row3>
+		</lastView>
+		<lastOrigin>	-0.038150 0.736095 -0.001146	</lastOrigin>
+	</startup>
+	<messages>
+		<showDate>	0	</showDate>
+		<showTime>	0	</showTime>
+		<showPriority>	1	</showPriority>
+		<errorMsgs>	1	</errorMsgs>
+		<warningMsgs>	1	</warningMsgs>
+		<noticeMsgs>	0	</noticeMsgs>
+		<infoMsgs>	0	</infoMsgs>
+		<assetMsgs>	0	</assetMsgs>
+	</messages>
+	<consoles>
+		<darkenBackground>	true	</darkenBackground>
+		<numMessageLines>	5	</numMessageLines>
+	</consoles>
+	<lights>
+		<file0>	helpers/lights/yellowkey_bluebounce_whiterim.mvl	</file0>
+		<file1>	helpers/lights/3way_studio.mvl	</file1>
+		<file2>	helpers/lights/underlight.mvl	</file2>
+	</lights>
+	<models>	</models>
+</root>

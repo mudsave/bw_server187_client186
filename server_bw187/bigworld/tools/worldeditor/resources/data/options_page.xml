@@ -1,0 +1,44 @@
+<root>
+
+	<Shells> actDrawShells
+		<Game_Visibility> actDrawShellNeighboursPortals </Game_Visibility>
+	</Shells>
+	
+	<Scenery> actDrawScenery
+		<Wireframe> actDrawSceneryWireframe </Wireframe>
+		<Particles> actDrawSceneryParticle </Particles>
+		<BSP> actDrawSceneryBSP </BSP>
+    <Particle_System_Bounding_Boxes> actDrawDebugBB </Particle_System_Bounding_Boxes>	
+  </Scenery>
+
+	<Terrain> actDrawTerrain
+		<Wireframe> actDrawTerrainWireframe </Wireframe> 
+	</Terrain>
+
+	<Lights> actDrawLights
+		<Static_light_models> actDrawLightStatic </Static_light_models>
+		<Dynamic_light_models> actDrawLightDynamic </Dynamic_light_models>
+		<Specular_light_models> actDrawLightSpecular </Specular_light_models>
+	</Lights>
+
+	<Environment> actDrawEnvironment
+		<Sky> actDrawSky </Sky>
+		<Clouds> actDrawClouds </Clouds>
+		<Water> actDrawWater
+			<Refraction> actDrawWaterRefraction </Refraction>
+			<Reflection> actDrawWaterReflection </Reflection>
+			<Simulation> actDrawWaterSimulation </Simulation>
+		</Water>
+		<Sun_and_Moon> actDrawSunAndMoon </Sun_and_Moon>
+		<Fog> actDrawFog </Fog>
+		<Stars> actDrawStars </Stars>
+		<Detail_objects> actDrawDetailObjects </Detail_objects>
+		<Bloom> actDrawBloom </Bloom>
+		<Shimmer> actDrawShimmer </Shimmer>
+	</Environment>
+
+	<Heaven_and_Earth_Portals> actDrawHeavenAndEarth </Heaven_and_Earth_Portals>
+	<Shade_Read-only_Areas> actShadeReadOnlyAreas </Shade_Read-only_Areas>
+	<Patrol_Graphs> actDrawPatrolGraphs </Patrol_Graphs>
+
+</root>

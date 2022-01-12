@@ -1,0 +1,4 @@
+<dynamic.model>
+	<batched>	false	</batched>
+	<nodefullVisual>	resources/models/dynamic	</nodefullVisual>
+</dynamic.model>

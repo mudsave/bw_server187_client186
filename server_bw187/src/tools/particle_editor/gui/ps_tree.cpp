@@ -1,0 +1,283 @@
+/******************************************************************************
+BigWorld Technology
+Copyright BigWorld Pty, Ltd.
+All Rights Reserved. Commercial in confidence.
+
+WARNING: This computer program is protected by copyright law and international
+treaties. Unauthorized use, reproduction or distribution of this program, or
+any portion of this program, may result in the imposition of civil and
+criminal penalties as provided by law.
+******************************************************************************/
+
+#include "pch.hpp"
+#include "ps_tree.hpp"
+#include "ps_node.hpp"
+#include "resource.h"
+#include "user_messages.hpp"
+#include "common/format.hpp"
+
+using namespace std;
+
+BEGIN_MESSAGE_MAP(PSTree, TreeControl)
+    ON_NOTIFY_REFLECT_EX(TVN_SELCHANGED, OnSelection)
+    ON_WM_KEYDOWN()
+    ON_WM_CREATE()
+    ON_WM_RBUTTONDOWN()
+    ON_WM_PAINT()
+END_MESSAGE_MAP()
+
+PSTree::PSTree()
+:
+TreeControl(),
+m_dir()
+{
+}
+
+bool PSTree::Load(string const &dir)
+{
+    m_dir = dir;
+
+    // Clear items from the tree:
+    RemoveNode(NULL);
+
+    // Create the appropriate datasection and iterate through its entries:
+    bool haveOne = false;
+    DataSectionPtr dataSection = BWResource::openSection(m_dir);
+    if (dataSection)
+    {
+        for
+        (
+            DataSectionIterator it = dataSection->begin();
+            it != dataSection->end();
+            ++it
+        )
+        {
+            // Add entries that are xml files:
+            string filename = (*it)->sectionName();
+            if (MetaNode::IsMetaParticleFile(filename))
+            {
+                MetaNode *mn = (MetaNode *)AddNode(new MetaNode(dir, filename));
+            }
+        }
+    }
+
+    return haveOne;
+}
+
+MetaParticleSystemPtr PSTree::GetSelectedMetaParticleSystem() const
+{
+    TreeNode const *node = GetSelectedNode();
+    while (node != NULL)
+    {
+        MetaNode const *metanode = dynamic_cast<MetaNode const *>(node);
+        if (metanode != 0)
+            return metanode->GetMetaParticleSystem();
+        node = node->GetParent();
+    }
+    return NULL;
+}
+
+ParticleSystemPtr PSTree::GetSelectedParticleSystem() const
+{
+    TreeNode const *node = GetSelectedNode();
+    while (node != NULL)
+    {
+        PSNode const *psnode = dynamic_cast<PSNode const *>(node);
+        if (psnode != 0)
+            return psnode->getParticleSystem();
+        node = node->GetParent();
+    }
+    return NULL;
+}
+
+ParticleSystemActionPtr PSTree::GetSelectedAction() const
+{
+    TreeNode const *node = GetSelectedNode();
+    ActionNode const *anode = dynamic_cast<ActionNode const *>(node);
+    if (anode != NULL)
+        return (const_cast<ActionNode *>(anode))->getAction();
+    else
+        return NULL;
+}
+
+void PSTree::SetFilter(string const &filter)
+{
+    BeginLargeOperation();
+
+    // Display everthing?
+    if (filter.empty())
+    {
+        size_t sz = NumberChildren(NULL);
+        for (size_t i = 0; i < sz; ++i)
+        {
+            TreeNode *tn = GetChild(NULL, i);
+            ShowNode(tn, true);
+        }
+    }
+    // Don't display all, apply a case-insenstive filter:
+    else
+    {
+        string ifilter = filter; // case removed filter
+        transform(ifilter.begin(), ifilter.end(), ifilter.begin(), tolower);
+        size_t sz = NumberChildren(NULL);
+        for (size_t i = 0; i < sz; ++i)
+        {
+            TreeNode *tn = GetChild(NULL, i);
+            string name = tn->GetLabel();
+            transform(name.begin(), name.end(), name.begin(), tolower);
+            bool visible = (name.find(ifilter) != string::npos);
+            ShowNode(tn, visible);
+        }
+    }
+
+    EndLargeOperation();
+}
+
+string const &PSTree::GetDirectory() const
+{
+    return m_dir;
+}
+
+BOOL PSTree::OnSelection(NMHDR* nmhdr, LRESULT* result)
+{
+    if (!InLargeOperation())
+    {
+        // Make sure that if we selected a meta-particle system that it is loaded.
+        TreeNode *node = GetSelectedNode();
+        while (node != NULL)
+        {
+            MetaNode *metanode = dynamic_cast<MetaNode *>(node);
+            if (metanode != 0)
+            {
+                metanode->EnsureLoaded();
+                if (metanode->GetMetaParticleSystem() == NULL)
+                {
+                    AfxMessageBox
+                    (
+                        sformat
+                        (
+                            IDS_BADPARTICLEFILE, 
+                            metanode->GetFilename()
+                        ).c_str()
+                    );
+                }
+                break;
+            }
+            node = node->GetParent();
+        }
+
+        if (result != NULL)
+            *result = 0;
+    }
+
+    return FALSE; // allow any containing dialogs to process selections too
+}
+
+void PSTree::OnKeyDown(UINT key, UINT repcnt, UINT flags)
+{
+    if (key == VK_F2)
+    {
+        TreeNode *node = GetSelectedNode();
+        EditNodeLabel(node);
+    }
+    else if (key == VK_DELETE)
+    {
+        CWnd *parent = CTreeCtrl::GetParent();
+        HWND hmyself = *this;
+        if (parent != NULL)
+            parent->SendNotifyMessage(WM_DELETE_NODE, 0, (LPARAM)hmyself);
+    }
+    else
+    {
+        TreeControl::OnKeyDown(key, repcnt, flags);
+    }
+}
+
+void PSTree::OnRButtonDown(UINT flags, CPoint point)
+{
+    TreeNode *hititem = HitTest(point);
+    if (hititem != NULL)
+    {
+        SetSelectedNode(hititem);
+        TreeNode *selitem = GetSelectedNode();
+        // The user may have been prompted to save the current meta-particle
+        // system and they said no.  In this case do not bring up the right
+        // click menu.
+        if (selitem == hititem)
+        {
+            CWnd *parent = CWnd::GetParent();
+            if (parent != NULL)
+                parent->SendMessage(WM_PSTREE_CMENU);
+        }
+    }
+}
+
+void PSTree::OnPaint()
+{
+    CPaintDC dc(this);
+
+    // Draw into a back buffer:
+    CDC memDC;
+    memDC.CreateCompatibleDC(&dc);
+
+	CRect rcClip, rcClient;
+	dc.GetClipBox(&rcClip);
+	GetClientRect(&rcClient);
+
+	// Select a compatible bitmap into the memory DC
+	CBitmap bitmap;
+	bitmap.CreateCompatibleBitmap(&dc, rcClient.Width(), rcClient.Height());
+	memDC.SelectObject(&bitmap);
+	
+	// Set clip region to be same as that in paint DC
+	CRgn rgn;
+	rgn.CreateRectRgnIndirect( &rcClip );
+	memDC.SelectClipRgn(&rgn);
+	rgn.DeleteObject();
+	
+	// First let the control do its default drawing.
+	CWnd::DefWindowProc(WM_PAINT, (WPARAM)memDC.m_hDC, 0);
+
+    // If we are editing the current label then it's been drawn correctly.
+    CEdit *edit     = GetEditControl();
+    CWnd  *focusWnd = CWnd::GetFocus();
+    if (edit == NULL && focusWnd != this)
+    {
+        // Find the selected item and draw it as the solid selected colour:
+	    HTREEITEM hitem = GetFirstVisibleItem();
+	    int itemCnt = GetVisibleCount() + 1;
+	    while (hitem != NULL && --itemCnt)
+	    {	
+            UINT selFlag = TVIS_DROPHILITED | TVIS_SELECTED;
+            if ((GetItemState(hitem, selFlag) & selFlag) != 0)
+            {
+                CFont *font = GetFont();
+                CFont *oldFont = memDC.SelectObject(font);
+                memDC.SetTextColor(GetSysColor(COLOR_HIGHLIGHTTEXT));			
+			    memDC.SetBkColor(GetSysColor(COLOR_HIGHLIGHT));
+                CRect rect;
+                GetItemRect(hitem, &rect, TRUE);
+                CString itemTxt = GetItemText(hitem);
+                memDC.FillSolidRect(rect, GetSysColor(COLOR_HIGHLIGHT));
+			    memDC.TextOut(rect.left + 2, rect.top + 1, itemTxt);
+                memDC.SelectObject(oldFont);
+            }
+            hitem = GetNextVisibleItem(hitem);
+        }
+    }
+
+    // Blit the backbuffer:
+	dc.BitBlt
+    (
+        rcClip.left, 
+        rcClip.top, 
+        rcClip.Width(), 
+        rcClip.Height(), 
+        &memDC, 
+		rcClip.left, 
+        rcClip.top, 
+        SRCCOPY
+    );
+
+	memDC.DeleteDC();
+}

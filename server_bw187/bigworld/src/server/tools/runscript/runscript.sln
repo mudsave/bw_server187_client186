@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "runscript", "runscript.vcproj", "{381E2C72-026C-41B6-AF00-C85A7DCE6075}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cstdmf", "..\..\..\..\..\src\lib\cstdmf\s_cstdmf.vcproj", "{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "network", "..\..\..\..\..\src\lib\network\s_network.vcproj", "{603E7D99-3012-4518-B1CE-9EA3986084E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Hybrid
+		ConfigName.2 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.0 = {4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.1 = {603E7D99-3012-4518-B1CE-9EA3986084E8}
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.2 = {4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.Debug.ActiveCfg = Debug|Win32
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.Debug.Build.0 = Debug|Win32
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.Hybrid.ActiveCfg = Hybrid|Win32
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.Hybrid.Build.0 = Hybrid|Win32
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.Release.ActiveCfg = Release|Win32
+		{381E2C72-026C-41B6-AF00-C85A7DCE6075}.Release.Build.0 = Release|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Debug.ActiveCfg = Debug|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Debug.Build.0 = Debug|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Hybrid.ActiveCfg = Hybrid|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Hybrid.Build.0 = Hybrid|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Release.ActiveCfg = Release|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Release.Build.0 = Release|Win32
+		{603E7D99-3012-4518-B1CE-9EA3986084E8}.Debug.ActiveCfg = Debug|Win32
+		{603E7D99-3012-4518-B1CE-9EA3986084E8}.Debug.Build.0 = Debug|Win32
+		{603E7D99-3012-4518-B1CE-9EA3986084E8}.Hybrid.ActiveCfg = Hybrid|Win32
+		{603E7D99-3012-4518-B1CE-9EA3986084E8}.Hybrid.Build.0 = Hybrid|Win32
+		{603E7D99-3012-4518-B1CE-9EA3986084E8}.Release.ActiveCfg = Release|Win32
+		{603E7D99-3012-4518-B1CE-9EA3986084E8}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

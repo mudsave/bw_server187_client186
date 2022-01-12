@@ -1,0 +1,86 @@
+Asset Processor
+
+Introduction
+----------------------
+BigWorld 1.8 introduces a change to the BSP format.  This is to fix a bug with setting material kinds
+and collision flags for objects exported using custom BSPs.  The existing format is supported for 1.8
+but has been deprecated, and after BigWorld 1.8 the old format will not work.  In 1.8 you will get a lot
+of warning messages indicating the use of deprecated BSP files.
+The asset processor has been updated to automatically upgrade BSPs to the new format.
+Note that (as is the nature of the bug) custom BSPs must be manually re-exported from Max or Maya.
+
+Modified files : .primitive
+
+Before You Start
+
+Python Version
+----------------------
+The Asset Processor imports a DLL named _AssetProcessor.dll.  This DLL has been compiled using python
+2.4.3.  If you have a different python version, for example python 2.5, then you will need to recompile
+the DLL.
+To do so, open the solution file in mf/src/tools/assetprocessor and rebuild it.  Copy the DLL to the
+mf/bigworld/tools/misc/asset_processor folder.
+
+Safety
+----------------------
+Check all of your resources into your source repository
+Tag your entire repository so you can easily rollback
+
+Speed
+----------------------
+The Asset Processor visits every folder beneath your resource root, and checks for .mfm, .visual, .chunk, .fx, .model files.
+
+In order to speed the conversion process, you can get the asset convertor to ignore certain named folders.
+See line 23 of the python file FileProvider.py :
+self.ignore = ("CVS","Root","Entries","Entries.Extra","Repository")
+Simply add extra name(s) into the ignore list.
+
+Running Asset Processor
+----------------------
+It is best that one person processes all of the assets for your project, tests them, and commits
+them to your source repository for others to 
+Please follow these steps exactly :
+1) back up your assets using your source repository
+2) create a tag in your repository so that it is easy to rollback any changes you make, just in case.
+3) open a DOS command prompt
+4) browse to the asset processor folder ( mf/bigworld/tools/misc/asset_processor )
+5) set your BW_RES_PATH environment variable to point to the one and only resource tree you wish to convert.
+for example :
+set BW_RES_PATH=d:\mf\fantasydemo\res
+6) run the command : python AssetProcessor.py.  If you immediately get a module import error, then
+please see the comments in "Python Version" above.
+7) wait!
+8) when the process is finished, the process log and the asset database is output.  These can be found in the
+root of your resource tree, it is named assetProcessor.log and assetDatabase.xml
+9) open the assetProcessor.log file, and examine it for any error messages.
+10) set your BW_RES_PATH environment variable back to it's previous state.
+for example:
+set BW_RES_PATH=d:\mf\fantasydemo\res;d:\mf\bigworld\res
+11) browse to the modelviewer folder ( mf/bigworld/tools/modelviewer )
+12) for resources that have been updated, try opening it in ModelEditor to see if it looks alright.
+In particular, turn on the "display BSP" option to make sure the BSPs still work.
+13) check in the modified .primitive files
+14) for resources that the AssetProcessor could not automatically upgrade, you will need to re-export
+them all using the BigWorld 1.8 exporter.
+15) run the asset processor again to make sure there are now no more out-of-date BSPs in use.
+16) delete all *.bsp and *_visual.bsp files and remove them from your repository.  From now on all BSPs (except speedtree)
+will be fully conainted in the .primitive file.
+
+Running Asset Processor Again
+----------------------
+The first run of Asset Processor compiles a database of your assets, and this may take a while.  If you need to process
+your assets again, (but the list of assets have not changed) then you can run the asset processor with the /d switch - this means
+it will load the database and use it.
+Additionally, if at any time you'd like to compile the database to analyse your assets, run the asset processor with the
+/c command - this flag means the database will be compiled, but not processed.
+
+What can possibly go wrong?
+----------------------
+Due to the nature of the BSP update, only files that use the original mesh for its BSP triangles can be automatically
+upgraded to the new BSP2 format.  This excludes any files that use custom BSPs.  Hopefully you've kept all your source
+files :)
+Another error you may see is files that have missing BSPs.  This is actually alright for skinned vertex objects, which
+by design do not get an automatic BSP (unless you have used a custom BSP)
+Finally some objects have degenerate triangles (0 sized triangles).  The Asset Processor will try and catch and report this
+condition but sometimes it will simply think you have a custom BSP.  You should check these models anyway in Max or Maya
+to see why there are degenerate triangles.

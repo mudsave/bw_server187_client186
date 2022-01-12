@@ -1,0 +1,967 @@
+<GUI>
+	
+	<item>
+		<name>	AppToolbars </name>
+		<type>	GROUP	</type>
+		<item>
+			<name>	MainToolbar </name>
+		</item>
+	</item>
+	
+	<item>
+	
+		<name> MainMenu </name>
+		<type>	GROUP	</type>
+		<item>
+			<name> File </name>
+			<type>	GROUP	</type>
+			<displayName> &amp;File </displayName>
+			<description> File Operations </description>
+
+			<item>
+				<name> OpenModel </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Open Model... </displayName>
+				<description> Open a Model </description>
+				<shortcut> Ctrl+O </shortcut>
+				<action> MenuUIAdapter.doOpenFile </action>
+			</item>
+			
+			<item>
+				<name> AddModel </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Add Model... </displayName>
+				<description> Add a Model to the current model </description>
+				<shortcut> Ctrl+A </shortcut>
+				<action> MenuUIAdapter.doAddModel </action>
+			</item>
+			
+			<item>
+				<name> RemoveAddedModels </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Remove Added Models </displayName>
+				<description> Remove all the currently added models </description>
+				<action> MenuUIAdapter.doRemoveAddedModels </action>
+				<updater> MenuUIAdapter.hasAddedModels </updater>
+			</item>
+			
+			<item>
+				<name> RevertToSaved </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Revert to Saved... </displayName>
+				<description> Revert the model to it's last saved state </description>
+				<shortcut> Ctrl+R </shortcut>
+				<action> MenuUIAdapter.doRevertModel </action>
+				<updater> MenuUIAdapter.isModelDirty </updater>
+			</item>
+			
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+
+			<item>
+				<name> Save </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Save </displayName>
+				<description> Save the current model </description>
+				<shortcut> Ctrl+S </shortcut>
+				<action> MenuUIAdapter.doSaveFile </action>
+				<updater> MenuUIAdapter.isModelDirty </updater>
+			</item>
+
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+			
+			<item>
+				<name> ReloadAllTextures </name>
+				<type>	ACTION	</type>
+				<displayName> Reload All &amp;Textures </displayName>
+				<description> Reload all the textures in the model from disk </description>
+				<shortcut> Ctrl+T </shortcut>
+				<action> MenuUIAdapter.doReloadTextures </action>
+			</item>
+			
+			<item>
+				<name> RegenerateVisibilityBox </name>
+				<type>	ACTION	</type>
+				<displayName> Regenerate Visibility &amp;Box </displayName>
+				<description> Regenerate the visibility box for the model using it's animations </description>
+				<shortcut> Ctrl+B </shortcut>
+				<action> MenuUIAdapter.doRegenBoundingBox </action>
+				<updater> MenuUIAdapter.isModelLoaded </updater>
+			</item>
+			
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+
+			<item>
+				<name> Recent_models </name>
+				<type>	GROUP	</type>
+				<displayName>	Recent &amp;Models	</displayName>
+			</item>
+			
+			<item>
+				<name> Recent_lights </name>
+				<type>	GROUP	</type>
+				<displayName>	Recent &amp;Lights	</displayName>
+			</item>
+			
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+
+			<item>
+				<name> Exit </name>
+				<type>	ACTION	</type>
+				<displayName> E&amp;xit </displayName>
+				<description> Exit ModelEditor </description>
+				<commandID>	57665	</commandID>
+			</item>
+			
+		</item>
+		
+		<item>
+			<name> Edit </name>
+			<type>	GROUP	</type>
+			<displayName> &amp;Edit </displayName>
+			<description> Edit Operations </description>
+
+			<item>
+				<name> Undo </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Undo </displayName>
+				<description> Undo the last change </description>
+				<shortcut> Ctrl+Z </shortcut>
+				<action> ToolbarUIAdapter.doUndo </action>
+				<updater> ToolbarUIAdapter.updateUndo </updater>
+			</item>
+	
+			<item>
+				<name> Redo </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Redo </displayName>
+				<description> Redo the last undone change </description>
+				<shortcut> Ctrl+Y </shortcut>
+				<action> ToolbarUIAdapter.doRedo </action>
+				<updater> ToolbarUIAdapter.updateRedo </updater>
+			</item>
+			
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+		
+			<item>
+				<name> Preferences </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Preferences... </displayName>
+				<description> Change the ModelEditor preferences </description>
+				<action> MenuUIAdapter.doPrefs </action>
+			</item>
+		</item>
+		
+		<item>
+			<name> View </name>
+			<type>	GROUP	</type>
+			<displayName> &amp;View </displayName>
+			<description> Display Settings	</description>
+
+			<item>
+				<!-- The app will look for the item called ShowToolbarsSubmenu
+				and will fill it with the toolbars loaded from the AppToolbars
+				section above. -->
+				<name>	ShowToolbarsSubmenu	</name>
+				<type>	GROUP	</type>
+				<displayName>	&amp;Toolbars	</displayName>
+			</item>
+
+			<!--<item>
+				<name>	ShowStatusBar	</name>
+				<type>	TOGGLE	</type>
+				<displayName>	&amp;Status Bar	</displayName>
+				<item>
+					<type>	CHILD	</type>
+					<action> doShowStatusBar </action>
+					<updater> updateStatusBar </updater>
+				</item>
+				<item>
+					<type>	CHILD	</type>
+					<action> doHideStatusBar </action>
+				</item>
+			</item>-->
+
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+
+			<item>
+				<name>	ShowAssetLocatorDisplay	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show &amp;Asset Browser Panel	</displayName>
+				<description>	Show the Asset Browser Panel	</description>
+				<action> MenuUIAdapter.doShowAssetLocatorPanel </action>
+			</item>
+			
+			<item>
+				<name>	ShowPanelDisplay	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show &amp;Display Panel	</displayName>
+				<action> MenuUIAdapter.doShowDisplayPanel </action>
+			</item>
+			
+			<item>
+				<name>	ShowPanelObject	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show &amp;Object Panel	</displayName>
+				<action> MenuUIAdapter.doShowObjectPanel </action>
+			</item>
+			
+			<item>
+				<name>	ShowPanelAnimations	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show A&amp;nimations Panel	</displayName>
+				<action> MenuUIAdapter.doShowAnimationsPanel </action>
+			</item>
+			
+			<item>
+				<name>	ShowPanelActions	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show A&amp;ctions Panel	</displayName>
+				<action> MenuUIAdapter.doShowActionsPanel </action>
+			</item>
+			
+			<item>
+				<name>	ShowPanelLOD	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show &amp;LOD Panel	</displayName>
+				<action> MenuUIAdapter.doShowLODPanel </action>
+			</item>
+			
+			<item>
+				<name>	ShowPanelLights	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show &amp;Lights Panel	</displayName>
+				<action> MenuUIAdapter.doShowLightsPanel </action>
+			</item>
+			
+			<item>
+				<name>	ShowPanelMaterials	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show &amp;Materials Panel	</displayName>
+				<action> MenuUIAdapter.doShowMaterialsPanel </action>
+			</item>
+			
+			<item>
+				<name>	ShowPanelMessages	</name>
+				<type>	ACTION	</type>
+				<displayName>	Show &amp;Messages Panel	</displayName>
+				<action> MenuUIAdapter.doShowMessagesPanel </action>
+			</item>
+			
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+
+			<item>
+				<name>	ShowAllPanels	</name>
+				<type>	TOGGLE	</type>
+				<displayName>	Show &amp;Panels	</displayName>
+				<description> Show all hidden panels </description>
+				<shortcut>	Ctrl+H	</shortcut>
+				<item>
+					<type>	CHILD	</type>
+					<action> doShowSidePanel </action>
+					<updater> updateSidePanel </updater>
+				</item>
+				<item>
+					<type>	CHILD	</type>
+					<action> doHideSidePanel </action>
+				</item>
+			</item>
+			
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+
+			<item>
+				<name>	DefaultPanelLayout	</name>
+				<type>	ACTION	</type>
+				<displayName>	Load &amp;Default Panel Layout...	</displayName>
+				<action>	doDefaultPanelLayout	</action>
+			</item>
+			<item>
+				<name>	LoadPanelLayout	</name>
+				<type>	ACTION	</type>
+				<displayName>	Load Most &amp;Recent Panel Layout...	</displayName>
+				<action>	doLoadPanelLayout	</action>
+			</item>
+		</item>
+		
+		<item>
+			<name> Help </name>
+			<type>	GROUP	</type>
+			<displayName> &amp;Help </displayName>
+			<description> Help Information </description>
+
+			<item>
+				<name> AboutModelEditor </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;About ModelEditor... </displayName>
+				<description> Get Information about ModelEditor </description>
+				<action> doAboutApp </action>
+			</item>
+			
+			<item>
+				<name>	ToolsReferenceGuide	</name>
+				<type>	ACTION	</type>
+				<displayName>	&amp;Tools Reference Guide...	</displayName>
+				<description> Access the Tools Reference Guide </description>
+				<action>	doToolsReferenceGuide	</action>
+			</item>
+			
+			<item>
+				<name>	ContentCreation	</name>
+				<type>	ACTION	</type>
+				<displayName>	&amp;Content Creation...	</displayName>
+				<description> Access the Content Creation Manual </description>
+				<action>	doContentCreation	</action>
+			</item>
+
+			<item>
+				<name>	Shortcuts	</name>
+				<type>	ACTION	</type>
+				<shortcut> F1 </shortcut>
+				<displayName>	&amp;Shortcuts...	</displayName>
+				<description> Get Information on the Shortcuts Availible in ModelEditor </description>
+				<action>	doShortcuts	</action>
+			</item>
+
+			<item>
+				<type>	SEPARATOR	</type>
+			</item>
+
+			<item>
+				<name>	RequestFeature	</name>
+				<type>	ACTION	</type>
+				<displayName>	&amp;Request Feature / Report Bug...	</displayName>
+				<description> Request Feature or Report a Bug in ModelEditor </description>
+				<action>	doRequestFeature	</action>
+			</item>
+		</item>
+		
+	</item>
+			
+	<item>
+	
+		<name> MainToolbar </name>
+		<type>	GROUP	</type>
+		<displayName>	Main Toolbar	</displayName>
+		
+		<item>
+				<name> Save </name>
+				<type>	ACTION	</type>
+				<displayName> &amp;Save </displayName>
+				<description> Save the current model </description>
+				<shortcut> Ctrl+S </shortcut>
+				<action> MenuUIAdapter.doSaveFile </action>
+				<updater> MenuUIAdapter.isModelDirty </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/save_toolbar.bmp:0,0,24,24	</imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> Undo </name>
+			<type>	ACTION	</type>
+			<displayName> Undo </displayName>
+			<description> Undo the last change </description>
+			<shortcut> Ctrl+Z </shortcut>
+			<action> ToolbarUIAdapter.doUndo </action>
+			<updater> ToolbarUIAdapter.updateUndo </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/edit_toolbar.bmp:0,0,24,24	</imageNormal>
+		</item>
+
+		<item>
+			<name> Redo </name>
+			<type>	ACTION	</type>
+			<displayName> Redo </displayName>
+			<description> Redo the last undone change </description>
+			<shortcut> Ctrl+Y </shortcut>
+			<action> ToolbarUIAdapter.doRedo </action>
+			<updater> ToolbarUIAdapter.updateRedo </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/edit_toolbar.bmp:24,0,48,24	</imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> Thumbnail </name>
+			<type>	ACTION	</type>
+			<displayName> Take Thumbnail </displayName>
+			<description> Take a thumbnail of the model </description>
+			<action> ToolbarUIAdapter.doThumbnail </action>
+			<updater> ToolbarUIAdapter.updateThumbnail </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/main_toolbar.bmp:0,0,24,24	</imageNormal>
+		</item>
+		
+		<item>
+			<name> Zoom </name>
+			<type>	ACTION	</type>
+			<displayName> Zoom Extents </displayName>
+			<description> Zoom to the extents of the model's bounding box (middle mouse button) </description>
+			<action> ToolbarUIAdapter.doZoomExtents </action>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/main_toolbar.bmp:24,0,48,24	</imageNormal>
+		</item>
+		
+		<item>
+            <name> BoundingBox </name>
+            <type> TOGGLE </type>
+            <displayName> Grid </displayName>
+            <description> Show the model's bounding boxes </description>
+            <transparency> 255,0,255 </transparency>
+            <imageNormal> resources/data/main_toolbar.bmp:48,0,72,24 </imageNormal>
+            <item>
+                <type> CHILD </type>
+                <action> settings/showBoundingBox = 1  </action>
+                <updater> settings/showBoundingBox == 0 </updater>
+            </item>
+            <item>
+                <type> CHILD </type>
+                <action> settings/showBoundingBox = 0  </action>
+            </item>
+        </item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> CameraMode </name>
+			<type> CHOICE </type>
+			<displayName> Camera Mode </displayName>
+			<shortcut> Ctrl+M </shortcut>
+			<item>
+				<type>	CHILD	</type>
+				<name> Free Camera </name>
+				<displayName> &amp;Free Camera </displayName>
+				<description> Change the camera mode to a free camera </description>
+				<action>	ToolbarUIAdapter.doFreeCamera	</action>
+				<updater> ToolbarUIAdapter.updateFreeCamera </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:72,0,96,24	</imageNormal>
+			</item>
+			<item>
+				<type>	CHILD	</type>
+				<name> X-Locked Camera </name>
+				<displayName> &amp;X-Locked Camera </displayName>
+				<description> Change the camera mode to an x-locked camera </description>
+				<action>	ToolbarUIAdapter.doXCamera	</action>
+				<updater> ToolbarUIAdapter.updateXCamera </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:96,0,120,24	</imageNormal>
+			</item>
+			<item>
+				<type>	CHILD	</type>
+				<name> Y-Locked Camera </name>
+				<displayName> &amp;Y-Locked Camera </displayName>
+				<description> Change the camera mode to an y-locked camera </description>
+				<action>	ToolbarUIAdapter.doYCamera	</action>
+				<updater> ToolbarUIAdapter.updateYCamera </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:120,0,144,24	</imageNormal>
+			</item>
+			<item>
+				<type>	CHILD	</type>
+				<name> Z-Locked Camera </name>
+				<displayName> &amp;Z-Locked Camera </displayName>
+				<description> Change the camera mode to an z-locked camera </description>
+				<action>	ToolbarUIAdapter.doZCamera	</action>
+				<updater> ToolbarUIAdapter.updateZCamera </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:144,0,168,24	</imageNormal>
+			</item>
+			<item>
+				<type>	CHILD	</type>
+				<name> Orbit Camera </name>
+				<displayName> &amp;Orbit Camera </displayName>
+				<description> Change the camera mode to an orbit camera </description>
+				<action>	ToolbarUIAdapter.doOrbitCamera	</action>
+				<updater> ToolbarUIAdapter.updateOrbitCamera </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:168,0,192,24	</imageNormal>
+			</item>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name>	CameraSpeed	</name>
+			<type>	CHOICE	</type>
+			<displayName>	Camera Speed	</displayName>
+			<shortcut> Ctrl+I </shortcut>
+			<item>
+				<type>	CHILD	</type>
+				<name> Slow </name>
+				<shortcut> Ctrl+1 </shortcut>
+				<displayName> &amp;Slow Motion </displayName>
+				<description> Set the camera movement speed to slow </description>
+				<action>	ToolbarUIAdapter.doSlowCamera	</action>
+				<updater> camera/speed	== Slow </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:192,0,216,24	</imageNormal>
+			</item>
+			<item>
+				<type>	CHILD	</type>
+				<name> Medium </name>
+				<shortcut> Ctrl+2 </shortcut>
+				<displayName> &amp;Medium Motion </displayName>
+				<description> Set the camera movement speed to medium </description>
+				<action>	ToolbarUIAdapter.doMediumCamera	</action>
+				<updater> camera/speed	== Medium </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:216,0,240,24	</imageNormal>
+			</item>
+			<item>
+				<type>	CHILD	</type>
+				<name> Fast </name>
+				<shortcut> Ctrl+3 </shortcut>
+				<displayName> &amp;Fast Motion </displayName>
+				<description> Set the camera movement speed to fast </description>
+				<action>	ToolbarUIAdapter.doFastCamera	</action>
+				<updater> camera/speed	== Fast </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:240,0,264,24	</imageNormal>
+			</item>
+			<item>
+				<type>	CHILD	</type>
+				<name> SuperFast </name>
+				<shortcut> Ctrl+4 </shortcut>
+				<displayName> &amp;Super Fast </displayName>
+				<description> Set the camera movement speed to superfast </description>
+				<action>	ToolbarUIAdapter.doSuperFastCamera	</action>
+				<updater> camera/speed	== SuperFast </updater>
+				<transparency> 255,0,255 </transparency>
+				<imageNormal>	resources/data/main_toolbar.bmp:264,0,288,24	</imageNormal>
+			</item>
+		</item>
+		
+	</item>
+
+	<item>
+	
+		<name> AnimToolbar </name>
+		<type>	GROUP	</type>
+		
+		<item>
+			<name> AddAnim </name>
+			<type>	ACTION	</type>
+			<displayName> Add Animation </displayName>
+			<description> Add a new animation to the selected model</description>
+			<action> ToolbarUIAdapter.doAddAmin </action>
+			<updater> ToolbarUIAdapter.updateLockedAnim </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/animations_toolbar.bmp:0,0,16,16	</imageNormal>
+		</item>
+
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> PlayAnim </name>
+			<type>	TOGGLE	</type>
+			<displayName> Play Animation </displayName>
+			<description> Play the selected animation </description>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/animations_toolbar.bmp:16,0,32,16	</imageNormal>
+			<item>
+				<type>	ACTION	</type>
+				<action> ToolbarUIAdapter.doPlayAnim </action>
+				<updater> ToolbarUIAdapter.updatePlayAnim </updater>
+			</item>
+			<item>
+				<type>	ACTION	</type>
+				<action> ToolbarUIAdapter.doPlayAnim </action>
+			</item>
+		</item>
+		
+		<item>
+			<name> PauseAnim </name>
+			<type>	TOGGLE	</type>
+			<displayName> Pause Animation </displayName>
+			<description> Pause the current animation </description>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/animations_toolbar.bmp:32,0,48,16	</imageNormal>
+			<item>
+				<type>	ACTION	</type>
+				<action> ToolbarUIAdapter.doStopAnim </action>
+				<updater> ToolbarUIAdapter.updateStopAnim </updater>
+			</item>
+			<item>
+				<type>	ACTION	</type>
+				<action> ToolbarUIAdapter.doStopAnim </action>
+			</item>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> LoopAnim </name>
+			<type>	TOGGLE	</type>
+			<displayName> Loop Animation </displayName>
+			<description> Loop the animation </description>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/animations_toolbar.bmp:48,0,64,16	</imageNormal>
+			<item>
+				<type>	ACTION	</type>
+				<action> ToolbarUIAdapter.doLoopAnim </action>
+				<updater> ToolbarUIAdapter.updateLoopAnim </updater>
+			</item>
+			<item>
+				<type>	ACTION	</type>
+				<action> ToolbarUIAdapter.doLoopAnim </action>
+			</item>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> RemoveAnim </name>
+			<type>	ACTION	</type>
+			<displayName> Remove Animation </displayName>
+			<description> Remove the selected animation from the model </description>
+			<action> ToolbarUIAdapter.doRemoveAnim </action>
+			<updater> ToolbarUIAdapter.updateLockedAnim </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/animations_toolbar.bmp:64,0,80,16	</imageNormal>
+		</item>
+		
+	</item>
+	
+	<item>
+	
+		<name> AnimCompToolbar </name>
+		<type>	GROUP	</type>
+		
+		<item>
+			<name> ShowOriginal </name>
+			<type>	TOGGLE	</type>
+			<displayName> Show Original </displayName>
+			<description> Show the Uncompressed animation </description>
+			<updater> ToolbarUIAdapter.canSaveAnim </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/compression_toolbar.bmp:0,0,16,16	</imageNormal>
+			<item>
+				<type>	ACTION	</type>
+				<action> ToolbarUIAdapter.doShowOriginalAnim </action>
+				<updater> ToolbarUIAdapter.updateShowOriginalAnim </updater>
+			</item>
+			<item>
+				<type>	ACTION	</type>
+				<action> ToolbarUIAdapter.doShowOriginalAnim </action>
+			</item>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> SaveAnim </name>
+			<type>	ACTION	</type>
+			<displayName> Save Animation </displayName>
+			<description> Save the current animation compression settings </description>
+			<action> ToolbarUIAdapter.doSaveAnim </action>
+			<updater> ToolbarUIAdapter.canSaveAnim </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/compression_toolbar.bmp:16,0,32,16	</imageNormal>
+		</item>
+		
+	</item>
+	
+	<item>
+	
+		<name> ActToolbar </name>
+		<type>	GROUP	</type>
+		
+		<item>
+			<name> NewAct </name>
+			<type>	ACTION	</type>
+			<displayName> New Action </displayName>
+			<description> Create a new action in the selected model below the selected action </description>
+			<action> ToolbarUIAdapter.doNewAct </action>
+			<updater> ToolbarUIAdapter.updateLockedAct </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/actions_toolbar.bmp:0,0,16,16</imageNormal>
+		</item>
+
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> PromoteAct </name>
+			<type>	ACTION	</type>
+			<displayName> Promote action </displayName>
+			<description> Raise the priority of the selected action </description>
+			<action> ToolbarUIAdapter.doPromoteAct </action>
+			<!--<updater> ToolbarUIAdapter.updateLockedAct </updater>-->
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/actions_toolbar.bmp:16,0,32,16	</imageNormal>
+		</item>
+		
+		<item>
+			<name> DemoteAct </name>
+			<type>	ACTION	</type>
+			<displayName> Demote action </displayName>
+			<description> Lower the priority of the selected action </description>
+			<action> ToolbarUIAdapter.doDemoteAct </action>
+			<!--<updater> ToolbarUIAdapter.updateLockedAct </updater>-->
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/actions_toolbar.bmp:32,0,48,16	</imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> RemoveAct </name>
+			<type>	ACTION	</type>
+			<displayName> Remove Action </displayName>
+			<description> Remove the selected action from the model </description>
+			<action> ToolbarUIAdapter.doRemoveAct </action>
+			<updater> ToolbarUIAdapter.updateLockedAct </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/actions_toolbar.bmp:48,0,64,16	</imageNormal>
+		</item>
+		
+		
+		
+	</item>
+	
+	<item>
+	
+		<name> LodToolbar </name>
+		<type>	GROUP	</type>
+		
+		<item>
+			<name> NewLod </name>
+			<type>	ACTION	</type>
+			<displayName> New LOD </displayName>
+			<description> Add a new LOD level model </description>
+			<action> ToolbarUIAdapter.doNewLod </action>
+			<updater> ToolbarUIAdapter.updateLockedLod </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/lod_toolbar.bmp:0,0,16,16	</imageNormal>
+		</item>
+
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> ChangeModel </name>
+			<type>	ACTION	</type>
+			<displayName> Change LOD Trunk </displayName>
+			<description> Change the LOD trunk from the selected level downwards </description>
+			<action> ToolbarUIAdapter.doChangeLodModel </action>
+			<updater> ToolbarUIAdapter.updateChangeLodModel </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/lod_toolbar.bmp:16,0,32,16	</imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> MoveLodUp </name>
+			<type>	ACTION	</type>
+			<displayName> Move LOD Up </displayName>
+			<description> Move the selected LOD up in the list </description>
+			<action> ToolbarUIAdapter.doMoveLodUp </action>
+			<updater> ToolbarUIAdapter.updateMoveLodUp </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/lod_toolbar.bmp:32,0,48,16	</imageNormal>
+		</item>
+		
+		<item>
+			<name> MoveLodDown </name>
+			<type>	ACTION	</type>
+			<displayName> Move LOD Down </displayName>
+			<description> Move the selected LOD down in the list </description>
+			<action> ToolbarUIAdapter.doMoveLodDown </action>
+			<updater> ToolbarUIAdapter.updateMoveLodDown </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal> resources/data/lod_toolbar.bmp:48,0,64,16 </imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> SetLodDist </name>
+			<type>	ACTION	</type>
+			<displayName> Set LOD Distance </displayName>
+			<description> Use the current camera distance as the LOD's </description>
+			<action> ToolbarUIAdapter.doSetLodDist </action>
+			<updater> ToolbarUIAdapter.updateLodDist </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/lod_toolbar.bmp:64,0,80,16	</imageNormal>
+		</item>
+		
+		<item>
+			<name> ExtendLod </name>
+			<type>	ACTION	</type>
+			<displayName> Extend LOD </displayName>
+			<description> Extend the LOD's extent to infinity </description>
+			<action> ToolbarUIAdapter.doExtendLodForever </action>
+			<updater> ToolbarUIAdapter.updateLodDist </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/lod_toolbar.bmp:80,0,96,16	</imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> RemoveLod </name>
+			<type>	ACTION	</type>
+			<displayName> Remove LOD </displayName>
+			<description> Remove the selected LOD </description>
+			<action> ToolbarUIAdapter.doRemoveLod </action>
+			<updater> ToolbarUIAdapter.updateRemoveLod </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal>	resources/data/lod_toolbar.bmp:96,0,112,16	</imageNormal>
+		</item>
+		
+	</item>
+	
+	<item>
+	
+		<name> LightsToolbar </name>
+		<type>	GROUP	</type>
+		
+		<item>
+			<name> NewLights </name>
+			<type>	ACTION	</type>
+			<displayName> New Lighting Setup </displayName>
+			<description> Create a New Lighting Setup </description>
+			<action> ToolbarUIAdapter.doNewLights </action>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal> resources/data/lights_toolbar.bmp:0,0,16,16 </imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> OpenLights </name>
+			<type>	ACTION	</type>
+			<displayName> Open Lighting Setup </displayName>
+			<description> Open a Lighting Setup </description>
+			<action> ToolbarUIAdapter.doOpenLights </action>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal> resources/data/lights_toolbar.bmp:16,0,32,16 </imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> SaveLights </name>
+			<type>	ACTION	</type>
+			<displayName> Save Lighting Setup </displayName>
+			<description> Save the Current Lighting Setup </description>
+			<action> ToolbarUIAdapter.doSaveLights </action>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal> resources/data/lights_toolbar.bmp:32,0,48,16 </imageNormal>
+		</item>
+		
+	</item>
+	
+	<item>
+	
+		<name> MaterialsToolbar </name>
+		<type>	GROUP	</type>
+		
+		<item>
+			<name> NewTint </name>
+			<type>	ACTION	</type>
+			<displayName> New Tint </displayName>
+			<description> Create a new tint for the current material </description>
+			<action> ToolbarUIAdapter.doNewTint </action>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal> resources/data/materials_toolbar.bmp:0,0,16,16 </imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> LoadMFM </name>
+			<type>	ACTION	</type>
+			<displayName> Load FX/MFM </displayName>
+			<description> Load an FX or MFM into the current tint/material</description>
+			<action> ToolbarUIAdapter.doLoadMFM </action>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal> resources/data/materials_toolbar.bmp:16,0,32,16 </imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> SaveMFM </name>
+			<type>	ACTION	</type>
+			<displayName> Save MFM </displayName>
+			<description> Save the current material/tint as an MFM </description>
+			<action> ToolbarUIAdapter.doSaveMFM </action>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal> resources/data/materials_toolbar.bmp:32,0,48,16 </imageNormal>
+		</item>
+		
+		<item>
+			<type>	SEPARATOR	</type>
+		</item>
+		
+		<item>
+			<name> RemoveTint </name>
+			<type>	ACTION	</type>
+			<displayName> Remove Tint </displayName>
+			<description> Remove the current tint from the material </description>
+			<action> ToolbarUIAdapter.doDeleteTint </action>
+			<updater> ToolbarUIAdapter.updateDeleteTint </updater>
+			<transparency> 255,0,255 </transparency>
+			<imageNormal> resources/data/materials_toolbar.bmp:48,0,64,16 </imageNormal>
+		</item>
+		
+		
+		
+	</item>
+	
+</GUI>
+

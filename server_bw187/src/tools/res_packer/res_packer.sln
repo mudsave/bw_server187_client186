@@ -1,0 +1,101 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "res_packer", "res_packer.vcproj", "{6E6095DB-DF18-4550-A5F8-E2346145A19A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B6BDE92A-7D11-4BBB-98DA-190B2A844CEF} = {B6BDE92A-7D11-4BBB-98DA-190B2A844CEF}
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7} = {879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}
+		{CE2D6788-0B4B-4893-9913-0A6829C979DA} = {CE2D6788-0B4B-4893-9913-0A6829C979DA}
+		{D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB} = {D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB}
+		{8F19729C-E492-4FE7-BC18-F421EE9E4566} = {8F19729C-E492-4FE7-BC18-F421EE9E4566}
+		{C5D1DD9F-780E-4567-BC52-72EC97692FEC} = {C5D1DD9F-780E-4567-BC52-72EC97692FEC}
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD} = {A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resmgr", "..\..\lib\resmgr\resmgr.vcproj", "{B6BDE92A-7D11-4BBB-98DA-190B2A844CEF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cstdmf", "..\..\lib\cstdmf\cstdmf.vcproj", "{8F19729C-E492-4FE7-BC18-F421EE9E4566}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zip", "..\..\lib\zip\zip.vcproj", "{C5D1DD9F-780E-4567-BC52-72EC97692FEC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "math3D", "..\..\lib\math\math3d.vcproj", "{CE2D6788-0B4B-4893-9913-0A6829C979DA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "moo", "..\..\lib\moo\moo.vcproj", "{D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "physics2", "..\..\lib\physics2\physics2.vcproj", "{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "romp", "..\..\lib\romp\romp.vcproj", "{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Hybrid = Hybrid
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6E6095DB-DF18-4550-A5F8-E2346145A19A}.Debug.ActiveCfg = Debug|Win32
+		{6E6095DB-DF18-4550-A5F8-E2346145A19A}.Debug.Build.0 = Debug|Win32
+		{6E6095DB-DF18-4550-A5F8-E2346145A19A}.Hybrid.ActiveCfg = Hybrid|Win32
+		{6E6095DB-DF18-4550-A5F8-E2346145A19A}.Hybrid.Build.0 = Hybrid|Win32
+		{6E6095DB-DF18-4550-A5F8-E2346145A19A}.Release.ActiveCfg = Release|Win32
+		{6E6095DB-DF18-4550-A5F8-E2346145A19A}.Release.Build.0 = Release|Win32
+		{B6BDE92A-7D11-4BBB-98DA-190B2A844CEF}.Debug.ActiveCfg = Debug|Win32
+		{B6BDE92A-7D11-4BBB-98DA-190B2A844CEF}.Debug.Build.0 = Debug|Win32
+		{B6BDE92A-7D11-4BBB-98DA-190B2A844CEF}.Hybrid.ActiveCfg = Hybrid|Win32
+		{B6BDE92A-7D11-4BBB-98DA-190B2A844CEF}.Hybrid.Build.0 = Hybrid|Win32
+		{B6BDE92A-7D11-4BBB-98DA-190B2A844CEF}.Release.ActiveCfg = Release|Win32
+		{B6BDE92A-7D11-4BBB-98DA-190B2A844CEF}.Release.Build.0 = Release|Win32
+		{8F19729C-E492-4FE7-BC18-F421EE9E4566}.Debug.ActiveCfg = Debug|Win32
+		{8F19729C-E492-4FE7-BC18-F421EE9E4566}.Debug.Build.0 = Debug|Win32
+		{8F19729C-E492-4FE7-BC18-F421EE9E4566}.Hybrid.ActiveCfg = Hybrid|Win32
+		{8F19729C-E492-4FE7-BC18-F421EE9E4566}.Hybrid.Build.0 = Hybrid|Win32
+		{8F19729C-E492-4FE7-BC18-F421EE9E4566}.Release.ActiveCfg = Release|Win32
+		{8F19729C-E492-4FE7-BC18-F421EE9E4566}.Release.Build.0 = Release|Win32
+		{C5D1DD9F-780E-4567-BC52-72EC97692FEC}.Debug.ActiveCfg = Debug|Win32
+		{C5D1DD9F-780E-4567-BC52-72EC97692FEC}.Debug.Build.0 = Debug|Win32
+		{C5D1DD9F-780E-4567-BC52-72EC97692FEC}.Hybrid.ActiveCfg = Release|Win32
+		{C5D1DD9F-780E-4567-BC52-72EC97692FEC}.Hybrid.Build.0 = Release|Win32
+		{C5D1DD9F-780E-4567-BC52-72EC97692FEC}.Release.ActiveCfg = Release|Win32
+		{C5D1DD9F-780E-4567-BC52-72EC97692FEC}.Release.Build.0 = Release|Win32
+		{CE2D6788-0B4B-4893-9913-0A6829C979DA}.Debug.ActiveCfg = Debug|Win32
+		{CE2D6788-0B4B-4893-9913-0A6829C979DA}.Debug.Build.0 = Debug|Win32
+		{CE2D6788-0B4B-4893-9913-0A6829C979DA}.Hybrid.ActiveCfg = Hybrid|Win32
+		{CE2D6788-0B4B-4893-9913-0A6829C979DA}.Hybrid.Build.0 = Hybrid|Win32
+		{CE2D6788-0B4B-4893-9913-0A6829C979DA}.Release.ActiveCfg = Release|Win32
+		{CE2D6788-0B4B-4893-9913-0A6829C979DA}.Release.Build.0 = Release|Win32
+		{D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB}.Debug.ActiveCfg = Debug|Win32
+		{D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB}.Debug.Build.0 = Debug|Win32
+		{D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB}.Hybrid.ActiveCfg = Hybrid|Win32
+		{D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB}.Hybrid.Build.0 = Hybrid|Win32
+		{D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB}.Release.ActiveCfg = Release|Win32
+		{D2CD2B8D-9237-4E36-8ECD-7FD2B036EBDB}.Release.Build.0 = Release|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Debug.ActiveCfg = Debug|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Debug.Build.0 = Debug|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Hybrid.ActiveCfg = Hybrid|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Hybrid.Build.0 = Hybrid|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Release.ActiveCfg = Release|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Release.Build.0 = Release|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Debug.ActiveCfg = Debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Debug.Build.0 = Debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Hybrid.ActiveCfg = Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Hybrid.Build.0 = Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Release.ActiveCfg = Release|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

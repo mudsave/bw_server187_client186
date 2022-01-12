@@ -1,0 +1,1489 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "../../lib/ual/ual_resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 55, 36
+STYLE DS_SETFONT | DS_3DLOOK | DS_FIXEDSYS | WS_POPUP | WS_THICKFRAME
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+END
+
+IDR_MAINFRAME DIALOGEX 0, 0, 330, 16
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+END
+
+IDD_MENUVIEW DIALOGEX 0, 0, 163, 177
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_PROPSHEET_PLACEHOLDER,"Static",SS_BLACKFRAME,0,0,161,175
+END
+
+IDD_PAGE_TERRAIN DIALOGEX 0, 0, 190, 380
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Terrain"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_PROPSHEET_TERRAIN_PLACEHOLDER,"Static",SS_BLACKFRAME,0,0,190,380
+END
+
+IDD_PAGE_PROPERTIES DIALOGEX 0, 0, 175, 350
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LISTBOX         IDC_SCENE_PROPERTYLIST,7,7,161,245,LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | NOT WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+    GROUPBOX        "Colour adjust",IDC_SCENE_COLOURBOX,6,258,161,85
+    CONTROL         "",IDC_SCENE_COLOUR_RED,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,42,270,116,15
+    CONTROL         "",IDC_SCENE_COLOUR_GREEN,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,42,288,116,15
+    CONTROL         "",IDC_SCENE_COLOUR_BLUE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,42,307,116,15
+    LTEXT           "Red:",IDC_SCENE_COLOUR_RED_STATIC,12,273,14,8
+    LTEXT           "Green:",IDC_SCENE_COLOUR_GREEN_STATIC,12,291,22,8
+    LTEXT           "Blue:",IDC_SCENE_COLOUR_BLUE_STATIC,12,309,17,8
+    CONTROL         "",IDC_SCENE_LIGHT_MULTIPLIER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | NOT WS_VISIBLE | WS_TABSTOP,42,324,116,15
+    LTEXT           "Multiplier:",IDC_SCENE_LIGHT_MULTIPLIER_STATIC,12,326,32,8,NOT WS_VISIBLE
+END
+
+IDD_PAGE_OBJECTS DIALOGEX 0, 0, 177, 194
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    COMBOBOX        IDC_OBJECTS_SELECTION_FILTER,57,8,114,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "World",IDC_OBJECTS_COORDS_WORLD,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,11,37,49,10
+    CONTROL         "Local",IDC_OBJECTS_COORDS_LOCAL,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,11,48,49,10
+    CONTROL         "View",IDC_OBJECTS_COORDS_VIEW,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,11,59,49,10
+    CONTROL         "Free",IDC_OBJECTS_LOCK_FREE,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,97,37,49,10
+    CONTROL         "Terrain",IDC_OBJECTS_LOCK_TERRAIN,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,97,48,49,10
+    CONTROL         "Obstacle",IDC_OBJECTS_LOCK_OBSTACLE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,97,59,49,10
+    EDITTEXT        IDC_OPTIONS_SNAPS_X,17,104,23,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_OPTIONS_SNAPS_Y,55,104,23,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_OPTIONS_SNAPS_Z,91,104,23,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_OPTIONS_SNAPS_ANGLE,143,104,23,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Shell Snaps",IDC_OPTIONS_SHELLSNAPS,9,121,45,14
+    PUSHBUTTON      "1 x 1 x 1",IDC_OPTIONS_UNITSNAPS,63,121,47,14
+    PUSHBUTTON      ".1 x .1 x .1",IDC_OPTIONS_POINTONESNAPS,116,121,50,14
+    CONTROL         "Drag on Select",IDC_OBJECTS_DRAG_ON_SELECT,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,179,63,10
+    GROUPBOX        "Coordinate System",IDC_STATIC,4,25,79,51
+    GROUPBOX        "Locking Mode",IDC_STATIC,90,25,79,51
+    GROUPBOX        "Object Grid Snaps",IDC_STATIC,4,78,167,62
+    CONTROL         "Enabled",IDC_OBJECTS_LOCK_TO_GRID,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,17,90,152,10
+    LTEXT           "Selection Filter",IDC_STATIC,6,11,48,8
+    LTEXT           "x:",IDC_STATIC,9,106,8,8
+    LTEXT           "y:",IDC_STATIC,47,106,8,8
+    LTEXT           "z:",IDC_STATIC,83,106,8,8
+    LTEXT           "angle:",IDC_STATIC,122,106,21,8
+    GROUPBOX        "Placement Control",IDC_STATIC,4,140,167,34
+    COMBOBOX        IDC_OBJECTS_SELECT_PLACEMENT_SETTING,37,153,110,134,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Setting",IDC_STATIC,9,155,24,8
+    PUSHBUTTON      "...",IDC_OBJECTS_EDIT_PLACEMENT_SETTINGS,151,153,13,12
+END
+
+IDD_PAGE_OPTIONS_GENERAL DIALOGEX 0, 0, 175, 214
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Show:",IDC_STATIC,4,1,21,8
+    CONTROL         "",IDC_OPTIONS_SHOW_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_CHECKBOXES | WS_BORDER | WS_TABSTOP,4,9,167,100
+    LTEXT           "Far plane:",IDC_STATIC,4,116,34,8
+    CONTROL         "",IDC_OPTIONS_FARPLANE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,37,114,91,15
+    EDITTEXT        IDC_OPTIONS_FARPLANE_EDIT,129,115,30,12,ES_AUTOHSCROLL
+    LTEXT           "m",IDC_STATIC,163,117,8,8
+    CONTROL         "Read Only Mode",IDC_OPTIONS_READ_ONLY_MODE,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,103,165,69,10
+    LTEXT           "Camera Height:",IDC_STATIC,4,181,54,8
+    CONTROL         "",IDC_OPTIONS_CAMERAHEIGHT_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,58,178,76,15
+    EDITTEXT        IDC_OPTIONS_CAMERAHEIGHT_EDIT,134,179,30,12,ES_AUTOHSCROLL
+    CONTROL         "Player Preview Mode",IDC_PLAYER_PREVIEW_MODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,165,83,10
+    LTEXT           "Hint: You can also use Q && E to change height.",IDC_STATIC,4,196,167,11
+    CONTROL         "Standard",IDC_OPTIONS_LIGHTING_STANDARD,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,11,145,49,10
+    CONTROL         "Dynamic",IDC_OPTIONS_LIGHTING_DYNAMIC,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,63,145,49,10
+    CONTROL         "Specular",IDC_OPTIONS_LIGHTING_SPECULAR,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,115,145,49,10
+    GROUPBOX        "Lighting",IDC_STATIC,4,133,167,26
+END
+
+IDD_PAGE_PROJECT DIALOGEX 0, 0, 175, 221
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    PUSHBUTTON      "Lock Selected Chunks",IDC_PROJECT_SELECTION_LOCK,3,54,78,14
+    LTEXT           "Message:",IDC_STATIC,4,4,74,8
+    EDITTEXT        IDC_PROJECT_COMMIT_MESSAGE,3,13,168,32,ES_MULTILINE | ES_AUTOVSCROLL
+    CONTROL         "Keep Locks on Commit",IDC_PROJECT_COMMIT_KEEPLOCKS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,85,77,87,10
+    PUSHBUTTON      "Commit All Changes",IDC_PROJECT_COMMIT_ALL,3,75,78,14
+    CONTROL         "Keep Locks on Discard",IDC_PROJECT_DISCARD_KEEPLOCKS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,85,104,87,10
+    PUSHBUTTON      "Discard All Changes",IDC_PROJECT_DISCARD_ALL,2,102,80,14
+    LTEXT           "Hand Drawn Map",IDC_STATIC,6,132,60,8
+    LTEXT           "Calculated Map",IDC_CALCULATEDMAP,92,132,72,8,0,WS_EX_RIGHT
+    CONTROL         "",IDC_PROJECT_MAP_ALPHA_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,0,144,170,16
+    LTEXT           "Hints:\nLeft Mouse Button:\tSelect Lock Region\nMiddle Mouse Button:\tMove 3D Camera to Point\nRight Mouse Button:\tScroll Map\nScroll Wheel:\t\tZoom In/Out Map",IDC_STATIC,3,170,169,40
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,4,170,167,1
+    PUSHBUTTON      "&Update All",IDC_PROJECT_UPDATE,90,54,78,14
+END
+
+IDD_PAGE_TERRAIN_TEXTURE DIALOGEX 0, 0, 175, 344
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Size: ",IDC_STATIC,2,7,18,8
+    EDITTEXT        IDC_TERRAIN_SIZE_EDIT,20,5,23,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_TERRAIN_STRENGTH_EDIT,36,24,26,12,ES_AUTOHSCROLL
+    LTEXT           "Strength: ",IDC_STATIC,2,26,34,8
+    GROUPBOX        "Textures in Chunk",IDC_TEXTURESINCHUNK,1,44,172,182
+    LTEXT           "Left Mouse Button: \t Paint Texture\nMiddle Mouse Button: \t Sample Existing Texture for Channel 1,2,3,4:\t Select Channel for Painting\nF9:\t\t Recalculate Flora",IDC_STATIC,0,231,172,32
+    CONTROL         "",IDC_TERRAIN_SIZE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,47,3,119,15
+    CONTROL         "",IDC_TERRAIN_STRENGTH_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,65,23,101,15
+    CONTROL         "+",IDC_SIZERANGE,"Button",BS_OWNERDRAW | WS_TABSTOP,168,6,6,6
+    CONTROL         "+",IDC_STRENGTHRANGE,"Button",BS_OWNERDRAW | WS_TABSTOP,168,26,6,6
+    CONTROL         "",IDC_TEXTURECHANNEL1,"Static",SS_OWNERDRAW | SS_NOTIFY,7,57,80,80
+    CONTROL         "",IDC_TEXTURECHANNEL2,"Static",SS_OWNERDRAW | SS_NOTIFY,89,57,80,80
+    CONTROL         "",IDC_TEXTURECHANNEL4,"Static",SS_OWNERDRAW | SS_NOTIFY,89,140,80,80
+    CONTROL         "",IDC_TEXTURECHANNEL3,"Static",SS_OWNERDRAW | SS_NOTIFY,7,140,80,80
+END
+
+IDD_PAGE_TERRAIN_HEIGHT DIALOGEX 0, 0, 175, 143
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Size: ",IDC_STATIC,3,5,18,8
+    EDITTEXT        IDC_TERRAIN_SIZE_EDIT,35,5,32,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_TERRAIN_SIZE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,69,2,95,15
+    CONTROL         "+",IDC_SIZERANGE,"Button",BS_OWNERDRAW | WS_TABSTOP,168,6,6,6
+    LTEXT           "Strength: ",IDC_STATIC,2,24,30,8
+    EDITTEXT        IDC_TERRAIN_STRENGTH_EDIT,35,24,32,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_TERRAIN_STRENGTH_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,69,22,95,15
+    CONTROL         "+",IDC_STRENGTHRANGE,"Button",BS_OWNERDRAW | WS_TABSTOP,168,26,6,6
+    LTEXT           "Brush Falloff:",IDC_STATIC,4,42,44,8
+    CONTROL         "Flat",IDC_TERRAIN_FALLOFF_FLAT,"Button",BS_AUTORADIOBUTTON,55,42,24,10
+    CONTROL         "Linear",IDC_TERRAIN_FALLOFF_LINEAR,"Button",BS_AUTORADIOBUTTON,90,42,32,10
+    CONTROL         "Curve",IDC_TERRAIN_FALLOFF_CURVE,"Button",BS_AUTORADIOBUTTON,130,42,32,10
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,4,56,171,1
+    LTEXT           "Explicit Height:",IDC_STATIC,2,72,50,8
+    EDITTEXT        IDC_TERRAIN_HEIGHT_EDIT,52,70,30,12,ES_AUTOHSCROLL | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_TERRAIN_HEIGHT_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,86,68,69,15
+    CONTROL         "+",IDC_HEIGHTRANGE,"Button",BS_OWNERDRAW | WS_TABSTOP,169,71,6,6
+    LTEXT           "Mode:",IDC_STATIC,2,87,25,8
+    CONTROL         "Absolute",IDC_TERRAIN_ABSOLUTEHEIGHT,"Button",BS_AUTORADIOBUTTON,53,87,44,10
+    CONTROL         "Relative",IDC_TERRAIN_RELATIVEHEIGHT,"Button",BS_AUTORADIOBUTTON,99,87,42,10
+    LTEXT           "Hint: Hold Ctrl while applying tool brush to use",IDC_STATIC,12,98,148,10
+    LTEXT           "explicit height.",IDC_STATIC,29,107,48,8
+    LTEXT           "Hold Alt to sample height.",IDC_STATIC,29,117,83,8
+END
+
+IDD_PAGE_TERRAIN_FILTER DIALOGEX 0, 0, 175, 116
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Size: ",IDC_STATIC,2,4,17,8
+    EDITTEXT        IDC_TERRAIN_SIZE_EDIT,20,4,31,12,ES_AUTOHSCROLL
+    CONTROL         "Linear",IDC_TERRAIN_FALLOFF_LINEAR,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,54,99,35,10
+    CONTROL         "Curve",IDC_TERRAIN_FALLOFF_CURVE,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,95,99,35,10
+    CONTROL         "Flat",IDC_TERRAIN_FALLOFF_FLAT,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,133,99,28,10
+    LISTBOX         IDC_TERRAIN_FILTERS_LIST,0,26,171,69,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Filters",IDC_STATIC,2,18,20,8
+    LTEXT           "Brush Falloff:",IDC_STATIC,3,100,44,8,NOT WS_VISIBLE
+    CONTROL         "",IDC_TERRAIN_SIZE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,53,2,110,15
+    CONTROL         "+",IDC_SIZERANGE,"Button",BS_OWNERDRAW | WS_TABSTOP,164,5,6,6
+END
+
+IDD_PAGE_TERRAIN_MESH DIALOGEX 0, 0, 175, 62
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Size: ",IDC_STATIC,2,39,18,8
+    EDITTEXT        IDC_TERRAIN_SIZE_EDIT,22,37,22,12,ES_AUTOHSCROLL
+    CONTROL         "Cut",IDC_TERRAIN_CUT,"Button",BS_AUTORADIOBUTTON,53,10,27,10
+    CONTROL         "Repair",IDC_TERRAIN_REPAIR,"Button",BS_AUTORADIOBUTTON,83,10,36,10
+    LTEXT           "Brush Mode:",IDC_STATIC,5,11,42,8
+    CONTROL         "",IDC_TERRAIN_SIZE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,45,34,115,15
+    CONTROL         "+",IDC_SIZERANGE,"Button",BS_OWNERDRAW | WS_TABSTOP,165,37,6,6
+END
+
+IDD_PAGE_ERRORS DIALOGEX 0, 0, 175, 350
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LISTBOX         IDC_ERRORS_LIST,7,7,161,336,LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+END
+
+IDD_PAGE_SCENE DIALOGEX 0, 0, 175, 350
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Scene"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_SCENE_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_EDITLABELS | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,7,161,336
+END
+
+IDD_PAGE_OPTIONS DIALOGEX 0, 0, 175, 350
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Options"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_PROPSHEET_OPTION_PLACEHOLDER,"Static",SS_BLACKFRAME,0,0,175,350
+END
+
+IDD_PAGE_OPTIONS_WEATHER DIALOGEX 0, 0, 175, 368
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    PUSHBUTTON      "Reset &All",IDC_WEATHER_RESETALL,90,303,73,14
+    PUSHBUTTON      "Set &Defaults",IDC_WEATHER_SETDEFAULTS,9,303,72,14
+END
+
+IDD_PAGE_OPTIONS_HISTOGRAM DIALOGEX 0, 0, 175, 298
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_LUMINANCE,"Static",SS_OWNERDRAW,0,11,176,117
+    LTEXT           "Luminance",IDC_STATIC_LUM,1,2,34,8
+    CONTROL         "",IDC_RGB,"Static",SS_OWNERDRAW,0,140,176,117
+    LTEXT           "RGB",IDC_STATIC_RGB,1,131,14,8
+    CONTROL         "&Red",IDC_RED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,257,29,10
+    CONTROL         "&Green",IDC_GREEN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,33,257,33,10
+    CONTROL         "&Blue",IDC_BLUE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,70,257,27,10
+    RTEXT           "Static",IDC_RANGERATIO,25,272,11,8
+    CONTROL         "",IDC_RANGERATIOSLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,36,268,139,15
+    LTEXT           "Range",IDC_STATIC_RANGE,3,272,22,8
+END
+
+IDD_SPLASH DIALOGEX 0, 0, 225, 155
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         183,IDC_STATIC,"Static",SS_BITMAP,0,0,225,156
+END
+
+IDD_HTMLDIALOG DIALOGEX 0, 0, 480, 342
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "WorldEditor Shortcuts"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_NEWSPACE DIALOGEX 0, 0, 214, 185
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Space"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_SPACE,57,8,143,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SPACE_PATH,57,28,128,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_NEWSPACE_BROWSE,185,28,16,14
+    EDITTEXT        IDC_WIDTH,53,62,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_HEIGHT,53,79,40,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Create",IDOK,36,148,50,16
+    PUSHBUTTON      "Cancel",IDCANCEL,128,147,50,16
+    LTEXT           "Space Name:",IDC_STATIC,12,10,43,8
+    LTEXT           "Width:",IDC_STATIC,25,65,22,8
+    LTEXT           "Height:",IDC_STATIC,25,81,22,8
+    CONTROL         "",IDC_PROGRESS1,"msctls_progress32",WS_BORDER,15,118,184,12
+    CONTROL         "Change to new space after created",IDC_CHANGESPACE,
+                    "Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,82,170,130,8
+    GROUPBOX        "Space Dimensions",IDC_STATIC,11,48,191,53
+    LTEXT           "chunks",IDC_STATIC,95,64,26,8
+    LTEXT           "chunks",IDC_STATIC,95,83,26,8
+    GROUPBOX        "Space Creation Progress",IDC_STATIC,11,107,191,28
+    LTEXT           "()",IDC_NEWSPACE_WIDTH_KM,124,64,74,8
+    LTEXT           "()",IDC_NEWSPACE_HEIGHT_KM,124,83,74,8
+    LTEXT           "Space Path:",IDC_STATIC,12,30,40,8
+END
+
+IDD_PLACEMENT_CTRLS DIALOGEX 0, 0, 209, 159
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    ICON            IDI_PLACEMENT_LINKUP,IDC_RANDROT_LINKUP,3,33,20,20,SS_REALSIZEIMAGE | WS_CLIPSIBLINGS,WS_EX_TRANSPARENT
+    ICON            IDI_PLACEMENT_LINKDOWN,IDC_RANDROT_LINKDOWN,3,61,20,20,SS_REALSIZEIMAGE | WS_CLIPSIBLINGS,WS_EX_TRANSPARENT
+    ICON            IDI_PLACEMENT_LINKUP,IDC_RANDSCA_LINKUP,3,110,20,20,SS_REALSIZEIMAGE | WS_CLIPSIBLINGS,WS_EX_TRANSPARENT
+    ICON            IDI_PLACEMENT_LINKDOWN,IDC_RANDSCA_LINKDOWN,3,138,20,20,SS_REALSIZEIMAGE | WS_CLIPSIBLINGS,WS_EX_TRANSPARENT
+    LTEXT           "Placement Presets",IDC_RANDPRESETSLABEL,1,4,60,8
+    RTEXT           "Y",IDC_STATIC,14,34,8,8
+    RTEXT           "P",IDC_STATIC,14,48,8,8
+    RTEXT           "R",IDC_STATIC,15,62,8,8
+    RTEXT           "X",IDC_STATIC,15,110,8,8
+    RTEXT           "Y",IDC_STATIC,15,124,8,8
+    RTEXT           "Z",IDC_STATIC,15,139,8,8
+    GROUPBOX        "Random Rotation (Yaw, Pitch and Roll degrees)",IDC_RANDROT_GRP,0,20,209,58,0,WS_EX_TRANSPARENT
+    GROUPBOX        "Random Scale (normalised values per axis)",IDC_RANDSCA_GRP,0,84,209,70,0,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_RANDROT_LINK,"Button",BS_AUTOCHECKBOX | BS_ICON | BS_PUSHLIKE | WS_TABSTOP,1,43,13,18
+    EDITTEXT        IDC_RANDROTX_MIN,24,32,26,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_RANDROTX_RANGE,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP | 0x400,53,33,105,10,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_RANDROTX_MAX,161,32,26,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_RANDROTY_MIN,24,46,26,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_RANDROTY_RANGE,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP | 0x400,53,47,105,10,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_RANDROTY_MAX,161,46,26,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_RANDROTZ_MIN,24,61,26,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_RANDROTZ_RANGE,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP | 0x400,53,62,105,10,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_RANDROTZ_MAX,161,61,26,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_RANDSCA_LINK,"Button",BS_AUTOCHECKBOX | BS_ICON | BS_PUSHLIKE | WS_TABSTOP,2,120,13,18
+    EDITTEXT        IDC_RANDSCAX_MIN,25,107,26,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_RANDSCAX_RANGE,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP | 0x400,53,109,105,10,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_RANDSCAX_MAX,161,107,26,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_RANDSCAY_MIN,25,122,26,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_RANDSCAY_RANGE,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP | 0x400,53,123,105,10,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_RANDSCAY_MAX,161,122,26,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_RANDSCAZ_MIN,25,137,26,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_RANDSCAZ_RANGE,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP | 0x400,53,138,105,10,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_RANDSCAZ_MAX,161,137,26,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "@",IDC_RANDROTX_RESET,189,33,15,12,BS_ICON | NOT WS_TABSTOP
+    PUSHBUTTON      "@",IDC_RANDROTY_RESET,189,47,15,12,BS_ICON | NOT WS_TABSTOP
+    PUSHBUTTON      "@",IDC_RANDROTZ_RESET,189,61,15,12,BS_ICON | NOT WS_TABSTOP
+    PUSHBUTTON      "@",IDC_RANDSCAX_RESET,189,108,15,12,BS_ICON | NOT WS_TABSTOP
+    PUSHBUTTON      "@",IDC_RANDSCAY_RESET,189,122,15,12,BS_ICON | NOT WS_TABSTOP
+    PUSHBUTTON      "@",IDC_RANDSCAZ_RESET,189,137,15,12,BS_ICON | NOT WS_TABSTOP
+    CONTROL         "Apply scale proportionally on all axes",IDC_RANDSCA_UNI,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,95,134,10
+END
+
+IDD_RANDNEWPRESET DIALOGEX 0, 0, 204, 50
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Placement Preset Name"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NEWPLACEMENTTEXT,75,7,122,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,47,28,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,111,28,50,14
+    LTEXT           "Name of the preset:",IDC_STATIC,7,7,66,8
+END
+
+IDD_LIMITSLIDER DIALOGEX 0, 0, 195, 21
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST | WS_EX_TOOLWINDOW
+CAPTION "Set the Slider Limits"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_MINEDIT,7,5,30,12,ES_CENTER | ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAXEDIT,157,5,30,12,ES_CENTER | ES_AUTOHSCROLL
+    CONTROL         "",IDC_SLIDER,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP | 0x400,37,5,120,12,WS_EX_TRANSPARENT
+END
+
+IDD_PAGE_TERRAIN_IMPORT DIALOGEX 0, 0, 205, 270
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Terrain Import/Export:",IDC_TERIMP_IMPORT_GROUP,2,0,201,158
+    PUSHBUTTON      "Import...",IDC_TERIMP_BROWSE_BTN,9,11,42,14
+    LTEXT           "Current file:",IDC_TERIMP_FILE_STATIC,55,14,40,8
+    EDITTEXT        IDC_TERIMP_IMPORT_FILE,97,11,87,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Export...",IDC_TERIMP_EXPORT_BTN,9,27,42,14
+    LTEXT           "Height:",IDC_STATIC,9,51,24,8
+    EDITTEXT        IDC_TERIMP_MIN_EDIT,41,48,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_TERIMP_HEIGHT_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP,36,65,161,15
+    EDITTEXT        IDC_TERIMP_MAX_EDIT,157,48,40,14,ES_AUTOHSCROLL
+    LTEXT           "Strength:",IDC_STATIC,9,86,32,8
+    EDITTEXT        IDC_TERIMP_STRENGTH_EDIT,41,84,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_TERIMP_STRENGTH_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,89,83,102,15
+    LTEXT           "Mode:",IDC_STATIC,9,108,21,8
+    COMBOBOX        IDC_TERIMP_MODE_CB,49,106,66,103,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Place",IDC_TERIMP_PLACE_BTN,5,140,42,14
+    PUSHBUTTON      "Cancel",IDC_TERIMP_CANCEL_BTN,53,140,42,14
+    GROUPBOX        "Hand Drawn Map:",IDC_TERIMP_HANDDRAWN_GROUP,2,161,201,107
+    LTEXT           "Hand Drawn Map",IDC_STATIC,13,175,60,8
+    LTEXT           "Calculated Map",IDC_STATIC,99,175,72,8,0,WS_EX_RIGHT
+    CONTROL         "",IDC_TERIMP_MAP_ALPHA_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,7,186,190,16
+    LTEXT           "Left Mouse Button:\t Select Terrain\nMiddle Mouse Button:\t Move 3D Camera to Point\nRight Mouse Button:\t Scroll Map\nScroll Wheel:\t\t Zoom In/Out Map\r\nShift:\t\t\t Snap to chunk grid\r\nAlt:\t\t\t Sample max. height\r\nCtrl:\t\t\t Sample min. height",IDC_STATIC,10,206,187,60
+    LTEXT           "",IDC_TERIMP_ACTIONTB,7,122,127,14,SS_SUNKEN
+END
+
+IDD_WAITDLG DIALOGEX 0, 0, 211, 15
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_WAITDLG_INFO,5,3,206,8
+END
+
+IDD_ERRORS DIALOGEX 0, 0, 190, 75
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_MSG_LIST,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,8,8,67,46,WS_EX_CLIENTEDGE
+    CONTROL         "Show Time",IDC_MSG_SHOW_TIME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,20,58,10
+    CONTROL         "Show Date",IDC_MSG_SHOW_DATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,8,58,10
+    CONTROL         "Show Priority",IDC_MSG_SHOW_PRIORITY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,32,58,10
+    CONTROL         "Error",IDC_MSG_ERROR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,8,43,10
+    CONTROL         "Warning",IDC_MSG_WARNING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,20,43,10
+    CONTROL         "Notice",IDC_MSG_NOTICE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,32,43,10
+    CONTROL         "Info",IDC_MSG_INFO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,44,43,10
+    CONTROL         "Assets",IDC_MSG_ASSETS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,57,43,10
+END
+
+IDD_OUT_OF_MEMORY DIALOGEX 0, 0, 291, 133
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Warning: Low Memory"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Your system is very low on memory. What do you want to do?",IDC_STATIC,12,12,204,8
+    CONTROL         "Save Chunks and Clear Undo History.\nThis will free up as much memory as possible, but you won't be able to undo any prior changes.",IDC_SAVE,
+                    "Button",BS_AUTORADIOBUTTON | BS_TOP | BS_MULTILINE,30,33,247,28
+    CONTROL         "Continue without doing anything.\nYou may experience memory issues causing data loss. Please save your work as soon as possible.",IDC_CONTINUE,
+                    "Button",BS_AUTORADIOBUTTON | BS_TOP | BS_MULTILINE,30,68,247,28
+    PUSHBUTTON      "&OK",IDOK,120,112,50,14,WS_DISABLED
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PAGE_TERRAIN, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 300
+    END
+
+    IDD_PAGE_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 168
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 343
+    END
+
+    IDD_PAGE_OPTIONS_GENERAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 171
+    END
+
+    IDD_PAGE_TERRAIN_HEIGHT, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 139
+    END
+
+    IDD_PAGE_ERRORS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 168
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 343
+    END
+
+    IDD_PAGE_SCENE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 168
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 343
+    END
+
+    IDD_PAGE_OPTIONS_HISTOGRAM, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 284
+    END
+
+    IDD_NEWSPACE, DIALOG
+    BEGIN
+        RIGHTMARGIN, 213
+        BOTTOMMARGIN, 172
+    END
+
+    IDD_RANDNEWPRESET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 197
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 42
+    END
+
+    IDD_LIMITSLIDER, DIALOG
+    BEGIN
+        RIGHTMARGIN, 192
+    END
+
+    IDD_ERRORS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 61
+    END
+
+    IDD_OUT_OF_MEMORY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 284
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 126
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\bigbang.ico"
+IDR_bigbang2TYPE        ICON                    "res\\bigbangDoc.ico"
+IDI_PLACEMENT_RESET     ICON                    "res\\placement_reset.ico"
+IDI_PLACEMENT_LINK      ICON                    "res\\placement_link.ico"
+IDI_PLACEMENT_LINKUP    ICON                    "res\\placement_linkup.ico"
+IDI_PLACEMENT_LINKDOWN  ICON                    "res\\placement_linkdown.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_HEIGHTPICKER        CURSOR                  "res\\height_picker.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_ABOUTBOX            BITMAP                  "res\\aboutbox.bmp"
+IDB_SPLASH              BITMAP                  "res\\splashscreen.bmp"
+IDB_RANGESLIDER         BITMAP                  "res\\plus.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "&Quick Save\tCTRL+S",         ID_BUTTON_QUICKSAVE
+        MENUITEM "&Save\tCTRL+ALT+S",           ID_BUTTON_FULLSAVE
+        MENUITEM SEPARATOR
+        MENUITEM "I&mport Heightmap Data...",   ID_FILE_IMPORT
+        MENUITEM "Ex&port Heightmap Data...",   ID_FILE_EXPORT
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "&Undo\tCTRL+Z",               ID_BUTTON_UNDO
+        MENUITEM "&Redo\tCTRL+Y",               ID_BUTTON_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Select All\tCTRL+A",          ID_MENU_SELECTALL
+        MENUITEM "Deselect All\tCTRL+D",        ID_MENU_DESELECTALL
+        MENUITEM SEPARATOR
+        MENUITEM "Save Shell as Template\tCTRL+T", ID_MENU_SAVETEMPLATE
+        MENUITEM "Save Selection as Prefab\tCTRL+B", ID_MENU_SAVEPREFAB
+    END
+    POPUP "View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "Show Panels\tCTRL+H",         ID_MENU_SHOWSIDEPANEL
+    END
+    POPUP "Options"
+    BEGIN
+        MENUITEM "Save &Camera position",       ID_MENU_SAVECAMERAPOSITION
+        MENUITEM "Save &Start position",        ID_MENU_SAVESTARTPOSITION
+    END
+    POPUP "Help"
+    BEGIN
+        MENUITEM "&About WorldEditor...",       ID_APP_ABOUT
+        MENUITEM "&Content Creation...",        ID_HELP_HELP
+        MENUITEM "Keyboard Shortcuts...",       ID_HELP_KEY_CUTS
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "S",            ID_BUTTON_FULLSAVE,     VIRTKEY, CONTROL, ALT, NOINVERT
+    "1",            ID_BUTTON_MOVESPEED1,   VIRTKEY, CONTROL, NOINVERT
+    "2",            ID_BUTTON_MOVESPEED2,   VIRTKEY, CONTROL, NOINVERT
+    "3",            ID_BUTTON_MOVESPEED3,   VIRTKEY, CONTROL, NOINVERT
+    "4",            ID_BUTTON_MOVESPEED4,   VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_BUTTON_QUICKSAVE,    VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_BUTTON_REDO,         VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_BUTTON_UNDO,         VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_MENU_DESELECTALL,    VIRTKEY, CONTROL, NOINVERT
+    "B",            ID_MENU_SAVEPREFAB,     VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_MENU_SAVETEMPLATE,   VIRTKEY, CONTROL, NOINVERT
+    "A",            ID_MENU_SELECTALL,      VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_MENU_SHOWSIDEPANEL,  VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,8,7,0
+ PRODUCTVERSION 1,8,7,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "Comments", "Part of the BigWorld Technology Suite"
+            VALUE "CompanyName", "BigWorld Pty. Ltd."
+            VALUE "FileDescription", "BigWorld World Editor"
+            VALUE "FileVersion", "1.8.7.0"
+            VALUE "InternalName", "worldeditor.exe"
+            VALUE "LegalCopyright", "(c) 2000 - 2009, BigWorld Pty. Ltd. All Rights Reserved"
+            VALUE "OriginalFilename", "worldeditor.exe"
+            VALUE "ProductName", "WorldEditor"
+            VALUE "ProductVersion", "1.8.7.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "WorldEditor\n\nWorldEditor\n\n\nWorldEditor.Document\nWorldEditor.Document"
+    IDS_PAGE_ENTITY_CAPTION "Entity"
+    IDS_PAGE_SHELL_CAPTION  "Shell"
+    IDS_PAGE_MODEL_CAPTION  "Model"
+    IDS_PAGE_PREFAB_CAPTION "Prefabs"
+    IDS_PAGE_PARTICLE_CAPTION "Particles"
+    ID_MENU_DESELECTALL     "Deselect all objects\nDeselect All"
+    ID_INDICATOR_CHUNKS     "Select all objects (as per selection filter)\nSelect All"
+    ID_MENU_SAVECAMERAPOSITION 
+                            "Save WorldEditor camera position for next start.\nSave Camera Position"
+    IDS_PAGE_SPEEDTREE_CAPTION "SpeedTree"
+    IDS_NOLOADSKYBOX        "The sky box could not be loaded.\nPlease check that it is a valid A8R8G8B8 image file."
+    IDS_NOLOADSKYDOME       "The sky dome failed to load."
+    ID_MENU_SAVETEMPLATE    "Save as default lighting template for the chunk.\nSave Lighting Template"
+    IDS_NOTRESPATH          "The resource's path is invalid because it is not in your project's resource tree.\nPlease place it in your project's resource tree, or update the BW_RES_PATH environment variable."
+    IDS_FAILED_IMPORT_TERRAIN "Unable to parse the terrain image file."
+    IDS_EBM_ADDITIVE        "Additive"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_EBM_SUBTRACTIVE     "Subtractive"
+    IDS_EBM_OVERLAY         "Overlay"
+    IDS_EBM_MIN             "Minimum"
+    IDS_EBM_MAX             "Maximum"
+    IDS_EBM_REPLACE         "Replace"
+    IDS_LARGE_IMPORT        "Importing such large terrain cannot be undone.\r\nFurthermore, it will write to the terrain on disk.\r\nDo you wish to proceed?"
+    ID_MENU_SAVESTARTPOSITION "Save game start position.\nSave Start Position"
+    IDS_PAGE_LIGHT_CAPTION  "Lights"
+    IDS_PAGE_MISC_CAPTION   "Misc"
+    ID_MENU_SHOWSIDEPANEL   "Show or hide the side menu panel.\nToggle Side Menu"
+    IDS_SHEET_MENU          "Sheet Menu"
+    IDS_BADCODEC_IMPORT_TERRAIN 
+                            "Unable to select an appropriate codec.\r\nPlease change the extension of the file to match supported codecs."
+    IDS_FILESMUSTDIFFER     "The file {0} cannot be copied over itself."
+    IDS_NOLOADSKYGRADIENT   "The skybox gradient could not be read.\r\nPlease check that it is a valid A8R8G8B8 image file."
+    ID_INDICATOR_MEMORYLOAD "Memory Load"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "WorldEditor"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BUTTON_UNDO          "Undo the last action\nUndo (CTRL+Z)"
+    ID_BUTTON_REDO          "Redo the last undone action\nRedo (CTRL+Y)"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_TRIANGLES  "tris"
+    ID_INDICATOR_SNAPS      "snaps"
+    ID_INDICATOR_POSITION   "position"
+    ID_INDICATOR_FRAMERATE  "fps"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BUTTON_BG_UPDATE     "Use background updating of static lighting and terrain shadows\nBackground Updating"
+    ID_BUTTON_QUICKSAVE     "Save chunk files only.\nQuick Save (CTRL+S)"
+    ID_BUTTON_FULLSAVE      "Calculate static lighting, terrain shadows and save.\nFull Save (CTRL+ALT+S)"
+    ID_BUTTON_LOAD_ALL      "Mark all chunks as candidates for loading\nLoad All"
+    ID_BUTTON_PLAYER_PREVIEW 
+                            "Toggle Player Preview Mode\nPlayer Preview Mode (~)"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_MENU_SAVEPREFAB      "Save selected objects as prefab.\nSave Prefab"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_SELECTION_FILTER    "Selection Filter\nSelection Filter"
+    IDC_COORDINATION_FILTER "Reference Coordinate System\nReference Coordinate System (F8 Cycles)"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_HELP_HELP            "Help with content creation"
+    ID_FILE_IMPORT          "Import external data\nImport"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_TURBOFFS            "Base level of air turbidity, or amount of suspended particulate matter.\r\nProportionally affects MIE scattering effect."
+    IDC_VERTHEIGHTEFFECT    "Vertex height contribution to MIE scattering effect."
+    IDC_TURBFACTOR          "Multiplier on air turbidity, or how the MIE scattering effect\r\nresponds to increases in the global fog amount."
+    IDC_SUNHEIGHTEFFECT     "Sun height contribution to MIE scattering effect."
+    IDC_POWER               "Mathematical power of MIE scattering effect."
+    IDC_SB_GRAD_EDIT        "The sky gradient currently used."
+    IDC_SB_GRAD_BTN         "Browse for a sky gradient."
+    IDC_ADDSKYDOME_BTN      "Add a sky bitmap."
+    IDC_CLEARSKYDOME_BTN    "Clear all of the sky bitmaps."
+    IDC_MIEAMOUNT_SLIDER    "Overall MIE scattering amount."
+    IDC_TURBFACTOR_SLIDER   "Multiplier on air turbidity, or how the MIE scattering effect\r\nresponds to increases in the global fog amount."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_TURBOFFS_SLIDER     "Base level of air turbidity, or amount of suspended particulate matter.\r\nProportionally affects MIE scattering effect."
+    IDC_VERTHEIGHTEFFECT_SLIDER 
+                            "Vertex height contribution to MIE scattering effect."
+    IDC_SUNHEIGHTEFFECT_SLIDER 
+                            "Sun height contribution to MIE scattering effect."
+    IDC_SKYFILE_EDIT        "The file used to save the sky data."
+    IDC_SKYFILE_BTN         "Browse for a different sky file."
+    IDC_SETTINGSFILE_EDIT   "The space settings file used by this environment.\r\nThis file can be shared by several spaces."
+    IDC_NEWSKYFILE_BTN      "Copy the current sky file to a new file.\r\nThis allows the sky file to be used by this space alone."
+    IDC_PROJECT_UPDATE      "Update all space files from server"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_SKYDOME_LIST        "The list of sky bitmaps currently used."
+    IDC_PROJECT_MAP_ALPHA_SLIDER 
+                            "Fade between the hand-drawn map and the actual terrain map"
+    IDC_TODFILE_BTN         "Browse for a time of day file."
+    IDC_NEWTODFILE_BTN      "Copy the current time of day file to a new file.\r\nThis allows the time of day file to be used by this space alone."
+    IDC_RANDROTX_RESET      "Reset rotation yaw range to default"
+    IDC_ADDCOLOR_BTN        "Add a new color.\r\nSelect a point on the timeline on the left to add a new time.\r\nYou can then change its color by using the color selector on the right."
+    IDC_SIZERANGE           "Adjust the range of the Size slider"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_TODFILE_EDIT        "The file used to save the time of day data."
+    IDC_RANDROTX_MIN        "Set minimun random rotation yaw"
+    IDC_HOURLENGTH          "The real time required for an hour of time in the game.\r\n3600 means one hour of real time is one hour of game time,\r\n1800 means half an hour of real time is one hour of game time and so on."
+    IDC_RANDROTX_MAX        "Set maximum random rotation yaw"
+    IDC_STARTTIME           "The starting time in the game."
+    IDC_RANDSCAX_MIN        "Set minimun random scale in the X axis"
+    IDC_RANDSCAX_MAX        "Set maximum random scale in the X axis"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_SPACE               "Name of the new space to be created"
+    IDC_WIDTH               "Width of the space, in number of chunks."
+    IDC_HEIGHT              "Height of the space, in number of chunks."
+    IDC_SPACE_PATH          "Path where the new space will be created"
+    IDC_MINEDIT             "Set the minimum value of the range"
+    IDC_MAXEDIT             "Set the maximum value of the range"
+    IDC_SUNANGLE_EDIT       "The sun's inclination at midday.  At 90 degrees the sun will pass in an arc directly overhead."
+    IDC_MOONANGLE_EDIT      "The moon's inclination.  At 90 degrees the sun will pass in an arc directly overhead."
+    IDC_RANDROTY_MIN        "Set minimun random rotation pitch"
+    IDC_RANDROTY_MAX        "Set maximum random rotation pitch"
+    IDC_RANDROTZ_MIN        "Set minimun random rotation roll"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_NEWSPACE_BROWSE     "Browse for a folder..."
+    IDC_RANDROTY_RESET      "Reset rotation pitch range to default"
+    IDC_STRENGTHRANGE       "Adjust the range of the Strength slider"
+    IDC_RANDROTZ_RESET      "Reset rotation roll range to default"
+    IDC_SETTINGSFILE_BTN    "Browse for a different space settings file."
+    IDC_RANDSCAX_RESET      "Reset scale range in the X axis to default"
+    IDC_DELCOLOR_BTN        "Remove the selected color from the timeline."
+    IDC_OBJECTS_EDIT_PLACEMENT_SETTINGS "Edit the random placement presets..."
+    IDC_RANDSCAY_RESET      "Reset scale range in the Y axis to default"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_BLUE                "Check to show the histogram for the blue channel"
+    IDC_RANGERATIOSLIDER    "Adjust the range ratio of the histogram"
+    IDC_RANDROTX_RANGE      "Adjust random rotation yaw"
+    IDC_SUNANGLE_SLIDER     "The sun's inclination at midday.  At 90 degrees the sun will pass in an arc directly overhead."
+    IDC_SLIDER              "Adjust the minimum and maximum values of the range"
+    IDC_RANDROTY_RANGE      "Adjust random rotation pitch"
+    IDC_MOONANGLE_SLIDER    "The moon's inclination.  At 90 degrees the sun will pass in an arc directly overhead."
+    IDC_RANDSCA_UNI         "Scale the object by the same random amount on all the axes, keeping proportions"
+    IDC_OBJECTS_DRAG_ON_SELECT 
+                            "Check to enable moving an object by clicking and dragging it"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_COLORTIMELINE       "The colors of the sun/ambient conditions throughout the day."
+    IDC_COLORPICKER         "The color at the selected time."
+    IDC_TIMEOFDAY_SLIDER    "Adjust the current time of day.\r\nThis is not saved as part of the game, but allows you\r\nto view the lighting at different times."
+    IDC_SUNANIM_BTN         "Edit the effect of the sun's lighting on objects in the scene."
+    IDC_AMBANIM_BTN         "Edit the ambient lighting."
+    IDC_CREATEANIM_BTN      "Reset the current animation to the defaults."
+    IDC_R_EDIT              "The red component of the selected color."
+    IDC_G_EDIT              "The green component of the selected color."
+    IDC_B_EDIT              "The blue component of the selected color."
+    IDC_MIEAMOUNT           "Overall MIE scattering amount."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_POWER_SLIDER        "Mathematical power of MIE scattering effect."
+    IDC_OBJECTS_SELECTION_FILTER 
+                            "Choose which objects can be selected in the main 3D view"
+    IDC_OBJECTS_SELECT_PLACEMENT_SETTING 
+                            "Choose a random placement preset, or choose ""Normal Placement"" to avoid using random placement"
+    IDC_OBJECTS_COORDS_WORLD "Transforms will be relative to the world's axes"
+    IDC_OBJECTS_COORDS_LOCAL 
+                            "Transforms will be relative to the object's own axes"
+    IDC_OBJECTS_COORDS_VIEW "Transforms will be relative to the camera's view direction"
+    IDC_OBJECTS_LOCK_FREE   "Objects can be moved freely in all axes"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_OBJECTS_LOCK_TERRAIN 
+                            "Objects will be snaped vertically to the terrain surface"
+    IDC_OBJECTS_LOCK_OBSTACLE 
+                            "Objects will be snaped to terrain or other object's surfaces"
+    IDC_TERIMP_IMPORT_FILE  "The selected file being imported."
+    IDC_TERIMP_PLACE_BTN    "Place the imported terrain onto the terrain."
+    IDC_TERIMP_BROWSE_BTN   "Browse for a file to import."
+    IDC_TERIMP_EXPORT_BTN   "Browse for a file to export the selected area to."
+    IDC_TERIMP_MODE_CB      "Terrain import mode.\r\nReplace replaces the current terrain with the impoted terrain.\r\nAdditive adds to the current terrain.\r\nSubtractive subtracts from the currrent terrain.\r\nOverlay adds the highest point of the imported terrain and subtracts the lowest point.\r\nMin takes the minimum of the imported terrain and the current terrain.\r\nMaximum takes the maximum of the current terrain and the imported terrain."
+    IDC_TERIMP_MAP_ALPHA_SLIDER "Show/hide the hand drawn map."
+    IDC_TERIMP_ANTICLOCKWISE_BTN "Rotate the imported terrain anti-clockwise."
+    IDC_TERIMP_CLOCKWISE_BTN "Rotate the imported terrain clockwise."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_TERIMP_FLIPX_BTN    "Flip the imported terrain horizontally."
+    IDC_TERIMP_FLIPY_BTN    "Flip the imported terrain vertically."
+    IDC_TERIMP_FLIPH_BTN    "Invert the heights of the imported terrain."
+    IDC_TERIMP_RECALCCLR_BTN "Recalculate the terrain colour."
+    IDC_TERIMP_MIN_EDIT     "Lowest height value for the imported terrain."
+    IDC_TERIMP_MIN_SLIDER   "Lowest height value for the imported terrain."
+    IDC_TERIMP_MAX_EDIT     "Highest height value for the imported terrain."
+    IDC_TERIMP_MAX_SLIDER   "Highest height value for the imported terrain."
+    IDC_TERIMP_STRENGTH_EDIT 
+                            "Strength of placing terrain.\r\n0 means no change, 100 means full strength."
+    IDC_TERIMP_STRENGTH_SLIDER 
+                            "Strength of placing terrain.\r\n0 means no change, 100 means full strength."
+    IDC_TERIMP_CANCEL_BTN   "Cancel importing terrain."
+    IDC_TEXTURECHANNEL1     "Select channel 1 for painting"
+    IDC_TEXTURECHANNEL2     "Select channel 2 for painting"
+    IDC_TEXTURECHANNEL3     "Select channel 3 for painting"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_TEXTURECHANNEL4     "Select channel 4 for painting"
+    IDC_RAWIMP_LITTLEENDIAN "Selects little endian (Intel) file format."
+    IDC_RAWIMP_BIGENDIAN    "Selects big endian (Motorola) file format."
+    IDC_RAWIMP_FILENAME     "The selected RAW file's name and location."
+    IDC_RAWIMP_SIZE         "Possible sizes of the RAW file."
+    IDC_RANDSCAZ_RESET      "Reset scale range in the Z axis to default"
+    IDC_RED                 "Check to show the histogram for the red channel"
+    IDC_GREEN               "Check to show the histogram for the green channel"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_RANDROTZ_MAX        "Set maximum random rotation roll"
+    IDC_RANDSCAY_MIN        "Set minimun random scale in the Y axis"
+    IDC_RANDSCAY_MAX        "Set maximum random scale in the Y axis"
+    IDC_RANDSCAZ_MIN        "Set minimun random scale in the Z axis"
+    IDC_RANDSCAZ_MAX        "Set maximum random scale in the Z axis"
+    IDC_RANDSCA_LINK        "Adjust all scale sliders at the same time"
+    IDC_RANDROT_LINK        "Adjust all rotation sliders at the same time"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PLAYER_PREVIEW_MODE "Check to make the camera controls behave as if in the game"
+    IDC_RANDSCAX_RANGE      "Adjust random scale in the X axis"
+    IDC_OBJECTS_LOCK_TO_GRID 
+                            "Check to enable to snap objects to the grid using the parameters below"
+    IDC_RANDSCAY_RANGE      "Adjust random scale in the Y axis"
+    IDC_RANDROTZ_RANGE      "Adjust random rotation roll"
+    IDC_RANDSCAZ_RANGE      "Adjust random scale in the Z axis"
+    IDC_PROJECT_SELECTION_LOCK 
+                            "Prevents other people from modifying the selected chunks"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_OPTIONS_LIGHTING_STANDARD "Use standard lighting preview mode"
+    IDC_OPTIONS_LIGHTING_DYNAMIC "Use dynamic lighting preview mode"
+    IDC_OPTIONS_LIGHTING_SPECULAR "Use specular lighting preview mode"
+    IDC_OPTIONS_SHOW_TREE   "Check elements of the scene to show them, uncheck to hide them"
+    IDC_OPTIONS_FARPLANE_SLIDER 
+                            "Adjust the distance to the far plane of the scene, in meters"
+    IDC_OPTIONS_FARPLANE_EDIT 
+                            "Type in the distance to the far plane of the scene, in meters"
+    IDC_OPTIONS_SNAPS_X     "Grid snap resolution in the X axis, in meters"
+    IDC_OPTIONS_SNAPS_Y     "Grid snap resolution in the Y axis, in meters"
+    IDC_OPTIONS_SNAPS_Z     "Grid snap resolution in the Z axis, in meters"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_OPTIONS_SNAPS_ANGLE "Grid snap angle used when rotating objects"
+    IDC_OPTIONS_SHELLSNAPS  "Set the grid X, Y, Z and angle parameters to the Shell Snaps preset"
+    IDC_OPTIONS_UNITSNAPS   "Set the grid X, Y and Z resolution to 1 meter, and the angle to 1 degree"
+    IDC_OPTIONS_POINTONESNAPS 
+                            "Set the grid X, Y and Z resolution to 10 cm, and the angle to 1 degree"
+    IDC_OPTIONS_CAMERAHEIGHT_SLIDER 
+                            "Set the height of the player preview mode camera, in meters, relative to the terrain\nYou can also use Q and E to change the height while in the 3D view"
+    IDC_OPTIONS_CAMERAHEIGHT_EDIT 
+                            "Type in the height of the player preview mode camera, in meters, relative to the terrain\nYou can also use Q and E to change the height while in the 3D view"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_TERRAIN_SIZE_SLIDER "Set the size of the brush, in meters"
+    IDC_TERRAIN_SIZE_EDIT   "Set the size of the brush, in meters"
+    IDC_TERRAIN_STRENGTH_SLIDER "Set the strength of the brush"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_TERRAIN_STRENGTH_EDIT "Set the strength of the brush"
+    IDC_TERRAIN_HEIGHT_SLIDER 
+                            "Set the height to set the terrain to when applying the brush. Hold down the left mouse button and Ctrl\nkey to apply explicit height, or hold down the Alt key while moving the mouse over the 3D view to sample\nthe terrain height under the cursor"
+    IDC_TERRAIN_HEIGHT_EDIT "Type the height to set the terrain to when applying the brush. Hold down the left mouse button and Ctrl\nkey to apply explicit height, or hold down the Alt key while moving the mouse over the 3D view to sample\nthe terrain height under the cursor"
+    IDC_TERRAIN_FALLOFF_LINEAR "Click to use a linear falloff for the brush"
+    IDC_TERRAIN_FALLOFF_CURVE "Click to use a smooth falloff for the brush"
+    IDC_TERRAIN_ABSOLUTEHEIGHT 
+                            "Click to set the terrain height to this explicit height when applying the brush (holding down Ctrl)"
+    IDC_TERRAIN_FALLOFF_FLAT 
+                            "Click to use a brush that uses the same strength in all its area"
+    IDC_TERRAIN_FILTERS_LIST 
+                            "Select the filter to use when applying the filter brush"
+    IDC_TERRAIN_CUT         "Click to cut holes in the terrain mesh"
+    IDC_TERRAIN_REPAIR      "Click to repair holes in the terrain mesh"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_TERRAIN_RELATIVEHEIGHT 
+                            "Click to add this explicit height to the terrain height when applying the brush (holding down Ctrl)"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PROJECT_COMMIT_MESSAGE 
+                            "Information about the interaction with the server"
+    IDC_PROJECT_COMMIT_KEEPLOCKS 
+                            "Check to keep the region locked after committing changes"
+    IDC_PROJECT_COMMIT_ALL  "Commit changes to the server"
+    IDC_PROJECT_DISCARD_KEEPLOCKS 
+                            "Check to keep the region locked after discarding changes"
+    IDC_PROJECT_DISCARD_ALL "Discard all changes, get the last committed version"
+    IDC_OPTIONS_READ_ONLY_MODE "*empty*"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_MSG_SHOW_DATE       "Show the date of the messages"
+    IDC_MSG_SHOW_TIME       "Show the time of the messages"
+    IDC_MSG_SHOW_PRIORITY   "Show the priority of the messages"
+    IDC_MSG_ERROR           "Show error messages"
+    IDC_MSG_WARNING         "Show warning messages"
+    IDC_MSG_NOTICE          "Show notice messages"
+    IDC_MSG_INFO            "Show info messages"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral (Sys. Default) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEUSD)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_SYS_DEFAULT
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PAGE_OPTIONS_ENVIRONMENT DIALOGEX 0, 0, 178, 641
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Sky bitmaps and gradient:",IDC_STATIC,3,1,173,99
+    LTEXT           "Sky bitmaps:",IDC_STATIC,8,17,42,8
+    LISTBOX         IDC_SKYDOME_LIST,65,15,65,46,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add...",IDC_ADDSKYDOME_BTN,133,18,38,14
+    PUSHBUTTON      "Clear",IDC_CLEARSKYDOME_BTN,133,37,38,14
+    LTEXT           "",IDC_SKYDOME_TB,65,64,63,15,SS_SUNKEN
+    LTEXT           "Skybox gradient:",IDC_STATIC,8,84,56,8
+    EDITTEXT        IDC_SB_GRAD_EDIT,65,81,66,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Browse",IDC_SB_GRAD_BTN,133,81,38,14
+    LTEXT           "Time of day file:",IDC_STATIC,5,105,52,8
+    EDITTEXT        IDC_TODFILE_EDIT,59,103,77,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_TODFILE_BTN,139,103,17,14
+    PUSHBUTTON      "",IDC_NEWTODFILE_BTN,158,103,17,14
+    LTEXT           "(includes Game options, Sun/moon inclination and Animation colours)",IDC_STATIC,14,119,149,20
+    GROUPBOX        "Game options:",IDC_STATIC,3,139,173,46
+    LTEXT           "Hour length:",IDC_STATIC,13,152,41,8
+    EDITTEXT        IDC_HOURLENGTH,64,149,28,14,ES_AUTOHSCROLL
+    LTEXT           "secs/hour",IDC_STATIC,101,152,32,8
+    LTEXT           "Start time:",IDC_STATIC,13,171,35,8
+    EDITTEXT        IDC_STARTTIME,64,168,28,14,ES_AUTOHSCROLL
+    GROUPBOX        "Sun/moon inclination",IDC_STATIC,3,185,173,48
+    LTEXT           "Sun angle:",IDC_STATIC,12,201,35,8
+    EDITTEXT        IDC_SUNANGLE_EDIT,63,198,28,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SUNANGLE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,97,198,70,13
+    LTEXT           "Moon angle:",IDC_STATIC,12,217,40,8
+    EDITTEXT        IDC_MOONANGLE_EDIT,63,215,28,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_MOONANGLE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,97,216,70,12
+    GROUPBOX        "Time:",IDC_STATIC,3,233,173,40
+    LTEXT           "Time of day",IDC_STATIC,8,246,38,8
+    CONTROL         "",IDC_TIMEOFDAY_SLIDER,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,46,243,91,12
+    EDITTEXT        IDC_TIMEOFDAY_EDIT,137,246,36,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    LTEXT           "(not saved as part of the configuation)",IDC_STATIC,30,260,126,8
+    GROUPBOX        "Animation colours",IDC_STATIC,3,273,173,228
+    CONTROL         "Sun animation",IDC_SUNANIM_BTN,"Button",BS_AUTORADIOBUTTON | WS_GROUP,11,284,61,10
+    PUSHBUTTON      "Reset",IDC_CREATEANIM_BTN,123,284,50,14
+    CONTROL         "Ambient animation",IDC_AMBANIM_BTN,"Button",BS_AUTORADIOBUTTON,11,296,75,10
+    CONTROL         "",IDC_COLORTIMELINE,"Static",SS_BLACKFRAME,8,309,85,171
+    CONTROL         "",IDC_COLORPICKER,"Static",SS_BLACKFRAME,97,309,75,129
+    LTEXT           "R:",IDC_STATIC,131,445,8,8
+    EDITTEXT        IDC_R_EDIT,139,442,33,14,ES_AUTOHSCROLL
+    LTEXT           "G:",IDC_STATIC,131,460,8,8
+    EDITTEXT        IDC_G_EDIT,139,457,33,14,ES_AUTOHSCROLL
+    LTEXT           "B:",IDC_STATIC,131,476,8,8
+    EDITTEXT        IDC_B_EDIT,139,473,33,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Add colour",IDC_ADDCOLOR_BTN,7,483,52,14
+    PUSHBUTTON      "Remove colour",IDC_DELCOLOR_BTN,62,483,54,14
+    LTEXT           "Sky file:",IDC_STATIC,9,521,26,8
+    EDITTEXT        IDC_SKYFILE_EDIT,43,519,91,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "",IDC_SKYFILE_BTN,136,519,17,14
+    PUSHBUTTON      "",IDC_NEWSKYFILE_BTN,154,519,17,14
+    GROUPBOX        "Atmospheric effects",IDC_STATIC,3,507,171,131
+    LTEXT           "MIE amount:",IDC_STATIC,9,541,42,8
+    EDITTEXT        IDC_MIEAMOUNT,69,536,29,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_MIEAMOUNT_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,99,537,70,13
+    LTEXT           "Turbidity offset:",IDC_STATIC,9,556,53,8
+    EDITTEXT        IDC_TURBOFFS,69,553,29,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_TURBOFFS_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,99,554,70,13
+    LTEXT           "Turbidity factor:",IDC_STATIC,9,573,53,8
+    EDITTEXT        IDC_TURBFACTOR,69,571,29,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_TURBFACTOR_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,99,572,70,13
+    LTEXT           "Vertex effect:",IDC_STATIC,9,590,46,8
+    EDITTEXT        IDC_VERTHEIGHTEFFECT,69,587,29,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_VERTHEIGHTEFFECT_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,99,588,70,13
+    LTEXT           "Sun height effect:",IDC_STATIC,9,608,59,8
+    EDITTEXT        IDC_SUNHEIGHTEFFECT,69,605,29,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SUNHEIGHTEFFECT_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,99,606,70,13
+    LTEXT           "Power:",IDC_STATIC,9,624,24,8
+    EDITTEXT        IDC_POWER,69,621,29,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_POWER_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,99,622,70,13
+END
+
+#endif    // Neutral (Sys. Default) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Australia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_ACTIONS DIALOGEX 0, 0, 263, 228
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modify Actions"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,152,207,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,206,207,50,14
+    LTEXT           "Current Actions:",IDC_STATIC,7,7,54,8
+    PUSHBUTTON      "Delete Selected",IDC_DIALOG_ACTION_DELETE,188,133,68,12,BS_MULTILINE
+    COMBOBOX        IDC_DIALOG_ACTION_EVENT,45,151,100,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Event:",IDC_STATIC,16,153,22,8
+    LTEXT           "Action:",IDC_STATIC,16,169,24,8
+    COMBOBOX        IDC_DIALOG_ACTION_ACTION,45,167,100,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add Action",IDC_DIALOG_ACTION_ADD,44,183,70,12
+    PUSHBUTTON      "Change Event for Selected",IDC_DIALOG_ACTION_CHANGE,152,151,104,12
+    LISTBOX         IDC_DIALOG_ACTION_CURRENT,7,17,249,108,LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_MODELESS_INFO DIALOGEX 0, 0, 187, 73
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_INFO,6,6,174,60
+END
+
+IDD_RAW_IMPORT_DLG DIALOGEX 0, 0, 176, 191
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "RAW Terrain Import"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "File:",IDC_STATIC,8,9,14,8
+    EDITTEXT        IDC_RAWIMP_FILENAME,35,6,131,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Size:",IDC_STATIC,8,27,16,8
+    COMBOBOX        IDC_RAWIMP_SIZE,35,25,132,136,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "",IDC_RAWIMP_BMP,8,43,158,95,SS_SUNKEN
+    CONTROL         "Little endian (Intel format)",IDC_RAWIMP_LITTLEENDIAN,
+                    "Button",BS_AUTORADIOBUTTON,8,146,100,10
+    CONTROL         "Big endian (Motorola format)",IDC_RAWIMP_BIGENDIAN,
+                    "Button",BS_AUTORADIOBUTTON,8,157,107,10
+    DEFPUSHBUTTON   "OK",IDOK,54,173,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,117,172,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG_ACTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 256
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 221
+    END
+
+    IDD_MODELESS_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_SCENE_ICONS         BITMAP                  "res\\sceneicons.bmp"
+IDR_IMP_TER_TOOLBAR     BITMAP                  "res\\imptoolbar.bmp"
+IDR_IMP_TER_DIS_TOOLBAR BITMAP                  "res\\impdistoolbar.bmp"
+IDR_SKYDOME_TB          BITMAP                  "res\\skydometb.bmp"
+IDR_SKYDOME_DIS_TB      BITMAP                  "res\\skydomed.bmp"
+IDB_OPEN                BITMAP                  "res\\open.bmp"
+IDB_OPEND               BITMAP                  "res\\opend.bmp"
+IDB_NEWFILE             BITMAP                  "res\\newfile.bmp"
+IDB_NEWFILED            BITMAP                  "res\\newfiled.bmp"
+IDB_DUPLICATE           BITMAP                  "res\\duplicate.bmp"
+IDB_DUPLICATED          BITMAP                  "res\\duplicated.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_SCENE_POPUP MENU 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Insert",                      ID_SCENE_POPUP_INSERT
+        MENUITEM "Delete",                      ID_SCENE_POPUP_DELETE
+        MENUITEM "Rename",                      ID_SCENE_POPUP_RENAME
+        MENUITEM SEPARATOR
+        MENUITEM "Move Selection Here",         ID_SCENE_POPUP_MOVESELECTIONHERE
+    END
+END
+
+IDR_PROPERTIES_LIST_POPUP MENU 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Add item",                    ID_PROPERTIES_LIST_POPUP_ADDITEM
+    END
+END
+
+IDR_PROPERTIES_LISTITEM_POPUP MENU 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Remove item",                 ID_PROPERTIES_LISTITEM_POPUP_REMOVEITEM
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_IMP_TER_TOOLBAR TOOLBAR  16, 15
+BEGIN
+    BUTTON      IDC_TERIMP_ANTICLOCKWISE_BTN
+    BUTTON      IDC_TERIMP_CLOCKWISE_BTN
+    BUTTON      IDC_TERIMP_FLIPX_BTN
+    BUTTON      IDC_TERIMP_FLIPY_BTN
+    BUTTON      IDC_TERIMP_FLIPH_BTN
+    BUTTON      IDC_TERIMP_RECALCCLR_BTN
+END
+
+IDR_IMP_TER_DIS_TOOLBAR TOOLBAR  16, 15
+BEGIN
+    BUTTON      IDC_TERIMP_ANTICLOCKWISE_BTN
+    BUTTON      IDC_TERIMP_CLOCKWISE_BTN
+    BUTTON      IDC_TERIMP_FLIPX_BTN
+    BUTTON      IDC_TERIMP_FLIPY_BTN
+    BUTTON      IDC_TERIMP_FLIPH_BTN
+    BUTTON      IDC_TERIMP_RECALCCLR_BTN
+END
+
+IDR_SKYDOME_TB TOOLBAR  16, 15
+BEGIN
+    BUTTON      IDC_SKYDOME_UP
+    BUTTON      IDC_SKYDOME_DOWN
+    BUTTON      IDC_SKYDOME_DEL
+END
+
+IDR_SKYDOME_DIS_TB TOOLBAR  16, 15
+BEGIN
+    BUTTON      IDC_SKYDOME_UP
+    BUTTON      IDC_SKYDOME_DOWN
+    BUTTON      IDC_SKYDOME_DEL
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""../../lib/ual/ual_resource.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\bigbang.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""ual.rc""\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+IDR_MANIFEST_LEGACY     RT_MANIFEST             "res\\Bigbang.manifest"
+#endif    // English (Australia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\bigbang.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "ual.rc"
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

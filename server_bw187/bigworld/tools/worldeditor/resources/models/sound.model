@@ -1,0 +1,4 @@
+<sound.model>
+	<batched>	false	</batched>
+	<nodefullVisual>	resources/models/sound	</nodefullVisual>
+</sound.model>

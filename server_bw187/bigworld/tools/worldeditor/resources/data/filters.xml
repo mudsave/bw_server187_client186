@@ -1,0 +1,75 @@
+<filters.xml>
+		<filter>
+			<name>	Extra Slow Smooth	</name>
+			<constant>	0	</constant>
+			<kernel>	1 1 1	</kernel>
+			<kernel>	1 512 1	</kernel>
+			<kernel>	1 1 1	</kernel>
+			<strengthRatio>	0	</strengthRatio>
+			<kernelSum>	520	</kernelSum>
+		</filter>
+		<filter>
+			<name>	Slow Smooth	</name>
+			<constant>	0	</constant>
+			<kernel>	1 1 1	</kernel>
+			<kernel>	1 18 1	</kernel>
+			<kernel>	1 1 1	</kernel>
+			<strengthRatio>	0	</strengthRatio>
+			<kernelSum>	26	</kernelSum>
+		</filter>
+		<filter>
+			<name>	Medium Smooth	</name>
+			<constant>	0	</constant>
+			<kernel>	1 1 1	</kernel>
+			<kernel>	1 9 1	</kernel>
+			<kernel>	1 1 1	</kernel>
+			<strengthRatio>	0	</strengthRatio>
+			<kernelSum>	17	</kernelSum>
+		</filter>
+		<filter>
+			<name>	Fast Smooth	</name>
+			<constant>	0	</constant>
+			<kernel>	1 1 1	</kernel>
+			<kernel>	1 1 1	</kernel>
+			<kernel>	1 1 1	</kernel>
+			<strengthRatio>	0	</strengthRatio>
+			<kernelSum>	9	</kernelSum>
+		</filter>
+		<filter>
+			<name>	Sharpen	</name>
+			<constant>	0	</constant>
+			<kernel>	-1 -1 -1	</kernel>
+			<kernel>	-1 512 -1	</kernel>
+			<kernel>	-1 -1 -1	</kernel>
+			<strengthRatio>	0	</strengthRatio>
+			<kernelSum>	504	</kernelSum>
+		</filter>
+		<filter>
+			<name>	Sharpen More	</name>
+			<constant>	0	</constant>
+			<kernel>	-1 -1 -1	</kernel>
+			<kernel>	-1 128 -1	</kernel>
+			<kernel>	-1 -1 -1	</kernel>
+			<strengthRatio>	0	</strengthRatio>
+			<kernelSum>	120	</kernelSum>
+		</filter>
+		<filter>
+			<name>	Nice'n'Smooth	</name>
+			<constant>	0	</constant>
+			<kernel>	1 1 1	</kernel>
+			<kernel>	1 5 1	</kernel>
+			<kernel>	1 1 1	</kernel>
+			<strengthRatio>	0	</strengthRatio>
+			<kernelSum>	13	</kernelSum>
+		</filter>
+		<filter>
+			<name>	Raise 20cm	</name>
+			<constant>	0.2	</constant>
+			<kernel>	0 0 0	</kernel>
+			<kernel>	0 1 0	</kernel>
+			<kernel>	0 0 0	</kernel>
+			<strengthRatio>	1	</strengthRatio>
+			<kernelSum>	1	</kernelSum>
+			<included>	false	</included>
+		</filter>
+</filters.xml>

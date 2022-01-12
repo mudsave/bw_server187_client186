@@ -1,0 +1,31 @@
+LIB = resmgr
+
+SRCS =					\
+	../../../../../src/lib/resmgr/access_monitor		\
+	../../../../../src/lib/resmgr/auto_config			\
+	../../../../../src/lib/resmgr/bdiff				\
+	../../../../../src/lib/resmgr/binary_block		\
+	../../../../../src/lib/resmgr/bin_section			\
+	../../../../../src/lib/resmgr/bundiff				\
+	../../../../../src/lib/resmgr/bwresource			\
+	../../../../../src/lib/resmgr/dataresource		\
+	../../../../../src/lib/resmgr/datasection			\
+	../../../../../src/lib/resmgr/data_section_cache	\
+	../../../../../src/lib/resmgr/data_section_census	\
+	../../../../../src/lib/resmgr/dir_section			\
+	../../../../../src/lib/resmgr/multi_file_system	\
+	../../../../../src/lib/resmgr/packed_section		\
+	../../../../../src/lib/resmgr/primitive_file		\
+	../../../../../src/lib/resmgr/sanitise_helper		\
+	../../../../../src/lib/resmgr/unix_file_system	\
+	../../../../../src/lib/resmgr/xml_section			\
+	../../../../../src/lib/resmgr/xml_special_chars	\
+	../../../../../src/lib/resmgr/zip_file_system		\
+
+ifndef MF_ROOT
+export MF_ROOT := $(subst /src/lib/$(LIB),,$(CURDIR))
+endif
+
+include common.mak
+
+CPPFLAGS += -DHAVE_ZIP

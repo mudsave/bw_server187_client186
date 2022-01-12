@@ -1,0 +1,31 @@
+/******************************************************************************
+BigWorld Technology
+Copyright BigWorld Pty, Ltd.
+All Rights Reserved. Commercial in confidence.
+
+WARNING: This computer program is protected by copyright law and international
+treaties. Unauthorized use, reproduction or distribution of this program, or
+any portion of this program, may result in the imposition of civil and
+criminal penalties as provided by law.
+******************************************************************************/
+
+// #include "bwservice.hpp"
+#include "cstdmf/dprintf.hpp"
+#include "cstdmf/watcher.hpp"
+
+float GHOST_DISTANCE = 500.f;
+
+void bwParseCommandLine( int argc, char **argv )
+{
+	MF_WATCH( "debug/shouldWriteToConsole", g_shouldWriteToConsole );
+
+	for (int i=1; i < argc; i++)
+	{
+		if (strcmp( argv[i], "-machined" ) == 0)
+		{
+			g_shouldWriteToConsole = false;
+		}
+	}
+}
+
+// bwservice.cpp

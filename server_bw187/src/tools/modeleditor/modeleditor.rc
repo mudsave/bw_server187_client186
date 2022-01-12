@@ -1,0 +1,1049 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "ual_resource.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""ual_resource.h""\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\ModelEditor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""ual.rc""         // UAL\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\modeleditor.ico"
+IDR_ModelEditorTYPE     ICON                    "res\\modeleditor_doc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_SPLASH              BITMAP                  "res\\splash_screen.bmp"
+IDB_ABOUTBOX            BITMAP                  "res\\about_box.bmp"
+IDB_SEARCH              BITMAP                  "res\\search.bmp"
+IDB_CANCEL              BITMAP                  "res\\cancel.bmp"
+IDB_LOD_PAT_1           BITMAP                  "res\\lod_pat_1.bmp"
+IDB_LOD_PAT_2           BITMAP                  "res\\lod_pat_2.bmp"
+IDB_LOD_PAT_3           BITMAP                  "res\\lod_pat_3.bmp"
+IDB_MINUS               BITMAP                  "res\\minus.bmp"
+IDB_PLUS                BITMAP                  "res\\plus.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 1, 1
+STYLE DS_SETFONT | DS_3DLOOK | DS_FIXEDSYS | WS_POPUP | WS_THICKFRAME
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+END
+
+IDD_SPLASH DIALOGEX 0, 0, 225, 156
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         131,IDC_STATIC,"Static",SS_BITMAP,0,0,225,156
+END
+
+IDD_DISPLAY DIALOGEX 0, 0, 190, 293
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Show Axes",IDC_SHOW_AXES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,18,87,8
+    CONTROL         "Check For Sparkles",IDC_CHECK_FOR_SPARKLES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,30,87,10
+    CONTROL         "Show Bloom",IDC_SHOW_BLOOM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,103,16,79,10
+    CONTROL         "Show Shimmer",IDC_SHOW_SHIMMER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,103,30,80,10
+    CONTROL         "Show Model",IDC_SHOW_MODEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,65,87,8
+    CONTROL         "Show Wireframe",IDC_SHOW_WIREFRAME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,77,87,10
+    CONTROL         "Show Skeleton",IDC_SHOW_SKELETON,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,91,87,8
+    CONTROL         "Show Bounding Boxes",IDC_SHOW_BOUNDING_BOX,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,103,87,10
+    CONTROL         "Show BSP",IDC_SHOW_BSP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,103,65,79,8
+    CONTROL         "Show Portals",IDC_SHOW_PORTALS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,103,76,79,10
+    CONTROL         "Lock to Ground",IDC_GROUND_MODEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,103,89,79,10
+    CONTROL         "Centre Model",IDC_CENTRE_MODEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,103,102,79,10
+    COMBOBOX        IDC_SHADOWING,12,117,166,66,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_DISPLAY_BKG,12,156,166,66,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Choose BKG Colour...",IDC_DISPLAY_CHOOSE_BKG_COLOUR,12,196,166,14
+    PUSHBUTTON      "Choose Floor Texture...",IDC_DISPLAY_CHOOSE_FLOOR_TEXTURE,12,216,166,14
+    CONTROL         "",IDC_TIMEOFDAY_SLIDER,"msctls_trackbar32",TBS_TOP,12,262,166,18
+    GROUPBOX        "Background",IDC_DISPLAY_BKG_BOX,5,143,180,95
+    GROUPBOX        "Model",IDC_DISPLAY_MODEL_BOX,5,52,180,86
+    GROUPBOX        "General",IDC_DISPLAY_GENERAL_BOX,5,5,180,43
+    EDITTEXT        IDC_TIMEOFDAY_TEXT,12,252,164,12,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    GROUPBOX        "Time of Day",IDC_DISPLAY_TIMEOFDAY_BOX,5,242,180,46
+    COMBOBOX        IDC_DISPLAY_FLORA,12,176,166,66,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ANIMATIONS DIALOGEX 0, 0, 190, 502
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_SEARCH_TEXT,25,10,137,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    CONTROL         "",IDC_SEARCH_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | WS_BORDER | WS_TABSTOP,7,28,174,76,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_ANIM_NAME,46,132,135,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_ANIM_FIRST,84,175,24,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | ES_NUMBER
+    EDITTEXT        IDC_ANIM_LAST,139,175,24,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | ES_NUMBER
+    EDITTEXT        IDC_ANIM_FRAME,45,194,20,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | ES_NUMBER
+    CONTROL         "",IDC_ANIM_FRAME_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS,67,194,114,13
+    EDITTEXT        IDC_ANIM_FRAME_RATE,45,214,20,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | ES_NUMBER
+    CONTROL         "",IDC_ANIM_FRAME_RATE_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS,67,214,114,13
+    PUSHBUTTON      "Save Frame Rate",IDC_ANIM_SAVE_FRAME_RATE,94,231,87,16
+    CONTROL         "",IDC_ANIM_NODES,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,266,174,84,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_ANIM_BLEND,34,358,27,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ANIM_BLEND_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS,62,358,119,13
+    PUSHBUTTON      "Remove Blend Factor",IDC_ANIM_REMOVE_BLEND,91,375,90,17
+    CONTROL         "",IDC_ANIM_COMP_POS_SLDR,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS,41,419,85,12
+    PUSHBUTTON      "-",IDC_ANIM_COMP_POS_MINUS,128,417,15,14
+    PUSHBUTTON      "+",IDC_ANIM_COMP_POS_PLUS,146,417,15,14
+    CONTROL         "",IDC_ANIM_COMP_ROT_SLDR,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS,41,436,85,12
+    PUSHBUTTON      "-",IDC_ANIM_COMP_ROT_MINUS,128,434,15,14
+    PUSHBUTTON      "+",IDC_ANIM_COMP_ROT_PLUS,146,434,15,14
+    CONTROL         "",IDC_ANIM_COMP_SCALE_SLDR,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS,41,453,85,12
+    PUSHBUTTON      "-",IDC_ANIM_COMP_SCALE_MINUS,128,451,15,14
+    PUSHBUTTON      "+",IDC_ANIM_COMP_SCALE_PLUS,146,451,15,14
+    RTEXT           "100%",IDC_ANIM_COMP_POS,164,420,20,8
+    RTEXT           "100%",IDC_ANIM_COMP_ROT,164,436,20,8
+    RTEXT           "100%",IDC_ANIM_COMP_SCALE,164,454,20,8
+    CONTROL         "",IDC_SEARCH_BKG,"Static",SS_WHITERECT | WS_CLIPSIBLINGS | WS_BORDER,7,6,174,16,WS_EX_CLIENTEDGE
+    CONTROL         139,IDC_SEARCH_BUTTON,"Static",SS_BITMAP | SS_NOTIFY,10,9,15,13
+    CONTROL         140,IDC_SEARCH_CANCEL,"Static",SS_BITMAP | SS_NOTIFY | NOT WS_VISIBLE,163,9,15,13
+    CTEXT           "Animation toolbar goes here...",IDC_ANIM_TOOLBAR,7,111,174,16,NOT WS_VISIBLE | WS_BORDER
+    LTEXT           "Name",IDC_STATIC,10,133,22,8
+    LTEXT           "File\nSource",IDC_STATIC,10,151,22,17
+    LTEXT           "Frame\nRate",IDC_STATIC,10,211,22,17
+    LTEXT           "Included\nFrames",IDC_STATIC,10,173,29,17
+    LTEXT           "Last",IDC_STATIC,122,177,14,8
+    LTEXT           "First",IDC_STATIC,65,177,15,8
+    LTEXT           "Blend\nFactor",IDC_STATIC,10,356,23,16
+    LTEXT           "Current\nFrame",IDC_STATIC,10,191,33,17
+    GROUPBOX        "Node Blending",IDC_ANIM_NODES_BOX,0,252,189,149
+    LTEXT           "Source File Path",IDC_ANIM_SOURCE,46,152,113,12,SS_SUNKEN
+    PUSHBUTTON      "...",IDC_ANIM_CHANGE_ANIM,168,152,13,12
+    LTEXT           "Rotation",IDC_STATIC,12,437,28,8
+    LTEXT           "Position",IDC_STATIC,12,420,28,8
+    LTEXT           "Scale",IDC_STATIC,12,454,28,8
+    LTEXT           "Original Size = 100 KB\nCompressed Size = 50 KB\nCompression Ratio = 50 %",IDC_ANIM_COMP_TOTAL,60,471,119,27
+    CTEXT           "Comp toolbar",IDC_ANIM_COMP_TOOLBAR,12,474,40,16,NOT WS_VISIBLE | WS_BORDER
+    GROUPBOX        "Compression Settings",IDC_ANIM_COMP_BOX,0,405,189,97
+END
+
+IDD_ACTIONS DIALOGEX 0, 0, 190, 535
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_SEARCH_TEXT,26,9,135,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    CONTROL         "",IDC_SEARCH_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | WS_BORDER | WS_TABSTOP,8,27,173,78,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_ACT_NAME,44,130,135,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "...",IDC_ACT_CHANGE_ANIM,168,148,13,12
+    CONTROL         "Looped",IDC_ACT_LOOP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,204,41,10
+    CONTROL         "Is Movement",IDC_ACT_MOVE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,217,57,10
+    CONTROL         "Is Impacting",IDC_ACT_IMPACT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,108,204,55,10
+    CONTROL         "Is Coordinated",IDC_ACT_COORD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,108,217,63,10
+    EDITTEXT        IDC_ACT_TRACK,44,232,29,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | ES_NUMBER
+    EDITTEXT        IDC_ACT_TRIGGER_SPEED_MIN,44,280,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ACT_TRIGGER_SPEED_SLDR,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP,75,280,70,12,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_ACT_TRIGGER_SPEED_MAX,146,280,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_ACT_TRIGGER_AUX1_MIN,44,295,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ACT_TRIGGER_AUX1_SLDR,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP,75,296,70,12,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_ACT_TRIGGER_AUX1_MAX,146,295,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_ACT_TRIGGER_YAW_MIN,44,311,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ACT_TRIGGER_YAW_SLDR,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP,75,310,70,12,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_ACT_TRIGGER_YAW_MAX,146,311,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "...",IDC_ACT_TRIGGER_CAPS_ON_SEL,163,327,13,12
+    PUSHBUTTON      "...",IDC_ACT_TRIGGER_CAPS_OFF_SEL,163,343,13,12
+    EDITTEXT        IDC_ACT_CANCEL_SPEED_MIN,44,386,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ACT_CANCEL_SPEED_SLDR,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP,75,386,70,12,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_ACT_CANCEL_SPEED_MAX,146,386,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_ACT_CANCEL_AUX1_MIN,44,402,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ACT_CANCEL_AUX1_SLDR,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP,75,403,70,12,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_ACT_CANCEL_AUX1_MAX,146,402,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_ACT_CANCEL_YAW_MIN,44,418,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ACT_CANCEL_YAW_SLDR,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS | TBS_ENABLESELRANGE | TBS_NOTHUMB | WS_TABSTOP,75,418,70,12,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_ACT_CANCEL_YAW_MAX,146,417,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "...",IDC_ACT_CANCEL_CAPS_ON_SEL,163,434,13,12
+    PUSHBUTTON      "...",IDC_ACT_CANCEL_CAPS_OFF_SEL,163,450,13,12
+    CONTROL         "One Shot",IDC_ACT_ONE_SHOT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,474,46,10
+    CONTROL         "Promote Motion",IDC_ACT_PROMOTE_MOTION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,488,66,10
+    CONTROL         "Scale Playback Speed",IDC_ACT_SCALE_PLAYBACK_SPEED,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,90,474,85,10
+    CONTROL         "Feet Follow Direction",IDC_ACT_FEET_FOLLOW_DIRECTION,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,90,488,83,10
+    PUSHBUTTON      "Trigger Action",IDC_ACT_TRIGGER_ACTION,5,511,177,17
+    CONTROL         "",IDC_SEARCH_BKG,"Static",SS_WHITERECT | WS_CLIPSIBLINGS | WS_BORDER,8,7,173,15,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_ACT_TRIGGER_CAPS_ON,44,327,114,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | NOT WS_TABSTOP
+    EDITTEXT        IDC_ACT_TRIGGER_CAPS_OFF,44,343,114,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | NOT WS_TABSTOP
+    EDITTEXT        IDC_ACT_CANCEL_CAPS_ON,44,434,114,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | NOT WS_TABSTOP
+    EDITTEXT        IDC_ACT_CANCEL_CAPS_OFF,44,450,114,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | NOT WS_TABSTOP
+    CONTROL         139,IDC_SEARCH_BUTTON,"Static",SS_BITMAP | SS_NOTIFY,11,10,15,13
+    CONTROL         140,IDC_SEARCH_CANCEL,"Static",SS_BITMAP | SS_NOTIFY | NOT WS_VISIBLE,163,10,15,13
+    LTEXT           "Name",IDC_STATIC,10,132,22,8
+    CTEXT           "Action toolbar goes here...",IDC_ACT_TOOLBAR,8,111,173,14,NOT WS_VISIBLE | WS_BORDER
+    EDITTEXT        IDC_ACT_ANIM,44,148,116,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | NOT WS_TABSTOP
+    LTEXT           "Animation",IDC_STATIC,10,150,33,8
+    LTEXT           "Track No.",IDC_STATIC,10,234,32,8
+    GROUPBOX        "Match",IDC_ACT_MATCH_BOX,0,249,189,256
+    GROUPBOX        "Trigger",IDC_ACT_TRIGGER_BOX,5,258,178,106
+    LTEXT           "Caps On",IDC_STATIC,10,329,28,8
+    LTEXT           "Caps Off",IDC_STATIC,10,345,30,8
+    GROUPBOX        "Cancel",IDC_ACT_CANCEL_BOX,5,364,177,106
+    LTEXT           "Speed",IDC_STATIC,10,387,21,8
+    LTEXT           "Direction",IDC_STATIC,10,419,29,8
+    LTEXT           "Turn",IDC_STATIC,10,404,16,8
+    LTEXT           "Caps On",IDC_STATIC,10,436,28,8
+    LTEXT           "Caps Off",IDC_STATIC,10,452,30,8
+    LTEXT           "Speed",IDC_STATIC,10,282,21,8
+    LTEXT           "Direction",IDC_STATIC,10,312,29,8
+    LTEXT           "Turn",IDC_STATIC,10,297,16,8
+    EDITTEXT        IDC_ACT_BLEND_IN,44,167,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ACT_BLEND_IN_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS,76,167,105,13
+    EDITTEXT        IDC_ACT_BLEND_OUT,44,186,30,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_ACT_BLEND_OUT_SLIDER,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS,76,186,105,13
+    LTEXT           "Blend Out\n   (sec)",IDC_STATIC,10,183,34,17
+    LTEXT           "Blend In\n   (sec)",IDC_STATIC,10,164,33,17
+    CONTROL         "Model is Falling",IDC_ACT_TRIGGER_FALLING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,44,267,63,10
+    CONTROL         "Model is Falling",IDC_ACT_CANCEL_FALLING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,44,373,63,10
+END
+
+IDD_CHOOSE_ANIM DIALOGEX 0, 0, 175, 148
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION
+CAPTION "Choose Animation..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_SEARCH_TEXT,23,10,129,10,ES_AUTOHSCROLL | NOT WS_BORDER
+    CONTROL         "",IDC_SEARCH_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | WS_BORDER | WS_TABSTOP,9,28,156,86
+    PUSHBUTTON      "Cancel",IDCANCEL,9,123,69,18
+    DEFPUSHBUTTON   "OK",IDOK,96,123,69,18
+    CONTROL         "",IDC_SEARCH_BKG,"Static",SS_WHITERECT | WS_CLIPSIBLINGS | WS_BORDER,8,7,158,15,WS_EX_CLIENTEDGE
+    CONTROL         139,IDC_SEARCH_BUTTON,"Static",SS_BITMAP | SS_NOTIFY,11,9,11,10
+    CONTROL         140,IDC_SEARCH_CANCEL,"Static",SS_BITMAP | SS_NOTIFY | NOT WS_VISIBLE,153,9,11,10
+END
+
+IDD_EMPTY DIALOGEX 0, 0, 190, 90
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_LOD DIALOGEX 0, 0, 190, 210
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LOD_DIST_SLIDER,"msctls_trackbar32",TBS_TOP | TBS_NOTICKS,2,27,184,12
+    CONTROL         "Virtual LOD Distance",IDC_LOD_VIRTUAL_DIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,49,81,10
+    EDITTEXT        IDC_LOD_DIST,127,48,36,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "",IDC_LOD_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_TABSTOP,8,71,172,76,WS_EX_CLIENTEDGE
+    CTEXT           "LOD toolbar goes here...",IDC_LOD_TOOLBAR,8,151,172,14,NOT WS_VISIBLE | WS_BORDER
+    EDITTEXT        IDC_LOD_MIN,39,172,32,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_LOD_MAX,129,172,32,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "Hidden",IDC_LOD_HIDDEN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,76,191,38,10
+    LTEXT           "Max Dist",IDC_STATIC,99,174,28,8
+    LTEXT           "Min Dist",IDC_STATIC,12,174,26,8
+    LTEXT           "(m)",IDC_STATIC,74,174,12,8
+    LTEXT           "(m)",IDC_STATIC,165,174,12,8
+    CONTROL         "",IDC_LOD_BAR,"Static",SS_BLACKFRAME | SS_NOTIFY,8,6,172,17
+    LTEXT           "LOD Dist",IDC_LOD_DIST_TITLE,98,50,28,8
+    LTEXT           "(m)",IDC_LOD_DIST_UNIT,165,50,12,8
+END
+
+IDD_LIGHTS DIALOGEX 0, 0, 190, 383
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LISTBOX         IDC_PROPERTIES_LIST,10,200,169,147,LBS_OWNERDRAWVARIABLE | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | WS_VSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+    CONTROL         "Lock Light to Camera",IDC_LIGHTS_CAMERA,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,354,83,10
+    CONTROL         "Show Light Axes",IDC_LIGHTS_MODELS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,368,69,10
+    RADIOBUTTON     "Game Lighting",IDC_LIGHTS_USE_GAME,10,7,63,10,WS_TABSTOP
+    RADIOBUTTON     "Custom Lighting",IDC_LIGHTS_USE_CUSTOM,10,41,73,14,WS_TABSTOP
+    COMBOBOX        IDC_LIGHTS_SETUPS,10,58,169,14,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_LIGHTS_LIST,"SysTreeView32",TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | TVS_CHECKBOXES | TVS_NOSCROLL | TVS_FULLROWSELECT | WS_TABSTOP,10,99,169,91,WS_EX_CLIENTEDGE
+    CTEXT           "Lights toolbar goes here...",IDC_LIGHTS_TOOLBAR,10,79,169,14,NOT WS_VISIBLE | WS_BORDER
+    CONTROL         "",IDC_TIMEOFDAY_SLIDER,"msctls_trackbar32",TBS_TOP,10,19,169,18
+    EDITTEXT        IDC_TIMEOFDAY_TEXT,145,8,26,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    LTEXT           "Time of Day:",IDC_TIMEOFDAY_TITLE,104,8,42,8
+END
+
+IDD_PREFS DIALOGEX 0, 0, 135, 169
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ModelEditor Preferences"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Invert Mouse",IDC_PREFS_INVERT_MOUSE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,131,59,10
+    CONTROL         "Load Last Lights",IDC_PREFS_LOAD_LAST_LIGHTS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,43,67,10
+    GROUPBOX        "On Startup",IDC_STATIC,11,7,111,51
+    CONTROL         "Animate Zoom to Extents",IDC_PREFS_ANIMATE_ZOOM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,105,97,10
+    CONTROL         "Lock LOD Parents",IDC_PREFS_LOCK_LOD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,118,72,10
+    CONTROL         "Zoom to Extents",IDC_PREFS_ZOOM_ON_LOAD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,85,69,10
+    CONTROL         "Load Last Model",IDC_PREFS_LOAD_LAST_MODEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,30,67,10
+    PUSHBUTTON      "Cancel",IDCANCEL,7,148,50,14
+    DEFPUSHBUTTON   "OK",IDOK,77,148,50,14
+    CONTROL         "Regenerate Visibility Box",IDC_PREFS_REGEN_BB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,72,95,10
+    GROUPBOX        "On Model Load",IDC_STATIC,11,60,111,40
+    CONTROL         "Show Splash Screen",IDC_PREFS_SHOW_SPLASH_SCREEN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,18,80,10
+END
+
+IDD_MATERIALS DIALOGEX 0, 0, 190, 481
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_MATERIALS_TREE,"SysTreeView32",TVS_HASLINES | TVS_SHOWSELALWAYS | WS_TABSTOP,10,30,170,89,WS_EX_CLIENTEDGE
+    LISTBOX         IDC_PROPERTIES_LIST,10,214,170,147,LBS_OWNERDRAWVARIABLE | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | WS_VSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_MATERIALS_MATERIAL,50,368,130,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_MATERIALS_MATTER,50,386,130,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_MATERIALS_TINT,50,405,130,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    COMBOBOX        IDC_MATERIALS_FX_LIST,50,423,110,16,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_MATERIALS_FX_SEL,166,423,14,12
+    CONTROL         "Preview",IDC_MATERIALS_PREVIEW,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,463,41,10
+    COMBOBOX        IDC_MATERIALS_PREVIEW_LIST,50,461,130,16,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Materials toolbar goes here...",IDC_MATERIALS_TOOLBAR,10,9,170,14,NOT WS_VISIBLE | WS_BORDER
+    CONTROL         "",IDC_MATERIALS_PREVIEW_RECT,"Static",SS_BITMAP | SS_NOTIFY,48,127,15,13
+    LTEXT           "Material",IDC_STATIC,10,369,26,8
+    LTEXT           "Dye",IDC_STATIC,10,387,14,8
+    LTEXT           "Tint",IDC_STATIC,10,406,13,8
+    LTEXT           "Effect",IDC_STATIC,10,425,20,8
+    COMBOBOX        IDC_MATERIALS_TECHNIQUE,50,442,130,16,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Technique",IDC_STATIC,10,443,34,8
+END
+
+IDD_NEW_TINT DIALOGEX 0, 0, 260, 129
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "New Tint..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NEW_TINT_NAME,16,18,212,12,ES_AUTOHSCROLL
+    CONTROL         "FX",IDC_NEW_TINT_FX_CHECK,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,14,56,24,10
+    COMBOBOX        IDC_NEW_TINT_FX_LIST,45,54,181,16,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_NEW_TINT_FX_SEL,230,54,14,12
+    CONTROL         "MFM",IDC_NEW_TINT_MFM_CHECK,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,14,83,31,10
+    COMBOBOX        IDC_NEW_TINT_MFM_LIST,45,81,181,16,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_NEW_TINT_MFM_SEL,230,81,14,12
+    PUSHBUTTON      "Cancel",IDCANCEL,7,108,50,14
+    DEFPUSHBUTTON   "OK",IDOK,203,108,50,14
+    GROUPBOX        "Tint Name",IDC_STATIC,7,7,246,30
+    GROUPBOX        "Shader or MFM",IDC_STATIC,7,43,246,58
+    LTEXT           "OR",IDC_STATIC,118,70,11,8
+END
+
+IDD_CREATE_ACT DIALOGEX 0, 0, 191, 204
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Create Action..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_SEARCH_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | WS_BORDER | WS_TABSTOP,17,36,156,86
+    EDITTEXT        IDC_ACT_NAME,17,147,156,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Cancel",IDCANCEL,17,176,69,18
+    DEFPUSHBUTTON   "OK",IDOK,105,176,69,18
+    CONTROL         "",IDC_SEARCH_BKG,"Static",SS_WHITERECT | WS_CLIPSIBLINGS | WS_BORDER,16,15,158,15,WS_EX_CLIENTEDGE
+    GROUPBOX        "Action Name",IDC_STATIC,5,136,179,31
+    CONTROL         139,IDC_SEARCH_BUTTON,"Static",SS_BITMAP | SS_NOTIFY,19,17,11,10
+    EDITTEXT        IDC_SEARCH_TEXT,31,18,129,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    CONTROL         140,IDC_SEARCH_CANCEL,"Static",SS_BITMAP | SS_NOTIFY | NOT WS_VISIBLE,161,17,11,10
+    GROUPBOX        "Animation",IDC_STATIC,5,4,179,128
+END
+
+IDD_OBJECT DIALOGEX 0, 0, 190, 307
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Allow Model Batching in Game",IDC_OBJECT_BATCH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,125,110,10
+    COMBOBOX        IDC_OBJECT_KIND,83,139,97,32,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_PROPERTIES_LIST,9,171,171,127,LBS_OWNERDRAWVARIABLE | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | WS_VSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+    LTEXT           "Model File",IDC_STATIC,9,8,32,8
+    LTEXT           "Model File Path",IDC_OBJECT_NAME,45,8,135,11,SS_SUNKEN
+    CONTROL         "",IDC_OBJECT_THUMBNAIL,"Static",SS_BITMAP | SS_NOTIFY,48,27,15,13
+    LTEXT           "Default Material Kind",IDC_STATIC,10,141,67,8
+    LTEXT           "Material Kind",IDC_STATIC,9,157,42,8
+    CONTROL         "Use as Occluder in Game",IDC_OBJECT_OCCLUDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,112,110,8
+END
+
+IDD_LOADING DIALOGEX 0, 0, 260, 28
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Loading Model..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS_BAR,"msctls_progress32",WS_BORDER,7,7,246,14
+END
+
+IDD_ERRORS DIALOGEX 0, 0, 190, 75
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_MSG_LIST,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,8,8,67,59,WS_EX_CLIENTEDGE
+    CONTROL         "Show Time",IDC_MSG_SHOW_TIME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,20,58,10
+    CONTROL         "Show Date",IDC_MSG_SHOW_DATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,8,58,10
+    CONTROL         "Show Priority",IDC_MSG_SHOW_PRIORITY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,32,58,10
+    CONTROL         "Error",IDC_MSG_ERROR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,8,43,10
+    CONTROL         "Warning",IDC_MSG_WARNING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,20,43,10
+    CONTROL         "Notice",IDC_MSG_NOTICE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,32,43,10
+    CONTROL         "Info",IDC_MSG_INFO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,44,43,10
+    CONTROL         "Assets",IDC_MSG_ASSETS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,57,43,10
+END
+
+IDD_ACT_TRIGGER DIALOGEX 0, 0, 164, 169
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "<Action Triggers>"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,107,148,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,7,148,50,14
+    CONTROL         "",IDC_TRIGGER_LIST,"SysTreeView32",TVS_SHOWSELALWAYS | TVS_CHECKBOXES | TVS_FULLROWSELECT | WS_BORDER,7,7,150,134,WS_EX_CLIENTEDGE
+END
+
+IDD_SHORTCUTS DIALOGEX 0, 0, 512, 342
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "ModelEditor Shortcuts"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_TEXTURE_FEED DIALOGEX 0, 0, 216, 59
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Texture Feed Name"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_TEXTURE_FEED_NAME,7,20,202,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,159,38,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,7,38,50,14
+    PUSHBUTTON      "Remove Texture Feed",IDC_REMOVE_TEXTURE_FEED,67,38,83,14
+    LTEXT           "Please enter the exposed name to use for the texture feed:",IDC_STATIC,7,7,202,8
+END
+
+IDD_LOAD_ERROR DIALOGEX 0, 0, 233, 61
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Model Load Error"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    ICON            166,ID_ICON,8,8,21,20
+    LTEXT           "The last time ModelEditor was run it exited unexpectedly. The last model will not be reloaded.",IDC_STATIC,39,12,185,19
+    PUSHBUTTON      "OK",ID_OK,91,39,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,8,7,0
+ PRODUCTVERSION 1,8,7,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "BigWorld Pty Ltd"
+            VALUE "FileDescription", "ModelEditor"
+            VALUE "FileVersion", "1.8.7.0"
+            VALUE "InternalName", "ModelEditor.exe"
+            VALUE "LegalCopyright", "(c) 2000 - 2009, BigWorld Pty. Ltd. All Rights Reserved"
+            VALUE "OriginalFilename", "modeleditor.exe"
+            VALUE "ProductName", "ModelEditor"
+            VALUE "ProductVersion", "1.8.7.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_EMPTY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 83
+    END
+
+    IDD_PREFS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 127
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    IDD_NEW_TINT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 253
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_LOADING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 253
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 21
+    END
+
+    IDD_ACT_TRIGGER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 157
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    IDD_TEXTURE_FEED, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 209
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 52
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DISPLAY DLGINIT
+BEGIN
+    IDC_SHADOWING, 0x403, 18, 0
+0x6944, 0x6173, 0x6c62, 0x2065, 0x6853, 0x6461, 0x776f, 0x6e69, 0x0067, 
+
+    IDC_SHADOWING, 0x403, 22, 0
+0x6f4c, 0x2077, 0x7551, 0x6c61, 0x7469, 0x2079, 0x6853, 0x6461, 0x776f, 
+0x6e69, 0x0067, 
+    IDC_SHADOWING, 0x403, 22, 0
+0x654d, 0x2064, 0x7551, 0x6c61, 0x7469, 0x2079, 0x6853, 0x6461, 0x776f, 
+0x6e69, 0x0067, 
+    IDC_SHADOWING, 0x403, 23, 0
+0x6948, 0x6867, 0x5120, 0x6175, 0x696c, 0x7974, 0x5320, 0x6168, 0x6f64, 
+0x6977, 0x676e, "\000" 
+    IDC_DISPLAY_BKG, 0x403, 14, 0
+0x6f4e, 0x4220, 0x6361, 0x676b, 0x6f72, 0x6e75, 0x0064, 
+    IDC_DISPLAY_BKG, 0x403, 10, 0
+0x7355, 0x2065, 0x6c46, 0x6f6f, 0x0072, 
+    IDC_DISPLAY_BKG, 0x403, 12, 0
+0x7355, 0x2065, 0x6554, 0x7272, 0x6961, 0x006e, 
+    0
+END
+
+IDD_MATERIALS DLGINIT
+BEGIN
+    IDC_MATERIALS_PREVIEW_LIST, 0x403, 7, 0
+0x7053, 0x6568, 0x6572, "\000" 
+    IDC_MATERIALS_PREVIEW_LIST, 0x403, 5, 0
+0x7543, 0x6562, "\000" 
+    IDC_MATERIALS_PREVIEW_LIST, 0x403, 5, 0
+0x6f52, 0x6d6f, "\000" 
+    IDC_MATERIALS_PREVIEW_LIST, 0x403, 6, 0
+0x6f54, 0x7572, 0x0073, 
+    IDC_MATERIALS_PREVIEW_LIST, 0x403, 7, 0
+0x6554, 0x7061, 0x746f, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    MENUITEM " ",                           0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_ADD_CURSOR          CURSOR                  "res\\add_cursor.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "ModelEditor\n\nModelEditor\n\n\nModelEditor.Document\nModelEditor.Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ModelEditor"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_TRIANGLES  "0 tris"
+    ID_INDICATOR_NODES      "0 nodes"
+    ID_INDICATOR_TETXURE_MEM "0 Bytes Texture Mem"
+    ID_INDICATOR_FRAMERATE  "0 fps"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_SHOW_AXES           "Show a set of unit length axes at the origin"
+    IDC_CHECK_FOR_SPARKLES  "Enter a mode for finding unmeshed polygons"
+    IDC_SHOW_BLOOM          "Enable the blooming effect while rendering"
+    IDC_SHOW_SHIMMER        "Enable the shimmer effect while rendering"
+    IDC_SHOW_MODEL          "Render the model"
+    IDC_SHOW_SKELETON       "Show the node skeleton of the model"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_SHOW_WIREFRAME      "Render in wireframe mode"
+    IDC_SHOW_BSP            "Show the binary space partition (BSP) of the model"
+    IDC_SHOW_BOUNDING_BOX   "Show the bounding and visibility boxes of the model"
+    IDC_SHOW_PORTALS        "Show any model portal (shells only)"
+    IDC_GROUND_MODEL        "Ground the bottom of the model's bounding box on the ground"
+    IDC_CENTRE_MODEL        "Center the model's bounding box at the origin"
+    IDC_SHADOWING           "The level of detail for shadowing"
+    IDC_DISPLAY_BKG         "The mode in which to render the background"
+    IDC_DISPLAY_CHOOSE_BKG_COLOUR "Set the colour of the sky..."
+    IDC_DISPLAY_CHOOSE_FLOOR_TEXTURE "Set the floor texture..."
+    IDC_TIMEOFDAY_SLIDER    "The time of day at which to render the model"
+    IDC_DISPLAY_FLORA       "The density of flora to use when rendering with terrain"
+    IDC_SHOW_TREES          "Render any trees in the terrain"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_OBJECT_NAME         "The file path of the currently opened model"
+    IDC_OBJECT_BATCH        "Can this model be batch rendered in the game"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_OBJECT_OCCLUDER     "Set the object as a view occluding (for DVPS)"
+    IDC_OBJECT_KIND         "What substance is the model primarily made of"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_SEARCH_BUTTON       "Start a search filter"
+    IDC_SEARCH_TEXT         "The search filter for the selection"
+    IDC_SEARCH_CANCEL       "Cancel the current search"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_ANIM_NAME           "The name of the current animation"
+    IDC_ANIM_FRAME_RATE     "The frame rate at which to play the animation (fps)"
+    IDC_ANIM_FRAME          "The current frame number"
+    IDC_ANIM_FIRST          "The first frame of the animation to play"
+    IDC_ANIM_LAST           "The last frame of the animation to play"
+    IDC_ANIM_FRAME_RATE_SLIDER 
+                            "The frame rate at which to play the animation (fps)"
+    IDC_ANIM_BLEND          "The blend weighting for the selected node"
+    IDC_ANIM_BLEND_SLIDER   "The blend weighting for the selected node"
+    IDC_ANIM_FRAME_SLIDER   "The current frame number"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_ANIM_REMOVE_BLEND   "Remove the blend weighting for this node"
+    IDC_ANIM_SOURCE         "The source *.animation file used"
+    IDC_ANIM_SAVE_FRAME_RATE "Save the current frame rate for this animation"
+    IDC_ANIM_COMP_SCALE     "The current scalar compression percentage"
+    IDC_ANIM_COMP_POS_SLDR  "Set the current positional compression"
+    IDC_ANIM_COMP_ROT_SLDR  "Set the current rotational compression"
+    IDC_ANIM_COMP_SCALE_SLDR "Set the current scalar compression"
+    IDC_ANIM_COMP_POS_PLUS  "Increase the current positional compression"
+    IDC_ANIM_COMP_POS_MINUS "Decrease the current positional compression"
+    IDC_ANIM_COMP_ROT_PLUS  "Increase the current rotational compression"
+    IDC_ANIM_COMP_ROT_MINUS "Decrease the current rotational compression"
+    IDC_ANIM_COMP_SCALE_PLUS "Increase the current scalar compression"
+    IDC_ANIM_COMP_SCALE_MINUS "Decrease the current scalar compression"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_ANIM_COMP_POS       "The current positional compression percentage"
+    IDC_ANIM_COMP_ROT       "The current rotational compression percentage"
+    IDC_ANIM_CHANGE_ANIM    "Select a different animation file to use..."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_ACT_NAME            "The name of the action\nNeeds to be a Python safe name (i.e. alphanumeric)"
+    IDC_ACT_ANIM            "The name of the animation used for the current action"
+    IDC_ACT_TRACK           "The track number to use for the action's animation"
+    IDC_ACT_CHANGE_ANIM     "Select a different animation to use..."
+    IDC_ACT_LOOP            "Set the action to be looping"
+    IDC_ACT_MOVE            "Set the actionto be a linear movement"
+    IDC_ACT_TRIGGER_CAPS_ON_SEL 
+                            "Select the capabilities which must be on for the action to trigger..."
+    IDC_ACT_IMPACT          "Make the action impacting (i.e. Removed all position movement)"
+    IDC_ACT_COORD           "This action require interaction with another entity"
+    IDC_ACT_TRIGGER_CAPS_OFF_SEL 
+                            "Select the capabilities which must be off for the action to trigger..."
+    IDC_ACT_CANCEL_CAPS_ON_SEL 
+                            "Select the capabilities which must be on for the action to cancel..."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_ACT_CANCEL_CAPS_OFF "The action matcher capabilities which must be off for the action to cancel"
+    IDC_ACT_PROMOTE_MOTION  "The model will inherit movement from the action"
+    IDC_ACT_SCALE_PLAYBACK_SPEED 
+                            "Should the animation speed be scaled with the entity movement speed"
+    IDC_ACT_FEET_FOLLOW_DIRECTION 
+                            "The model should face in the same direction as the entity"
+    IDC_ACT_TRIGGER_ACTION  "Trigger the current action"
+    IDC_ACT_CANCEL_CAPS_OFF_SEL 
+                            "Select the capabilities which must be off for the action to cancel..."
+    IDC_ACT_CANCEL_AUX1_SLDR 
+                            "The entity turn range (deg) for the action to cancel"
+    IDC_ACT_CANCEL_YAW_SLDR "The entity direction range (deg) for the action to cancel"
+    IDC_ACT_TRIGGER_SPEED_SLDR 
+                            "The entity speed range (m/s) for the action to trigger\nNegative for falling"
+    IDC_ACT_TRIGGER_AUX1_SLDR 
+                            "The entity turn range (deg) for the action to trigger"
+    IDC_ACT_CANCEL_SPEED_SLDR 
+                            "The entity speed range (m/s) for the action to cancel"
+    IDC_ACT_TRIGGER_YAW_SLDR 
+                            "The entity direction range (deg) for the action to trigger"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_ACT_TRIGGER_SPEED_MIN 
+                            "The minimum entity speed (m/s) for the action to trigger"
+    IDC_ACT_TRIGGER_SPEED_MAX 
+                            "The maximum entity speed (m/s) for the action to trigger"
+    IDC_ACT_TRIGGER_AUX1_MIN 
+                            "The minimum entity turn (deg) for the action to trigger"
+    IDC_ACT_TRIGGER_AUX1_MAX 
+                            "The maximum entity turn (deg) for the action to trigger"
+    IDC_ACT_TRIGGER_YAW_MIN "The minimum entity direction (deg) for the action to trigger"
+    IDC_ACT_TRIGGER_YAW_MAX "The maximum entity direction (deg) for the action to trigger"
+    IDC_ACT_TRIGGER_CAPS_ON "The action matcher capabilities which must be on for the action to trigger"
+    IDC_ACT_ONE_SHOT        "The action matcher should cancel action after one play"
+    IDC_ACT_TRIGGER_CAPS_OFF 
+                            "The action matcher capabilities which must be off for the action to trigger"
+    IDC_ACT_CANCEL_SPEED_MIN 
+                            "The minimum entity speed (m/s) for the action to cancel"
+    IDC_ACT_CANCEL_SPEED_MAX 
+                            "The maximum entity speed (m/s) for the action to cancel"
+    IDC_ACT_CANCEL_AUX1_MIN "The minimum entity turn (deg) for the action to cancel"
+    IDC_ACT_CANCEL_AUX1_MAX "The maximum entity turn (deg) for the action to cancel"
+    IDC_ACT_CANCEL_YAW_MIN  "The minimum entity direction (deg) for the action to cancel"
+    IDC_ACT_CANCEL_YAW_MAX  "The maximum entity direction (deg) for the action to cancel"
+    IDC_ACT_CANCEL_CAPS_ON  "The action matcher capabilities which must be on for the action to cancel"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_LOD_MIN             "The minimum distance for which to render the selected model"
+    IDC_LOD_DIST_SLIDER     "The distance to the model"
+    IDC_LOD_BAR             "The current LOD distance setup for the model"
+    IDC_LOD_HIDDEN          "Hide the selected model in the LOD list"
+    IDC_LOD_VIRTUAL_DIST    "Use the LOD distance for determining the LOD model to render only"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_LOD_DIST            "The distance to the model"
+    IDC_LOD_MAX             "The maximum distance for which to render the selected model"
+    IDC_LOD_LIST            "The current LOD distance setup for the model"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_LIGHTS_USE_GAME     "Use the game lighting"
+    IDC_LIGHTS_USE_CUSTOM   "Use a custom lighting setup"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_LIGHTS_LIST         "A list of the available lights to use"
+    IDC_LIGHTS_SETUPS       "A list of the recently used lighting setups"
+    IDC_LIGHTS_CAMERA       "Lock the light direction and position to the camera"
+    IDC_LIGHTS_MODELS       "Show the light controller in the view"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_MATERIALS_MATERIAL  "The name to use for the current material"
+    IDC_MATERIALS_MATTER    "The dye name for the currently selected tint\nNeeds to be a Python safe name  (i.e. alphanumeric)"
+    IDC_MATERIALS_TINT      "The name of the currently selected tint"
+    IDC_MATERIALS_TREE      "A list of the materials/tints available in this model"
+    IDC_MATERIALS_FX_LIST   "Use a recently used effect for the selected material/tint"
+    IDC_MATERIALS_FX_SEL    "Select a new effect for the selected material/tint..."
+    IDC_MATERIALS_PREVIEW   "Render the selected material on a preview object"
+    IDC_MATERIALS_PREVIEW_LIST "The object on which to preview the material"
+    IDC_MATERIALS_PREVIEW_RECT "A preview of the currently selected material"
+    IDC_MATERIALS_TECHNIQUE "Preview the material using a different technique"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_MSG_SHOW_DATE       "Show the date of the messages"
+    IDC_MSG_SHOW_TIME       "Show the time of the messages"
+    IDC_MSG_SHOW_PRIORITY   "Show the priority of the messages"
+    IDC_MSG_ERROR           "Show error messages"
+    IDC_MSG_WARNING         "Show warning messages"
+    IDC_MSG_NOTICE          "Show notice messages"
+    IDC_MSG_INFO            "Show info messages"
+    IDC_MSG_ASSETS          "Show asset messages"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_NEW_TINT_NAME       "The name of the new tint to create"
+    IDC_NEW_TINT_FX_CHECK   "Use an effect file for the new tint"
+    IDC_NEW_TINT_FX_LIST    "Use a recently used effect for the new tint"
+    IDC_NEW_TINT_FX_SEL     "Select an effect for the new tint..."
+    IDC_NEW_TINT_MFM_CHECK  "Use an MFM file for the new tint"
+    IDC_NEW_TINT_MFM_LIST   "Use a recently used MFM for the new tint"
+    IDC_NEW_TINT_MFM_SEL    "Select an MFM for the new tint..."
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PREFS_SHOW_SPLASH_SCREEN 
+                            "When ModelEditor is started show a splash screen"
+    IDC_PREFS_LOAD_LAST_MODEL 
+                            "When ModelEditor is started load the last used model"
+    IDC_PREFS_LOAD_LAST_LIGHTS 
+                            "When ModelEditor is started load the last used lighting setup"
+    IDC_PREFS_ZOOM_ON_LOAD  "Zoom to the extents of the model when loading"
+    IDC_PREFS_ANIMATE_ZOOM  "Use an animated zoom to extents"
+    IDC_PREFS_LOCK_LOD      "Lock all the LOD models of the model"
+    IDC_PREFS_INVERT_MOUSE  "Invert the vertical mouse control"
+    IDC_PREFS_REGEN_BB      "Regenerate the visibility box for the model when loading if needed"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_SHOW_WATER          "Render the dynamic textures for the water"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_ACT_BLEND_IN        "The blend in time for the animation (sec)"
+    IDC_ACT_BLEND_OUT       "The blend out time for the animation (sec)"
+    IDC_ACT_BLEND_IN_SLIDER "The blend in time for the animation (sec)"
+    IDC_ACT_BLEND_OUT_SLIDER "The blend out time for the animation (sec)"
+    IDC_ACT_TRIGGER_FALLING "Whether the model needs to be falling for the action to trigger"
+    IDC_ACT_CANCEL_FALLING  "Whether the model needs to be falling for the action to cancel"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Australia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+IDR_MANIFEST_LEGACY     RT_MANIFEST             "res\\modeleditor.manifest"
+#endif    // English (Australia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\ModelEditor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "ual.rc"         // UAL
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

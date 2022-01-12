@@ -1,0 +1,20 @@
+LIB =   math
+
+SRCS =              \
+    ../../../../../src/lib/math/angle           \
+    ../../../../../src/lib/math/boundbox        \
+    ../../../../../src/lib/math/lineeq          \
+    ../../../../../src/lib/math/matrix          \
+    ../../../../../src/lib/math/planeeq         \
+    ../../../../../src/lib/math/portal2d        \
+    ../../../../../src/lib/math/quat            \
+    ../../../../../src/lib/math/vector2         \
+    ../../../../../src/lib/math/vector3         \
+    ../../../../../src/lib/math/vector4         \
+
+ifndef MF_ROOT
+export MF_ROOT := $(subst /src/lib/$(LIB),,$(CURDIR))
+endif
+
+include common.mak
+

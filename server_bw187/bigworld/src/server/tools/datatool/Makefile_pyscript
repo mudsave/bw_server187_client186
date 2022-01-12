@@ -1,0 +1,21 @@
+LIB =	pyscript
+
+SRCS =					\
+	../../../../../src/lib/pyscript/pickler				\
+	../../../../../src/lib/pyscript/py_data_section		\
+	../../../../../src/lib/pyscript/pyobject_plus		\
+	../../../../../src/lib/pyscript/py_output_writer	\
+	../../../../../src/lib/pyscript/py_patrolpath		\
+	../../../../../src/lib/pyscript/py_to_stl			\
+	../../../../../src/lib/pyscript/pywatcher			\
+	../../../../../src/lib/pyscript/res_mgr_script		\
+	../../../../../src/lib/pyscript/resource_table		\
+	../../../../../src/lib/pyscript/script				\
+	../../../../../src/lib/pyscript/script_math			\
+	../../../../../src/lib/pyscript/stl_to_py			\
+
+ifndef MF_ROOT
+export MF_ROOT := $(subst /src/lib/$(LIB),,$(CURDIR))
+endif
+include common.mak
+

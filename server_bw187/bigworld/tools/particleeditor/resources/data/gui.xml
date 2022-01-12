@@ -1,0 +1,490 @@
+<GUI>
+		<item>
+				<name>	AppToolbars </name>
+				<type>	GROUP	</type>
+				<item>
+						<name>	MainToolbar </name>
+				</item>
+		</item>	
+		<item>
+				<name> MainMenu </name>
+				<type>  GROUP   </type>
+				<item>
+						<name> File </name>
+						<type>  GROUP   </type>
+						<displayName> &amp;File </displayName>
+						<description> File Operations </description>
+						<item>
+								<name> OpenDir </name>
+								<type>  ACTION  </type>
+								<displayName> &amp;Open Particle Directory... </displayName>
+								<description> Open a particle directory </description>
+								<shortcut> Ctrl+O </shortcut>
+								<action> doOpenFile </action>
+						</item>
+						<item>
+								<name> SavePS </name>
+								<type>  ACTION  </type>
+								<displayName> &amp;Save Particle System </displayName>
+								<description> Save the selected particle system </description>
+								<shortcut> Ctrl+S </shortcut>
+								<action> doSavePS </action>
+						</item>
+						<item>
+								<type>  SEPARATOR   </type>
+						</item>
+						<item>
+								<name> ReloadTextures </name>
+								<type>  ACTION  </type>
+								<displayName> &amp;Reload All Textures </displayName>
+								<description> Reload all of the textures in the particle system </description>
+								<shortcut> Ctrl+T </shortcut>
+								<action> doReloadTextures </action> 
+						</item>
+						<item>
+								<type>  SEPARATOR   </type>
+						</item>          
+						<item>
+								<name> Exit </name>
+								<type>  ACTION  </type>
+								<displayName> E&amp;xit </displayName>
+								<description> Exit Particle Editor </description>
+								<action> doExit </action>
+						</item>
+				</item>
+				<item>
+						<name> Edit </name>
+						<type> GROUP </type>
+						<displayName> &amp;Edit </displayName>
+						<item>
+								<name> Undo </name>
+								<type> ACTION </type>
+								<displayName> Undo </displayName>
+								<description> Undo the last change </description>
+								<shortcut> Ctrl+Z </shortcut>
+								<action> doUndo </action>
+								<updater> updateUndo </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal>  resources/data/toolbar.bmp:216,0,240,24 </imageNormal>
+						</item>
+						<item>
+								<name> Redo </name>
+								<type> ACTION </type>
+								<displayName> Redo </displayName>
+								<description> Redo the undone change </description>
+								<shortcut> Ctrl+Y </shortcut>
+								<action> doRedo </action>
+								<updater> updateRedo </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:240,0,264,24 </imageNormal>
+						</item>            
+				</item>        
+				<item>
+						<name> View </name>
+						<type>  GROUP   </type>
+						<displayName> &amp;View </displayName>
+						<description> Display Settings  </description>
+				<item>
+				<!-- The app will look for the item called ShowToolbarsSubmenu
+				and will fill it with the toolbars loaded from the AppToolbars
+				section above. -->
+				<name>	ShowToolbarsSubmenu	</name>
+				<type>	GROUP	</type>
+				<displayName>	&amp;Toolbars	</displayName>
+		</item>
+			<item>
+					<name>  Status Bar  </name>
+					<type>  TOGGLE   </type>
+					<displayName>  Status Bar  </displayName>
+					<description>  Show/hide the status bar </description>
+					<item>
+							<type> CHILD </type>
+							<action> doShowStatusbar </action>
+							<updater> updateShowStatusbar </updater>
+					</item>
+					<item>
+							<type> CHILD </type>
+							<action> doHideStatusbar </action>
+					</item>
+			</item>
+			<item>
+					<type>  SEPARATOR   </type>
+			</item>
+			<item>
+					<name>  ShowPanels </name>
+					<type>  TOGGLE  </type>
+					<displayName>   Show Panels  </displayName>
+					<description>   Show/hide Panels  </description>
+					<shortcut> Ctrl+H </shortcut>
+					<item>
+							<type> CHILD </type>
+							<action> doShowPanels </action>
+							<updater> updateSidePanel </updater>
+					</item>
+					<item>
+							<type> CHILD </type>
+							<action> doShowPanels </action>
+					</item>
+			</item>
+			<item>
+					<type>  SEPARATOR   </type>
+			</item>
+			<item>
+					<name> Load Default Panel Layout </name>
+					<type> ACTION </type>
+					<displayName> Load Default Panel Layout... </displayName>
+					<description> Load Default Panel Layout </description>
+					<action> doDefaultPanelLayout </action>
+			</item>
+			<item>
+					<name> Load Most Recent Panel Layout </name>
+					<type> ACTION </type>
+					<displayName> Load Most Recent Panel Layout... </displayName>
+					<description> Load Most Recent Panel Layout </description>
+					<action> doLoadPanelLayout </action>
+			</item>
+		</item>
+				<item>
+						<name> Help </name>
+						<type>  GROUP   </type>
+						<displayName> &amp;Help </displayName>
+						<description> Help Information </description>
+						<item>
+								<name> About </name>
+								<type>  ACTION  </type>
+								<displayName> &amp;About Particle Editor... </displayName>
+								<description> Get Information about Particle Editor </description>
+								<action> doAboutApp </action>
+						</item>
+						<item>
+								<name>  ToolsReferenceGuide </name>
+								<type>  ACTION  </type>
+								<displayName> Tools &amp;Reference Guide... </displayName>
+								<description> Access the Tools Reference Guide </description>
+								<action> doToolsReferenceGuide   </action>
+						</item>
+						<item>
+								<name>  ContentCreation </name>
+								<type>  ACTION  </type>
+								<displayName>   &amp;Content Creation...    </displayName>
+								<description> Access the Content Creation Manual </description>
+								<action> doContentCreation   </action>
+						</item>
+						<item>
+								<name>  KeyboardShortcuts   </name>
+								<type>  ACTION  </type>
+								<displayName>   Shortcuts...  </displayName>
+								<description> Get Information on the Keyboard Shortcuts Availible </description>
+								<shortcut> F1 </shortcut>
+								<action> doShortcuts </action>
+						</item>
+						<item>
+								<type>	SEPARATOR	</type>
+						</item>
+						<item>
+								<name>	RequestFeature	</name>
+								<type>	ACTION	</type>
+								<displayName>	&amp;Request Feature / Report Bug...	</displayName>
+								<description> Request Feature or Report a Bug in ParticleEditor </description>
+								<action>	doRequestFeature	</action>
+						</item>
+				</item>
+		</item>
+		<item>
+				<name> MainToolbar </name>
+				<type> GROUP </type>
+				<displayName> Main Toolbar </displayName>
+				<item>
+						<name> SavePS </name>
+						<type>  ACTION  </type>
+						<displayName> &amp;Save Particle System </displayName>
+						<description> Save the selected particle system </description>
+						<shortcut> Ctrl+S </shortcut>
+						<action> doSavePS </action>
+						<transparency> 255,0,255 </transparency>
+						<imageNormal>  resources/data/save_toolbar.bmp:0,0,24,24 </imageNormal>
+				</item>
+				<item>
+						<type> SEPARATOR </type>
+				</item>
+				<item>
+						<name> Undo </name>
+						<type> ACTION </type>
+						<displayName> Undo </displayName>
+						<description> Undo the last change </description>
+						<shortcut> Ctrl+Z </shortcut>
+						<action> ToolbarUIAdapter.doUndo </action>
+						<updater> ToolbarUIAdapter.updateUndo </updater>
+						<transparency> 255,0,255 </transparency>
+						<imageNormal>  resources/data/toolbar.bmp:384,0,408,24 </imageNormal>
+				</item>
+				<item>
+						<name> Redo </name>
+						<type> ACTION </type>
+						<displayName> Redo </displayName>
+						<description> Redo the undone change </description>
+						<shortcut> Ctrl+Y </shortcut>
+						<action> ToolbarUIAdapter.doRedo </action>
+						<updater> ToolbarUIAdapter.updateRedo </updater>
+						<transparency> 255,0,255 </transparency>
+						<imageNormal> resources/data/toolbar.bmp:408,0,432,24 </imageNormal>
+				</item>
+				<item>
+						<type> SEPARATOR </type>
+				</item>
+				<item>
+						<name> Zoom </name>
+						<type>	ACTION	</type>
+						<displayName> Zoom Extents </displayName>
+						<description> Zoom to the extents of the particle systems's bounds (middle mouse button) </description>
+						<action> ToolbarUIAdapter.doZoomExtents </action>
+						<transparency> 255,0,255 </transparency>
+						<imageNormal>	resources/data/toolbar.bmp:0,0,24,24	</imageNormal>
+				</item>
+				<item>
+						<type>	SEPARATOR	</type>
+				</item>
+				<item>
+						<name> CameraMode </name>
+						<type> CHOICE </type>
+						<displayName> Camera Mode </displayName>
+						<shortcut> Ctrl+M </shortcut>
+						<item>
+								<type>	CHILD	</type>
+								<name> Free Camera </name>
+								<displayName> &amp;Free Camera </displayName>
+								<description> Change the camera mode to a free camera </description>
+								<action> ToolbarUIAdapter.doViewFree </action>
+								<updater> ToolbarUIAdapter.updateFreeCamera </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal>	resources/data/toolbar.bmp:24,0,48,24	</imageNormal>
+						</item>
+						<item>
+								<name> View X </name>
+								<type> CHILD </type>
+								<displayName> X-locked camera </displayName>
+								<description> Change the camera mode to an x-locked camera </description>
+								<action> ToolbarUIAdapter.doViewX </action>
+								<updater> ToolbarUIAdapter.updateXCamera </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:48,0,72,24 </imageNormal>
+						</item>
+						<item>
+								<name> View Y </name>
+								<type> CHILD </type>
+								<displayName> Y-locked camera </displayName>
+								<description> Change the camera mode to a y-locked camera </description>
+								<action> ToolbarUIAdapter.doViewY </action>
+								<updater> ToolbarUIAdapter.updateYCamera </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:72,0,96,24 </imageNormal>
+						</item>
+						<item>
+								<name> View Z </name>
+								<type> CHILD </type>
+								<displayName> Z-locked camera </displayName>
+								<description> Change the camera mode to a z-locked camera </description>
+								<action> ToolbarUIAdapter.doViewZ </action>
+								<updater> ToolbarUIAdapter.updateZCamera </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:96,0,120,24 </imageNormal>
+						</item>
+						<item>
+								<type>	CHILD	</type>
+								<name> Orbit Camera </name>
+								<displayName> &amp;Orbit Camera </displayName>
+								<description> Change the camera mode to an orbit camera </description>
+								<action>	ToolbarUIAdapter.doViewOrbit	</action>
+								<updater> ToolbarUIAdapter.updateOrbitCamera </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal>	resources/data/toolbar.bmp:120,0,144,24	</imageNormal>
+						</item>
+				</item>
+				<item>
+						<type> SEPARATOR </type>
+				</item>
+				<item>
+						<name> CameraSpeed </name>
+						<type> CHOICE </type>
+						<displayName> Camera Speed </displayName>
+						<shortcut> Ctrl+I </shortcut>
+						<item>
+								<type>	CHILD	</type>
+								<name> Slow </name>
+								<shortcut> Ctrl+1 </shortcut>
+								<displayName> &amp;Slow Motion </displayName>
+								<description> Set the camera movement speed to slow </description>
+								<action>	ToolbarUIAdapter.doSlowCamera	</action>
+								<updater> camera/speed	== Slow </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal>	resources/data/toolbar.bmp:144,0,168,24	</imageNormal>
+						</item>
+						<item>
+								<type>	CHILD	</type>
+								<name> Medium </name>
+								<shortcut> Ctrl+2 </shortcut>
+								<displayName> &amp;Medium Motion </displayName>
+								<description> Set the camera movement speed to medium </description>
+								<action>	ToolbarUIAdapter.doMediumCamera	</action>
+								<updater> camera/speed	== Medium </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal>	resources/data/toolbar.bmp:168,0,192,24	</imageNormal>
+						</item>
+						<item>
+								<type>	CHILD	</type>
+								<name> Fast </name>
+								<shortcut> Ctrl+3 </shortcut>
+								<displayName> &amp;Fast Motion </displayName>
+								<description> Set the camera movement speed to fast </description>
+								<action>	ToolbarUIAdapter.doFastCamera	</action>
+								<updater> camera/speed	== Fast </updater>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal>	resources/data/toolbar.bmp:192,0,216,24	</imageNormal>
+						</item>
+				<item>
+						<type>	CHILD	</type>
+						<name> SuperFast </name>
+						<shortcut> Ctrl+4 </shortcut>
+						<displayName> &amp;Super Fast </displayName>
+						<description> Set the camera movement speed to superfast </description>
+						<action>	ToolbarUIAdapter.doSuperFastCamera	</action>
+						<updater> camera/speed	== SuperFast </updater>
+						<transparency> 255,0,255 </transparency>
+						<imageNormal>	resources/data/toolbar.bmp:216,0,240,24	</imageNormal>
+				</item>			   
+		</item>    
+				<item>
+						<type> SEPARATOR </type>
+				</item>
+				<item>
+						<name> Background </name>
+						<type> TOGGLE </type>
+						<displayName> Background </displayName>
+						<description> Set the background colour </description>
+						<transparency> 255,0,255 </transparency>
+						<imageNormal> resources/data/toolbar.bmp:240,0,264,24 </imageNormal>
+						<item>
+								<type> CHILD </type>
+								<action> ToolbarUIAdapter.doSetBkClr </action>
+								<updater> ToolbarUIAdapter.updateBkClr </updater>
+						</item>
+						<item>
+								<type> CHILD </type>
+								<action> ToolbarUIAdapter.doSetBkClr </action>
+						</item>
+				</item>
+				<item>
+						<type> SEPARATOR </type>
+				</item>
+				<item>
+						<name> BKGMode </name>
+						<type> CHOICE </type>
+						<displayName> Background Display </displayName>            
+						<item>
+								<name> Terrain </name>
+								<type> CHILD </type>
+								<displayName> Terrain </displayName>
+								<description> Use terrain as the background </description>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:264,0,288,24 </imageNormal>
+								<action> defaults/bkgMode = Terrain  </action>
+								<updater> defaults/bkgMode == Terrain </updater>
+						</item>
+						<item>
+								<name> Floor </name>
+								<type> CHILD </type>
+								<displayName> Floor </displayName>
+								<description> Use floor as the background </description>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:288,0,312,24 </imageNormal>
+								<action> defaults/bkgMode = Floor  </action>
+								<updater> defaults/bkgMode == Floor </updater>
+						</item>
+						<item>
+								<name> None </name>
+								<type> CHILD </type>
+								<displayName> None </displayName>
+								<description> Use no background </description>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:312,0,336,24 </imageNormal>
+								<action> defaults/bkgMode = None  </action>
+								<updater> defaults/bkgMode == None </updater>
+						</item>
+				</item>
+				<item>
+						<type> SEPARATOR </type>
+				</item>
+				<item>
+						<name> Grid </name>
+						<type> TOGGLE </type>
+						<displayName> Grid </displayName>
+						<description> Toggle the 1x1m measurement grid </description>
+						<transparency> 255,0,255 </transparency>
+						<imageNormal> resources/data/toolbar.bmp:336,0,360,24 </imageNormal>
+						<item>
+								<type> CHILD </type>
+								<action> render/showGrid = 1 </action>
+								<updater> render/showGrid = 0 </updater>
+						</item>
+						<item>
+								<type> CHILD </type>
+								<action> render/showGrid = 0  </action>
+						</item>
+				</item>
+				<item>
+						<name> BoundingBox </name>
+						<type> TOGGLE </type>
+						<displayName> Grid </displayName>
+						<description> Show the particle system bounding box </description>
+						<transparency> 255,0,255 </transparency>
+						<imageNormal> resources/data/toolbar.bmp:360,0,384,24 </imageNormal>
+						<item>
+								<type> CHILD </type>
+								<action> render/showBB = 1  </action>
+								<updater> render/showBB == 0 </updater>
+						</item>
+						<item>
+								<type> CHILD </type>
+								<action> render/showBB = 0  </action>
+						</item>
+				</item>
+				<item>
+						<type> SEPARATOR </type>
+				</item>
+				<item>
+						<name> PlayStop </name>
+						<type> CHOICE </type>
+						<displayName> Play/Stop </displayName>
+						<item>
+								<name> Spawn </name>
+								<type> CHILD </type>
+								<displayName> Spawn </displayName>
+								<description> Spawn the current particle system </description>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:432,0,456,24 </imageNormal>
+								<action> ToolbarUIAdapter.doPlay </action>
+								<updater> ToolbarUIAdapter.updateDoPlay </updater>
+						</item>
+						<item>
+								<name> Stop </name>
+								<type> CHILD </type>
+								<displayName> Stop </displayName>
+								<description> Stop the current particle system </description>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:456,0,480,24 </imageNormal>
+								<action> ToolbarUIAdapter.doStop </action>
+								<updater> ToolbarUIAdapter.updateDoStop </updater>
+						</item>
+						<item>
+								<name> Pause </name>
+								<type> CHILD </type>
+								<displayName> Pause </displayName>
+								<description> Pause the current particle system </description>
+								<transparency> 255,0,255 </transparency>
+								<imageNormal> resources/data/toolbar.bmp:480,0,504,24 </imageNormal>
+								<action> ToolbarUIAdapter.doPause </action>
+								<updater> ToolbarUIAdapter.updateDoPause </updater>
+						</item>
+				</item>
+		</item>
+</GUI>

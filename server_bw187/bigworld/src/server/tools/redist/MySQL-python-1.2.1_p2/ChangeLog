@@ -1,0 +1,337 @@
+------------------------------------------------------------------------
+r447 | adustman | 2006-04-08 23:37:18 -0400 (Sat, 08 Apr 2006) | 2 lines
+
+Rename CHANGES to HISTORY
+
+------------------------------------------------------------------------
+r446 | adustman | 2006-04-08 23:36:29 -0400 (Sat, 08 Apr 2006) | 2 lines
+
+Fix MANIFEST (well, fixed after the NEXT commit)
+
+------------------------------------------------------------------------
+r445 | adustman | 2006-04-08 23:29:59 -0400 (Sat, 08 Apr 2006) | 2 lines
+
+Update CHANGES file
+
+------------------------------------------------------------------------
+r444 | adustman | 2006-04-08 23:25:04 -0400 (Sat, 08 Apr 2006) | 2 lines
+
+Bump version. Disable leak checking by default.
+
+------------------------------------------------------------------------
+r443 | adustman | 2006-04-08 22:56:39 -0400 (Sat, 08 Apr 2006) | 3 lines
+
+Fallback to non-thread-safe libraries if the thread-safe ones
+are unavailable.
+
+------------------------------------------------------------------------
+r440 | adustman | 2006-04-05 13:56:36 -0400 (Wed, 05 Apr 2006) | 3 lines
+
+Remove conditionals for registering server_start and server_end.
+Not needed since the code itself is conditional on client version.
+
+------------------------------------------------------------------------
+r439 | adustman | 2006-04-04 11:04:20 -0400 (Tue, 04 Apr 2006) | 7 lines
+
+raise NotSupportedError instead of non-existent UnsupportedError
+
+connection.set_character_set() now avoids raising an exception
+if the current character set is already correct, regardless of
+MySQL version.
+
+
+------------------------------------------------------------------------
+r433 | adustman | 2006-04-02 13:45:58 -0400 (Sun, 02 Apr 2006) | 2 lines
+
+1.2.1
+
+------------------------------------------------------------------------
+r432 | adustman | 2006-04-02 13:15:48 -0400 (Sun, 02 Apr 2006) | 2 lines
+
+Rename branch
+
+------------------------------------------------------------------------
+r423 | adustman | 2006-03-28 07:59:24 -0500 (Tue, 28 Mar 2006) | 2 lines
+
+Fix leak test for subclassing
+
+------------------------------------------------------------------------
+r422 | adustman | 2006-03-28 00:03:35 -0500 (Tue, 28 Mar 2006) | 6 lines
+
+Fix some inconsistent spacing.
+
+Try to fix some memory leaks. I think cursors don't leak any more
+but I've had no luck with connections. If you close your connections
+you should be fine, even if you don't close your cursors.
+
+------------------------------------------------------------------------
+r421 | adustman | 2006-03-06 00:33:01 -0500 (Mon, 06 Mar 2006) | 2 lines
+
+Added documentation for sql_mode support.
+
+------------------------------------------------------------------------
+r420 | adustman | 2006-03-06 00:28:05 -0500 (Mon, 06 Mar 2006) | 11 lines
+
+Added a bunch of new error codes to MySQLdb.constants.ER (complete for
+MySQL-5.0).
+
+Mapped some new error codes to DataError, which has always existed,
+but never had anything mapped to it.
+
+Cleaned set_character_set() a bit.
+
+Added new connection option sql_mode and correspond set_sql_mode()
+method.
+
+------------------------------------------------------------------------
+r418 | adustman | 2006-03-04 23:59:14 -0500 (Sat, 04 Mar 2006) | 13 lines
+
+Bump metadata version.
+
+Clean up setup.cfg so it doesn't break RPM builds on files which
+are no longer included.
+
+Add a test case for warnings for column truncation.
+
+Clean up warnings; was working around the introduced bug that
+returned (var)char columns with binary collations as array.
+
+Exposed the column flags (values from constants.FLAG) as
+description_flags on the cursor.
+
+------------------------------------------------------------------------
+r417 | adustman | 2006-03-04 18:27:24 -0500 (Sat, 04 Mar 2006) | 12 lines
+
+Reverted patch #1387290. It caused char/varchar columns with a binary
+collation to return array('c', ...), which should only be returned for
+actual BLOB columns.
+
+Figured out how to fix loading SET columns. Bug #1214916.
+
+Cleaned up the SET test.
+
+Removed *.html and *.css files from MANIFEST; their presence (or lack
+thereof since they are no longer being packaged) caused RPM builds to
+fail, and possibly others.
+
+------------------------------------------------------------------------
+r415 | adustman | 2006-03-02 23:09:21 -0500 (Thu, 02 Mar 2006) | 10 lines
+
+* Added set_character_set(charset) method to database connections
+
+* Added get_character_set_info() method to database connections
+
+* Added charset option to database connections
+
+* Updated docs, added FAQ
+
+* 1.2.1c6
+
+------------------------------------------------------------------------
+r413 | adustman | 2006-03-01 23:19:32 -0500 (Wed, 01 Mar 2006) | 9 lines
+
+* Add metadata.cfg and site.cfg to MANIFEST.in so they get packaged
+
+* Remove version_info from metadata before calling setup() to avoid
+  complaints
+
+* Fix cursor.callproc() as good as can be fixed.
+
+* Improve/fix various tests for stored procedures.
+
+------------------------------------------------------------------------
+r412 | adustman | 2006-02-28 12:50:22 -0500 (Tue, 28 Feb 2006) | 2 lines
+
+Fix classifiers and package file handling
+
+------------------------------------------------------------------------
+r411 | adustman | 2006-02-28 12:36:32 -0500 (Tue, 28 Feb 2006) | 2 lines
+
+Fix distribution naming
+
+------------------------------------------------------------------------
+r410 | adustman | 2006-02-28 12:16:50 -0500 (Tue, 28 Feb 2006) | 2 lines
+
+Derive all version information from metadata.cfg
+
+------------------------------------------------------------------------
+r409 | adustman | 2006-02-28 11:34:16 -0500 (Tue, 28 Feb 2006) | 2 lines
+
+Fix embedded build
+
+------------------------------------------------------------------------
+r408 | adustman | 2006-02-27 23:19:27 -0500 (Mon, 27 Feb 2006) | 6 lines
+
+* Update README
+
+* Completely rewrite setup.py
+
+* Make pytimes the only time implementation, moved into times
+
+------------------------------------------------------------------------
+r407 | adustman | 2006-02-27 18:10:38 -0500 (Mon, 27 Feb 2006) | 4 lines
+
+Python Sets (from sets module) as parameters work, but *only* Set
+and not ImmutableSet. Still trying to get it to work on BaseSet
+so any subclasses will work.
+
+------------------------------------------------------------------------
+r406 | adustman | 2006-02-27 13:48:57 -0500 (Mon, 27 Feb 2006) | 3 lines
+
+Fix client_flag fubar and add support for more detailed warning
+information available from MySQL-4.1 and newer server.
+
+------------------------------------------------------------------------
+r405 | adustman | 2006-02-27 13:39:53 -0500 (Mon, 27 Feb 2006) | 2 lines
+
+Add sets module support and make boolean support non-optional
+
+------------------------------------------------------------------------
+r404 | adustman | 2006-02-27 12:19:40 -0500 (Mon, 27 Feb 2006) | 3 lines
+
+Remove sets module in favor of standard sets module (Python-2.3 and
+newer)
+
+------------------------------------------------------------------------
+r403 | adustman | 2006-02-27 10:45:37 -0500 (Mon, 27 Feb 2006) | 3 lines
+
+Remove FIELD_TYPE.CHAR (deprecated) from STRING set since it conflicts
+with FIELD_TYPE.TINY (NUMBER).
+
+------------------------------------------------------------------------
+r402 | adustman | 2006-02-27 00:49:26 -0500 (Mon, 27 Feb 2006) | 2 lines
+
+Fix fubared TimeDelta_or_None and Time_or_None
+
+------------------------------------------------------------------------
+r401 | adustman | 2006-02-27 00:37:22 -0500 (Mon, 27 Feb 2006) | 2 lines
+
+Remove erroneous insert_id() on cursor reference.
+
+------------------------------------------------------------------------
+r400 | adustman | 2006-02-27 00:31:14 -0500 (Mon, 27 Feb 2006) | 2 lines
+
+Translate some additional error codes
+
+------------------------------------------------------------------------
+r399 | adustman | 2006-02-26 23:48:02 -0500 (Sun, 26 Feb 2006) | 2 lines
+
+Documentation is good. Correct documentation is better.
+
+------------------------------------------------------------------------
+r398 | adustman | 2006-02-26 23:20:48 -0500 (Sun, 26 Feb 2006) | 4 lines
+
+Enable MULTI_STATEMENTS if the client library is 4.1 or newer.
+
+Enable MULTI_RESULTS if the client library is 5.0 or newer.
+
+------------------------------------------------------------------------
+r397 | adustman | 2006-02-26 09:50:47 -0500 (Sun, 26 Feb 2006) | 3 lines
+
+Encode queries to connection character set before inserting
+parameters. Bug 1438913
+
+------------------------------------------------------------------------
+r396 | adustman | 2006-02-24 22:44:32 -0500 (Fri, 24 Feb 2006) | 2 lines
+
+Generic DB-API unit test module
+
+------------------------------------------------------------------------
+r395 | adustman | 2006-02-24 22:43:47 -0500 (Fri, 24 Feb 2006) | 2 lines
+
+Add the DB API unit tester for MySQLdb
+
+------------------------------------------------------------------------
+r394 | adustman | 2006-02-24 22:31:52 -0500 (Fri, 24 Feb 2006) | 6 lines
+
+* Fix callproc
+
+* Subtle bug: fetchall() could return the entire result set
+  over and over again if you called it multiple times (not
+  likely)
+
+------------------------------------------------------------------------
+r393 | adustman | 2006-02-24 19:56:15 -0500 (Fri, 24 Feb 2006) | 2 lines
+
+Add callproc() support.
+
+------------------------------------------------------------------------
+r392 | adustman | 2006-02-24 19:43:09 -0500 (Fri, 24 Feb 2006) | 3 lines
+
+Don't convert binary varchar columns to unicode.
+Patch 1387290
+
+------------------------------------------------------------------------
+r391 | adustman | 2006-02-24 19:33:17 -0500 (Fri, 24 Feb 2006) | 2 lines
+
+Include my_config.h so that SSL support can be properly detected.
+
+------------------------------------------------------------------------
+r387 | adustman | 2006-02-22 21:00:58 -0500 (Wed, 22 Feb 2006) | 2 lines
+
+Apply Gentoo patch for NEWDECIMAL support (MySQL-5.0)
+
+------------------------------------------------------------------------
+r386 | adustman | 2005-05-11 22:08:50 -0400 (Wed, 11 May 2005) | 12 lines
+
+Version 1.2.1c3:
+
+* _mysql.c: raise ProgrammingError for certain methods if they
+  are used on Result object created with conn.use_result(),
+  since they don't make sense.
+
+* setup.py: Reimplement quote stripping around directory names.
+  This seems to be a bug in older versions of mysql_config
+
+* cursors.py: If a unicode query string is passed, encode it in
+  the connection's character set.
+
+------------------------------------------------------------------------
+r385 | adustman | 2005-05-01 14:41:32 -0400 (Sun, 01 May 2005) | 2 lines
+
+Fix Debian information
+
+------------------------------------------------------------------------
+r384 | adustman | 2005-04-30 20:09:25 -0400 (Sat, 30 Apr 2005) | 11 lines
+
+* removed directory filtering in setup.py; should no longer be necessary,
+  and it seems to cause problems on some platforms or versions of MySQL
+  (most likely 3.23's mysql_config)
+
+* removed use of weak references; I don't think they were needed any more,
+  and they caused problems in some of the threaded tests.
+
+* applied patch #1188359: If converters are passed in, use a copy().
+
+* Version 1.2.1c2.
+
+------------------------------------------------------------------------
+r382 | adustman | 2005-04-10 16:56:55 -0400 (Sun, 10 Apr 2005) | 2 lines
+
+Version 1.2.1c1
+
+------------------------------------------------------------------------
+r381 | adustman | 2005-04-10 16:50:29 -0400 (Sun, 10 Apr 2005) | 4 lines
+
+This should fix the problem with Fedora Core noted on bug
+#1145226: On library/include paths, remove quotation marks,
+if present.
+
+------------------------------------------------------------------------
+r380 | adustman | 2005-04-10 16:41:29 -0400 (Sun, 10 Apr 2005) | 3 lines
+
+Apply patch #1179364 for bug #1037468:
+DeprecationWarnings for deprecated methods.
+
+------------------------------------------------------------------------
+r379 | adustman | 2005-04-03 00:17:34 -0500 (Sun, 03 Apr 2005) | 2 lines
+
+Restore the begin() method, but issue a DeprecationWarning.
+
+------------------------------------------------------------------------
+r378 | adustman | 2005-04-03 00:15:51 -0500 (Sun, 03 Apr 2005) | 4 lines
+
+Add iterator protocol to SSCurors.
+
+Issue deprecation warnings for special DictCursor methods.
+

@@ -1,0 +1,78 @@
+<root>
+	<help>
+		<toolsReferenceGuide>	..\..\doc\content_tools_reference_guide.pdf	</toolsReferenceGuide>
+		<contentCreationManual>	..\..\doc\content_creation.chm	</contentCreationManual>
+		<shortcutsHtml>	resources/html/shortcuts.html	</shortcutsHtml>
+	</help>
+	<space>	helpers/spaces/pe	</space>
+	<app>
+		<maxTimeDelta>	0.5	</maxTimeDelta>
+	</app>
+	<romp>
+		<watcherValues>
+			<Client Settings/Time of Day>	12:00	</Client Settings/Time of Day>
+			<Client Settings/Secs Per Hour>	0	</Client Settings/Secs Per Hour>
+		</watcherValues>
+	</romp>
+	<camera>
+		<speed>	SuperFast
+			<Slow>	1
+				<turbo>	8	</turbo>
+			</Slow>
+			<Medium>	8
+				<turbo>	24	</turbo>
+			</Medium>
+			<Fast>	24
+				<turbo>	64	</turbo>
+			</Fast>
+			<SuperFast>	48
+				<turbo>	128	</turbo>
+			</SuperFast>
+		</speed>
+		<invert>	0	</invert>
+		<mode>	4	</mode>
+		<rotDir>	0	</rotDir>
+	</camera>
+	<render>
+		<environment>	1
+			<drawFog>	1	</drawFog>
+			<drawBloom>	1	</drawBloom>
+			<drawShimmer>	1	</drawShimmer>
+			<drawSunAndMoon>	1	</drawSunAndMoon>
+			<drawClouds>	1	</drawClouds>
+			<drawSky>	1	</drawSky>
+		</environment>
+		<showBB>	0	</showBB>
+		<showGrid>	0	</showGrid>
+	</render>
+	<defaults>
+		<backgroundColour>	0.564706 0.639216 0.749020 0.000000	</backgroundColour>
+		<startDirectory>	particles/	</startDirectory>
+		<renderer>
+			<blurTexture>	system/maps/notfound.bmp	</blurTexture>
+			<spriteTexture>	maps/fx/firework.dds	</spriteTexture>
+			<ampTexture>	maps/landscape/a_desertsand01.dds	</ampTexture>
+			<meshVisual>	sets/global/items/grenades/tear_grenade.visual	</meshVisual>
+			<trailTexture>	maps/landscape/a_cracked_mud01.tga	</trailTexture>
+		</renderer>
+		<flareXML>	environments/fx//streak.xml	</flareXML>
+		<bkgMode>	Terrain	</bkgMode>
+	</defaults>
+	<settings>
+		<floorTexture>	helpers/maps/system/default.bmp	</floorTexture>
+		<floorGrid>	1.0	</floorGrid>
+	</settings>
+	<startup>
+		<lastOrigin>	0.000000 0.000000 0.000000	</lastOrigin>
+		<lastView>
+			<row0>	-0.716172 -0.164608 -0.678235	</row0>
+			<row1>	-0.000000 0.971789 -0.235853	</row1>
+			<row2>	0.697924 -0.168912 -0.695967	</row2>
+			<row3>	0.000000 0.000000 3.462633	</row3>
+		</lastView>
+	</startup>
+	<consoles>
+		<darkenBackground>	true	</darkenBackground>
+		<numMessageLines>	5	</numMessageLines>
+	</consoles>
+</root>

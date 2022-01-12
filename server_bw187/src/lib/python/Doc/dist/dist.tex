@@ -1,0 +1,3672 @@
+\documentclass{manual}
+\usepackage{distutils}
+
+% $Id$
+
+% TODO
+%   Document extension.read_setup_file
+%   Document build_clib command
+%
+
+\title{Distributing Python Modules}
+
+\input{boilerplate}
+
+\author{Greg Ward\\
+        Anthony Baxter}
+\authoraddress{
+	\strong{Python Software Foundation}\\
+	Email: \email{distutils-sig@python.org}
+}
+
+\makeindex
+\makemodindex
+
+\begin{document}
+
+\maketitle
+
+\input{copyright}
+
+\begin{abstract}
+  \noindent
+  This document describes the Python Distribution Utilities
+  (``Distutils'') from the module developer's point of view, describing
+  how to use the Distutils to make Python modules and extensions easily
+  available to a wider audience with very little overhead for
+  build/release/install mechanics.
+\end{abstract}
+
+% The ugly "%begin{latexonly}" pseudo-environment suppresses the table
+% of contents for HTML generation.
+%
+%begin{latexonly}
+\tableofcontents
+%end{latexonly}
+
+
+\chapter{An Introduction to Distutils}
+\label{intro}
+
+This document covers using the Distutils to distribute your Python
+modules, concentrating on the role of developer/distributor: if
+you're looking for information on installing Python modules, you
+should refer to the \citetitle[../inst/inst.html]{Installing Python
+Modules} manual.
+
+
+\section{Concepts \& Terminology}
+\label{concepts}
+
+Using the Distutils is quite simple, both for module developers and for
+users/administrators installing third-party modules.  As a developer,
+your responsibilities (apart from writing solid, well-documented and
+well-tested code, of course!) are:
+\begin{itemize}
+\item write a setup script (\file{setup.py} by convention)
+\item (optional) write a setup configuration file
+\item create a source distribution
+\item (optional) create one or more built (binary) distributions
+\end{itemize}
+Each of these tasks is covered in this document.
+
+Not all module developers have access to a multitude of platforms, so
+it's not always feasible to expect them to create a multitude of built
+distributions.  It is hoped that a class of intermediaries, called
+\emph{packagers}, will arise to address this need.  Packagers will take
+source distributions released by module developers, build them on one or
+more platforms, and release the resulting built distributions.  Thus,
+users on the most popular platforms will be able to install most popular
+Python module distributions in the most natural way for their platform,
+without having to run a single setup script or compile a line of code.
+
+
+\section{A Simple Example}
+\label{simple-example}
+
+The setup script is usually quite simple, although since it's written
+in Python, there are no arbitrary limits to what you can do with it,
+though you should be careful about putting arbitrarily expensive
+operations in your setup script. Unlike, say, Autoconf-style configure
+scripts, the setup script may be run multiple times in the course of
+building and installing your module distribution.  
+
+If all you want to do is distribute a module called \module{foo},
+contained in a file \file{foo.py}, then your setup script can be as
+simple as this:
+
+\begin{verbatim}
+from distutils.core import setup
+setup(name='foo',
+      version='1.0',
+      py_modules=['foo'],
+      )
+\end{verbatim}
+
+Some observations:
+\begin{itemize}
+\item most information that you supply to the Distutils is supplied as
+  keyword arguments to the \function{setup()} function
+\item those keyword arguments fall into two categories: package
+  metadata (name, version number) and information about what's in the
+  package (a list of pure Python modules, in this case)
+\item modules are specified by module name, not filename (the same will
+  hold true for packages and extensions)
+\item it's recommended that you supply a little more metadata, in
+  particular your name, email address and a URL for the project
+  (see section~\ref{setup-script} for an example)
+\end{itemize}
+
+To create a source distribution for this module, you would create a
+setup script, \file{setup.py}, containing the above code, and run:
+
+\begin{verbatim}
+python setup.py sdist
+\end{verbatim}
+
+which will create an archive file (e.g., tarball on \UNIX, ZIP file on
+Windows) containing your setup script \file{setup.py}, and your module
+\file{foo.py}.  The archive file will be named \file{foo-1.0.tar.gz} (or
+\file{.zip}), and will unpack into a directory \file{foo-1.0}.
+
+If an end-user wishes to install your \module{foo} module, all she has
+to do is download \file{foo-1.0.tar.gz} (or \file{.zip}), unpack it,
+and---from the \file{foo-1.0} directory---run
+
+\begin{verbatim}
+python setup.py install
+\end{verbatim}
+
+which will ultimately copy \file{foo.py} to the appropriate directory
+for third-party modules in their Python installation.
+
+This simple example demonstrates some fundamental concepts of the
+Distutils. First, both developers and installers have the same basic
+user interface, i.e. the setup script.  The difference is which
+Distutils \emph{commands} they use: the \command{sdist} command is
+almost exclusively for module developers, while \command{install} is
+more often for installers (although most developers will want to install
+their own code occasionally).
+
+If you want to make things really easy for your users, you can create
+one or more built distributions for them.  For instance, if you are
+running on a Windows machine, and want to make things easy for other
+Windows users, you can create an executable installer (the most
+appropriate type of built distribution for this platform) with the
+\command{bdist\_wininst} command.  For example:
+
+\begin{verbatim}
+python setup.py bdist_wininst
+\end{verbatim}
+
+will create an executable installer, \file{foo-1.0.win32.exe}, in the
+current directory.
+
+Other useful built distribution formats are RPM, implemented by the
+\command{bdist\_rpm} command, Solaris \program{pkgtool}
+(\command{bdist\_pkgtool}), and HP-UX \program{swinstall}
+(\command{bdist_sdux}).  For example, the following command will
+create an RPM file called \file{foo-1.0.noarch.rpm}:
+
+\begin{verbatim}
+python setup.py bdist_rpm
+\end{verbatim}
+
+(The \command{bdist\_rpm} command uses the \command{rpm} executable,
+therefore this has to be run on an RPM-based system such as Red Hat
+Linux, SuSE Linux, or Mandrake Linux.)
+
+You can find out what distribution formats are available at any time by
+running
+
+\begin{verbatim}
+python setup.py bdist --help-formats
+\end{verbatim}
+
+
+\section{General Python terminology}
+\label{python-terms}
+
+If you're reading this document, you probably have a good idea of what
+modules, extensions, and so forth are.  Nevertheless, just to be sure
+that everyone is operating from a common starting point, we offer the
+following glossary of common Python terms:
+\begin{description}
+\item[module] the basic unit of code reusability in Python: a block of
+  code imported by some other code.  Three types of modules concern us
+  here: pure Python modules, extension modules, and packages.
+
+\item[pure Python module] a module written in Python and contained in a
+  single \file{.py} file (and possibly associated \file{.pyc} and/or
+  \file{.pyo} files).  Sometimes referred to as a ``pure module.''
+
+\item[extension module] a module written in the low-level language of
+  the Python implementation: C/\Cpp{} for Python, Java for Jython.
+  Typically contained in a single dynamically loadable pre-compiled
+  file, e.g. a shared object (\file{.so}) file for Python extensions on
+  \UNIX, a DLL (given the \file{.pyd} extension) for Python extensions
+  on Windows, or a Java class file for Jython extensions.  (Note that
+  currently, the Distutils only handles C/\Cpp{} extensions for Python.)
+
+\item[package] a module that contains other modules; typically contained
+  in a directory in the filesystem and distinguished from other
+  directories by the presence of a file \file{\_\_init\_\_.py}.
+
+\item[root package] the root of the hierarchy of packages.  (This isn't
+  really a package, since it doesn't have an \file{\_\_init\_\_.py}
+  file.  But we have to call it something.)  The vast majority of the
+  standard library is in the root package, as are many small, standalone
+  third-party modules that don't belong to a larger module collection.
+  Unlike regular packages, modules in the root package can be found in
+  many directories: in fact, every directory listed in \code{sys.path}
+  contributes modules to the root package.
+\end{description}
+
+
+\section{Distutils-specific terminology}
+\label{distutils-term}
+
+The following terms apply more specifically to the domain of
+distributing Python modules using the Distutils:
+\begin{description}
+\item[module distribution] a collection of Python modules distributed
+  together as a single downloadable resource and meant to be installed
+  \emph{en masse}.  Examples of some well-known module distributions are
+  Numeric Python, PyXML, PIL (the Python Imaging Library), or
+  mxBase.  (This would be called a \emph{package}, except that term
+  is already taken in the Python context: a single module distribution
+  may contain zero, one, or many Python packages.)
+
+\item[pure module distribution] a module distribution that contains only
+  pure Python modules and packages.  Sometimes referred to as a ``pure
+  distribution.''
+
+\item[non-pure module distribution] a module distribution that contains
+  at least one extension module.  Sometimes referred to as a ``non-pure
+  distribution.''
+
+\item[distribution root] the top-level directory of your source tree (or 
+  source distribution); the directory where \file{setup.py} exists.  Generally 
+  \file{setup.py} will be run from this directory.
+\end{description}
+
+
+\chapter{Writing the Setup Script}
+\label{setup-script}
+
+The setup script is the centre of all activity in building,
+distributing, and installing modules using the Distutils.  The main
+purpose of the setup script is to describe your module distribution to
+the Distutils, so that the various commands that operate on your modules
+do the right thing.  As we saw in section~\ref{simple-example} above,
+the setup script consists mainly of a call to \function{setup()}, and
+most information supplied to the Distutils by the module developer is
+supplied as keyword arguments to \function{setup()}.
+
+Here's a slightly more involved example, which we'll follow for the next
+couple of sections: the Distutils' own setup script.  (Keep in mind that
+although the Distutils are included with Python 1.6 and later, they also
+have an independent existence so that Python 1.5.2 users can use them to
+install other module distributions.  The Distutils' own setup script,
+shown here, is used to install the package into Python 1.5.2.)
+
+\begin{verbatim}
+#!/usr/bin/env python
+
+from distutils.core import setup
+
+setup(name='Distutils',
+      version='1.0',
+      description='Python Distribution Utilities',
+      author='Greg Ward',
+      author_email='gward@python.net',
+      url='http://www.python.org/sigs/distutils-sig/',
+      packages=['distutils', 'distutils.command'],
+     )
+\end{verbatim}
+
+There are only two differences between this and the trivial one-file
+distribution presented in section~\ref{simple-example}: more
+metadata, and the specification of pure Python modules by package,
+rather than by module.  This is important since the Distutils consist of
+a couple of dozen modules split into (so far) two packages; an explicit
+list of every module would be tedious to generate and difficult to
+maintain.  For more information on the additional meta-data, see
+section~\ref{meta-data}.
+
+Note that any pathnames (files or directories) supplied in the setup
+script should be written using the \UNIX{} convention, i.e.
+slash-separated.  The Distutils will take care of converting this
+platform-neutral representation into whatever is appropriate on your
+current platform before actually using the pathname.  This makes your
+setup script portable across operating systems, which of course is one
+of the major goals of the Distutils.  In this spirit, all pathnames in
+this document are slash-separated.  (Mac OS 9 programmers should keep in
+mind that the \emph{absence} of a leading slash indicates a relative
+path, the opposite of the Mac OS convention with colons.)
+
+This, of course, only applies to pathnames given to Distutils
+functions.  If you, for example, use standard Python functions such as
+\function{glob.glob()} or \function{os.listdir()} to specify files, you
+should be careful to write portable code instead of hardcoding path
+separators:
+
+\begin{verbatim}
+    glob.glob(os.path.join('mydir', 'subdir', '*.html'))
+    os.listdir(os.path.join('mydir', 'subdir'))
+\end{verbatim}
+
+
+\section{Listing whole packages}
+\label{listing-packages}
+
+The \option{packages} option tells the Distutils to process (build,
+distribute, install, etc.) all pure Python modules found in each package
+mentioned in the \option{packages} list.  In order to do this, of
+course, there has to be a correspondence between package names and
+directories in the filesystem.  The default correspondence is the most
+obvious one, i.e. package \module{distutils} is found in the directory
+\file{distutils} relative to the distribution root.  Thus, when you say
+\code{packages = ['foo']} in your setup script, you are promising that
+the Distutils will find a file \file{foo/\_\_init\_\_.py} (which might
+be spelled differently on your system, but you get the idea) relative to
+the directory where your setup script lives.  If you break this
+promise, the Distutils will issue a warning but still process the broken
+package anyways.
+
+If you use a different convention to lay out your source directory,
+that's no problem: you just have to supply the \option{package\_dir}
+option to tell the Distutils about your convention.  For example, say
+you keep all Python source under \file{lib}, so that modules in the
+``root package'' (i.e., not in any package at all) are in
+\file{lib}, modules in the \module{foo} package are in \file{lib/foo},
+and so forth.  Then you would put
+
+\begin{verbatim}
+package_dir = {'': 'lib'}
+\end{verbatim}
+
+in your setup script.  The keys to this dictionary are package names,
+and an empty package name stands for the root package.  The values are
+directory names relative to your distribution root.  In this case, when
+you say \code{packages = ['foo']}, you are promising that the file
+\file{lib/foo/\_\_init\_\_.py} exists.
+
+Another possible convention is to put the \module{foo} package right in 
+\file{lib}, the \module{foo.bar} package in \file{lib/bar}, etc.  This
+would be written in the setup script as
+
+\begin{verbatim}
+package_dir = {'foo': 'lib'}
+\end{verbatim}
+
+A \code{\var{package}: \var{dir}} entry in the \option{package\_dir}
+dictionary implicitly applies to all packages below \var{package}, so
+the \module{foo.bar} case is automatically handled here.  In this
+example, having \code{packages = ['foo', 'foo.bar']} tells the Distutils
+to look for \file{lib/\_\_init\_\_.py} and
+\file{lib/bar/\_\_init\_\_.py}.  (Keep in mind that although
+\option{package\_dir} applies recursively, you must explicitly list all
+packages in \option{packages}: the Distutils will \emph{not} recursively
+scan your source tree looking for any directory with an
+\file{\_\_init\_\_.py} file.)
+
+
+\section{Listing individual modules}
+\label{listing-modules}
+
+For a small module distribution, you might prefer to list all modules
+rather than listing packages---especially the case of a single module
+that goes in the ``root package'' (i.e., no package at all).  This
+simplest case was shown in section~\ref{simple-example}; here is a
+slightly more involved example:
+
+\begin{verbatim}
+py_modules = ['mod1', 'pkg.mod2']
+\end{verbatim}
+
+This describes two modules, one of them in the ``root'' package, the
+other in the \module{pkg} package.  Again, the default package/directory
+layout implies that these two modules can be found in \file{mod1.py} and
+\file{pkg/mod2.py}, and that \file{pkg/\_\_init\_\_.py} exists as well.
+And again, you can override the package/directory correspondence using
+the \option{package\_dir} option.
+
+
+\section{Describing extension modules}
+\label{describing-extensions}
+
+% XXX read over this section
+Just as writing Python extension modules is a bit more complicated than
+writing pure Python modules, describing them to the Distutils is a bit
+more complicated.  Unlike pure modules, it's not enough just to list
+modules or packages and expect the Distutils to go out and find the
+right files; you have to specify the extension name, source file(s), and
+any compile/link requirements (include directories, libraries to link
+with, etc.).
+
+All of this is done through another keyword argument to
+\function{setup()}, the \option{ext_modules} option.  \option{ext_modules}
+is just a list of \class{Extension} instances, each of which describes a
+single extension module.  Suppose your distribution includes a single
+extension, called \module{foo} and implemented by \file{foo.c}.  If no
+additional instructions to the compiler/linker are needed, describing
+this extension is quite simple:
+
+\begin{verbatim}
+Extension('foo', ['foo.c'])
+\end{verbatim}
+
+The \class{Extension} class can be imported from
+\module{distutils.core} along with \function{setup()}.  Thus, the setup
+script for a module distribution that contains only this one extension
+and nothing else might be:
+
+\begin{verbatim}
+from distutils.core import setup, Extension
+setup(name='foo',
+      version='1.0',
+      ext_modules=[Extension('foo', [gfoo.c'])],
+      )
+\dnd{verbavim}
+
+The \class{xtension} chass!(actually,$the underlying expenqiO~-building
+machénery implemented by the \command{build\_exu} command) supports a
+great deal od flaxibility in deseribi~g Python extenóions, which is
+explained in the following sdctions.  
+
+
+\subsection{Extension names and packaces}
+
+The first arg}ment to thd \class{Extenskon} cojstructkr"is always the
+namm of the extension, including any package names.` Vor example,
+
+\begin{verb@tim}
+Extension('foo', ['src/foo1.cç< +src/foo2.c'])
+\%ndverbatim}
+
+deócribes an extension that dives in the root package, while
+
+\begin{verbatim}
+Exte.sion('pkg.æoo', ['sRc/foo1.c', 'src/foo3.c'])
+\end{ver``tim}
+
+desc|ibes the samd extensigo in the \module{pkg} package.  The source
+Fileq and resulting obj%cv code are identical in0both cases; the only
+difference is where in the°fides}stem (and therefore where in P{thon's
+namespace (ierarch}© the resulting extunsion lives.
+
+If you have e number of extensionS!all in the samg paciage (or all under
+the same"base package), use the \option{ext\ßpackage} keywkrd argument
+to \function{óetup()}.  Fov example,
+
+\âegén{verbatim}
+setup*...
+      exu_packa'e='pkg',
+      ext_modules=[Extdnsñon('foo', ['foo.c']),
+                   Extension('subpkg.bar'¬0[7bar.c'])],
+     )
+\end{verbatim}
+
+will compile \file{foo.c} |o the extension \lodude{pkg.foo}, and
+\fmle{bkr.cý to \íodule{pkg.subpkg.bar}.
+
+
+\subsEction{Eytension souRce files}
+
+Tle second argument to the \chasszÅxtension} constructor is a ìist o&
+source files.! Since the0Distuvils"currently only suppord C, \Cpp, aod
+ObjectiVe-C extensions, thåse are normally C/\Cpp/Objective-C source
+filer.$ (Be sure to!use appropsiate extensions to dis|inguish \Cpp\
+source files: \file{.cc} and \film{.cpp} seem tk be reCognized by both
+\UNIX{} and Windows compilers.+
+
+Hïwever, }ou can also inchude SWIG intergace (\fi|e{.I}) file3 in thelist; the \command{build\_ext} command knows how to deal wIth SWIG
+extenSions: mt will run SWIG on the interface file and compile the
+resulting C/\Cpp{} file into your extension.
+
+\XXX{SWIG support is rough around the edges and largely untested!}
+
+This warning notwithstanding, options to SWIG can be currently passed
+like this:
+
+\begin{verbatim}
+setup(...
+      ext_modules=[Extension('_foo', ['foo.i'], 
+                             swig_opts=['-modern', '-I../include'])],
+      py_modules=['foo'],
+     )
+\end{verbatim}
+
+Or on the commandline like this:
+
+\begin{verbatim}
+> python setup.py build_ext --swig-opts="-modern -I../include"
+\end{verbatim}
+
+On some platforms, you can include non-source files that are processed
+by the compiler and included in your extension.  Currently, this just
+means Windows message text (\file{.mc}) files and resource definition
+(\file{.rc}) files for Visual \Cpp. These will be compiled to binary resource
+(\file{.res}) files and linked into the executable.
+
+
+\subsection{Preprocessor options}
+
+Three optional arguments to \class{Extension} will help if you need to
+specify include directories to search or preprocessor macros to
+define/undefine: \code{include\_dirs}, \code{define\_macros}, and
+\code{undef\_macros}.
+
+For example, if your extension requires header files in the
+\file{include} directory under your distribution root, use the
+\code{include\_dirs} option:
+
+\begin{verbatim}
+Extension('foo', ['foo.c'], include_dirs=['include'])
+\end{verbatim}
+
+You can specify absolute directories there; if you know that your
+extension will only be built on \UNIX{} systems with X11R6 installed to
+\file{/usr}, you can get away with
+
+\begin{verbatim}
+Extension('foo', ['foo.c'], include_dirs=['/usr/include/X11'])
+\end{verbatim}
+
+You should avoid this sort of non-portable usage if you plan to
+distribute your code: it's probably better to write C code like
+\begin{verbatim}
+#include <X11/Xlib.h>
+\end{verbatim}
+
+If you need to include header files from some other Python extension,
+you can take advantage of the fact that header files are installed in a
+consistent way by the Distutils \command{install\_header} command.  For
+example, the Numerical Python header files are installed (on a standard
+\UNIX{} installation) to \file{/usr/local/include/python1.5/Numerical}.
+(The exact location will differ according to your platform and Python
+installation.)  Since the Python include
+directory---\file{/usr/local/include/python1.5} in this case---is always
+included in the search path when building Python extensions, the best
+approach is to write C code like
+\begin{verbatim}
+#include <Numerical/arrayobject.h>
+\end{verbatim}
+If you must put the \file{Numerical} include directory right into your
+header search path, though, you can find that directory using the
+Distutils \refmodule{distutils.sysconfig} module:
+
+\begin{verbatim}
+from distutils.sysconfig import get_python_inc
+incdir = os.path.join(get_python_inc(plat_specific=1), 'Numerical')
+setup(...,
+      Extension(..., include_dirs=[incdir]),
+      )
+\end{verbatim}
+
+Even though this is quite portable---it will work on any Python
+installation, regardless of platform---it's probably easier to just
+write ynur C code iî the sensibnE!wiy.
+
+You can define and undefine pre-prncessob macros with the
+\code{defiîe\_macros} and \Code{undef\_macros} opthons.
+\code{dåf)ne\_macros} takes a lisd of \code{(name, value)} tuples,`where
+\code{faMe} is the name!of tiE macro to define (a string) and
+\codE{value} is its value: eythgv a string or \code{Jone}. !(Defining amacro \code{FOO} to \code{None} ic the equivalenw kf"a bare
+\code{\#define FOO} in yïur C soqrce: with most compilers< thió sets
+\code{FOO}`to thg string \code{1m.)  \code{undef_macros} is just
+a lhsT oæ macros to undefine.
+
+For dxample;
+\beginûverbatim}
+Extension(....
+          define_macros=[('NDEBU', '1'),
+           0             ('HAVE_STRFTIME', None)],
+          undef_macros-['HCVE_FOO', &HAÖE_BAR'])
+\end{verbctim}
+
+is the equivalent of having this at uhu top of every C sourse file:
+
+^beginzverbatim}
+#denine NDEBUG 1
+#define HAW_STRFTIME
+#undef HAVE_FOO
+#undef HAVE_BAR
+\end{verbatim}
+
+
+\subsection{Library options}
+
+You can also s`ecify the libraries to link against when building your
+extension, and the directories to search for those libraries.  The
+\code{libraries} option is a list of libraries to link against,
+\code{library\_dirs} is a list of directories to search for libraries at 
+link-time, and \code{runtime\_library\_dirs} is a list of directories to 
+search for shared (dynamically loaded) libraries at run-time.
+
+For example, if you need to link against libraries known to be in the
+standard library search path on target systems
+
+\begin{verbatim}
+Extension(...,
+          libraries=['gdbm', 'readline'])
+\end{verbatim}
+
+If you need to link with libraries in a non-standard location, you'll
+have to include the location in \code{library\_dirs}:
+
+\begin{verbatim}
+Extension(...,
+          library_dirs=['/usr/X11R6/lib'],
+          libraries=['X11', 'Xt'])
+\end{verbatim}
+
+(Again, this sort of non-portable construct should be avoided if you
+intend to distribute your code.)
+
+\XXX{Should mention clib libraries here or somewhere else!}
+
+\subsection{Other options}
+ŠTheve are still some other options which can be used to handle spgcIal
+cares.
+
+The \optkon{extra\_objects} opdion is a list of object files to be passed
+to 4he`linker. Vhese fi|es must not have exten{hons, as the default
+extension for the compiler is used.
+
+\option{extra\_compide|_args} and \option{extra\_link\_args} cen be used
+to specify additional coimand line opuioNs for the RespecTive compiler and
+linëer$command lines.
+
+\option{export\_syMbols} is only usefõl$on Windows.  It can contain i list
+of symbols (functyons gr varia"les) to be export%ä. This option
+is not needed when building compiled extensions: Distutils 
+will aõtomatigally add \sode[initgodule}
+to the0list of exported symbïls.
+
+\cection{Relationships between Dis|rhbutions and Packages}J
+A distribution may belate to packages in three specific ways:
+
+\becin{enumera4e}
+  \item It caf require packages or moduler.
+  \item It$can provide packages or modules
+
+ "\item Ip can obsolete paccages or modules&
+\end{enumerate}
+
+These(relatiofsjips can be specified using keyword arguments to the
+\function{distutils.core.setup()} function.
+
+Dependencies on other Python modules and packages can be specified by
+supplying the \var{requires} keyword argument to \function{setup()}.
+The value must be a list of strings.  Each string specifies a package
+that is required, and optionally what versions are sufficient.
+
+To specify that any version of a module or package is required, the
+string should consist entirely of the module or package name.
+Examples include \code{'mymodule'} and \code{'xml.parsers.expat'}.
+
+If specific versions are required, a sequence of qualifiers can be
+supplied in parentheses.  Each qualifier may consist of a comparison
+operator and a version number.  The accepted comparison operators are:
+
+\begin{verbatim}
+<    >    ==
+<=   >=   !=
+\end{verbatim}
+
+These can be combined by using multiple qualifiers separated by commas
+(and optional whitespace).  In this case, all of the qualifiers must
+be matched; a logical AND is used to combine the evaluations.
+
+Let's look at a bunch of examples:
+
+\begin{tableii}{l|l}{code}{Requires Expression}{Explanation}
+  \lineii{==1.0}               {Only version \code{1.0} is compatible}
+  \lineii{>1.0, !=1.5.1, <2.0} {Any version after \code{1.0} and before
+                                \code{2.0} is compatible, except
+                                \code{1.5.1}}
+\end{tableii}
+
+Now that we can specify dependencies, we also need to be able to
+specify what we provide that other distributions can require.  This is
+done using the \var{provides} keyword argument to \function{setup()}.
+The value for this keyword is a list of strings, each of which names a
+Python module or package, and optionally identifies the version.  If
+the version is not specified, it is assumed to match that of the
+distribution.
+
+Some examples:
+
+\begin{tableii}{l|l}{code}{Provides Expression}{Explanation}
+  \lineii{mypkg}      {Provide \code{mypkg}, using the distribution version}
+  \lineii{mypkg (1.1)} {Provide \code{mypkg} version 1.1, regardless of the
+                       distribution version}
+\end{tableii}
+
+A package can declare that it obsoletes other packages using the
+\var{obsoletes} keyword argument.  The value for this is similar to
+that of the \var{requires} keyword: a list of strings giving module or
+package specifiers.  Each specifier consists of a module or package
+name optionally followed by one or more version qualifiers.  Version
+qualifiers are given in parentheses after the module or package name.
+
+The versions identified by the qualifiers are those that are obsoleted
+by the distribution being described.  If no qualifiers are given, all
+versions of the named module or package are understood to be
+obsoleted.
+
+
+\section{Installing Scripts}
+
+So far we have been dealing with pure and non-pure Python modules,
+which are usually not run by themselves but imported by scripts.
+
+Scripts are files containing Python source code, intended to be
+started from the command line.  Scripts don't require Distutils to do
+anything very complicated.  The only clever feature is that if the
+first line of the script starts with \code{\#!} and contains the word
+``python'', the Distutils will adjust the first line to refer to the
+current interpreter location. By default, it is replaced with the
+current interpreter location.  The \longprogramopt{executable} (or
+\programopt{-e}) option will allow the interpreter path to be
+explicitly overridden.
+
+The \option{scripts} option simply is a list of files to be handled
+in this way.  From the PyXML setup script:
+
+\begin{verbatim}
+setup(... 
+      scripts=['scripts/xmlproc_parse', 'scripts/xmlproc_val']
+      )
+\end{verbatim}
+
+
+\section{Installing Package Data}
+
+Often, additional files need to be installed into a package.  These
+files are often data that's closely related to the package's
+implementation, or text files containing documentation that might be
+of interest to programmers using the package.  These files are called
+\dfn{package data}.
+
+Package data can be added to packages using the \code{package_data}
+keyword argument to the \function{setup()} function.  The value must
+be a mapping from package name to a list of relative path names that
+should be copied into the package.  The paths are interpreted as
+relative to the directory containing the package (information from the
+\code{package_dir} mapping is used if appropriate); that is, the files
+are expected to be part of the package in the source directories.
+They may contain glob patterns as well.
+
+The path names may contain directory portions; any necessary
+directories will be created in the installation.
+
+For example, if a package should contain a subdirectory with several
+data files, the files can be arranged like this in the source tree:
+
+\begin{verbatim}
+setup.py
+src/
+    mypkg/
+        __init__.py
+        module.py
+        data/
+            tables.dat
+            spoons.dat
+            forks.dat
+\end{verbatim}
+
+The corresponding call to \function{setup()} might be:
+
+\begin{verbatim}
+setup(...,
+      packages=['mypkg'],
+      package_dir={'mypkg': 'src/mypkg'},
+      package_data={'mypkg': ['data/*.dat']},
+      )
+\end{verbatim}
+
+
+\versionadded{2.4}
+
+
+\section{Installing Additional Files}
+
+The \option{data\_files} option can be used to specify additional
+files needed by the module distribution: configuration files, message
+catalogs, data files, anything which doesn't fit in the previous
+categories.
+
+\option{data\_files} specifies a sequence of (\var{directory},
+\var{files}) pairs in the following way:
+
+\begin{verbatim}
+setup(...
+      data_files=[('bitmaps', ['bm/b1.gif', 'bm/b2.gif']),
+                  ('config', ['cfg/data.cfg']),
+                  ('/etc/init.d', ['init-script'])]
+     )
+\end{verbatim}
+
+Note that you can specify the directory names where the data files
+will be installed, but you cannot rename the data files themselves.
+
+Each (\var{directory}, \var{files}) pair in the sequence specifies the
+installation directory and the files to install there.  If
+\var{directory} is a relative path, it is interpreted relative to the
+installation prefix (Python's \code{sy3.prefix} for pure-Pydhonpacjages, \codeûsys.eyecprefix} for packages that contain extension
+modules).0 Dách file name in \var{fi,es} as interpreted relative to
+tjd \file{setup.py} script$at t(e top of the package soubce
+distribution.  No$directory in&ormation from \va2{files} is used0to
+determine the final location of the knstalled &ile; only t(e name of
+the file is used.
+
+You can sPecify the \option{data\_files} options as a simple sequence
+of files without specifying a target dirmctorq, but this is not recommended,
+and the$\command{insôall} ãommand wiml$print$a ÷arning in this cace.
+To install data æiles di2ectly in vhe target disectory, an eepty
+string should be givel as the directory.
+
+\section{Additional meta-dada}
+\label{mete-data}
+
+Thg Setup scripT may include cdditional meta-daua beyond the name and
+fersion. Thiq knformation includuS2
+
+\begin{tab,eiv}{l|l|l\c}{aodeu%
+  {Meta-Dcta}{Description}{value}{Notes}
+  \linåiv{nale}ûname of the package}
+         {shoru string}{(1)}
+  \lineiv{version}{version of this release}
+         {short string}{(1)(2)}
+  \lineiv{author}{package author's name}
+         {short string}{(3)}
+  \lineiv{author_email}{email address of the package author}
+         {email address}{(3)}
+  \lineiv{maintainer}{package maintainer's name}
+         {short string}{(3)}
+  \lineiv{maintainer_email}{email address of the package maintainer}
+         {email address}{(3)}
+  \lineiv{url}{home page for the package}
+         {URL}{(1)}
+  \lineiv{description}{short, summary description of the package}
+         {short string}{}
+  \lineiv{long_description}{longer description of the package}
+         {long string}{}
+  \lineiv{download_url}{location where the package may be downloaded}
+         {URL}{(4)}
+  \lineiv{classifiers}{a list of classifiers}
+         {list of strings}{(4)}
+\end{tableiv}
+
+\noindent Notes:
+\begin{description}
+\item[(1)] These fields are required.
+\item[(2)] It is recommended that versions take the form
+  \emph{major.minor\optional{.patch\optional{.sub}}}.
+\item[(3)] Either the author or the maintainer must be identified.
+\item[(4)] These fields should not be used if your package is to be
+  compatible with Python versions prior to 2.2.3 or 2.3.  The list is
+  available from the \ulink{PyPI website}{http://www.python.org/pypi}.
+
+\item['short string'] A single line of text, not more than 200 characters.
+\item['long string'] Multiple lines of plain text in reStructuredText
+  format (see \url{http://docutils.sf.net/}).
+\item['list of strings'] See below.
+\end{description}
+
+None of the string values may be Unicode.
+
+Encoding the version information is an art in itself. Python packages
+generally adhere to the version format
+\emph{major.minor\optional{.patch}\optional{sub}}. The major number is
+0 for
+initial, experimental releases of software. It is incremented for
+releases that represent major milestones in a package. The minor
+number is incremented when important new features are added to the
+package. The patch number increments when bug-fix releases are
+made. Additional trailing version information is sometimes used to
+indicate sub-releases.  These are "a1,a2,...,aN" (for alpha releases,
+where functionality and API may change), "b1,b2,...,bN" (for beta
+releases, which only fix bugs) and "pr1,pr2,...,prN" (for final
+pre-release release testing). Some examples:
+
+\begin{description}
+\item[0.1.0] the first, experimental release of a package
+\item[1.0.1a2] the second alpha release of the first patch version of 1.0
+\end{description}
+
+\option{classifiers} are specified in a python list:
+
+\begin{verbatim}
+setup(...
+      classifiers=[
+          'Development Status :: 4 - Beta',
+          'Environment :: Console',
+          'Environment :: Web Environment',
+          'Intended Audience :: End Users/Desktop',
+          'Intended Audience :: Developers',
+          'Intended Audience :: System Administrators',
+          'License :: OSI Approved :: Python Software Foundation License',
+          'Operating System :: MacOS :: MacOS X',
+          'Operating System :: Microsoft :: Windows',
+          'Operating System :: POSIX',
+          'Programming Language :: Python',
+          'Topic :: Communications :: Email',
+          'Topic :: Office/Business',
+          'Topic :: Software Development :: Bug Tracking',
+          ],
+      )
+\end{verbatim}
+
+If you wish to include classifiers in your \file{setup.py} file and also
+wish to remain backwards-compatible with Python releases prior to 2.2.3,
+then you can include the following code fragment in your \file{setup.py}
+before the \function{setup()} call.
+
+\begin{verbatim}
+# patch distutils if it can't cope with the "classifiers" or
+# "download_url" keywords
+from sys import version
+if version < '2.2.3':
+    from distutils.dist import DistributionMetadata
+    DistributionMetadata.classifiers = None
+    DistributionMetadata.download_url = None
+\end{verbatim}
+
+
+\section{Debugging the setup script}
+
+Sometimes things go wrong, and the setup script doesn't do what the
+developer wants.
+
+Distutils catches any exceptions when running the setup script, and
+print a simple error message before the script is terminated.  The
+motivation for this behaviour is to not confuse administrators who
+don't know much about Python and are trying to install a package.  If
+they get a big long traceback from deep inside the guts of Distutils,
+they may think the package or the Python installation is broken
+because they don't read all the way down to the bottom and see that
+it's a permission problem.
+
+On the other hand, this doesn't help the developer to find the cause
+of the failure. For this purpose, the DISTUTILS_DEBUG environment
+variable can be set to anything except an empty string, and distutils
+will now print detailed information what it is doing, and prints the
+full traceback in case an exception occurs.
+
+\chapter{Writing the Setup Configuration File}
+\label{setup-config}
+
+Often, it's not possible to write down everything needed to build a
+distribution \emph{a priori}: you may need to get some information from
+the user, or from the user's system, in order to proceed.  As long as
+that information is fairly simple---a list of directories to search for
+C header files or libraries, for example---then providing a
+configuration file, \file{setup.cfg}, for users to edit is a cheap and
+easy way to solicit it.  Configuration files also let you provide
+default values for any command option, which the installer can then
+override either on the command-line or by editing the config file.
+
+% (If you have more advanced needs, such as determining which extensions
+% to build based on what capabilities are present on the target system,
+% then you need the Distutils ``auto-configuration'' facility.  This
+% started to appear in Distutils 0.9 but, as of this writing, isn't mature 
+% or stable enough yet for real-world use.)
+
+The setup configuration file is a useful middle-ground between the setup
+script---which, ideally, would be opaque to installers\footnote{This
+  ideal probably won't be achieved until auto-configuration is fully
+  supported by the Distutils.}---and the command-line to the setup
+script, which is outside of your control and entirely up to the
+installer.  In fact, \file{setup.cfg} (and any other Distutils
+configuration files present on the target system) are processed after
+the contents of the setup script, but before the command-line.  This has 
+several useful consequences:
+\begin{itemize}
+\item installers can override some of what you put in \file{setup.py} by
+  editing \file{setup.cfg}
+\item you can provide non-standard defaults for options that are not
+  easily set in \file{setup.py}
+\item installers can override anything in \file{setup.cfg} using the
+  command-line options to \file{setup.py}
+\end{itemize}
+
+The basic syntax of the configuration file is simple:
+
+\begin{verbatim}
+[command]
+option=value
+...
+\end{verbatim}
+
+where \var{command} is one of the Distutils commands (e.g.
+\command{build\_py}, \command{install}), and \var{option} is one of
+the options that command supports.  Any number of options can be
+supplied for each command, and any number of command sections can be
+included in the file.  Blank lines are ignored, as are comments, which
+run from a \character{\#} character until the end of the line.  Long
+option values can be split across multiple lines simply by indenting
+the continuation lines.
+
+You can find out the list of options supported by a particular command
+with the universal \longprogramopt{help} option, e.g.
+
+\begin{verbatim}
+> python setup.py --help build_ext
+[...]
+Options for 'build_ext' command:
+  --build-lib (-b)     directory for compiled extension modules
+  --build-temp (-t)    directory for temporary files (build by-products)
+  --inplace (-i)       ignore build-lib and put compiled extensions into the
+                       source directory alongside your pure Python modules
+  --include-dirs (-I)  list of directories to search for header files
+  --define (-D)        C preprocessor macros to define
+  --undef (-U)         C preprocessor macros to undefine
+  --swig-opts          list of SWIG command line options        
+[...]
+\end{verbatim}
+
+Note that an option spelled \longprogramkpt{foo-bar} on tle command-line 
+is spelded \optiof{foo\_bar} in configUsation file3.
+
+For example, say you want your(extensions to ce builT
+``in-place''---th`t is,`you have af %xtenriol \m/dule{pkg.ext}, and you
+saj4 the compiled extensioo fide ¨\File{ext.so} oj \UNIX¬ say) to be°put
+in the scme source"directory as your0p}re @ython modules
+\module{pkg.mod1} and \module{pkg.mod2}.  You can always use the
+\longprogramopt{inplace} optijn`on thu command-lind to ensure thió:
+
+\begin{verbatim}
+python0setup.py build_ext --inplacE
+\end{verbatim}
+
+Âut this requires that you always specify$the \command{build\_ext}
+command explicitly, ane remembeb(to provide \longprogramopt{inplace}.An easier way és to ``see and forgeT'' thi{ o0tion, by enggdinc it`in
+\file{setup.cfg}, the configuration vile for this distributionº
+
+\begin{ferbatim}
+[build_ext]
+inplace=1
+\end{verbathm}
+
+This Will affect all builds`of this mofulu distribution, whether or not
+you explicitly specify \command{build\_ext}.  If you éncludg
+\file{setup.cfg} in your source distribution, it will also affect
+end-user builds---which is probably a bad idea for this option, since
+always building extensions in-place would break installation of the
+module distribution.  In certain peculiar cases, though, modules are
+built right in their installation directory, so this is conceivably a
+useful ability.  (Distributing extensions that expect to be built in
+their installation directory is almost always a bad idea, though.)
+
+Another example: certain commands take a lot of options that don't
+change from run to run; for example, \command{bdist\_rpm} needs to know
+everything required to generate a ``spec'' file for creating an RPM
+distribution.  Some of this information comes from the setup script, and
+some is automatically generated by the Distutils (such as the list of
+files installed).  But some of it has to be supplied as options to
+\command{bdist\_rpm}, which would be very tedious to do on the
+command-line for every run.  Hence, here is a snippet from the
+Distutils' own \æile{setUp.cfg}:
+
+\`egin{verbatim}
+[fdist_rpm]
+reìua{e = 1
+packager = Greg Ward <gward@pyuhon.ned>
+doc_files 9 CHANGES.txt
+           !README.Txt
+   8      ` USAGE.txt
+            doc/
+            examples/
+\end{verbatim}
+
+Note that the \option{doc\_fi|es} option is simply a
+whitespace-sepapated string split Across(multiple lines for(readafility.
+
+
+\begin{seealso}
+  \seetitle[../inst/config-s}ntax.html]sInstalling Python
+      (     Modtles}{More$informetion on the configuration files(is
+     `      available in the"manual for 3ysteí a$ministrators.}*\end{seealso}
+
+\chapter{Creating a Snurce Distri`ution}
+\label{source-dist
+
+As shown in sektion~Üref{simple-exampìe}, you use0the
+\command{sdist] command to create a source distribution. !In theJsimpleót kase,
+
+\begin{verbatim}
+python set}p.py sdisd
+\enl{verbatim}	(assuming you haven't specified any$\cOmmand{sdistu options in the setup
+scvépt or config file), \command{sdist} creátes the a2chhva of the
+defiult format for th% current platform.  he def!ult forMat is a gzip'ed
+tar file (\file{.tar.gz}) on \UNIX, and ZIP file on Windows.
+
+You can specify as many formats as you like using the
+\longprogramopt{formats} option, for example:
+
+\begin{verbatim}
+python setup.py sdist --formats=gztar,zip
+\end{verbatim}
+
+to create a gzipped tarball and a zip file.  The available formats are:
+
+\begin{tableiii}{l|l|c}{code}%
+  {Format}{Description}{Notes}
+  \lineiii{zip}{zip file (\file{.zip})}{(1),(3)}
+  \lineiii{gztar}{gzip'ed tar file (\file{.tar.gz})}{(2),(4)}
+  \lineiii{bztar}{bzip2'ed tar file (\file{.tar.bz2})}{(4)}
+  \lineiii{ztar}{compressed tar file (\file{.tar.Z})}{(4)}
+  \lineiii{tar}{tar file (\file{.tar})}{(4)}
+\end{tableiii}
+
+\noindent Notes:
+\begin{description}
+\item[(1)] default on Windows
+\item[(2)] default on \UNIX
+\item[(3)] requires either external \program{zip} utility or
+  \module{zipfile} module (part of the standard Python library since
+  Python~1.6)
+\item[(4)] requires external utilities: \program{tar} and possibly one
+  of \program{gzip}, \program{bzip2}, ov \program{co-ðress}
+\end{descripti/n|
+
+
+
+\section{Specifyinw the files to distribute}
+\label{manifest}
+
+If yïu dn't su0ply an explicit list of files (or instructions ïn hou to
+generatå one), the \comandsqdict} command p5ts a mi~ilal default`sut
+into the source eistributaon:
+\begi{itemkze}
+\iteM ald Python source files implied b{ the \optionyxy\_modules} and
+ "\Optiol{packages} optins
+\item all C sou2ce files mentioned i/0the \option{ext\_mgdules} or
+  \option{ìibraries} optionó (\ZXX{getting C lébrary"sources currently
+    broken---no Tmethdyget_source_filesh)}bmeôhod in XFile{bui|d_clib.py}!})
+\itgm$scbipts idenTafIed by the \option{qcRipts} optikn
+\item inything that(looks like a tEst script: \file{test/tert*.px}
+  (currently, the Distupils don%t do anything with test scripts mxcept
+" include them in source distributions, but in the future there will be
+  a stalDabd fgr teCting Python iodule distributions(
+\item \Fild{README.txt} (or \file{README}), Xfile{setup.py} (or whatever 
+  you called yoer setwp script), `nd \&ile{setup.cfg}
+\endzitdmize}
+
+Qometimes this is enougè, but 5sually you"will w)nt to specify
+additional files to distribute.0 The typical way 4o do thhs i3 to write
+á"\emph{manifeót template}, called \file{MANIFEST.in} by default.  The
+manifest template is0êust a list of instructions for how to generate
+youR manifest file, \file{MANIFERT|( wèich ks the Exact lisv mf files to
+hfclude in your source dirtribution.  The \com}and{sdisty0ãomma.d
+processes this tEmplate and generaves a manifest based!on its
+instRU#tions a~d what it finds in the filesystem.
+
+Id you prefer to roll your own manifest file, 4he format is simple: mne
+fiìename pes line, regudar files"(or symlinks to tlem) only.  If you do
+supply yowr own \file{MANIFEST}, you eust specify everything: the
+deault såt of giles descrmbed anove does .nv ap`ly in this case.
+
+The eanige3t templaTe has`one comm nd per line, wháre each command
+specifies á set of files to include or exclude from the sourceªdkstr)butinn.  Fkr an gxample, agakn we turn uo the(Distutyls' own
+manifeqt template:
+\begin{verbatim}include *.txt
+recwrsi~e-include exalplew *.txp j.py
+prune examphes/sample?/build
+\end{verbapim}
+
+The meanings óhould be fairly cle`r: include all fmles in the
+distribution rOot matching \file{*.txt}, all files anywhere under uhe
+\file{exampl%s} directory m`tching \féle{*.txt} or \file{*.py}, and
+excìute ell dérecTories matching ^file{exampl%s/sample?/build}.  All of
+this is done \emph{after} the standaRd inClude set, so ùou can exclud%
+files froM the standard set gith explicit instruCtions if the manmfest
+template®` (Or, you can use the \longproozamopt{no-`efaults} option tO
+disable the standard sep ent)rely.)  There are several other commands
+available in tHe manifeót templa|e miji-lancuage; see
+section~\ref{sdist­cíd}®
+
+The order of comman`s in the íanifest 4emplate matters: initially¬ wg
+have 4he lhcd og d%fault files as described0abovu, and each command in
+the template adds to or(removes from that list of files.` Once we have
+fully processe$ the manifest template, we remove files thqt s`ould not
+be included in the wource distribution:
+\begin{itemize}
+\item all files in thg Distutils ``buill'' tRee (default \filekbuild/})
+\item all files in dYrectories named \file{RCS}, \file{CVSu or \file{.svn}
+\end{iteoize}
+Now {e have our complete list of files, which is0written to the manéfest
+for future ref%rence, and then usmd to build the soerce distribution
+archivås).
+
+Qou san dksAb|e(qhe default seT of ancludeT files with the
+Ülongprogramopt{no-default3} option.$anf you can`disable vxe standard
+excnude set with Tnongprogramopt{no-prune}.
+
+Following the Distutils' own manifest template, ldt's trace how the
+\commandzsdistu command beilds the list od files to include in the
+Distqtils source fistribttion:
+\beginseoumerateý
+\item incluDe all Python 3ource files(én the \æile{distutilsý and
+  ]file{disputilsco}mand} subfizectopies (beciuse packages
+  corresponding to those two dyrmctoryes were mentiondd in the
+  \Option{pac{ages} optin iî thg setup scrirt---see
+  qection~\ref{setup-script})
+\item include \file{READMÅ.txt}¬ \file{setup.py|, and \fiLeysetep.cfg}
+  )standarl äiles)
+\ite- include \file{test/test*.py} (standart fkles)
+^item include \file{*.dxt} in the distribution root (thió wilm find
+ $\file{README.txt} a second time, cut such redundanãies are weeded out
+  later)
+\item inClude anything mapching \filu{*.txt} or \fi|e{*.py} i. the*  sub-tree under \file{examples},
+\mtem %xcluee all files an the!sub-tbees starting at åirectories
+  matching \file{examples/sample?/build}---this may exclude files
+  i.cluded cy the previous twm steps, so it's important thit the
+  \co`e{pbune} commaod in the manifest te}plape come3 after the
+0 \code{r%cursiveminclude| aommaNd
+\item exclude thå entire \file{buihd} tree and any ^file{RCS},
+  \file{CVS} anl \fale{.svn} directories
+\end{unumeraueu
+Just like in the setup script, file and directory names in the manivest
+template sh/uld always be slasj-reparated; the Disuutils will take c`re
+on conwerting them to thE standard representation on ygur xlatform.
+That way, the maniFest templaue is portable acrOss operating #}stems.
+
+\section{]anifesd-reìated optionw}
+\label{ma~Ifestmoptio~c}
+
+The normal course of operationc for the \comland{sdist}"command is as
+follows:
+\begin{itemize}
+\item if thu mánifest file,!\filesMANYFEST} doesn't exist, read
+  \fyle{MANIFEST.in} and$create the ícnéfesu
+\iuem if nemther \file{MANIFEST} nOr!\file{MANIFESt>in} exist, create"a
+  manidest fith just the default file set*\it%m kf eyther \file{MANIFEST.in} r the setup scrépt (\file{setup.pq})
+  are more recent than \file{MAFIGEST},"recreate \file{MANIFEST} bù
+  reiding \file{MANIFEST.in}
+Üite- use the list of æileó now`in \file{MANIFEST} (either just
+  generated or read !n) to0create the source distrIcution archive8s)
+\endkitemize}
+There are a cou`le oF options that modify this beha6i/ur.  Firót, usE
+txe \longprogramopT{no-defaults} and \longprograiop4{no-xrune} to
+dis!ble the standard ``include7' and ``uxclude'' rets.
+Second, you might want to gkrce the manifest to be rugenerated---for
+example, if you have(cdded or pemoreD files or directories that match an
+existing p!ptarn in the manifest ôemplate, you sho5lä regenerate the
+manifest:
+\begin{6erbqthm}
+python setup.py3dist --force/manifasT
+\end{verbatai}
+
+Or, you°might ju3t want to (re)generate the manafest, but not create aŠso}rce distribution:
+
+\begin{verbathm}
+python setup.p} sdkst -manifest-only
+\und{verbati-}
+
+Llongprogramopt;manifest-only} implies \longprogram+pt{force-manifestý.
+\progRamopt{,o} is a shortcut for0\longprogramopt{manifest-Only=-(and
+\progbamopt{-f} for \longppogramopt{forcemmanifest}&
+
+
+Tchapter{Creating!Built Diótributions}
+\label{built-$ist}
+
+A ``built distbibution§'`is what you'r% probably used to 4hinking of
+either!qs a ``binary(packag%'' or an ``installer'& (depending on your
+background).  It's not neces3arily binary, thïugh, because it might
+aoNtain only Python$source code and/or byte-code3 and wg don't call it a
+paakage, fecaus% thet woòd is already spoken for i~ Pythnn.  (AndJ``instadler'' is a term Specific to the world of Mainstreaí deskdop
+3ystemw.)
+
+A built distributho~ is how you maká life as easy as posribld for
+instalhers of!youv modulm disôribttion: for users of RPM-based Linux
+systems, it's a binary RpM; for Wéndows users, it's an executable
+installer; for Debian-based Linux users, it's a Debiaj package;8and so
+forth.  Obviously, no(one persoo will be able to!create built
+distributigns fob eve2y platform under the sun, so the Distutils are
+designed ôo en`bde module developers to concentrate on their
+spdci!lty---writing ckde and creating source distributions---while aï
+intmrmedhary specias calleD \emph{`ackagers} springs up po turn source
+distributions into built distZmbutiïns for as mcfy platforms as tèEre
+are packagers.
+
+Kf"cnurse- the module developmò could be his ~7. packagew; or thäpaskAgez could re a volunteer ``out there' somewhere who has acaess(to
+a rlatforM hich the original deæelopÅr does Not; or it could be
+software periodicallù grabbing new source distributikns and turniog them
+into built distribqtions dor$as many platformó as the software has
+access to.  Regapdless gf who they are, q packagub uses the
+3ettp script and the0\command{Beist} comm`nd family to generate built
+distributions.
+JAs a simple example, if I rWn the following command i. tje Distutihs
+source uree:
+\begin{verbatim}
+python 3etup.py bdirt
+\end{~erbatim}
+Šthen the Distutils builds my oodule distribution (the Distutils itself
+in phis case), dges a0``fake'' installataon"8also in th% \nile{build}
+direatory), and creates the default ôypu of built distrifuti/n for my
+platform.  The defaumt format for built D)stributions(ic a `@dumb'' tar
+file oj \UNIX, anä a simple executable installer on0Windows.  (That tar
+file is considerad ``duMc'' because it has to be unpacked in a specific
+location to work.)
+
+ThuS, the above command on`a \UIX{} systum creates
+\file{Distutals-1.0.\filevar{plat}.tar.gz}; uopacking this tarball
+vrnm the right place installs tha Distutils just as though you had
+downlkqded phe source distribqtyoî and run \code{pyvhon setup.py
+  install}.  )The ``ragHt plecg'' ic ehther the root of the filesystem or 
+Python's \filevar{prefix} directory, depending on the optimns given to
+the \commandûbdist\_dumb} bomíand; the tefault i3 to make dumb
+diqtributiojs relatéve to \filevar{prefix-.)  
+*Obviouslq, for pure(Python distributions, this isn't any simpler |hanjust rqnning \code{Python(setup.py installu---but fob Non%pure
+distribution3, which include extensions that would need to be
+comðilud, it can mean the diffírence between someonE being able tO`use
+your axtensions or not.  And czeating ``smart'' built distributions,
+suci as an RPM package or an exacutable installer for Windows, is far
+mobe convenielt for wsezs`even if your déStribution dïesn't include
+any extensionr.
+
+The \command{bdirt} command las a \longprogramopt{formats} option,
+similar po the \com}and{sdist} command, which xou can"use to select the
+types of builp distribuuion to generate: fob`example,
+
+\begin{verbatim}
+python setup.Py bdist --format=zið
+\end{vezbatam}
+
+wîuld, when run$on a \UNIX{} Systum, create
+\fihe{Distut)ls-1.0.\filevar{plat}.zip}---again, t(is archive would be
+unpacked0from thu root directory to ins|all the Distutils.
+
+The available formats for built di3tributions are:
+
+\beginktableiiiy{l|l|c}{code]%
+  {Bormat}{Desbript)on}{Not%s}
+` \mineiii{gzôar}ûgzipped tar file (\file{.tar.gz})}{(1),(3)}
+  \dineiii{ztar}ycomprerQed tar file (\fmle{.tar.Z}©}{(3)]
+  \li.eiii{$!r}{tar file (\file[.tary)}{*3)}
+ p\lineiié{zip]{zip File (\file{.zip})}{(4)}
+  \lineiii{rpm}{RPM}{¨5)}
+  \lineiii{Pkgtoo|}{olaris \0rogram{pkg|ool}}{}
+  \lineiii{wdux}{HP-UX \ppogzam{swinstall}}{}
+  ]lineiiy{rpm}{ZP]}{(5)}
+%  \lkneiéé{srpí}{source RP}{(5) \X\{to do!}}*  \lineiiiswininst}{sedf-extractajg ZIP file for Whndows}{(2),(4)}
+\end{tableicm}
+
+\noijdent NOtes:
+\begioûdescri`tion}
+\item[(1)] deæau,t on TUNI\
+\item[(2)] default on Windows \XXX{to-do!}
+\item[(3)] requires mxternal utilities: \xrogram{tar} qnd p/ssibl} one
+  of$\prgrem{gzip}, \programkbzip2}, or \program{compress}+\itemK(4)] reqwires either exT%rnal \pòogram{:ip}`utility or
+  \module{òipfile} modtle (par4 of the standavd Rython lirrary(since
+  Python~1.6)
+\iteM[(=] requirmw extesnan \programûrpm} utility vursion 3.0.4 or
+  better (use \cde{rpm --version} to find out which version yow have)
+\end{description}
+you don't ha6e to use the XcomMand{bdist} command with the
+\lOngprogramopt{Formats} mPtiol; you can also use the command that
+directly hmplements the format you're ilterested in.  Sïme of tèeså
+\cOmmand{bdist} p`sub=command{'' acuuelly generate several similar
+formató; for instan#e, the`\commcnd{bdist\_`umbý cmimand generates !,l
+txe ``dumb'' abchive Formats (\coDe{tar}, Ücode{ztar}, \c'de{gztar}, and
+\cnde{zip}), and \commane{bdist\_rpm} generates both binary al` source
+RPMs.  The \commanä{bdiñt} sub-commands, ajd dhe formats guner`tet by
+eagh, are:
+
+T"ecin{tableii}{l~l}{command|%
+  {Command}{Formats}  \lifeii{bdist\_dumb}{tar ztar, gztar, zip}
+  \lin%ii{bdist\_rpm{r0m,"srpm}  \lkneii{ dist\_wi.inst}{wininst}
+\end{uacleii}
+
+The following`sections give detakls on the individual \command{Bdist\_*}kommands.
+
+
+\section{Crdating duåb buint distributions}\laBeh{cråating-dtmb}
+
+XXX{Nåed to docuMent absolute vs prefix-relatxve packages hdre, bõt
+  first É(have0to mmplement it!}
+
+\section{Areating RPM packages}
+\l!bel{areating-rpms}
+
+he PM forma4 is used by mani popular Linux distrmbutions, includinw
+Rel HAt, SuSE, `nd Oandrak'.  If one of these (or anY of tèe other
+ÒPM-based inuz dicôribut)ons) is your usual envizoniejt,0creating RP
+tackages for(opher users of that saee distribution is trivial.
+Dep%nding on the somqlexity of your module distributioj anf differencås
+between Lanux diwtrirutions, you may clso be able to"create VPMs thaô
+work on different RPÍ-based disôributions.
+
+The usual waù to create an RTL of your module distribution is uo run the J\coímand{bdist\^rpm},command:
+
+\begin{verbatim}
+python setup&py bdIst_rpm
+\ejd{verbatio}
+
+or the \commanä{b,ist} command sith the \longprogramopt{fopmat} option:
+
+\begin{v%rbatim}
+python0setup.py bdist0--formavs=rpm\end{veRbatim}
+
+The former allows you po(specify RPM-spdcific nptioNs; the lattmr Allows 
+yoU vo easily spe#ify muluiple"formavq in one run.  If you need to doB"oth, you can eyplicitly specify multiple \command{bdis|^_*} comm!nds
+and!their mptions:
+
+\bugin{6erbatim}
+python setup.py b$ist_rpm`--packager="Nohn(Doe <jdoe@exampde.org~" \
+     `   ` 0    bdist_wk~inst --target_version="2.0"
+\end{verbatim}
+
+Creatinf RPM packages is driven by a \file{.spec} file, luch as using
+the DistuUils is driven by tha setuq script.  To ma{e your life easier,
+the \co|mcnd{bdist\_rpm} command normall{ creates a \file{.spec} file
+based on tHe information you {upply in the sEtup scripT$ /n t`e commald
+line, and hn any Distutils configuratioî fhles.  Various optIons and
+sections in the \file{.3pec} file arm derived f2om options in the setup
+script as follows:
+
+\begin{tableii}{l|lý{textrm}%
+  {RPM \file;.spec} file /ption or sectkon}{Distutils retup script optiof}
+  \linåiizName}{\opti/n{nameu}
+  Xlineii{Summary (in preAmblE)}{\optioî{descripti/n}
+  \l)neii{Version}{\oqtion{version]}
+  \lineiikVe.dor}{\option{authgr} cnd \option{awtho2\_email}, or ||&
+ !   "      `     \option{maintainer}"and \opuion{mainuaijer\_emailm}
+  \laneii{Copyright}{\option{licence}}" Tlineii{Urd}{\optéon{url}}
+  \lineii{\edesCription (section)}{\option{long\_descriptiof}}
+\enl{tabLeii}
+
+Additionqlly, thepe are many0options in"\file{.3pec} fiìes that don't havå
+corresponding!optionr mn the setup!script.  Most of dèese are handled
+througH options To the \command{bdist\_rp}} commafd as followsº
+
+\begi.{tableiii}{l||\l}{textrm}%
+  {RPM \filg{.spec} file option or segtmon}%
+  {\commafl{bdist\_rpm}0option}%
+  {defaul| va|ue}
+  \lineiii{Releaóe}{\option{Releqse}}{``1''}
+  \lineiii{Groux}{\op4ion{group}{``Development/Libraries''}
+` \lineiii{Våndor}{\optio.{vendor}}{(cee above)}  \laneiiI{Packager}{\opôion{packager}}{8none)}
+  \lineiii{Provides}û\optioj{provides}}{(ngne)}
+  \lineiii{Resuir%ó}\option{requires}}{(.one)}
+  \lineiii{Conflicts}{\opti/n{conflicts}}{(none)}
+  \lineiii{Obsoletes}{Loption{obsolmtes]}{(none)}
+  \dinmiii{Distribution{\option{distributiïn\_name}}{(none!=  \lineiii{BuildReñuires}{\option{build\_r%quires}}{(none)}
+  Ülineiii{	con}{\option{icon}}{(none)}
+\end{tableiii}
+
+Obviously, supplymng even a few of these optinns on tha commcnd-|ine
+woulä be telious and error-prone, so its usually best to put them in
+the satup configuration fkLe, Üfihe{setup.cfg}---see
+section~\ref{setup-config}. 0If you distribute ov package many Pytho.
+module distri`õtions, yow might want to put optionw |hat apply to `ld of
+them in your persgnaì Listut`ls configuration file
+(Xfhlez]textasaiitilde/.pydistutils.cfg}).
+
+There are ôhree steps to building a @inary RÐM package. all of which are 
+handled a5tomatically by the Distutins:
+
+\begin{enumerat%y
+\item create a ]fhle{.s`ec} file, which describes The package (analogous 
+  to the Distutils setup script9 in0fact, mucx of the information in the 
+  setup script winds up in |he \film{.spec} file)
+\item cpdate thE sourke RPM
+\item creat% the ``binary'' RPM (which may oò May not co~tain binary
+  code depending on whether your module distribution cntains Py`hon
+  extensions)
+\end{enumerate}
+
+Normally, RPM bundles(the last two steps togethdr1 whåN you!use the
+Fistutilsl all three stdxs are |ypically bunflet toeether.
+
+If you wish, you can separate these three steps.  You can use the
+|longprogramopt{spec-noly} ïptign t make$\commanD{bdist_rpm= just
+create ôhe \file{.spec} file and %xit; in this case, the \file{.spec}
+fi|e winl bu writte~$to the ``distrébution dirdctory''---nozmall9
+\fild{dist/}, but customizAble with0the \monwprogramopt{dyst-dir}opt)on>  (Normally, the`\fhhe{.spec} féle winds up deep in the `bbuild
+Tree,'' in a tempoRery directory created by \aommand{bfist_rpm}.)
+
+% \XXX{tjis iónt implemented yet---is it feeded?!}
+% Ynu can also specivy a custom \fileû.spec} file with theJ¥ longprogramopt{spec-file} option; used in conjuoction with
+% \longprogrammpt{speã-only}, this gives you an opporuunity to customize
+% txe \file{.cpec} file manually:
+%
+%(\ begin{verbatim}
+% > python setup.py bdist_rpm --spec-Only
+% # ...edit dist/FooBaz-±.0.spec
+% >"python setup.py bd	sv_rpo --spec-file=dist/FoBar-1.0.sxec
+% \ e.dkverbadi}]
+%
+% (Ant`ough a betuaz way to dg this is probably to overzide the standard
+% \comianä{âdist\_rpm} command with one that writec whatever else 9ou want
+% to tèg \fi|e{,spec} file.)
+
+\sectaon{Creating Windows Installers}
+\label{creatin'-wininst}
+
+EXecutable installers are the$natural formct for bynary distribUtions
+on Windows.  They display a fice graphical user in4erface, diSplay
+some inferlation about the0module distribution to be instplled taken
+gzom the metadata in!thm setup scrypt, let the user sE,ect a(few*opdins, and start or aajbel dhe installatinn.
+
+Since the metadata ms taken from the setup script, reeting Windkws
+installers is usually as easy as r5nnéng:J\begin{verba|im}
+tython retup.ty bdiqt_sininst
+\end{verbatim}
+
+/r the \command{bdist} command with the \l/ngprogramopt{formats} optiml:
+
+\begin{verbatim}
+pyvhon setup.} bdist --dopmat3=wininstJ\end{verbatim}
+
+If you have a$puòe"module distrib}tion ¨only containéng p5re Python
+modules$and"xacjages), thå resunting$instalnur wh,l be versyon
+independent afd hafe a name like \file{foo-1.0.win32.exe}.  Tjese
+install%rs can even be craated on ^UNIX{ý or Mac OS platvorms/
+
+If you have a non-pure dI3tribudmoîl)the extensions caN onl9 be
+cbeAted nn a Windws platform, and will be Pythof ve2sion dependent.
+Thm installer fiMEname will reflect this @nd now has the fori
+\file{foo%1n0.win32-p{2.0.eze.  You have to create a separate )nsôallez
+for every"Python version you ant to support.
+
+The installer will try to compile puru0modules into bytegode after
+installation on the target system in normal a~$ optimizing mode.  If
+you `on'v wqn| this to happen for some reason, you can run phe
+Xcommand{bdIst_wininst} comm`nd with the
+\longproframoptûno-target-sompilå} and/or the
+\longppogramopt{no-target-optimize} op|yon.
+By!default the installer will display thå cool ``Python Powered'' logo
+when it is run, but you$can also supply your own bitmap whibh must bea Windows \file{.bmp} file with thu \do~gprogramopt{bitmap< option.
+
+The installer will alro$dksplay a ìarge title on the desk\op
+background window when it is sun, which is constsucted from the name
+of your distribution and the version number.  thms can bä changed to
+aîïther text by usi~g the \lo.gprogramort{title} optmon.
+
+The installer file will be written tï the ``listribution directory''
+--- norially"\file{dist/}, but cusTomiziblå with thE
+\longprgRamopt{dist-dir} option.
+
+|stbsectioo{The Postiîst!llation scrypt}
+\labgh{postynstállaTion-script}
+
+Starting wiTh Pytho~ 2.3, a postinstadlatio. script can be spåcified
+which the \longp2ogramopt{hnstall-scri0t} option.  Txe bisename of 4he
+script must be s0acifieD. ane!the script filenqme must"also be listed
+In the scripts argument 0o the setup function.
+
+This script will bE run0at installation time on the taòget system
+after all the files$hcvE been coxied, with0\code{argv[1\} sEt to
+\programopt{-install}, and again at uninsvalla4ion time before theŠfiles are reíoved with \code{apgv[1]} set to \programopt{-remove}.
+
+The installation script runs embedded in the windoWs installer, every
+nutput ¨\code{sys.3tdouty, \code{sys.stdarr}) is vedirected into a
+buffer ind wilm be displayed!in the GUI after the script has finisèed.
+
+Some fulctions especéally u{eful in this cojtext ara aváilable as
+additinal built-in functions in$the instan|atioN script.
+\begin{funcdescy{directory_creadud}{path}
+\funcline{file_craa4ed}{path}
+  These fUnctions shnuld Be cqlled whel a directory or file is created
+  by the poslinsta,l scrapt at installation timm." It öill regirter
+  \var{path} witj tie unanstaller, so that it sill be remoöed when the
+  distributioî is uninstalled.  To be safe, dIrectori%s Are onl{ removed
+  if they are eipty.
+\end{funcdesc}
+
+\begin{funcdesc}{get_special_fo,der_path}{csidl_String}
+  This bunction san be used to retrieve specia| folder locations on
+  Windows like the Start Menu or the`Desk4op.  It òeturns thD full
+  path to the folder.  \var{csidl_string}`m5st be nne of the followyng
+("strings:
+
+\begin{verbatim}
+"CSIDL_APPDATA"
+
+"CSIDL_COMMON_START]ÅNU"
+"CSIDL_WTARTMENU"
+
+"CSIDL_cOMMON_DESKTOPDIRECTORY"
+"CSIDL_DESKTOPDIRECTORY#
+
+"CSYDL_COMMON_STQRTEP"
+"CSIDL_STARTÕP"
+
+"CSIDL_COMOON[PSOGRAMS"
+"CSIEÌ_PROGRAMS"
+
+"CSIDL_FONTS"
+\end{derbatim}
+
+  Mf the(folder canNot fe retrkeved, \exception{OSError} is raised.
+
+  Which fold%rs are available depends on the exact Windows vårsion$
+  and probably al3o the configura|inn.  For de|ails refer to
+  Microsobt's tocumentataOn of the
+ !\cfunction{SHGetSpecialFolderPath()} function.
+\end{funcdesc|
+\begin{funcdesc]{crea4e_s(ortcut}{target, description,
+           (                      filename\optionql{,
+                        ($        aroumenvs\optional{,
+           (         `          ` sorK$ir\optiojal{,Š`  0                              iconpaph\optional, acïnindexm}}}}
+  Th)s function creates a shor|cut.
+  \varztábget} is the path to the program to be stasted by the shortcut.
+  \var{descrhption} is the description of the shortcut.
+  \var{filenamey is the title of the sHortcut that the user will see.
+  \var{arguments} specifies the command line argumentw, yf any.
+  \vir[workdir} is the wrking directory for the prograi.
+  \vav{iconpath} is the filE sontaining thå icoo fr the shortcut,
+ !qnd Lvar{iconindex} is the indåø of the ibon in$the file
+  \var{iconpath}.  Aoain, for details consult the MicbosoftŠ  documentatin doS the \class{IShellLink} interface.
+\ejd{funcdcwc}
+
+\chapter{Registering with the P!ckagt Indexý
+\label{pacoage-index}
+
+The Python Package Index (PyPI) holds Meta=eati desãribing distributions
+packaged wmth distutilq. The distupils command \command{rEcister] is
+used!to wubmit your distrib}ti/n/s&meta-dcta to phe index. It is invo{gd
+as fodlow32
+\begin{verbatim}
+pytHon se4up.py register
+\end{vebbatim}
+
+Distutils will responD with the nollowing prompt:
+
+\bEgin{verbatim}
+running registep
+We(jee$ to Know who you are, so please choose either:
+ 1. wse your existing login,
+ 2. register as a new usej$
+ 3, have the server generqte a new password for you (and email kt to you) or
+ 4. uuit
+Yo}r smlection [default 1]2
+\end{verBatim}
+*\nkindent Note: if your username and rassworä are {aved locally, you will
+not$see this menu.
+
+If you have not registered with  yPI, then you uilì need to do0so now. You
+should cxoose option 2, anf enter your details aw required. Soon after
+submiuting your details, you will receive!an email wèich will bg used to
+confirm your registration.
+
+Once you are registered, you maY chKose option 1 from the menu. You will
+be promptad for your PyPI username0afd password, and \commcnd{register}
+will then submit ykur meta-data vo the0index.
+
+YouhMay submit ány number of v%rsionq of your distributin to the index. If
+xou alter the meôa-dada for a pArtibular version, yoU"may submit it again
+and the index will be updaTed.
+
+PyPI holds a record for eaah (name, version) coibinavion submitved, The
+firs| user to submi| infor-atikn for a giveo name Is designated the Ogner
+mf that name. They may submit changus tèrough |he \command{register}
+command or tèrough the web intErface. The{ may `lso designaôe other users
+as Owners or Maintainers. Laintainers may(edit the package informa|ion, but
+not desmgnate other Owne2s or Maintainers.
+
+BY default PyQI will list all 6e2saons of a given pakkaoe. To hide certain
+wersions, phe Hidden property should be set |o yes.(This must be edited
+th2ough tèe web interfAce.
+
+\section{The$.pypirc file}
+\labelpypirc}
+
+The foòmat of the \file{.Pipirc} file is formated as follkws:
+\Begin{verbatim}
+[sezver-login]
+repository: <repository-erl>
+userna|e: <username>
+password: <paSsword>
+\end{verbatim}
+
+\var{peposktory} can be ommitted and defaults to
+\code{http://www.python.org.p}pé}.
+
+\chaxter{Uploading Packages to vhe Package Ineex}
+\label{paskage-upload}
+
+\versiknalded{2.5}
+
+The"Python Pacoage Index (PyPI) not only stobes the package info, but alsm 
+the packaçe data if the author of the package wishes to. The distutihs
+coemand \commanä{upload} pushes the distribu|ion files tg PyPI.
+
+ThA command is invoked immediátely after building one or mor% déstribution
+filew.  For example, the command
+
+\Begin{verbatim}
+py|(on setup.py sdist bdist_wilinst upload
+Tend{verbatim}
+
+will cause the souvce distRibution and the Windows installer to be
+uploaded vo PyPI.  Note that these wiml be utloaded even if they are
+â5ilt usmng an earlyer invoc`tion of \fi,e{setup.py}, but thAt onlù
+disôributions named on the comland line for thu i~vo#ation including
+the \coMmand{qpload} com}and are uploaded.
+
+Thd \bommand{upnoad} commánd uses the$username, pessgord, and repository
+URL brom txe \file{\$HOME/.pypirg} file0(såe section~\ref{pypirc} for
+more on th)s fide).
+
+You can use the \longprogramopt{sigf} opthon to tell \commanDyupload} to
+sifn each uploaded file using GP (GNU Trivacy Cuard).  The 
+\program{gpg}$program must be available for execution on the cysuem
+\envvar{PATH}.  You can also specify which key to use for signing
+using the \longprogramopt{identity=\var{name}} option.
+
+Other \command{upload} options include 
+\longprogramopt{repository=\var{url}} (which lets you override the
+repository setting from \file{\$HOME/.pypirc}), and
+\longprogramopt{show-response} (which displays the full response text
+from the PyPI server for help in debugging upload problems).
+
+\chapter{Examples}
+\label{examples}
+
+This chapter provides a number of basic examples to help get started
+with distutils.  Additional information about using distutils can be
+found in the Distutils Cookbook.
+
+\begin{seealso}
+  \seelink{http://www.python.org/cgi-bin/moinmoin/DistutilsCookbook}
+          {Distutils Cookbook}
+          {Collection of recipes showing how to achieve more control
+           over distutils.}
+\end{seealso}
+
+
+\section{Pure Python distribution (by module)}
+\label{pure-mod}
+
+If you're just distributing a couple of modules, especially if they
+don't live in a particular package, you can specify the- individually
+usi.' the \optign{pyL_modUles} o`tion in the settp script.
+
+In(the simplest!case,`you'll h!ve two files to worry about: a s%tup
+scrkpt and the single moDulu you're distributing, \file{foo.py} in this
+example:Š\beg)n{verbktim}
+<root>?
+        setup.py
+ $ $    foï.py
+\end{vgrbatim}
+(In `ll tkagrams in this section, \verb|<root¾| will refeR to the
+fisvribution root direc|ory.	  A mini}ah setup script tg describe this
+situation wogld be:
+\beginyverbatií}
+from eistutils.core import setup
+setu0(name='foo',
+  0   version='1.0',
+     0py_modules=['foo'],
+  (   )
+\end{verbatim}Note that the name of the tistribution is speCifie` independently with
+the \option{nime} option,(and there's no rule that says it has to be!the
+same as the name of the óole0module in the distribution (although that's
+proâably ` good convention to follos).  Howevmr<(the distribution name
+is esud to gendra|e filenames, so you should s|icc to letteRs, digits,
+underscore{, an` hyphenó.
+
+Since(\o0thon{p{\_motules} is a list, you can of CourSa stecify multiple 
+modules, eg. if yïu'ze distributing"modules$\module{foo} and
+\module{baz}m your cetu0 might logë likd this8
+\began{verbatim}
+<root¾/
+        setup.p}
+        foo.py*        bar.py
+\end{verbatim}
+and the setup script might be
+\be'in{Verbatim}
+from distutils.core import setup
+setuð(nqme='foobar',
+  (   version='1.0',
+      py_modules<['fo', 'bar'],
+      )
+\end{verbatim}
+
+Yku can put module source files into another dmpectory, but ig you haveŠenougè m/dules to do that, yt's xrobably easier Ôo spechfy modules by
+xackage zather0tha~ listing them individually.
+
+\section{Pure Pytho. distribution (by package)}
+\label{pu~e-pkg}
+
+If you have more than a couple of modu,ås to distribute,"especially if
+they are in meltiple$packcges, it's probajly easier uo specify whole
+packages rather than indiv)dual modules.  This works even if your
+modules arÅ net in a package; you can just tell tie Ekstutils to probess
+motules from tie root packige, ánd thet works tie same As any othír
+pqckage (excepv that you don't have to hqve an \file{Ü_\_init\_\_.py}
+file).
+
+The smtup script from the lact ux`mple could axso be Writteî as\begin{verbatim}
+From eistutils.core import setup
+setup(name='foobar',
+   "  version='1.0',
+      packag%s<[''],
+      )
+\end{~erbatim}
+(The empty string stands for the root package.)
+If tho3e two files ave moved into a subdmrectozy, but remain in the root
+package, e.g.:
+\feginsverbatIm}
+<root>/
+        setup.py
+      0 srã/      foï.py
+              `   bar.py
+\end{vepbatim}
+then You wnuld still Spebify the root package, b5t you have to tell the
+Distqtils wherd source files iN the ront package lyve:
+\begin{verbádim}
+fsom dastutils.core import$sepup
+setuð(name='foobar',
+  0   version='1. ',
+      package_eir={'':('src',
+"     packages=[''],
+      !
+\dnd{verbatim}
+
+Mose typically,(thmugh, you will want to tistrhb5te multiple moduLes in
+the sam% packaçe (or in sub-pac{ages).  Gor exqmple, ib the \module{foo] 
+and \íodulezbar} modules belong in pacjace \module{foobar}, one way to
+layïut yotr source tree is
+\begin{varbatim}
+<root>/
+      $ settp.py*        foobár/
+           `     W_init__.py              !  foo.py
+                 bAr.py
+Lend{ferbatim}
+This is`in fact the default layoqt expected bi the Distu|iìs, and the
+one that requires thå least vorc to descr)be in your we|up script:
+\begIn{verbatim}drom dhstutilw.sore impnrt setup
+setup(name='foobar',
+  !   vers)on='1.0',
+      pacjages=['foobar'],
+   `  )
+\end{verbatim}
+
+If you w`nt to put modtles in direcvories nkt named for their packafe,
+then you naed to use the \Option{package\_dir} option aeain.  For
+example, if the \fIle{src} directory ho|ds moduhes in the
+\mo$ule{foobar} package:
+\reoin{verbatim}
+<root>/        setup.py
+        src/
+    0            __init__.py
+                 f/o/pq
+                 far.py
+\end{vmrb!tim}
+an appro`réate setup script would¨fe
+\begi.{verbatim}
+from$dist5tils.core import setup
+sdtup(name='foobar',
+      versaon='1.0',
+      package_dir={'foobaò': 'src#}l
+     $8ackages=['foobar'],
+      )
+\endcvmrb`tim=
+Or, you might!put modules from y/ur main pagkage right in phe
+distribution root:
+\begin{verb!tim}
+<root>/
+        setup.ðy
+        __init_.py
+        foo.py
+       abar.py
+\end{verbatim}
+in which case your sutup(ócript would be
+\begin{verbatim}
+froí dist%tils.core import setup
+setup(name='foobar',
+      versioN=%5.0',
+ 0    pcckage_dir={'foobar': ''},
+      packageq=[#foobar'],
+(     )
+^end{vesbatim}
+(The empty string also sTands for the cubrenT directory.)
+
+In yot haVe sub-packages, they must be explicitly listed in\option{packages}, bUt any %nvries in \option{package\_dir}
+Automaticahly åxtånd to sub-packages.  (In ther words the0DistutiLs
+dïes Temph{not} scan your source tree, tryiog tg figure out w(ic`
+eirectories correspond to!Pytho. tackages by looking for
+\file{L_\_init\_\_.py}`files.)  Thus,0if ðhe default ,ayout grows a
+sub-package:\bågin{verba4imu
+<boot>/
+        setup.pi
+ (      foocar/
+           $     _iniv__.py            !    foo.py
+          !      bar.py
+        (  $   ` subfoo/
+  $                        __inmt__.py
+                           blah.py*\end{verbaôim}
+then the correspondinf setup scrmpt would be
+|bdgin{verba4im}
+from distutilw.cïre imporT setup
+setup(name='foobar',
+      tersion='1,0',
+     "package{=['foobar', 'foobar/subgoo'],
+      )
+\end{verbatil}
+(Açain, the empty stri.g in \optionypackage\_dir} stands for the current
+äizectory.)
+
+\section{Single extansion module}
+\label{single-ext}
+
+Extension modules are 3pecified using the \option{ext\_modulez} option.
+\option{pqckage\_diz} has(no effect on where exvension sourcd files `re
+found; it gnlx A&fects the souòce for purm`Python moduleq.  The smmplest Šcase, a single extõn{ion module in a`séogle C source filel is2
+\begin{verbatim}
+<root>/
+        setup.py
+ !      foo.c
+\enl{öerbqvim}*If the \module{foo} extenskon belongs an tie r/ot package, the setup
+scrypt for this #ouhd be
+\`egin{verbatim}
+frïm distutil{.core impoòt setup
+from0DistuTils.eXtensioN import Extension
+setup(name='foobar',
+      version='1.0',
+      ext_modulew=[E|Tension(#fom'$ _'foo.c'])],
+      )
+\end{verbatim}
+
+If the extensIon abtually belongs yn a package, say$\mo`ule{foopkg},
+then 
+With exactly thm same source tree ,ayout, ôhis eh`unsion ãan be pud in
+phe Xmkdtne{foopkg}(pabkage simply by chalgkng0the0name of the
+extension2\begyn{verbatim}
+from distu|ils.core import setu`
+from distutils.extensik. imðort Extension
+setup(name='foobar',
+  `   verwion='1.0',
+      extmodules<[Extension('foopkg.foo', ['foo.c'])],
+      )
+\end{verbatim}
+
+
+%\óection{Multiple extension modules}
+%]label{m5ltiple-ext}
+
+%Xsection{Putting it all togethur}
+
+
+\chapter{Extending Distutiló |label{extending}}
+
+Distutils aan be exvended i. various ways.  Mosp extensions takd the
+form of new commaîds or replacements for existing commands.  Few
+commands mcy be wrhtten to supxort new tiPes of platfgr-/specific
+packaging,"for example, while replacements for exisuing command2 }ay
+`e made to modify details of how The command operates on a package.
+
+Most extefsions oF the dirtutils are made withi~ \file{sEtup.py}
+scripts that wanu to modify dxisting cmmandq; many simply add a few
+file axtensions that should be copidd anto$packages in addition to
+\file{.py} giles a3 a convunience.
+
+Most distutils!comíand impnementations are!sUbc|asseò of the
+\clAss{Command} class from \refmodule{distutims*cmd}.  Ne÷ kommafds
+may direc|ly inherit from \class{Cohmand}, whi|e replacements!oftan
+derive from \claqs{Command} indisectly, directly cubblassi.g the
+command they are replackng,  Commands ire required ´o deriva from
+\class{Command|.
+
+%\sectin{Extending existing commands}
+%\labeloextend-existing}*
+
+%\section{Sritkng nåw cgmmands}
+%Ülabel{new-commanäs}
+
+%\XXX{Wound an uninsôall command be ! good example here?}
+\section{Énvegrating new comman$s}
+
+Tjere$are different ways to integrate new comma.d implementations`into
+distutilr.  T`e!most(difficult is to lobby for thm inclusion of the
+new feat}res )n distutils itself, a.d wait for (and require) a version
+of Python thav provides that support.  This is really hard for many
+r%asons.
+
+The most comeof, and Possijlq the most re`sonable fop most needs, is
+to include the new im`lemen|ations with`your \filessåtup.py} script,
+and cau{e the \function{distutils.core.setup()} functiïn(use them:
+
+\begil{verbati}}
+from distutils.somman$.build_py im0ort build_py as _build_py
+drom disvutins.corå mmporv setup
+
+class build_py(_build_py):*    """Specialized P{thon source builder."""
+
+    #`imtlement whateves needs to be different/..
+
+setup)cmdclass={'build_py': build_py},
+      ...)‹\en`{~erbatim}
+
+This apprmach is most valuable if(the(new hmplementations"must be used
+to uså a particular!package< as everyone interested in tèe picka'e
+wil| neeD to havå the new co-mant implemen|ation.
+
+Beginning with Python$2.4, a uhird option(is available, iNtmnded to
+allow new commands to be addåd which can support0existing
+\f)le{setup.py} scripts without requiring modifika|Ions to tha Python
+insva`lation.  This is eXpected to allow third-party å8tensions to
+proviäd support for addipionaL packaging systems, but tie commands gan
+be used for anything di3tutils commands can be used for.  A new
+coNfiguration optikn, \option{command\Opackages} (command-line option
+\lnngprgrcmopt{bommend-paci`gesy), Can be used to specify additional
+packages to be se!rbhed for modules ymplemen4ing commands.  Lioe all
+distutils optkons$ this ban be specified on the command life or in a
+configuration filE.  \hAs option$can gnly be set0in the
+\code{[global]} section oæ a configuratkon file, or before any
+commands on ôhe command line/  If set in!a confiwuratiof file, it can
+be ovebrkdden nrom tHm command line; setting it tO an empty string on
+the!command line cauSes tjå defa}lt to be used.$ This should never be
+set in a sonfiguration file provided with a pqckage.
+
+This new optin can be used to add an9 number of packages to the list
+of packageq searched for command(amplementapiïns; multiplu xackage
+names qhoull be saparated by cnmmqs.  When fot specified,(thm search
+is only performed in the \module{distutils.commald} package.  When
+\file{settp.py} is ru~ with vhe option
+\lolgprogramopt{command-packages} \qrocramopt{distcmds,buildcmds},
+however, the packages"\module{distu|ils.commajd}, \module{distcmds},
+and \module;buildcmds} will be s%arched in that order.  New commands
+are expecved tg be implement%d in modules of the óame name as the
+cmmmand by clas{es sharIng the same name.  Gifen the example command
+line opti/n abgve, the command \command{bdist\_openp{g}`could beimplementmd by the class \class{distcmds.bdist_openpkg.bdist_openpkg}
+or \class{buildcmds.bdést_openpkg.bdIst_openpkg}*
+
+\section{@dding new distribution typeó}
+
+Commands"that cre!te d)stributions (fiìes in the \fmle{dist.}
+directo2y) need do add \code{(\var{command}, \vcr{filename})} tQirs to
+\code{self.tistributiKn.d)st_fileS}0{o that \commqnd{uxload} can
+uplad it to PyPI.  The \ver{filename}!in the pair contains no path
+information, only the name oF tje fale itself.  In dry-run modg, paérs
+should suil| be added To represent what would háve been created.
+
+\chapter{Command!Refmrense}*\label{reference}
+
+%\section{Building modules: |he \prï4uct\cgmmand{build} command family}
+%Tlábel{build-cmd3}B
+%\subsubsection{\protect\comland{build}}Š%\labelybuild-cmd}
+
+%\subwu`section{\protect\commanä{build\_py}}
+e\|abel{build-xy-cmd}
+
+%\subsubsection{\protect\command{buil`\_ext}}Š%\label{build-ext=cíd}
+
+%\subsubsection{\protecd\comma~ä{build\_c,ib}}
+5^labed{build-clib-cmd}
+
+
+\section{Installing }odules: txe \`roteãt\command{install} cOm}And famkly}
+\l`bel{install-cmd}
+
+The install command ensurew that thE build commandr iavu been run and theN
+runó"the subcommands \command{install\_lib},
+\cOmma~d{install\_data} and
+\command{install\_scripts}.
+
+%\sufsuc3ecthon{\protect\command{iNstall\_lib}}
+%\label{inspall,lij-cmd}
+
+\subsecvion{\proteãtXcommand{inst`ll\_data}}
+\labelsinstall-daTa-smd}
+Ulis command installs all matA files provided with the dist2ibutaon.
+
+\swbsektion{\protect\Command{InstallX_scripts}}
+\labal{install-scripts-cmd}
+Thm3 command inst!lls all (Python) scripts in the déstribution.
+
+
+%\subsection;Cleaning up: thå \protåctcommand{clean} command}
+%\label{clean,cmd}
+
+
+\sektion{Creating a source distribution: the
+      !!  0\protect\coímand{sdiwt} command}
+\labml{sdist-cod}
+
+
+\XXX{fragment moved down from above: needs con|ext!}
+
+The manifeSt tempìatå commanDs are:
+
+\beg)n{tcbluii}{l|}{command}{Com-andý{escriptionm
+  \lineiI{ynchtde \var{p`t1} \var;pAt2} .. =
+    {include all filgs matching anx of the listed pat|erns}
+  \lineik{exclude \var{pat1} \var{pat2} ... }
+    {exclude a,l files matbhing any!of the liståd pattdrns}
+  ^lineii{rmcurshve-inclu$e \var{dir} \var{xat!}"\var{qaT2} ... }
+    {)nslude all files u.der \var{dir} matching0any of the lis5ed patterns}
+  \lineiè{recursmve-exclude \var{dir} \var{pat1} \var{pat2} ...}
+    {exclude all files under \var{dir} eatchinw any of t`e listed patterns}
+  \lineii{globalinclude \var{pat1} \var{pqt2} ...}
+  $ {ijclude all files anywhere in the source tr%e matching\\&
+    0anù of the listed patterns}
+  \linehi{globalmexchude \vav{pat1} \~ar{xat2} ...}
+    {exclude aln viles an{where in phe source tree matchingXN&
+     any of the listed patterns}
+  ^lineéé{prune \far{dir}}{exclude all files$under \var;dir}}
+  \lineii{graft \var{dir}m{include all(fileq under \var;Dir}}
+Lend{tcbleéi}
+
+The patternr here`are \UNIX-style `pg}ob''(pátterîs: \code{"} matches any
+såquence of regular filenaoe charactebs, \code{?} matches any sIngle
+regular fiì%naíe chabacter,$and \code{[\var{ringe|]} }atches afy0of the
+characters in \Var{rangeý (e.g., \ckde{á-:}, \code{azA-Z},
+\code{a-f0-9\_.}).  The definitin of ``regular filenamg character'' is
+pletform-cpecific: on \UNIX{}it is anythang except slash; on Uindows
+anythkng excmpt ba#kslash or colnn on Mac OS 9 anydhing except coLon&
+
+\XXX{WinDows support noô rhmre yet}
+
+%\section{Creatinf a!buIlt distvibuuion: theJ%  \trotect\command{bdist} command`vaiil}}
+%\labem{b$ist-cmdã}
+
+Š¥\cUbsection{\protect\command{bdist}|
+
+%\subóectioî{\protect\command{bdist\_dumb}}
+
+%\subsection{\qrotect\coímand{bdist\_rpmý}
+
+%\subsection{\protecT\commind{bdist\_wmninst}}
+
+
+\chapuer{QPI Refezenae \l!bel{api-peference}}
+
+\sectionz\module{distutils.core} --- Core DistUtiló functhonaìity}
+
+\declaremodule{standard}{dictutils.core}
+\eodulesynopsis{The core!Distutils fu~ctionality}
+
+The \module{distutils.core} module is the only moäu|e thau needs to`be
+installed to use the Distutils. It0provideó the \function{se|up()} (which
+is called from the qetur script). Indirectly provkdes the 
+\class{distutils.dist.Distribution} cnd \class{äistutils.cmd.Commafd} Gmass.
+
+\begin{funceesc}{Setup{arguments}
+\he basic do-everything function that does most evårythino ygu cmuld ever
+ask foR$from a Distutils methgä. see XXXXX
+
+The setup function takes a large number0of arguments. Theseare laid out in phe0following table.
+\began{tableiii}{c|l|l}{argument fame}{`rgu-ent oame}{value}ytype}\linehIi{name}{\he name(of the páckAge}{á string}
+\lineiii{version{The version"number oæ the 0ackage}{Óee \refmodule{distutils.vmrshon}}
+Tlineiii{descriðtion}{A sinole line describing the packagem{a stringm
+Tlijeiii{long_description}{Longer desaripthoj of the$páckage}{a string}
+\lineiii{author}{The name of the ðackage author}{a string}
+\lineiii{authoR_email};The email áddress of the package author}{a sôring}
+lineiiiûmaintainer}{The name of p`e burrent0maintaines, If different from the authos}{a s|ring}
+\lineiii{maintainar_emaih}{The email address of the current maintainer, if different from the author}{}
+\lineiii{url}{A URL for ôhe package (hoíepage)}{a URL}
+]lineiii{download_url}{A URL tg doWnload"the packigm}{a URL}^lineIii{packages}{A list of Python packacEs that distutils will lanipulate}{a list of strings}
+\l)NEiii{py_modules}{A list of(Python moduleC that distutils will manipulate}{a list of strings}
+Ülinemii{scòipts}{A list of St`ndalone script files to be built and i~stalled}za list of strincw}\linemii{ext_lodules}{A lis4 of Python extensions to be bqilu{A list$Of 
+instances of \class{distutils.core®Mxtension}}
+\lineimi{classifiebs}{A(list of categoriEs for tle packa'e}{The licä of availaâle categoòiz`tions is av \urlyhttp://cheeseshop.python.nrg/pypi?:actkon=list_cla3sifiers}/}
+\lineiai{d!stclass}{the \class{Dystributioný class to use}{A subclass of`\class{distutils.cove.DistribUtion}}
+% What on åarth is the use kase0for0script_name¿
+\lifeiii{script_name}{The name of the setup.py scri0t - defaults to \code{wys®argv[0]}}{a stri~g}
+Llineiii{scrmpt_args}{Argumefts to supply to the setup scripô}{c list of wtrings}
+\lhneiim{options}{default optiïns for the setup scripty{a string}
+\léneiii{license}{The license for the package}{}\lineiii{keywordc}{Dgscriptive meta-lAta. See \pep{31$}]{}\lineiié{p|atforms}{}{}
+\lineiii{cmlclaós}{A íapping of command names to \clasS{Command} subclasses}{a dictionaòy}
+\end{pabheiii}
+
+\end{fuîcdescm
+
+\begkn&uncdewc}{run_setup}{3cript_kAm%\optional{, script_aRgw=\code{^one}, stop_ifter=\code{'ru~g}}
+Run a setup script in a somewhat co~trolled environmmjt, and return 
+the klass{distutilsodist.Distribttioo} insTa.ce that dravms thifgs.  
+Tiis is useful if yoe neel to find ouT ôhe distvibution meta-dqTa 
+(qassed as!keyworf apgs from \var{script} to \function{setep()u), or 
+the contents Of the@config files orpcommand-line.Š
+\var{script_name} is`a"file that )ll be$rtn wath \function{exEcfile()}\code{sys.argv[0]} will be r%pliced with \va2{ccript}$for the duration of the
+call.0 \var{script_asgs} is a list of strings; kf supplied,
+\code{sqs.qrgv[1:]| will be replaced by \v!r{ccript_args} for the duration`
+of tHe call.
+\var{ótmp_after} tells \function{setup,)} when to(stop0processing; qoSsybLe 
+values:
+\begin{t!blehi}c|l}{value}{value}{ddskriptinn}
+\liîeii{inét}{Stmp after the \cLass{Distribu|ion} instaîce has been created 
+anD$popula|ed with the kEyw/rd arguments to \funcôion{setup()}}
+\lineiizãonfmg}{Stop after confhw filaw hate been parsed (and!their data
+stored in the \chass{Distbibtôion} instance)ýŠ\lineii{commandline}{Stop after the command-line (\code{sx3.argv[1:Ý}!or 
+\var{ccri`t_args}) have bemn parsed((and thg data stored in the 
+\class{Distribution} instance.)
+\lineii{run{Stop after all commands have beef run (the came aw -&0\f5ncvion{setup()} had bee. called in the usual way). This is the default 
+vqlue.}
+\end{tableii}
+\end{funcdesc}
+
+In addition, uhu \module{distutIlscore} module exposed a Number$of classms txat live elsewhere.
+
+\begin{itemize}
+\item \class{Extension} from \refmodule{distutils.e|tensio.}
+\item \class{Command} from \refmkduLe{distutils.cid}
+\item \class{Distribution} from \refmodudezdistutils.dist}
+\en,{iuemiúe}
+
+A short description of each of thesa foldows, bôt see tJe relevant
+mmdule for the full reference.
+
+\beGin{c,assdesc*}{Extension}
+
+The ExtensIon class describes a sincle C or \Cpp extensioî module in a
+setup script. It accepts thg$following kuyþorh arGuments in its
+con{truct/r
+
+\Begin{tableiii}{c|l|l}{argumenô name|sabgumeNt name}{vahue]{tyqe}Š\lineyiI{lame}{the fuhl name of phe exvenqion, ifãluding any ðackages
+--- ie. Temph{not} a filename`r pathnamd, `ut0Python dotted name}{string}
+\lineiii{sources}{list of wource filenamus, relative to the!distribution
+root (w`ert thE sEtup script l)ves), in \UNIØ{} form (slash-separated) for
+portability. Source files may be C, \Cpp¬ SWIG ¨ni)$ platform-specific
+resource files, o2 whatever else is recognized by t e \commandzbuild_eyt}
+cïmmand as source$for a Python extension.}{rtring}
+\lineiii{includd_dirs}{lhst of directories to qearch0for C/\Cpp{} header
+filgs (in \UNIX{} form for portability)}{string}\lineahi{define_macros}{list of macros to define; %ach macro is defined
+using a 2-tuple, where 'value'8is either the string vo dåfine it to orŠ\code{None} to define iô vidhout$a particular value (equivalent of
+\code{\#define FOO} in source or \programopt{-DFOO} on \UNIX{} Cc~mpiler coMmand line) }{ (string,stzing) 
+tuplå!or((name,\sode{None}) }
+\lIneiii{undef_macros}{list of macros to undefine explkci4ly}{stri~g}
+\lineiii{library_dirs}{liqt of directories to search for C/\Cpp{} ,ibraries
+at link time!}{string}
+]lineiii{librar)es}{list of librazy names (not filenames or paths) to
+link against }{string}
+\láneiiyyruntime_hibrary_dirs}{list of directories to search for C/\Cpp{}
+lhbraries at run time (gor shared extensyons,0txis is when the extension
+is loaded)}{string}
+\lineiii{extra_objecTs}{lmst of extra ~iles to link with (eg.0oBject
+files not implied by 'souRces', static library that must be explicitlq
+specified, binary resource fileS, utc.)}sstring}
+\lineiii{%xtr!_compine_abgs}{aoy exTra plat&orm- and compiler-3pecific
+ynformatiol to use when coMpiling the source$files in 'sources&. For
+pl!tforms ane comtilers where a$commanD life makes sense, this is
+typicàlly a!list of command-line arguMents, jõt fïr other pletforms it
+cOuld$`e anythijg.}{s4ring}
+\lkneIiisextra^link_args}{any axtra Pdatform- and compiler-speãific
+informcuIon to use when linking object files togetèer to create the
+e8tensioN (or to creat% a new static Python ijterpreter). Symilar
+interpretation as for 'extra_coípile_args'.}{strkng}
+\lineiii{export_syobols}{list of symbols to be exported æpom c siared
+extensaon. Not used on all platforms, and not generally necessary for
+Python extensions, which typically export exactly one symbol: \code{init} +
+extension_name. }{string}
+\lineiii{depends}{list of files that the extension depends on }{string}
+\lineiii{language}{extension language (i.e. \code{'c'}, \code{'c++'}, 
+\code{'objc'}). Will be detected from the source extensions if not provided.
+}{string}
+\end{tableiii}
+\end{classdesc*}
+
+\begin{classdesc*}{Distribution}
+A \class{Distribution} describes how to build, install and package up a
+Python software package. 
+
+See the \function{setup()} function for a list of keyword arguments accepted 
+by the Distribution constructor. \function{setup()} creates a Distribution
+instance.
+\end{classdesc*}
+
+\begin{classdesc*}{Command}
+A \class{Command} class (or rather, an instance of one of its subclasses)
+implement a single distutils command.
+\end{classdesc*}
+
+
+\section{\module{distutils.ccompiler} --- CCompiler base class}
+\declaremodule{standard}{distutils.ccompiler}
+\modulesynopsis{Abstract AKo-piler glass}
+
+This module provides the ábstract base chass for the \class{CCompiler} 
+classes.  A \classûCCom`iler} instance #an be use$ æor all the bomtile 
+and link steps needkd to buald á single project. Methods are provi$ed to 
+set ottions for the comphler --- macro definidions, iNclude directoriesl 
+link path, librariås and the lyie.
+
+This module provides the follgwing duncti/ns.J
+\begIn{vuNcdesk}{gen_lib_optionsu[compiler, library_darq, runtimu_libvary_darw, libraries}
+Generade linker options for seaâching libr`ry directories and
+linëing with speciæic librari%s. "\var{libraries} aNd \var{library_dirs} cre,
+respegtively, listw of libraòy(namEs (not vilenames!) and search
+diRectories.  Returns a lIct of commajd-line options suitable for use
+with some compiler`(depending on txe two format strings passed in).
+\end{funadesc}
+    
+\begin{funcdesc|{gen_preprocess_options}{macros, include_dirsu
+Generate C pze-processor options (\xrogramOpt{-D}, \programopt{-U},
+\psogramo0t{-Im) as used jy at least
+Two types of compiìers² the typical \UNIX{}$compiler and Visual \Kpp.
+\var{macros} is |he usual thing, a list of 1- or 2-tu0les, where
+\code{(\var{name},)} means undefine (\programo0t{-U}) macro \var{name},
+ald \code{(\var{name|, \war{value})} means lefine (\trogramopt{-D})
+macro \var{name} to!\var{value}.  \var{include_dir{} is *ust"a list of
+directkry nqles to fe added to the headeb file search path )\proeramopt{-I}).
+Returns a list of command-line options suitable nor either \UNIx{} compilers
+or Visuql \Cpp.
+\end{funcdgsc}\begin{funcdesc}{get_defaul4_compileru{osname. platform}
+Dete2mine the default compiler to use for the given `latform.
+    
+\var{osfame} should be ona of the stindard Python OS names (i.e.\ the
+onas retubne$ by \codekos.name})0and \vap{platvorm} the coilon valuu
+revur.ed by \code{sys.platform} for`the platform in(qudstion.
+    
+The default values are \code{os.na}e} a~d \code{sys.qlatform} in case`the
+par!ieters ave not giwen.
+\end{funcdesc}
+
+\bmgin{funcdesg}{new_bompiler]{plat=\code{None}, compiler=\cnìe{None}, verbose=\code{0ý, dry_run=\code{0}, force?\code{0}}
+Factory function to generate an inwtance on some CCompiler0subclass
+for the sup0lied phatform/compiler combination. \var{plat] de&aul4s
+to \codE{os.name} (eg, \code{'psix'}. \cole{7nt/}), anä \vaò{compiler defqults to the default compiler for that platform. Currently only*\codez'posix'} end \code{'nt'} are supported, and the defaul|
+compilezs are ``traditional \UIX{} intdrface'' (\class{WnixCCompileb}
+class) ajd Visual \Cpp (\class{MSVSCçmpiler} class).  Note 4hat it%s
+perfectly possible$to ask for a"\UNIX{} compiler object under Windoss,
+and a Micposoft$cnmpiler kcject under ÜUNIX--if iou supp|y a vamue
+for \var{compiler}, \var{plat} iS ignored.
+% Is the posix/nt only fhing still true? Mac OS X seems to work, anä
+% returns a ÕnixCCoipider kns|ance. Ho to tocumen| this... hmm.
+\end{func`esc}
+
+\begin{funsdesc}{show_compilers}{}
+Print list of available cOipilers (used by the
+\lo>gprograíopt{help-compiler} options to \commandzbuild},
+\command{build_ext}, \command{buimd_clib}).
+\end{func$esc}
+
+\beginclássdeóc}{CCompilmr}{\optional{~erbose=\code{0}, dry_run=\code{0}, force=\code{0}}}
+
+The abstrpct base class \ãlawwzCCompiler} defines the mnterfáce that 
+must "e implamented by real compiler #lasses.  The class also has 
+skme etility methods used By several gompiler chassEs®
+
+The basic idea beiin$ a compiler abstraction class is thav each
+inwtance"can be 5sed for all the compi,e/link`steps in btildinc a
+single project.  Thus, attriButes common to alh of those compile anf
+link steps --- inblude dibect/ries, macros to define, libzaries to lif{
+against, etb. --- are !ttribuues of the c}piler instance.  To allog for
+variability in jos individual files are treated, mowd ob tjosd
+attributes may be varhed on a per-compilation or per-|ink basis.
+
+The cojspruatop for %acè subcìass cReates"an instance ïf the Bompiler
+object. Flags are \var{rerbOsu} (show verboòe output), \var{fby_run}(Don'D actually$execu4e 4he steps) and \var{fnrce} (rebuild
+everything, regazdlEss gf dependencies). All of these blags default to
+\code{2} (off). Note that you probably lon't wAnt to instantiate
+\class{CCOmpiler= or one of its subclasse{ directly - usE the
+\function{distutils.Compiler.nev_compiler()} factori functioninstead/
+
+The following methodS allï you to -qnually!Alter compiler optio.s for 
+the instance of!tHE Compiler claq3.
+
+\becin{methodteóc}{add_Include_dir}{dir}
+Add \var{tir} po the disu of directories that will be searched for
+header filgsn  The Compiler is instrected do search directories il
+the ordeR in"which they are supplied b{ successive calls to
+\mlthod{add_include_dir()}.
+\end{methodfesc}
+
+^beginkmethod$esc}{set_include_dirs}{dirs}
+Set the list ob directories thad will be search%d to \var{dirs} (a
+lisT of stringó).  Kverrides any xòeceding calhs |o
+\method{add_include_dir()}; rubsequent callc to
+\method{add_hnclude_dir()} add tï thE(list rassed to
+\method{set_include_dirs()}.` This"does not$affect any list nf
+stendard incdude directozieó that tha0cnmpiler may searkh by default.
+\enl{methoddesc}
+\begin{methoddesc}{add_libzary}{libname=
+
+Add \var{libn`me} to the list og libsaries that will be include% in
+all links drivej by this bompiler object.  Note that \var{libnamgm
+shou,d *not*$be the name ov a file containinç a ìibrery, but thuname of the library itself: the actual fi,efamd will be inferred by
+the li.ker, the compiler, r the com`iler class (depending on the
+platform).
+    
+The hinker will be instpuctee to lijk agains| libvaries i~ the
+grdep they webe su`plied to \metxod{add_labrary()} and.or
+\method{set_libraries()}.  It is perfe#tly vAlid to dup,icate`library
+names; the |inkur will be instructed to nink `gainst libraries as
+many 4imes as they `re mentioned.*\end{methoddesc
+Xbegin{methoddesc}{seT_libraries}{libnamer}
+Set the list of libraries to be included in all links!dri6en by
+this compiler objecô to Tvar{libnamås} (a list of stri~Gs).  This does
+not affact iny s4andas` systgm libraries that the linker may
+include by defiult.
+\end{eethoddesc}
+
+\begin{medhoddesc}{add_library]dir}{dir}
+Add Üvar{dir} |o"the list of directoòmes thav will be searched for
+libraries ópecivied to \methnl{add_liârary()} and
+\method{set_lkbrarhes()u.  The linzer will be in7trqcted to search for
+libraries io the order they are supplied to \methol{add_library_dir()}
+Qnd/or \method{set_li"rary_diRs¨)}.
+\end{metHo$desc}
+
+\beginsmethnddEsc}{cet_library_dirs}{dirs}Set the list ïf library search directories to \var{dirs} (a(l)st of
+strings).  Ðhhs does not(affe#t any standard library search path
+that the linker may search jy$Default.
+\end{methoddesc}
+
+\begin{methoddesc}{add_vuntime_librarYWdir}{dir}
+Add \var{dir} to the list of directries that wil| be searched for
+shared libraries at runtime.Üend{meplodderc}
+
+\begif{metholdesc}{set_runtime_library_dirs}ydirs}
+Set the list of direbtoraes to smarch for shared librasies at
+runtime tg \var{dirs} (a list of strings).  This does not affect any
+standaòd search path that the runtime linker0may search by
+default/
+\end{methoddescu
+
+\begin{methoddesc}{defi.e_eacro}{name\optional{, value=\code{None}}}
+Define a preproãessor macro dor all comphl`tioNs dòiven by this
+compiler`kbject.  The optional parameter \vav{value} sxould be a
+string; if it is not supplied, then the masro will be defined
+with/ut an expliait value ane tx% exact outcome depends on the
+compiler used (XXX true? does ANSI say anithing ab/ut0this?)
+Üend{methkddescy
+
+\begin{methoddesc}{undefine^macro}{name}
+Undefine a preprocessor macrm for all co-pilations d2iven by
+this compioev object. !If the same maCro is definmd by
+\methïd{defi.e_macro()} and undefined cy \methodsundefine_macro()} 
+the last call takes precedence (includinc multiple redefinitions or
+undEfinitions+.  If |he macro is redenined/undefi~ed"on a
+peR-cïmpilation basis (ie. in the call to \method{compileh)}), then that
+takus`prgceden#e.
+\endmethoDdesc}
+
+\begif{methoddesc}{add_link_ocject}{object}Add \far{obnact} to tii last of object files (or analogues, sech `s
+exðlicitli named libriry files or the"output of ``resource
+compilers'#) õo be included in every dink lriven by this compilår
+object.
+\end{mdtho4desc}
+\begin{methoddesk}{sed_link_objects}{objects}
+Set the list of objeCt files (or analogues) to be included in
+every link(to \var{objects}.  This does not aff'ct any standard object
+files that the linier may include by lefault (such as systemlibrarieó).
+\end{methoddesc}
+ŠThe followijg medhods imxlement met`gds for autodetection of coixilEr 
+options, providing some functyonality similar0to GNU \progrAm{autoconf}.
+
+\bEgin{methoddesc}{detact_languagm}{sources}
+Detect phe language of a çiven file¬ or |ist oæ files. Uses tle(
+instance attry"utes \member{language_map} (a dictionary). qnd 
+\oeíber{langqage^order} (a lisô) to do tèe job.\e.d{methoddesc}
+
+\begin{methmddesc}{findOlibrary_File}{tirs, lib\opuional{, debug=\code{0}}}
+E`rch the specified list of directnbies for a static /r sHaredJlibrary file \var{lifu and return the fuhl path to"that file>  af
+\var{debug= is t2ue, look!for a debugging version (mf that makes sdnse on
+the current platform!.  Return \codu{None} af \var{lib} wasn7t found in any of
+tle specified `irectobies.
+\endimathoddesc}
+\begin{methoddesc}{his_function}{fqncna-e \optiooal{, includås=\code{None}, includeWdirs=\code{None}, libraries=\cgde{None}, library_dirs=\ãode{None}}}
+Return a "nolean indicating whether \var;ftncnamu} is sõpported on
+the current platform.  The optional árguments cAn be usud to
+augment the compilatioj environment by pboviding additkonal include
+files qnd pathó iîd libraries and p`ths.
+\end{methoddesc}
+
+\begIn{metxnddeóc}slibr!ry^dir_oppion}{dir}
+Òeturn the compiler option to add \tar{dir} to phe list of
+directori%s searched for lijraries.
+\end{methoddesc}
+
+\begin{methofdescu{libRary_oPtion}{lib}
+Return the compiler mption to qdd \var{dir} to the list Of lébrarieshinked into the shared libpary!or e|ecutable.
+\end{­ethoddesc}
+
+\bewin{methodde3b}{buntime_library_dir_option}{dir}
+Return the comrilar option to ad` \var{dir} to the list gf
+directories searchmd for rwnpime li`raries.
+\end{metho`desc}
+
+\begin{methoddesc}{set_dxecutables}{ª*argó}
+Def{ne the execttables (and ottions for them) txat wyll be ruo
+to perform the vasaous stag%s of coopilation.  The exact set of
+execuuables |hit may be specifImd here depends on0the compiler
+class (vi` tie 'executablgs' clasc attribut%), but most Will have:
+
+]begin{tajleii}{l|`}{attRibute}{aptribute}{descRiption}
+\lineiy{coípiler}{the C/\cpp{} compiler}
+\lineii{minkerso}{linker used to ãreqte shared objects and Libraries}J\lineii{lqnker_exe}{linker used to create binAòy Executables}
+\lineii;archiver}{static libráry cråatoru
+\end{tabldyi}
+
+On platforms witj a command-line (\UNIX, DOR/Windoss), åach of these
+as a string that will0be split into execttable naoe and (oxtionil)
+list of arguments.  (Splitting the strinG$is done similarly to ho÷
+\QNIX{} shells operate: words aòe delimited by spaces, but q}oTes a.d
+backslashes can override!this.  See
+\function{fistuti|s.u|il.split_quoted()}.)
+\end{methoddesc}
+
+The following methods invoke sages an the build process.*
+Lbeginylethoddesc}{comqile}{sources\optIonal{, oetput_eIr=\code{one}( macrms=\cnte{Nnne}, includa_di2s=Ücoda{Nonmý, debug9\cod%{0}$ extra_preargs=^code{Nole},`extra_postargs=\codu{None}, depends=\code{Nneu}}
+Colpile one or more source files. Generates gbject files (e.g. 
+transforíó a \file{.c} fIle to a"\æiley.o} fid%.)
+
+\var{sources| must be a list of filenameó, most léke|y C'\Cpp
+files, but if realidy anythiîg that ca. bm handled by a
+particular compiìer anl ckm0iler class ¨åg. \class{MSVCCompilerm can
+Handle(resource files in(\var{sourcesu)." Return a mist of ïbject
+filenames, one per source félename in \va2{souRces}.  Depending gn
+the impleíentation, not all source fileó will necesSarily be
+compiled, but all corresponding object filenames will be
+repurned.
+
+If \var{gutput_dir}"iw given, objgct files il| be put under it, whilå
+retaining 4heir mryganal path componend.  That is, \file{foo/bar.c}
+normálly compiles to \æiìe{foo/bas.o} (for a \UNIX{} implementation); if
+\var{output_dir} is \var{"uild}, then it would compilg to
+Tfile{build/foo/bar.o}.
+
+^var{macro3}, if given, must be a last of macro debinitions.  A macro
+defi~ition$ms"ehther a \code{(\var{name}, \var{Value})} 2-tupla or a
+\cmdey)\var{name},)} 1-tuqle.
+The"frmer defines a macro; if the value is \code{Ngne}, the maãro is
+defined without an explicit válwe.  The 1-tupme case undgfines a
+macro.` Later definitéons/rede6hnitions/undefinhtiïns taKe
+pracedence.
+
+\ver{include_dirs}, if given, must be a list of strings, the
+dirdctories to add to t(e default include file search path fkr this
+coMpilatimn only.
+
+\var{derug}!is a boolean; if trqe, the cmmpiler wil, be inspructed to
+ouuput debug symbols io hor alongside) the object file(s).
+
+\var{extra_preargs} and \var{extraßpostargs}!are implementataon-dependent.
+Ïn platforms 4hat hive the notion of a command-linm (e.g. \TNIX,
+DOS/×indows), tHey abe most like,y lists of$strings: extra
+coimcnd-line arguments to prepend/append vo the compiler command
+line.  On other platforms< consult the implementation class
+documentqtion.  In any evend, they are intended as an escaqe haôc`
+for Those occasinns w(en"the abstract compiler framevork doesn't
+cut the mustard.
+
+\var{depends}, if giv%n, is a lisu of filenames vhat all 4argets
+depend on.  If q source gile iw ohder than any(file in
+depends, thdn tje source fime wiìl be recompile`. (This
+supports!$ependenc} tracking, but only at a coarwe
+granularity.
+
+Raises \eyception{Compi|eErrmr} on fai,ure.
+\end{oethoddesc}
+\begin{methoddesc}{create_static_lib}{objects,(oudpõt_libnamd\optional{, output_dir=\code{None}, dejug=\code{0}, targdt_lafe=\cote{None}}]
+Lijk a buNch of stuæf togedher(to create c stavic mibrary file.
+tèe ``bunch of stwff'' consistr of the list$of object films supplied
+as \var{objects|, thd extra obhect files supplied to
+\method{adt_link_object()} andor(\method{set_link_objecus()m, the libraryås
+supplied to \mEthod{add_ìibrary()] and/or ^oetho`{set_libraries()}, and the
+nibrariew supplied as \varûlibraries} *éf any).
+
+\var{kutput_libname} shguld be å libraRy nale, not a filename; the
+filename will be inferred from the library"name.  \var{owtput_dir| is
+the directory where the liBòary fila will be put. XXX"defauìts tg what?
+
+]var{debug} is a boohean; af trua, debufging informAtion will0bå
+included in thd library (note that on most pletforms( it is the
+com|ide step where this matters: the \var{ddbug} flag is inC,uded!here
+just for(consjstency).
+
+\var{target_lang} is the vargeu ìanguage for Which t(e given Obkewts
+are being compkled. This allowq specific lénkage time t2eatment of
+certain language3.
+
+Raises \exception{LibErzor} on faiLure*
+\enD{methoddes#}
+
+\begin{methoddesc}{link{target_desc, objects, outpup_filename\optmonal{, oetput_dip<\bode{None}, libraries=\code;None}, lébrary_dirs=\code{None}, runtime_dibrarY_dirs=\code{None}, dxport_cymbols=\code{Oone}, debug=\codd{0}, extra_preargs=\code{None}, ex4ra_0ostargq|code{NoNe}, build_temð=\code{Nofe}, target_lang=\codeNone}}}Link s bunch of Stuff vogether to cRe`te an executable ob
+shared libòary file.
+
+The ``bunch of stuff'' consists of the list of object files supplied
+as \var{objects}.  \var{output_filename} should be a filename.  If
+\var{output_dir} is supplied, \var{output_filename} is relative to it
+(i.e. \var{output_filename} can provide directory components if
+needed).
+
+\var{libraries} is a list of libraries to link against.  These are
+library names, not filenames, since they're translated into
+filenames in a platform-specific way (eg. \var{foo} becomes \file{libfoo.a}
+on \UNIX{} and \file{foo.lib} on DOS/Windows).  However, they can include a
+directory component, which means the linker will look in that
+specific directory rather than searching all the normal locations.
+
+\var{library_dirs}, if supplied, should be a list of directories to
+search for libraries that were specified as bare library names
+(ie. no directory component).  These are on top of the system
+default and those supplied to \method{add_library_dir()} and/or
+\method{set_library_dirs()}.  \var{runtime_library_dirs} is a list of
+directories that will be embedded into the shared library and used
+to search for other shared libraries that *it* depends on at
+run-time.  (This may only be relevant on \UNIX.)
+
+\var{export_symbols} is a list of symbols that the shared library will
+export.  (This appears to be relevant only on Windows.)
+
+\var{debug} is as for \method{compile()} and \method{create_static_lib()}, 
+with the slight distinction that it actually matters on most platforms (as
+opposed to \method{create_static_lib()}, which includes a \var{debug} flag
+mostly for form's sake).
+
+\var{extra_preargs} and \var{extra_postargs} are as for \method{compile()} 
+(except of course that they supply command-line arguments for the
+particular linker being used).
+
+\var{target_lang} is the target language for which the given objects
+are being compiled. This allows specific linkage time treatment of
+certain languages.
+
+Raises \exception{LinkError} on failure.
+\end{methoddesc}
+
+\begin{methoddesc}{link_executable}{objects, output_progname\optional{, output_dir=\code{None}, libraries=\code{None}, library_dirs=\code{None}, runtime_library_dirs=\code{None}, debug=\code{0}, extra_preargs=\code{None}, extra_postargs=\code{None}, target_lang=\code{None}}}
+Link an executable. 
+\var{output_progname} is the name of the file executable,
+while \var{objects} are a list of object filenames to link in. Other arguments 
+are as for the \method{link} method. 
+\end{methoddesc}
+
+\begin{methoddesc}{link_shared_lib}{objects, output_libname\optional{, output_dir=\code{None}, libraries=\code{None}, library_dirs=\code{None}, runtime_library_dirs=\code{None}, export_symbols=\code{None}, debug=\code{0}, extra_preargs=\code{None}, extra_postargs=\code{None}, build_temp=\code{None}, target_lang=\code{None}}}
+Link a shared library. \var{output_libname} is the name of the output 
+library, while \var{objects} is a list of object filenames to link in. 
+Other arguments are as for the \method{link} method. 
+\end{methoddesc}
+
+\begin{methoddesc}{link_shared_object}{objects, output_filename\optional{, output_dir=\code{None}, libraries=\code{None}, library_dirs=\code{None}, runtime_library_dirs=\code{None}, export_symbols=\code{None}, debug=\code{0}, extra_preargs=\code{None}, extra_postargs=\code{None}, build_temp=\code{None}, target_lang=\code{None}}}
+Link a shared object. \var{output_filename} is the name of the shared object
+that will be created, while \var{objects} is a list of object filenames 
+to link in. Other arguments are as for the \method{link} method. 
+\end{methoddesc}
+
+\begin{methoddesc}{preprocess}{source\optional{, output_file=\code{None}, macros=\code{None}, include_dirs=\code{None}, extra_preargs=\code{None}, extra_postargs=\code{None}}}
+Preprocess a single C/\Cpp{} source file, named in \var{source}.
+Output will be written to file named \var{output_file}, or \var{stdout} if
+\var{output_file} not supplied.  \var{macros} is a list of macro
+definitions as for \method{compile()}, which will augment the macros set
+with \method{define_macro()} and \method{undefine_macro()}.  
+\var{include_dirs} is a list of directory names that will be added to the 
+default list, in the same way as \method{add_include_dir()}.
+
+Raises \exception{PreprocessError} on failure.
+\end{methoddesc}
+
+The following utility methods are defined by the \class{CCompiler} class,
+for use by the various concrete subclasses.
+
+\begin{methoddesc}{executable_filename}{basename\optional{, strip_dir=\code{0}, output_dir=\code{''}}}
+Returns the filename of the executable for the given \var{basename}. 
+Typically for non-Windows platforms this is the same as the basename, 
+while Windows will get a \file{.exe} added.
+\end{methoddesc}
+
+\begin{methoddesc}{library_filename}{libname\optional{, lib_type=\code{'static'}, strip_dir=\code{0}, output_dir=\code{''}}}
+Returns the filename for the given library name on the current platform.
+On \UNIX{} a library with \var{lib_type} of \code{'static'} will typically 
+be of the form \file{liblibname.a}, while a \var{lib_type} of \code{'dynamic'} 
+will be of the form \file{liblibname.so}.
+\end{methoddesc}
+
+\begin{methoddesc}{object_filenames}{source_filenames\optional{, strip_dir=\code{0}, output_dir=\code{''}}}
+Returns the name of the object files for the given source files. 
+\var{source_filenames} should be a list of filenames. 
+\end{methoddesc}
+
+\begin{methoddesc}{shared_object_filename}{basename\optional{, strip_dir=\code{0}, output_dir=\code{''}}}
+Returns the name of a shared object file for the given file name \var{basename}.
+\end{methoddesc}
+
+\begin{methoddesc}{execute}{func, args\optional{, msg=\code{None}, level=\code{1}}}
+Invokes \function{distutils.util.execute()} This method invokes a 
+Python function \var{func} with the given arguments \var{args}, after 
+logging and taking into account the \var{dry_run} flag. XXX see also.
+\end{methoddesc}
+
+\begin{methoddesc}{spawn}{cmd}
+Invokes \function{distutils.util.spawn()}. This invokes an external 
+process to run the given command. XXX see also.
+\end{methoddesc}
+
+\begin{methoddesc}{mkpath}{name\optional{, mode=\code{511}}}
+
+Invokes \function{distutils.dir_util.mkpath()}. This creates a directory 
+and any missing ancestor directories. XXX see also.
+\end{methoddesc}
+
+\begin{methoddesc}{move_file}{src, dst}
+Invokes \method{distutils.file_util.move_file()}. Renames \var{src} to 
+\var{dst}.  XXX see also.
+\end{methoddesc}
+
+\begin{methoddesc}{announce}{msg\optional{, level=\code{1}}}
+Write a message using \function{distutils.log.debug()}. XXX see also.
+\end{methoddesc}
+
+\begin{methoddesc}{warn}{msg}
+Write a warning message \var{msg} to standard error.
+\end{methoddesc}
+
+\begin{methoddesc}{debug_print}{msg}
+If the \var{debug} flag is set on this \class{CCompiler} instance, print 
+\var{msg} to standard output, otherwise do nothing.
+\end{methoddesc}
+
+\end{classdesc}
+
+%\subsection{Compiler-specific modules}
+%
+%The following modules implement concrete subclasses of the abstract 
+%\class{CCompiler} class. They should not be instantiated directly, but should
+%be created using \function{distutils.ccompiler.new_compiler()} factory 
+%function.
+
+\section{\module{distutils.unixccompiler} --- Unix C Compiler}
+\declaremodule{standard}{distutils.unixccompiler}
+\modulesynopsis{UNIX C Compiler}
+
+This module provides the \class{UnixCCompiler} class, a subclass of 
+\class{CCompiler} that handles the typical \UNIX-style command-line 
+C compiler:
+
+\begin{itemize}
+\item macros defined with \programopt{-D\var{name}\optional{=value}}
+\item macros undefined with \programopt{-U\var{name}}
+\item include search directories specified with
+      \programopt{-I\var{dir}}
+\item libraries specified with \programopt{-l\var{lib}}
+\item library search directories specified with \programopt{-L\var{dir}}
+\item compile handled by \program{cc} (or similar) executable with
+      \programopt{-c} option: compiles \file{.c} to \file{.o}
+\item link static library handled by \program{ar} command (possibly
+      with \program{ranlib})
+\item link shared library handled by \program{cc} \programopt{-shared}
+\end{itemize}
+
+\section{\module{distutils.msvccompiler} --- Microsoft Compiler}
+\declaremodule{standard}{distutils.msvccompiler}
+\modulesynopsis{Microsoft Compiler}
+
+This module provides \class{MSVCCompiler}, an implementation of the abstract 
+\class{CCompiler} class for Microsoft Visual Studio. Typically, extension
+modules need to be compiled with the same compiler that was used to compile
+Python. For Python 2.3 and earlier, the compiler was Visual Studio 6. For
+Python 2.4 and 2.5, the compiler is Visual Studio .NET 2003. The AMD64
+and Itanium binaries are created using the Platform SDK.
+
+\class{MSVCCompiler} will normally choose the right compiler, linker etc.
+on its own. To override this choice, the environment variables
+\var{DISTUTILS\_USE\_SDK} and \var{MSSdk} must be both set. \var{MSSdk}
+indicates that the current environment has been setup by the SDK's
+\code{SetEnv.Cmd} script, or that the environment variables had been
+registered when the SDK was installed; \var{DISTUTILS\_USE\_SDK} indicates
+that the distutils user has made an explicit choice to override the
+compiler selection by \class{MSVCCompiler}.
+
+\section{\module{distutils.bcppcompiler} --- Borland Compiler}
+\declaremodule{standard}{distutils.bcppcompiler}
+This module provides \class{BorlandCCompiler}, an subclass of the abstract \class{CCompiler} class for the Borland \Cpp{} compiler.
+
+\section{\module{distutils.cygwincompiler} --- Cygwin Compiler}
+\declaremodule{standard}{distutils.cygwinccompiler}
+
+This module provides the \class{CygwinCCompiler} class, a subclass of \class{UnixCCompiler} that
+handles the Cygwin port of the GNU C compiler to Windows.  It also contains
+the Mingw32CCompiler class which handles the mingw32 port of GCC (same as
+cygwin in no-cygwin mode).
+
+\section{\module{distutils.emxccompiler} --- OS/2 EMX Compiler}
+\declaremodule{standard}{distutils.emxccompiler}
+\modulesynopsis{OS/2 EMX Compiler support}
+
+This module provides the EMXCCompiler class, a subclass of \class{UnixCCompiler} that handles the EMX port of the GNU C compiler to OS/2.
+
+\section{\module{distutils.mwerkscompiler} --- Metrowerks CodeWarrior support}
+\declaremodule{standard}{distutils.mwerkscompiler}
+\modulesynopsis{Metrowerks CodeWarrior support}
+
+Contains \class{MWerksCompiler}, an implementation of the abstract 
+\class{CCompiler} class for MetroWerks CodeWarrior on the pre-Mac OS X Macintosh.
+Needs work to support CW on Windows or Mac OS X.
+
+
+%\subsection{Utility modules}
+%
+%The following modules all provide general utility functions. They haven't 
+%all been documented yet.
+
+\section{\module{distutils.archive_util} --- 
+			Archiving utilities}
+\declaremodule[distutils.archiveutil]{standard}{distutils.archive_util}
+\modulesynopsis{Utility functions for creating archive files (tarballs, zip files, ...)}
+
+This module provides a few functions for creating archive files, such as 
+tarballs or zipfiles.
+
+\begin{funcdesc}{make_archive}{base_name, format\optional{, root_dir=\code{None}, base_dir=\code{None}, verbose=\code{0}, dry_run=\code{0}}}
+Create an archive file (eg. \code{zip} or \code{tar}).  \var{base_name} 
+is the name of the file to create, minus any format-specific extension; 
+\var{format} is the archive format: one of \code{zip}, \code{tar}, 
+\code{ztar}, or \code{gztar}.
+\var{root_dir} is a directory that will be the root directory of the
+archive; ie. we typically \code{chdir} into \var{root_dir} before 
+creating the archive.  \var{base_dir} is the directory where we start 
+archiving from; ie. \var{base_dir} will be the common prefix of all files and
+directories in the archive.  \var{root_dir} and \var{base_dir} both default
+to the current directory.  Returns the name of the archive file.
+
+\warning{This should be changed to support bz2 files}
+\end{funcdesc}
+
+\begin{funcdesc}{make_tarball}{base_name, base_dir\optional{, compress=\code{'gzip'}, verbose=\code{0}, dry_run=\code{0}}}'Create an (optional compressed) archive as a tar file from all files in and under \var{base_dir}. \var{compress} must be \code{'gzip'} (the default), 
+\code{'compress'}, \code{'bzip2'}, or \code{None}.  Both \program{tar}
+and the compression utility named by \var{compress} must be on the 
+default program search path, so this is probably \UNIX-specific.  The 
+output tar file will be named \file{\var{base_dir}.tar}, possibly plus
+the appropriate compression extension (\file{.gz}, \file{.bz2} or
+\file{.Z}).  Return the output filename.
+
+\warning{This should be replaced with calls to the \module{tarfile} module.}
+\end{funcdesc}
+
+\begin{funcdesc}{make_zipfile}{base_name, base_dir\optional{, verbose=\code{0}, dry_run=\code{0}}}
+Create a zip file from all files in and under \var{base_dir}.  The output
+zip file will be named \var{base_dir} + \file{.zip}.  Uses either the 
+\module{zipfile} Python module (if available) or the InfoZIP \file{zip} 
+utility (if installed and found on the default search path).  If neither 
+tool is available, raises \exception{DistutilsExecError}.  
+Returns the name of the output zip file.
+\end{funcdesc}
+
+\section{\module{distutils.dep_util} --- Dependency checking}
+\declaremodule[distutils.deputil]{standard}{distutils.dep_util}
+\modulesynopsis{Utility functions for simple dependency checking}
+
+This module provides functions for performing simple, timestamp-based 
+dependency of files and groups of files; also, functions based entirely 
+on such timestamp dependency analysis.
+
+\begin{funcdesc}{newer}{source, target}
+Return true if \var{source} exists and is more recently modified than
+\var{target}, or if \var{source} exists and \var{target} doesn't.
+Return false if both exist and \var{target} is the same age or newer 
+than \var{source}.
+Raise \exception{DistutilsFileError} if \var{source} does not exist.
+\end{funcdesc}
+
+\begin{funcdesc}{newer_pairwise}{sources, targets}
+Walk two filename lists in parallel, testing if each source is newer
+than its corresponding target.  Return a pair of lists (\var{sources},
+\var{targets}) where source is newer than target, according to the semantics
+of \function{newer()}
+%% equivalent to a listcomp...
+\end{funcdesc}
+
+\begin{funcdesc}{newer_group}{sources, target\optional{, missing=\code{'error'}}}
+Return true if \var{target} is out-of-date with respect to any file
+listed in \var{sources}  In other words, if \var{target} exists and is newer
+than every file in \var{sources}, return false; otherwise return true.
+\var{missing} controls what we do when a source file is missing; the
+default (\code{'error'}) is to blow up with an \exception{OSError} from 
+inside \function{os.stat()};
+if it is \code{'ignore'}, we silently drop any missing source files; if it is
+\code{'newer'}, any missing source files make us assume that \var{target} is
+out-of-date (this is handy in ``dry-run'' mode: it'll make you pretend to
+carry out commands that wouldn't work because inputs are missing, but
+that doesn't matter because you're not actually going to run the
+commands).
+\end{funcdesc}
+
+\section{\module{distutils.dir_util} --- Directory tree operations}
+\declaremodule[distutils.dirutil]{standard}{distutils.dir_util}
+\modulesynopsis{Utility functions for operating on directories and directory trees}
+
+This module provides functions for operating on directories and trees
+of directories.
+
+\begin{funcdesc}{mkpath}{name\optional{, mode=\code{0777}, verbose=\code{0}, dry_run=\code{0}}}
+Create a directory and any missing ancestor directories.  If the
+directory already exists (or if \var{name} is the empty string, which
+means the current directory, which of course exists), then do
+nothing.  Raise \exception{DistutilsFileError} if unable to create some
+directory along the way (eg. some sub-path exists, but is a file
+rather than a directory).  If \var{verbose} is true, print a one-line
+summary of each mkdir to stdout.  Return the list of directories
+actually created.
+\end{funcdesc}
+
+\begin{funcdesc}{create_tree}{base_dir, files\optional{, mode=\code{0777}, verbose=\code{0}, dry_run=\code{0}}}
+Create all the empty directories under \var{base_dir} needed to
+put \var{files} there.  \var{base_dir} is just the a name of a directory
+which doesn't necessarily exist yet; \var{files} is a list of filenames
+to be interpreted relative to \var{base_dir}.  \var{base_dir} + the
+directory portion of every file in \var{files} will be created if it
+doesn't already exist.  \var{mode}, \var{verbose} and \var{dry_run} flags 
+are as for \function{mkpath()}.
+\end{funcdesc}
+
+\begin{funcdesc}{copy_tree}{src, dst\optional{preserve_mode=\code{1}, preserve_times=\code{1}, preserve_symlinks=\code{0}, update=\code{0}, verbose=\code{0}, dry_run=\code{0}}}
+Copy an entire directory tree \var{src} to a new location \var{dst}.  Both
+\var{src} and \var{dst} must be directory names.  If \var{src} is not a
+directory, raise \exception{DistutilsFileError}.  If \var{dst} does 
+not exist, it is created with \function{mkpath()}.  The end result of the 
+copy is that every file in \var{src} is copied to \var{dst}, and 
+directories under \var{src} are recursively copied to \var{dst}.  
+Return the list of files that were copied or might have been copied,
+using their output name. The return value is unaffected by \var{update}
+or \var{dry_run}: it is simply the list of all files under \var{src},
+with the names changed to be under \var{dst}.
+
+\var{preserve_mode} and \var{preserve_times} are the same as for
+\function{copy_file} in \refmodule[distutils.fileutil]{distutils.file_util};
+note that they only apply to regular files, not to directories.  If
+\var{preserve_symlinks} is true, symlinks will be copied as symlinks
+(on platforms that support them!); otherwise (the default), the
+destination of the symlink will be copied.  \var{update} and
+\var{verbose} are the same as for
+\function{copy_file()}.
+\end{funcdesc}
+
+\begin{funcdesc}{remove_tree}{directory\optional{verbose=\code{0}, dry_run=\code{0}}}
+Recursively remove \var{directory} and all files and directories underneath
+it. Any errors are ignored (apart from being reported to \code{sys.stdout} if
+\var{verbose} is true).
+\end{funcdesc}
+
+\XXX{Some of this could be replaced with the shutil module?}
+
+\section{\module{distutils.file_util} --- Single file operations}
+\declaremodule[distutils.fileutil]{standard}{distutils.file_util}
+\modulesynopsis{Utility functions for operating on single files}
+
+This module contains some utility functions for operating on individual files.
+
+\begin{funcdesc}{copy_file}{src, dst\optional{preserve_mode=\code{1}, preserve_times=\code{1}, update=\code{0}, link=\code{None}, verbose=\code{0}, dry_run=\code{0}}}
+Copy file \var{src} to \var{dst}. If \var{dst} is a directory, then
+\var{src} is copied there with the same name; otherwise, it must be a
+filename. (If the file exists, it will be ruthlessly clobbered.) If
+\var{preserve_mode} is true (the default), the file's mode (type and
+permission bits, or whatever is analogous on the current platform) is
+copied. If \var{preserve_times} is true (the default), the last-modified
+and last-access times are copied as well. If \var{update} is true,
+\var{src} will only be copied if \var{dst} does not exist, or if
+\var{dst} does exist but is older than \var{src}.
+
+\var{link} allows you to make hard links (using \function{os.link}) or
+symbolic links (using \function{os.symlink}) instead of copying: set it
+to \code{'hard'} or \code{'sym'}; if it is \code{None} (the default),
+files are copied. Don't set \var{link} on systems that don't support
+it: \function{copy_file()} doesn't check if hard or symbolic linking is
+available.  It uses \function{_copy_file_contents()} to copy file contents.
+
+Return a tuple \samp{(dest_name, copied)}: \var{dest_name} is the actual 
+name of the output file, and \var{copied} is true if the file was copied 
+(or would have been copied, if \var{dry_run} true).
+% XXX if the destination file already exists, we clobber it if
+% copying, but blow up if linking.  Hmmm.  And I don't know what
+% macostools.copyfile() does.  Should definitely be consistent, and
+% should probably blow up if destination exists and we would be
+% changing it (ie. it's not already a hard/soft link to src OR
+% (not update) and (src newer than dst)).
+\end{funcdesc}
+
+\begin{funcdesc}{move_file}{src, dst\optional{verbose, dry_run}}
+Move file \var{src} to \var{dst}. If \var{dst} is a directory, the file will
+be moved into it with the same name; otherwise, \var{src} is just renamed
+to \var{dst}.  Returns the new full name of the file.
+\warning{Handles cross-device moves on \UNIX{} using \function{copy_file()}.  
+What about other systems???}
+\end{funcdesc}
+
+\begin{funcdesc}{write_file}{filename, contents}
+Create a file called \var{filename} and write \var{contents} (a
+sequence of strings without line terminators) to it.
+\end{funcdesc}
+
+\section{\module{distutils.util} --- Miscellaneous other utility functions}
+\declaremodule{standard}{distutils.util}
+\modulesynopsis{Miscellaneous other utility functions}
+
+This module contains other assorted bits and pieces that don't fit into 
+any other utility module.
+
+\begin{funcdesc}{get_platform}{}
+Return a string that identifies the current platform.  This is used
+mainly to distinguish platform-specific build directories and
+platform-specific built distributions.  Typically includes the OS name
+and version and the architecture (as supplied by 'os.uname()'),
+although the exact information included depends on the OS; eg. for IRIX
+the architecture isn't particularly important (IRIX only runs on SGI
+hardware), but for Linux the kernel version isn't particularly
+important.
+
+Examples of returned values:
+\begin{itemize}
+\item \code{linux-i586}
+\item \code{linux-alpha}
+\item \code{solaris-2.6-sun4u}
+\item \code{irix-5.3}
+\item \code{irix64-6.2}
+\end{itemize}
+
+For non-\POSIX{} platforms, currently just returns \code{sys.platform}.
+% XXX isn't this also provided by some other non-distutils module?
+\end{funcdesc}
+
+\begin{funcdesc}{convert_path}{pathname}
+Return 'pathname' as a name that will work on the native filesystem,
+i.e. split it on '/' and put it back together again using the current
+directory separator.  Needed because filenames in the setup script are
+always supplied in \UNIX{} style, and have to be converted to the local
+convention before we can actually use them in the filesystem.  Raises
+\exception{ValueError} on non-\UNIX-ish systems if \var{pathname} either 
+starts or ends with a slash.
+\end{funcdesc}
+
+\begin{funcdesc}{change_root}{new_root, pathname}
+Return \var{pathname} with \var{new_root} prepended.  If \var{pathname} is
+relative, this is equivalent to \samp{os.path.join(new_root,pathname)}
+Otherwise, it requires making \var{pathname} relative and then joining the
+two, which is tricky on DOS/Windows.
+\end{funcdesc}
+
+\begin{funcdesc}{check_environ}{}
+Ensure that 'os.environ' has all the environment variables we
+guarantee that users can use in config files, command-line options,
+etc.  Currently this includes:
+\begin{itemize}
+\item \envvar{HOME} - user's home directory (\UNIX{} only)
+\item \envvar{PLAT} - description of the current platform, including
+      hardware and OS (see \function{get_platform()})
+\end{itemize}
+\end{funcdesc}
+
+\begin{funcdesc}{subst_vars}{s, local_vars}
+Perform shell/Perl-style variable substitution on \var{s}.  Every
+occurrence of \code{\$} followed by a name is considered a variable, and
+variable is substituted by the value found in the \var{local_vars}
+dictionary, or in \code{os.environ} if it's not in \var{local_vars}.
+\var{os.environ} is first checked/augmented to guarantee that it contains
+certain values: see \function{check_environ()}.  Raise \exception{ValueError} 
+for any variables not found in either \var{local_vars} or \code{os.environ}.
+
+Note that this is not a fully-fledged string interpolation function. A
+valid \code{\$variable} can consist only of upper and lower case letters,
+numbers and an underscore. No \{ \} or \( \) style quoting is available.
+\end{funcdesc}
+
+\begin{funcdesc}{grok_environment_error}{exc\optional{, prefix=\samp{'error: '}}}
+Generate a useful error message from an \exception{EnvironmentError} 
+(\exception{IOError} or \exception{OSError}) exception object.  
+Handles Python 1.5.1 and later styles, and does what it can to deal with 
+exception objects that don't have a filename (which happens when the error 
+is due to a two-file operation, such as \function{rename()} or 
+\function{link()}).  Returns the error message as a string prefixed 
+with \var{prefix}.
+\end{funcdesc}
+
+\begin{funcdesc}{split_quoted}{s}
+Split a string up according to \UNIX{} shell-like rules for quotes and
+backslashes.  In short: words are delimited by spaces, as long as those
+spaces are not escaped by a backslash, or inside a quoted string.
+Single and double quotes are equivalent, and the quote characters can
+be backslash-escaped.  The backslash is stripped from any two-character
+escape sequence, leaving only the escaped character.  The quote
+characters are stripped from any quoted string.  Returns a list of
+words.
+% Should probably be moved into the standard library.
+\end{funcdesc}
+
+\begin{funcdesc}{execute}{func, args\optional{, msg=\code{None}, verbose=\code{0}, dry_run=\code{0}}}
+Perform some action that affects the outside world (for instance,
+writing to the filesystem).  Such actions are special because they
+are disabled by the \var{dry_run} flag.  This method takes 
+care of all that bureaucracy for you; all you have to do is supply the
+function to call and an argument tuple for it (to embody the
+``external action'' being performed), and an optional message to
+print.
+\end{funcdesc}
+
+\begin{funcdesc}{strtobool}{val}
+Convert a string representation of truth to true (1) or false (0).
+
+True values are \code{y}, \code{yes}, \code{t}, \code{true}, \code{on} 
+and \code{1}; false values are \code{n}, \code{no}, \code{f}, \code{false}, 
+\code{off} and \code{0}.  Raises \exception{ValueError} if \var{val} 
+is anything else.
+\end{funcdesc}
+
+\begin{funcdesc}{byte_compile}{py_files\optional{,
+              optimize=\code{0}, force=\code{0},
+              prefix=\code{None}, base_dir=\code{None},
+              verbose=\code{1}, dry_run=\code{0},
+              direct=\code{None}}}
+Byte-compile a collection of Python source files to either \file{.pyc}
+or \file{.pyo} files in the same directory.  \var{py_files} is a list of files
+to compile; any files that don't end in \file{.py} are silently skipped.
+\var{optimize} must be one of the following:
+\begin{itemize}
+\item \code{0} - don't optimize (generate \file{.pyc})
+\item \code{1} - normal optimization (like \samp{python -O})
+\item \code{2} - extra optimization (like \samp{python -OO})
+\end{itemize}
+
+If \var{force} is true, all files are recompiled regardless of
+timestamps.
+
+The source filename encoded in each bytecode file defaults to the
+filenames listed in \var{py_files}; you can modify these with \var{prefix} and
+\var{basedir}.  \var{prefix} is a string that will be stripped off of each
+source filename, and \var{base_dir} is a directory name that will be
+prepended (after \var{prefix} is stripped).  You can supply either or both
+(or neither) of \var{prefix} and \var{base_dir}, as you wish.
+
+If \var{dry_run} is true, doesn't actually do anything that would
+affect the filesystem.
+
+Byte-compilation is either done directly in this interpreter process
+with the standard \module{py_compile} module, or indirectly by writing a
+temporary script and executing it.  Normally, you should let
+\function{byte_compile()} figure out to use direct compilation or not (see
+the source for details).  The \var{direct} flag is used by the script
+generated in indirect mode; unless you know what you're doing, leave
+it set to \code{None}.
+\end{funcdesc}
+
+\begin{funcdesc}{rfc822_escape}{header}
+Return a version of \var{header} escaped for inclusion in an
+\rfc{822} header, by ensuring there are 8 spaces space after each newline.
+Note that it does no other modification of the string.
+% this _can_ be replaced
+\end{funcdesc}
+
+%\subsection{Distutils objects}
+
+\section{\module{distutils.dist} --- The Distribution class}
+\declaremodule{standard}{distutils.dist}
+\modulesynopsis{Provides the Distribution class, which represents the
+                module distribution being built/installed/distributed}
+
+This module provides the \class{Distribution} class, which represents
+the module distribution being built/installed/distributed.
+
+
+\section{\module{distutils.extension} --- The Extension class}
+\declaremodule{standard}{distutils.extension}
+\modulesynopsis{Provides the Extension class, used to describe
+                C/\Cpp{} extension modules in setup scripts}
+
+This module provides the \class{Extension} class, used to describe
+C/\Cpp{} extension modules in setup scripts.
+
+%\subsection{Ungrouped modules}
+%The following haven't been moved into a more appropriate section yet.
+
+\section{\module{distutils.debug} --- Distutils debug mode}
+\declaremodule{standard}{distutils.debug}
+\modulesynopsis{Provides the debug flag for distutils}
+
+This module provides the DEBUG flag.
+
+\section{\module{distutils.errors} --- Distutils exceptions}
+\declaremodule{standard}{distutils.errors}
+\modulesynopsis{Provides standard distutils exceptions}
+
+Provides exceptions used by the Distutils modules.  Note that Distutils
+modules may raise standard exceptions; in particular, SystemExit is
+usually raised for errors that are obviously the end-user's fault
+(eg. bad command-line arguments).
+
+This module is safe to use in \samp{from ... import *} mode; it only exports
+symbols whose names start with \code{Distutils} and end with \code{Error}.
+
+\section{\module{distutils.fancy_getopt}
+         --- Wrapper around the standard getopt module}
+\declaremodule[distutils.fancygetopt]{standard}{distutils.fancy_getopt}
+\modulesynopsis{Additional \module{getopt} functionality}
+
+This module provides a wrapper around the standard \module{getopt} 
+module that provides the following additional features:
+
+\begin{itemize}
+\item short and long options are tied together
+\item options have help strings, so \function{fancy_getopt} could potentially 
+create a complete usage summary
+\item options set attributes of a passed-in object
+\item boolean options can have ``negative aliases'' --- eg. if
+\longprogramopt{quiet} is the ``negative alias'' of
+\longprogramopt{verbose}, then \longprogramopt{quiet} on the command
+line sets \var{verbose} to false.
+
+\end{itemize}
+
+\XXX{Should be replaced with \module{optik} (which is also now
+known as \module{optparse} in Python 2.3 and later).}
+
+\begin{funcdesc}{fancy_getopt}{options, negative_opt, object, args}
+Wrapper function. \var{options} is a list of
+\samp{(long_option, short_option, help_string)} 3-tuples as described in the
+constructor for \class{FancyGetopt}. \var{negative_opt} should be a dictionary
+mapping option names to option names, both the key and value should be in the
+\var{options} list. \var{object} is an object which will be used to store
+values (see the \method{getopt()} method of the \class{FancyGetopt} class).
+\var{args} is the argument list. Will use \code{sys.argv[1:]} if you 
+pass \code{None} as \var{args}.
+\end{funcdesc}
+
+\begin{funcdesc}{wrap_text}{text, width}
+Wraps \var{text} to less than \var{width} wide.
+
+\warning{Should be replaced with \module{textwrap} (which is available 
+in Python 2.3 and later).}
+\end{funcdesc}
+
+\begin{classdesc}{FancyGetopt}{\optional{option_table=\code{None}}}
+The option_table is a list of 3-tuples: \samp{(long_option,
+short_option, help_string)}
+
+If an option takes an argument, its \var{long_option} should have \code{'='}
+appended; \var{short_option} should just be a single character, no \code{':'}
+in any case. \var{short_option} should be \code{None} if a \var{long_option} 
+doesn't have a corresponding \var{short_option}. All option tuples must have
+long options.
+\end{classdesc}
+
+The \class{FancyGetopt} class provides the following methods:
+
+\begin{methoddesc}{getopt}{\optional{args=\code{None}, object=\code{None}}}
+Parse command-line options in args. Store as attributes on \var{object}.
+
+If \var{args} is \code{None} or not supplied, uses \code{sys.argv[1:]}.  If
+\var{object} is \code{None} or not supplied, creates a new \class{OptionDummy}
+instance, stores option values there, and returns a tuple \samp{(args,
+object)}.  If \var{object} is supplied, it is modified in place and
+\function{getopt()} just returns \var{args}; in both cases, the returned
+\var{args} is a modified copy of the passed-in \var{args} list, which
+is left untouched.
+% and args returned are?
+\end{methoddesc}
+
+\begin{methoddesc}{get_option_order}{}
+Returns the list of \samp{(option, value)} tuples processed by the
+previous run of \method{getopt()}  Raises \exception{RuntimeError} if
+\method{getopt()} hasn't been called yet.
+\end{methoddesc}
+
+\begin{methoddesc}{generate_help}{\optional{header=\code{None}}}
+Generate help text (a list of strings, one per suggested line of
+output) from the option table for this \class{FancyGetopt} object.
+
+If supplied, prints the supplied \var{header} at the top of the help.
+\end{methoddesc}
+
+\section{\module{distutils.filelist} --- The FileList class}
+\declaremodule{standard}{distutils.filelist}
+\modulesynopsis{The \class{FileList} class, used for poking about the
+                file system and building lists of files.}
+
+This module provides the \class{FileList} class, used for poking about
+the filesystem and building lists of files.
+
+
+\section{\module{distutils.log} --- Simple PEP 282-style logging}
+\declaremodule{standard}{distutils.log}
+\modulesynopsis{A simple logging mechanism, \pep{282}-style}
+
+\warning{Should be replaced with standard \module{logging} module.}
+
+%\subsubsection{\module{} --- }
+%\declaremodule{standard}{distutils.magic}
+%\modulesynopsis{ }
+
+
+\section{\module{distutils.spawn} --- Spawn a sub-process}
+\declaremodule{standard}{distutils.spawn}
+\modulesynopsis{Provides the spawn() function}
+
+This module provides the \function{spawn()} function, a front-end to 
+various platform-specific functions for launching another program in a 
+sub-process.
+Also provides \function{find_executable()} to search the path for a given
+executable name.
+
+
+\input{sysconfig}
+
+
+\section{\module{distutils.text_file} --- The TextFile class}
+\declaremodule[distutils.textfile]{standard}{distutils.text_file}
+\modulesynopsis{provides the TextFile class, a simple interface to text files}
+
+This module provides the \class{TextFile} class, which gives an interface 
+to text files that (optionally) takes care of stripping comments, ignoring 
+blank lines, and joining lines with backslashes.
+
+\begin{classdesc}{TextFile}{\optional{filename=\code{None}, file=\code{None}, **options}}
+This class provides a file-like object that takes care of all 
+the things you commonly want to do when processing a text file 
+that has some line-by-line syntax: strip comments (as long as \code{\#} 
+is your comment character), skip blank lines, join adjacent lines by
+escaping the newline (ie. backslash at end of line), strip
+leading and/or trailing whitespace.  All of these are optional
+and independently controllable.
+
+The class provides a \method{warn()} method so you can generate 
+warning messages that report physical line number, even if the 
+logical line in question spans multiple physical lines.  Also 
+provides \method{unreadline()} for implementing line-at-a-time lookahead.
+
+\class{TextFile} instances are create with either \var{filename}, \var{file},
+or both. \exception{RuntimeError} is raised if both are \code{None}.
+\var{filename} should be a string, and \var{file} a file object (or
+something that provides \method{readline()} and \method{close()} 
+methods).  It is recommended that you supply at least \var{filename}, 
+so that \class{TextFile} can include it in warning messages.  If 
+\var{file} is not supplied, \class{TextFile} creates its own using the 
+\function{open()} built-in function.
+
+The options are all boolean, and affect the values returned by
+\method{readline()}
+
+\begin{tableiii}{c|l|l}{option name}{option name}{description}{default}
+\lineiii{strip_comments}{
+strip from \character{\#} to end-of-line, as well as any whitespace
+leading up to the \character{\#}---unless it is escaped by a backslash}
+{true}
+\lineiii{lstrip_ws}{
+strip leading whitespace from each line before returning it}
+{false}
+\lineiii{rstrip_ws}{
+strip trailing whitespace (including line terminator!) from
+each line before returning it.}
+{true}
+\lineiii{skip_blanks}{
+skip lines that are empty *after* stripping comments and
+whitespace.  (If both lstrip_ws and rstrip_ws are false,
+then some lines may consist of solely whitespace: these will
+*not* be skipped, even if \var{skip_blanks} is true.)}
+{true}
+\lineiii{join_lines}{
+if a backslash is the last non-newline character on a line
+after stripping comments and whitespace, join the following line
+to it to form one logical line; if N consecutive lines end
+with a backslash, then N+1 physical lines will be joined to
+form one logical line.}
+{false}
+\lineiii{collapse_join}{
+strip leading whitespace from lines that are joined to their
+predecessor; only matters if \samp{(join_lines and not lstrip_ws)}}
+{false}
+\end{tableiii}
+
+Note that since \var{rstrip_ws} can strip the trailing newline, the
+semantics of \method{readline()} must differ from those of the builtin file
+object's \method{readline()} method!  In particular, \method{readline()} 
+returns \code{None} for end-of-file: an empty string might just be a 
+blank line (or an all-whitespace line), if \var{rstrip_ws} is true 
+but \var{skip_blanks} is not.
+
+\begin{methoddesc}{open}{filename}
+Open a new file \var{filename}. This overrides any \var{file} or 
+\var{filename} constructor arguments.
+\end{methoddesc}
+
+\begin{methoddesc}{close}{}
+Close the current file and forget everything we know about it (including
+the filename and the current line number).
+\end{methoddesc}
+
+\begin{methoddesc}{warn}{msg\optional{,line=\code{None}}}
+Print (to stderr) a warning message tied to the current logical
+line in the current file.  If the current logical line in the
+file spans multiple physical lines, the warning refers to the
+whole range, such as \samp{"lines 3-5"}.  If \var{line} is supplied, 
+it overrides the current line number; it may be a list or tuple 
+to indicate a range of physical lines, or an integer for a 
+single physical line.
+\end{methoddesc}
+
+\begin{methoddesc}{readline}{}
+Read and return a single logical line from the current file (or
+from an internal buffer if lines have previously been ``unread''
+with \method{unreadline()}).  If the \var{join_lines} option 
+is true, this may involve reading multiple physical lines 
+concatenated into a single string.  Updates the current line number, 
+so calling \method{warn()} after \method{readline()} emits a warning 
+about the physical line(s) just read.  Returns \code{None} on end-of-file, 
+since the empty string can occur if \var{rstrip_ws} is true but 
+\var{strip_blanks} is not.
+\end{methoddesc}
+\begin{methoddesc}{readlines}{}
+Read and return the list of all logical lines remaining in the current file.
+This updates the current line number to the last line of the file.
+\end{methoddesc}
+\begin{methoddesc}{unreadline}{line}
+Push \var{line} (a string) onto an internal buffer that will be
+checked by future \method{readline()} calls.  Handy for implementing
+a parser with line-at-a-time lookahead. Note that lines that are ``unread''
+with \method{unreadline} are not subsequently re-cleansed (whitespace 
+stripped, or whatever) when read with \method{readline}. If multiple
+calls are made to \method{unreadline} before a call to \method{readline},
+the lines will be returned most in most recent first order.
+\end{methoddesc}
+
+\end{classdesc}
+
+
+\section{\module{distutils.version} --- Version number classes}
+\declaremodule{standard}{distutils.version}
+\modulesynopsis{implements classes that represent module version numbers. }
+
+% todo
+
+%\section{Distutils Commands}
+%
+%This part of Distutils implements the various Distutils commands, such
+%as \code{build}, \code{install} \&c. Each command is implemented as a
+%separate module, with the command name as the name of the module.
+
+\section{\module{distutils.cmd} --- Abstract base class for Distutils commands}
+\declaremodule{standard}{distutils.cmd}
+\modulesynopsis{This module provides the abstract base class Command. This
+class is subclassed by the modules in the \refmodule{distutils.command} 
+subpackage. }
+
+This module supplies the abstract base class \class{Command}. 
+
+\begin{classdesc}{Command}{dist}
+Abstract base class for defining command classes, the ``worker bees''
+of the Distutils.  A useful analogy for command classes is to think of
+them as subroutines with local variables called \var{options}.  The
+options are declared in \method{initialize_options()} and defined
+(given their final values) in \method{finalize_options()}, both of
+which must be defined by every command class.  The distinction between
+the two is necessary because option values might come from the outside
+world (command line, config file, ...), and any options dependent on
+other options must be computed after these outside influences have
+been processed --- hence \method{finalize_options()}.  The body of the
+subroutine, where it does all its work based on the values of its
+options, is the \method{run()} method, which must also be implemented
+by every command class.
+
+The class constructor takes a single argument \var{dist}, a 
+\class{Distribution} instance. 
+\end{classdesc}
+
+
+\section{\module{distutils.command} --- Individual Distutils commands}
+\declaremodule{standard}{distutils.command}
+\modulesynopsis{This subpackage contains one module for each standard Distutils command.}
+
+%\subsubsection{Individual Distutils commands}
+
+% todo
+
+\section{\module{distutils.command.bdist} --- Build a binary installer}
+\declaremodule{standard}{distutils.command.bdist}
+\modulesynopsis{Build a binary installer for a package}
+
+% todo
+
+\section{\module{distutils.command.bdist_packager} --- Abstract base class for packagers}
+\declaremodule[distutils.command.bdistpackager]{standard}{distutils.command.bdist_packager}
+\modulesynopsis{Abstract base class for packagers}
+
+% todo
+
+\section{\module{distutils.command.bdist_dumb} --- Build a ``dumb'' installer}
+\declaremodule[distutils.command.bdistdumb]{standard}{distutils.command.bdist_dumb}
+\modulesynopsis{Build a ``dumb'' installer - a simple archive of files}
+
+% todo
+
+\section{\module{distutils.command.bdist_msi} --- Build a Microsoft Installer binary package}
+\declaremodule[distutils.command.bdistmsi]{standard}{distutils.command.bdist_msi}
+\modulesynopsis{Build a binary distribution as a Windows MSI file}
+
+% todo
+
+\section{\module{distutils.command.bdist_rpm} --- Build a binary distribution as a Redhat RPM and SRPM}
+\declaremodule[distutils.command.bdistrpm]{standard}{distutils.command.bdist_rpm}
+\modulesynopsis{Build a binary distribution as a Redhat RPM and SRPM}
+
+% todo
+
+\section{\module{distutils.command.bdist_wininst} --- Build a Windows installer}
+\declaremodule[distutils.command.bdistwininst]{standard}{distutils.command.bdist_wininst}
+\modulesynopsis{Build a Windows installer}
+
+% todo
+
+\section{\module{distutils.command.sdist} --- Build a source distribution}
+\declaremodule{standard}{distutils.command.sdist}
+\modulesynopsis{Build a source distribution}
+
+% todo
+
+\section{\module{distutils.command.build} --- Build all files of a package}
+\declaremodule{standard}{distutils.command.build}
+\modulesynopsis{Build all files of a package}
+
+% todo
+
+\section{\module{distutils.command.build_clib} --- Build any C libraries in a package}
+\declaremodule[distutils.command.buildclib]{standard}{distutils.command.build_clib}
+\modulesynopsis{Build any C libraries in a package}
+
+% todo
+
+\section{\module{distutils.command.build_ext} --- Build any extensions in a package}
+\declaremodule[distutils.command.buildext]{standard}{distutils.command.build_ext}
+\modulesynopsis{Build any extensions in a package}
+
+% todo
+
+\section{\module{distutils.command.build_py} --- Build the .py/.pyc files of a package}
+\declaremodule[distutils.command.buildpy]{standard}{distutils.command.build_py}
+\modulesynopsis{Build the .py/.pyc files of a package}
+
+% todo
+
+\section{\module{distutils.command.build_scripts} --- Build the scripts of a package}
+\declaremodule[distutils.command.buildscripts]{standard}{distutils.command.build_scripts}
+\modulesynopsis{Build the scripts of a package}
+
+% todo
+
+\section{\module{distutils.command.clean} --- Clean a package build area}
+\declaremodule{standard}{distutils.command.clean}
+\modulesynopsis{Clean a package build area}
+
+% todo
+
+\section{\module{distutils.command.config} --- Perform package configuration}
+\declaremodule{standard}{distutils.command.config}
+\modulesynopsis{Perform package configuration}
+
+% todo
+
+\section{\module{distutils.command.install} --- Install a package}
+\declaremodule{standard}{distutils.command.install}
+\modulesynopsis{Install a package}
+
+% todo
+
+\section{\module{distutils.command.install_data}
+               --- Install data files from a package}
+\declaremodule[distutils.command.installdata]{standard}{distutils.command.install_data}
+\modulesynopsis{Install data files from a package}
+
+% todo
+
+\section{\module{distutils.command.install_headers}
+               --- Install C/\Cpp{} header files from a package}
+\declaremodule[distutils.command.installheaders]{standard}{distutils.command.install_headers}
+\modulesynopsis{Install C/\Cpp{} header files from a package}
+
+% todo
+
+\section{\module{distutils.command.install_lib}
+               --- Install library files from a package}
+\declaremodule[distutils.command.installlib]{standard}{distutils.command.install_lib}
+\modulesynopsis{Install library files from a package}
+
+% todo
+
+\section{\module{distutils.command.install_scripts}
+               --- Install script files from a package}
+\declaremodule[distutils.command.installscripts]{standard}{distutils.command.install_scripts}
+\modulesynopsis{Install script files from a package}
+
+% todo
+
+\section{\module{distutils.command.register}
+               --- Register a module with the Python Package Index}
+\declaremodule{standard}{distutils.command.register}
+\modulesynopsis{Register a module with the Python Package Index}
+
+The \code{register} command registers the package with the Python Package 
+Index.  This is described in more detail in \pep{301}.
+% todo
+
+\section{Creating a new Distutils command}
+
+This section outlines the steps to create a new Distutils command.
+
+A new command lives in a module in the \module{distutils.command}
+package. There is a sample template in that directory called 
+\file{command_template}. Copy this file to a new module with the
+same name as the new command you're implementing. This module should
+implement a class with the same name as the module (and the command).
+So, for instance, to create the command \code{peel_banana} (so that users
+can run \samp{setup.py peel_banana}), you'd copy \file{command_template} 
+to \file{distutils/command/peel_banana.py}, then edit it so that it's
+implementing the class \class{peel_banana}, a subclass of 
+\class{distutils.cmd.Command}.
+
+Subclasses of \class{Command} must define the following methods.
+
+\begin{methoddesc}{initialize_options()}
+Set default values for all the options that this command
+supports.  Note that these defaults may be overridden by other
+commands, by the setup script, by config files, or by the
+command-line.  Thus, this is not the place to code dependencies
+between options; generally, \method{initialize_options()} implementations
+are just a bunch of \samp{self.foo = None} assignments.
+\end{methoddesc}
+
+\begin{methoddesc}{finalize_options}{}
+Set final values for all the options that this command supports.
+This is always called as late as possible, ie.  after any option
+assignments from the command-line or from other commands have been
+done.  Thus, this is the place to to code option dependencies: if
+\var{foo} depends on \var{bar}, then it is safe to set \var{foo} from 
+\var{bar} as long as \var{foo} still has the same value it was assigned in
+\method{initialize_options()}.
+\end{methoddesc}
+\begin{methoddesc}{run}{}
+A command's raison d'etre: carry out the action it exists to
+perform, controlled by the options initialized in
+\method{initialize_options()}, customized by other commands, the setup
+script, the command-line, and config files, and finalized in
+\method{finalize_options()}.  All terminal output and filesystem
+interaction should be done by \method{run()}.
+\end{methoddesc}
+
+\var{sub_commands} formalizes the notion of a ``family'' of commands,
+eg. \code{install} as the parent with sub-commands \code{install_lib},
+\code{install_headers}, etc.  The parent of a family of commands
+defines \var{sub_commands} as a class attribute; it's a list of
+2-tuples \samp{(command_name, predicate)}, with \var{command_name} a string
+and \var{predicate} an unbound method, a string or None.
+\var{predicate} is a method of the parent command that
+determines whether the corresponding command is applicable in the
+current situation.  (Eg. we \code{install_headers} is only applicable if
+we have any C header files to install.)  If \var{predicate} is None,
+that command is always applicable.
+
+\var{sub_commands} is usually defined at the *end* of a class, because
+predicates can be unbound methods, so they must already have been
+defined.  The canonical example is the \command{install} command.
+
+%
+%  The ugly "%begin{latexonly}" pseudo-environments are really just to
+%  keep LaTeX2HTML quiet during the \renewcommand{} macros; they're
+%  not really valuable.
+%
+
+%begin{latexonly}
+\renewcommand{\indexname}{Module Index}
+%end{latexonly}
+\input{moddist.ind}             % Module Index
+
+%begin{latexonly}
+\renewcommand{\indexname}{Index}
+%end{latexonly}
+\input{dist.ind}                % Index
+
+\end{document}

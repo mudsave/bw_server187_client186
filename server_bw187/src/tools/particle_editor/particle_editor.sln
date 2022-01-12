@@ -1,0 +1,289 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "particle_editor", "particle_editor.vcproj", "{78463365-CA1C-41F4-A8C8-2A683E45E594}"
+	ProjectSection(ProjectDependencies) = postProject
+		{765E9E13-190B-42EB-BDD5-360B2CC86705} = {765E9E13-190B-42EB-BDD5-360B2CC86705}
+		{8FE5D624-AA77-4093-8CC3-EDF17EE7CA35} = {8FE5D624-AA77-4093-8CC3-EDF17EE7CA35}
+		{4A646B37-BFC1-479E-8D12-1C240EC01665} = {4A646B37-BFC1-479E-8D12-1C240EC01665}
+		{DE5D8540-BC04-4753-BBEC-193A53B56286} = {DE5D8540-BC04-4753-BBEC-193A53B56286}
+		{6D82B340-9438-491F-B3A2-9E2DF61A0395} = {6D82B340-9438-491F-B3A2-9E2DF61A0395}
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81} = {4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}
+		{1ABB1158-909C-4AD4-9F81-CB38BBA5D950} = {1ABB1158-909C-4AD4-9F81-CB38BBA5D950}
+		{B709F95B-6064-4DF7-8F18-220A89E92152} = {B709F95B-6064-4DF7-8F18-220A89E92152}
+		{6C51CE5E-7BBC-4245-8EFB-84601F19C4CA} = {6C51CE5E-7BBC-4245-8EFB-84601F19C4CA}
+		{2E452B69-2ED0-406F-9A59-2A68572D6944} = {2E452B69-2ED0-406F-9A59-2A68572D6944}
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7} = {879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}
+		{5320F18A-0562-4EC2-941E-B7EF4D44F82F} = {5320F18A-0562-4EC2-941E-B7EF4D44F82F}
+		{89B5908E-20F2-4367-9E19-C66EEB0F374F} = {89B5908E-20F2-4367-9E19-C66EEB0F374F}
+		{5DC4CC9A-3052-4076-A8D4-FE229C1AC141} = {5DC4CC9A-3052-4076-A8D4-FE229C1AC141}
+		{1B65A8A1-9FC1-4EB2-83F1-D628E71247FC} = {1B65A8A1-9FC1-4EB2-83F1-D628E71247FC}
+		{452C08A8-4B8E-4275-9207-81840EA8148E} = {452C08A8-4B8E-4275-9207-81840EA8148E}
+		{46E8EFB4-82E6-40FD-9122-32F7FB668C5C} = {46E8EFB4-82E6-40FD-9122-32F7FB668C5C}
+		{266972B7-B248-45C8-8DE2-2700C829D8EA} = {266972B7-B248-45C8-8DE2-2700C829D8EA}
+		{1EACFFC5-F189-412D-8828-76D6130888F7} = {1EACFFC5-F189-412D-8828-76D6130888F7}
+		{AC6BB7EB-030C-4A5D-A29D-973E9296268E} = {AC6BB7EB-030C-4A5D-A29D-973E9296268E}
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD} = {A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}
+		{91A63DF7-5637-48F7-9CCB-771EFE137D89} = {91A63DF7-5637-48F7-9CCB-771EFE137D89}
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9} = {EED0A6F9-5761-42B2-B508-DB3D1C3081A9}
+		{8717EFFB-383E-47BC-8D0B-7EE81F757EB1} = {8717EFFB-383E-47BC-8D0B-7EE81F757EB1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "appmgr", "..\..\lib\appmgr\appmgr.vcproj", "{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81} = {4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ashes", "..\..\lib\ashes\ashes.vcproj", "{2E452B69-2ED0-406F-9A59-2A68572D6944}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "editor_chunk", "..\..\lib\chunk\editor_chunk.vcproj", "{B709F95B-6064-4DF7-8F18-220A89E92152}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cstdmf", "..\..\lib\cstdmf\cstdmf.vcproj", "{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "input", "..\..\lib\input\input.vcproj", "{AC6BB7EB-030C-4A5D-A29D-973E9296268E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "math3D", "..\..\lib\math\math3d.vcproj", "{5DC4CC9A-3052-4076-A8D4-FE229C1AC141}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "moo", "..\..\lib\moo\moo.vcproj", "{8FE5D624-AA77-4093-8CC3-EDF17EE7CA35}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "physics2", "..\..\lib\physics2\physics2.vcproj", "{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pyscript", "..\..\lib\pyscript\pyscript.vcproj", "{1EACFFC5-F189-412D-8828-76D6130888F7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resmgr", "..\..\lib\resmgr\resmgr.vcproj", "{5320F18A-0562-4EC2-941E-B7EF4D44F82F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "romp", "..\..\lib\romp\romp.vcproj", "{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zip", "..\..\lib\zip\zip.vcproj", "{1ABB1158-909C-4AD4-9F81-CB38BBA5D950}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "network", "..\..\lib\network\network.vcproj", "{452C08A8-4B8E-4275-9207-81840EA8148E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "duplo", "..\..\lib\duplo\duplo.vcproj", "{6C51CE5E-7BBC-4245-8EFB-84601F19C4CA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gizmo", "..\..\lib\gizmo\gizmo.vcproj", "{89B5908E-20F2-4367-9E19-C66EEB0F374F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pythoncore", "..\..\lib\python\PCbuild\pythoncore.vcproj", "{4A646B37-BFC1-479E-8D12-1C240EC01665}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "speedtree", "..\..\lib\speedtree\speedtree.vcproj", "{DE5D8540-BC04-4753-BBEC-193A53B56286}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "guimanager", "..\..\lib\guimanager\guimanager.vcproj", "{266972B7-B248-45C8-8DE2-2700C829D8EA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "guitabs", "..\..\lib\guitabs\guitabs.vcproj", "{6D82B340-9438-491F-B3A2-9E2DF61A0395}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ual", "..\..\lib\ual\ual.vcproj", "{765E9E13-190B-42EB-BDD5-360B2CC86705}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "controls", "..\..\lib\controls\controls.vcproj", "{91A63DF7-5637-48F7-9CCB-771EFE137D89}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fmodsound", "..\..\lib\fmodsound\fmodsound.vcproj", "{1B65A8A1-9FC1-4EB2-83F1-D628E71247FC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "geh", "..\..\lib\geh\geh.vcproj", "{46E8EFB4-82E6-40FD-9122-32F7FB668C5C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "particle", "..\..\lib\particle\particle.vcproj", "{8717EFFB-383E-47BC-8D0B-7EE81F757EB1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Editor_Debug = Editor_Debug
+		Editor_Eval = Editor_Eval
+		Editor_Hybrid = Editor_Hybrid
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{78463365-CA1C-41F4-A8C8-2A683E45E594}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{78463365-CA1C-41F4-A8C8-2A683E45E594}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{78463365-CA1C-41F4-A8C8-2A683E45E594}.Editor_Eval.ActiveCfg = Editor_Eval|Win32
+		{78463365-CA1C-41F4-A8C8-2A683E45E594}.Editor_Eval.Build.0 = Editor_Eval|Win32
+		{78463365-CA1C-41F4-A8C8-2A683E45E594}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{78463365-CA1C-41F4-A8C8-2A683E45E594}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{2E452B69-2ED0-406F-9A59-2A68572D6944}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{2E452B69-2ED0-406F-9A59-2A68572D6944}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{2E452B69-2ED0-406F-9A59-2A68572D6944}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{2E452B69-2ED0-406F-9A59-2A68572D6944}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{2E452B69-2ED0-406F-9A59-2A68572D6944}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{2E452B69-2ED0-406F-9A59-2A68572D6944}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{B709F95B-6064-4DF7-8F18-220A89E92152}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{B709F95B-6064-4DF7-8F18-220A89E92152}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{B709F95B-6064-4DF7-8F18-220A89E92152}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{B709F95B-6064-4DF7-8F18-220A89E92152}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{B709F95B-6064-4DF7-8F18-220A89E92152}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{B709F95B-6064-4DF7-8F18-220A89E92152}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{4642B64B-ABF7-4FAB-903E-EB1E7CBF8A81}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{AC6BB7EB-030C-4A5D-A29D-973E9296268E}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{AC6BB7EB-030C-4A5D-A29D-973E9296268E}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{AC6BB7EB-030C-4A5D-A29D-973E9296268E}.Editor_Eval.ActiveCfg = Eval_Release|Win32
+		{AC6BB7EB-030C-4A5D-A29D-973E9296268E}.Editor_Eval.Build.0 = Eval_Release|Win32
+		{AC6BB7EB-030C-4A5D-A29D-973E9296268E}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{AC6BB7EB-030C-4A5D-A29D-973E9296268E}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{5DC4CC9A-3052-4076-A8D4-FE229C1AC141}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{5DC4CC9A-3052-4076-A8D4-FE229C1AC141}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{5DC4CC9A-3052-4076-A8D4-FE229C1AC141}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{5DC4CC9A-3052-4076-A8D4-FE229C1AC141}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{5DC4CC9A-3052-4076-A8D4-FE229C1AC141}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{5DC4CC9A-3052-4076-A8D4-FE229C1AC141}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{8FE5D624-AA77-4093-8CC3-EDF17EE7CA35}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{8FE5D624-AA77-4093-8CC3-EDF17EE7CA35}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{8FE5D624-AA77-4093-8CC3-EDF17EE7CA35}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{8FE5D624-AA77-4093-8CC3-EDF17EE7CA35}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{8FE5D624-AA77-4093-8CC3-EDF17EE7CA35}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{8FE5D624-AA77-4093-8CC3-EDF17EE7CA35}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{A21801EE-C2C0-4AE9-A9D1-72257F08D5BD}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{1EACFFC5-F189-412D-8828-76D6130888F7}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{1EACFFC5-F189-412D-8828-76D6130888F7}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{1EACFFC5-F189-412D-8828-76D6130888F7}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{1EACFFC5-F189-412D-8828-76D6130888F7}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{1EACFFC5-F189-412D-8828-76D6130888F7}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{1EACFFC5-F189-412D-8828-76D6130888F7}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{5320F18A-0562-4EC2-941E-B7EF4D44F82F}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{5320F18A-0562-4EC2-941E-B7EF4D44F82F}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{5320F18A-0562-4EC2-941E-B7EF4D44F82F}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{5320F18A-0562-4EC2-941E-B7EF4D44F82F}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{5320F18A-0562-4EC2-941E-B7EF4D44F82F}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{5320F18A-0562-4EC2-941E-B7EF4D44F82F}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{1ABB1158-909C-4AD4-9F81-CB38BBA5D950}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{1ABB1158-909C-4AD4-9F81-CB38BBA5D950}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{1ABB1158-909C-4AD4-9F81-CB38BBA5D950}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{1ABB1158-909C-4AD4-9F81-CB38BBA5D950}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{1ABB1158-909C-4AD4-9F81-CB38BBA5D950}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{1ABB1158-909C-4AD4-9F81-CB38BBA5D950}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{452C08A8-4B8E-4275-9207-81840EA8148E}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{452C08A8-4B8E-4275-9207-81840EA8148E}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{452C08A8-4B8E-4275-9207-81840EA8148E}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{452C08A8-4B8E-4275-9207-81840EA8148E}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{452C08A8-4B8E-4275-9207-81840EA8148E}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{452C08A8-4B8E-4275-9207-81840EA8148E}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{6C51CE5E-7BBC-4245-8EFB-84601F19C4CA}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{6C51CE5E-7BBC-4245-8EFB-84601F19C4CA}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{6C51CE5E-7BBC-4245-8EFB-84601F19C4CA}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{6C51CE5E-7BBC-4245-8EFB-84601F19C4CA}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{6C51CE5E-7BBC-4245-8EFB-84601F19C4CA}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{6C51CE5E-7BBC-4245-8EFB-84601F19C4CA}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{89B5908E-20F2-4367-9E19-C66EEB0F374F}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{89B5908E-20F2-4367-9E19-C66EEB0F374F}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{89B5908E-20F2-4367-9E19-C66EEB0F374F}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{89B5908E-20F2-4367-9E19-C66EEB0F374F}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{89B5908E-20F2-4367-9E19-C66EEB0F374F}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{89B5908E-20F2-4367-9E19-C66EEB0F374F}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{4A646B37-BFC1-479E-8D12-1C240EC01665}.Editor_Debug.ActiveCfg = Debug|Win32
+		{4A646B37-BFC1-479E-8D12-1C240EC01665}.Editor_Debug.Build.0 = Debug|Win32
+		{4A646B37-BFC1-479E-8D12-1C240EC01665}.Editor_Eval.ActiveCfg = Release|Win32
+		{4A646B37-BFC1-479E-8D12-1C240EC01665}.Editor_Eval.Build.0 = Release|Win32
+		{4A646B37-BFC1-479E-8D12-1C240EC01665}.Editor_Hybrid.ActiveCfg = Release|Win32
+		{4A646B37-BFC1-479E-8D12-1C240EC01665}.Editor_Hybrid.Build.0 = Release|Win32
+		{DE5D8540-BC04-4753-BBEC-193A53B56286}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{DE5D8540-BC04-4753-BBEC-193A53B56286}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{DE5D8540-BC04-4753-BBEC-193A53B56286}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{DE5D8540-BC04-4753-BBEC-193A53B56286}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{DE5D8540-BC04-4753-BBEC-193A53B56286}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{DE5D8540-BC04-4753-BBEC-193A53B56286}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{266972B7-B248-45C8-8DE2-2700C829D8EA}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{266972B7-B248-45C8-8DE2-2700C829D8EA}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{266972B7-B248-45C8-8DE2-2700C829D8EA}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{266972B7-B248-45C8-8DE2-2700C829D8EA}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{266972B7-B248-45C8-8DE2-2700C829D8EA}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{266972B7-B248-45C8-8DE2-2700C829D8EA}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{6D82B340-9438-491F-B3A2-9E2DF61A0395}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{6D82B340-9438-491F-B3A2-9E2DF61A0395}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{6D82B340-9438-491F-B3A2-9E2DF61A0395}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{6D82B340-9438-491F-B3A2-9E2DF61A0395}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{6D82B340-9438-491F-B3A2-9E2DF61A0395}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{6D82B340-9438-491F-B3A2-9E2DF61A0395}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{765E9E13-190B-42EB-BDD5-360B2CC86705}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{765E9E13-190B-42EB-BDD5-360B2CC86705}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{765E9E13-190B-42EB-BDD5-360B2CC86705}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{765E9E13-190B-42EB-BDD5-360B2CC86705}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{765E9E13-190B-42EB-BDD5-360B2CC86705}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{765E9E13-190B-42EB-BDD5-360B2CC86705}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{91A63DF7-5637-48F7-9CCB-771EFE137D89}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{91A63DF7-5637-48F7-9CCB-771EFE137D89}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{91A63DF7-5637-48F7-9CCB-771EFE137D89}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{91A63DF7-5637-48F7-9CCB-771EFE137D89}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{91A63DF7-5637-48F7-9CCB-771EFE137D89}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{91A63DF7-5637-48F7-9CCB-771EFE137D89}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+		{1B65A8A1-9FC1-4EB2-83F1-D628E71247FC}.Editor_Debug.ActiveCfg = Debug|Win32
+		{1B65A8A1-9FC1-4EB2-83F1-D628E71247FC}.Editor_Debug.Build.0 = Debug|Win32
+		{1B65A8A1-9FC1-4EB2-83F1-D628E71247FC}.Editor_Eval.ActiveCfg = Release|Win32
+		{1B65A8A1-9FC1-4EB2-83F1-D628E71247FC}.Editor_Eval.Build.0 = Release|Win32
+		{1B65A8A1-9FC1-4EB2-83F1-D628E71247FC}.Editor_Hybrid.ActiveCfg = Release|Win32
+		{1B65A8A1-9FC1-4EB2-83F1-D628E71247FC}.Editor_Hybrid.Build.0 = Release|Win32
+		{46E8EFB4-82E6-40FD-9122-32F7FB668C5C}.Editor_Debug.ActiveCfg = Debug|Win32
+		{46E8EFB4-82E6-40FD-9122-32F7FB668C5C}.Editor_Debug.Build.0 = Debug|Win32
+		{46E8EFB4-82E6-40FD-9122-32F7FB668C5C}.Editor_Eval.ActiveCfg = Release|Win32
+		{46E8EFB4-82E6-40FD-9122-32F7FB668C5C}.Editor_Eval.Build.0 = Release|Win32
+		{46E8EFB4-82E6-40FD-9122-32F7FB668C5C}.Editor_Hybrid.ActiveCfg = Release|Win32
+		{46E8EFB4-82E6-40FD-9122-32F7FB668C5C}.Editor_Hybrid.Build.0 = Release|Win32
+		{8717EFFB-383E-47BC-8D0B-7EE81F757EB1}.Editor_Debug.ActiveCfg = Editor_Debug|Win32
+		{8717EFFB-383E-47BC-8D0B-7EE81F757EB1}.Editor_Debug.Build.0 = Editor_Debug|Win32
+		{8717EFFB-383E-47BC-8D0B-7EE81F757EB1}.Editor_Eval.ActiveCfg = Editor_Hybrid|Win32
+		{8717EFFB-383E-47BC-8D0B-7EE81F757EB1}.Editor_Eval.Build.0 = Editor_Hybrid|Win32
+		{8717EFFB-383E-47BC-8D0B-7EE81F757EB1}.Editor_Hybrid.ActiveCfg = Editor_Hybrid|Win32
+		{8717EFFB-383E-47BC-8D0B-7EE81F757EB1}.Editor_Hybrid.Build.0 = Editor_Hybrid|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

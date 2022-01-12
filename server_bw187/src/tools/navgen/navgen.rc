@@ -1,0 +1,352 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "Open &Space...",              ID_FILE_OPENSPACE
+        MENUITEM "&Open...",                    ID_FILE_OPEN1
+        MENUITEM SEPARATOR
+        MENUITEM "Remove All NavGen Data...",   40013
+        MENUITEM SEPARATOR
+        MENUITEM "Generate All",                ID_FILE_GENERATE_ALL
+        MENUITEM "Generate All Overwrite...",   ID_FILE_GENERATE_ALL_OVERWRITE
+        MENUITEM "Cluster Generate...",         ID_FILE_CLUSTERGENERATE
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_FILE_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Adjacencies",                ID_VIEW_ADJACENCIES
+        MENUITEM "BSP &Nodes",                  ID_VIEW_BSPNODES
+        MENUITEM "&Polygon Area",               ID_VIEW_POLYGONAREA, CHECKED
+        MENUITEM "Polygon &Borders",            ID_VIEW_POLYGONBORDERS, CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "&Statistics...",              ID_VIEW_STATISTICS
+        MENUITEM "Navpoly &Info...",            ID_VIEW_WAYPOINTINFO
+        MENUITEM "&Rendered Scene...",          ID_VIEW_RENDEREDSCENE
+        MENUITEM "&Error Log...",               ID_VIEW_ERRORLOG
+    END
+    POPUP "&Zoom"
+    BEGIN
+        MENUITEM "Zoom &In On NavMesh (+)",     ID_ZOOM_IN
+        MENUITEM "Zoom &Out On NavMesh (-)",    ID_ZOOM_OUT
+    END
+    POPUP "Chunk"
+    BEGIN
+        MENUITEM "Display (Enter)",             ID_CHUNK_DISPLAY
+        MENUITEM "Generate (!)",                ID_CHUNK_GENERATE
+        MENUITEM "Generate Shrunk (@)",         ID_CHUNK_GENERATE_SHRUNK
+        MENUITEM "Reannotate (*)",              ID_CHUNK_REANNOTATE
+    END
+    POPUP "Help"
+    BEGIN
+        MENUITEM "Chunk Generation Colours...\tF1", ID_HELP_HELP
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_WAYPOINT_INFO DIALOGEX 0, 0, 371, 190
+STYLE DS_SETFONT | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Navpoly Info"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    LTEXT           "Navpoly ID:",IDC_STATIC,5,6,38,8
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | WS_BORDER | WS_TABSTOP,5,20,359,165
+    LTEXT           "",IDC_WAYPOINT_ID,54,6,27,8
+    LTEXT           "Height:",IDC_STATIC,105,7,24,8
+    LTEXT           "",IDC_WAYPOINT_HEIGHT,138,7,226,8
+END
+
+IDD_MESSAGEDIALOG DIALOGEX 0, 0, 488, 174
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Error Log"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LISTBOX         IDC_MESSAGELIST,7,7,474,160,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_CLUSTERGENDIALOG DIALOGEX 0, 0, 271, 131
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Cluster Generate"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Start",IDOK,161,110,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,215,110,50,14
+    LTEXT           "Total Number of Computers:",IDC_STATIC,7,14,93,8
+    LTEXT           "My Index:",IDC_STATIC,8,29,33,8
+    COMBOBOX        IDC_MYINDEX,116,27,48,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_TOTALCOMPUTER,116,11,48,80,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Note: there is no specific coordination between the machines, Nav Gen will just process a separate portion of the world on each machine based on its index number.",IDC_STATIC,7,81,257,26
+    LTEXT           "Cluster Generate is used to generate navigation mesh data in parallel. Start Nav Gen running on all available machines, and select ""Cluster Generate"". Make sure the Total field is the same on each machine, and set a unique Index on each machine.",IDC_STATIC,7,46,257,33
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_WAYPOINT_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 364
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 183
+    END
+
+    IDD_MESSAGEDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 481
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 167
+    END
+
+    IDD_CLUSTERGENDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 264
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 124
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_APPICON             ICON                    "navgen.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,8,7,0
+ PRODUCTVERSION 1,8,7,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Part of the BigWorld Technology Suite"
+            VALUE "CompanyName", "BigWorld Pty. Ltd"
+            VALUE "FileDescription", "BigWorld Navigation Mesh Generator"
+            VALUE "FileVersion", "1,8,7,0"
+            VALUE "InternalName", "NavGen"
+            VALUE "LegalCopyright", "(c) 2000 - 2009, BigWorld Pty. Ltd. All Rights Reserved"
+            VALUE "OriginalFilename", "navgen.exe"
+            VALUE "ProductName", "NavGen"
+            VALUE "ProductVersion", "1,8,7,0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Australia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_STATISTICS DIALOGEX 0, 0, 142, 121
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Statistics"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,45,100,50,14
+    LTEXT           "BSP Nodes:",IDC_STATIC,5,5,65,8
+    LTEXT           "Navigation Polygons:",IDC_STATIC,5,20,68,8
+    LTEXT           "Navpoly Vertices:",IDC_STATIC,5,35,65,8
+    LTEXT           "Static",IDC_BSP_NODES,85,5,50,8
+    LTEXT           "Static",IDC_WAYPOINT_POLYGONS,85,20,50,8
+    LTEXT           "Static",IDC_WAYPOINT_VERTICES,85,35,50,8
+    LTEXT           "Binary File Size:",IDC_STATIC,5,65,60,8
+    LTEXT           "Static",IDC_BINARY_FILE_SIZE,85,65,50,8
+    LTEXT           "Navpoly Adjacencies:",IDC_STATIC,5,50,75,8
+    LTEXT           "Static",IDC_WAYPOINT_ADJACENCIES,85,50,50,8
+END
+
+IDD_MODELESS_INFO DIALOGEX 0, 0, 186, 90
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Info"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,67,69,50,14
+    LTEXT           "Static",IDC_INFO_MSG,7,7,172,59
+END
+
+IDD_HELP DIALOGEX 0, 0, 323, 121
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Chunk Generation Colours"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,266,101,50,14
+    LTEXT           "While generating the NavMesh the progress bar is drawn inside each chunk.  The colours are used to show status:",IDC_STATIC,14,12,299,20
+    LTEXT           "White box:\tLoaded chunk",IDC_STATIC,21,34,106,10
+    LTEXT           "Cyan:\t\tWaiting for neighbouring chunks to be loaded",IDC_STATIC,21,44,204,8
+    LTEXT           "Blue/Yellow:\tCurrently generating chunk",IDC_STATIC,21,54,169,8
+    LTEXT           "Grey:\t\tSkipped chunk (to be calculated by other computer during cluster\r\n\t\tgenerate)",IDC_STATIC,21,65,264,17
+    LTEXT           "Orange:\tSkipped chunk (no changes since last run)",IDC_STATIC,21,83,191,8
+    LTEXT           "Green:\t\tCompleted chunk",IDC_STATIC,21,92,88,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_STATISTICS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 135
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 114
+    END
+
+    IDD_MODELESS_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 83
+    END
+
+    IDD_HELP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 316
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 114
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+IDR_MANIFEST_LEGACY     RT_MANIFEST             "navgen.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATORS ACCELERATORS 
+BEGIN
+    VK_F1,          ID_HELP_HELP,           VIRTKEY, NOINVERT
+END
+
+#endif    // English (Australia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

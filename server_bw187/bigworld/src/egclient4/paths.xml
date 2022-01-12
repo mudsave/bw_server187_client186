@@ -1,0 +1,6 @@
+<root>
+	<Paths>
+		<Path>./res</Path>
+		<Path>../../res</Path>
+	</Paths>
+</root>	

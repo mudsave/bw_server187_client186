@@ -1,0 +1,24 @@
+LIB =	cstdmf
+
+SRCS =					\
+	../../../../../src/lib/cstdmf/base64				\
+	../../../../../src/lib/cstdmf/bwversion			\
+	../../../../../src/lib/cstdmf/binary_stream		\
+	../../../../../src/lib/cstdmf/concurrency			\
+	../../../../../src/lib/cstdmf/debug				\
+	../../../../../src/lib/cstdmf/diary				\
+	../../../../../src/lib/cstdmf/dogwatch			\
+	../../../../../src/lib/cstdmf/dprintf				\
+	../../../../../src/lib/cstdmf/intrusive_object	\
+	../../../../../src/lib/cstdmf/md5					\
+	../../../../../src/lib/cstdmf/profile				\
+	../../../../../src/lib/cstdmf/stpwatch			\
+	../../../../../src/lib/cstdmf/timestamp			\
+	../../../../../src/lib/cstdmf/watcher				\
+
+ifndef MF_ROOT
+export MF_ROOT := $(subst /src/lib/$(LIB),,$(CURDIR))
+endif
+
+include common.mak
+
