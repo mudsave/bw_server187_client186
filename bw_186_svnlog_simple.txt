@@ -1,0 +1,9082 @@
+Revision: 1296
+Author: shenbing
+Date: 2016年8月16日 14:29:40
+Message:
+issueID:CSOL-6320
+NPC表演者增加填写名字功能（EntityName）
+----
+Revision: 1295
+Author: wenlinda
+Date: 2016年8月4日 16:48:22
+Message:
+修正当vehicleID不为0但是获取到的Entity为NULL的问题。（简而言之就是获取Entity之后先判断一下是不是NULL。
+----
+Revision: 1294
+Author: wenlinda
+Date: 2016年7月22日 15:51:32
+Message:
+issue ID: CSOL-7772 
+美术资源需求—圆柱形带碰撞的范围光墙 
+
+修正底部纹理黑边问题。
+----
+Revision: 1293
+Author: wuxiaoou
+Date: 2016年7月12日 10:12:27
+Message:
+修改一个类型转换错误
+----
+Revision: 1292
+Author: shenbing
+Date: 2016年7月12日 8:58:18
+Message:
+issueID:CSOL-7987
+剧情NPC的移动（MoveTo）事件新增FloatOnWater参数
+----
+Revision: 1291
+Author: wenlinda
+Date: 2016年7月5日 11:00:06
+Message:
+issue ID: CSOL-7933
+程序功能调整——角色模型的LOD
+PyModel内部有一个常量用来表示一个阀值，当模型离照相机小于这个阀值时，则不对模型的纹理进行采样。当大于时，则按对应的设置进行采样。
+根据大少的要求，讲默认值10.0f改成60.0f。
+
+修正可被配置的采样属性，删去效果并不好的三线性过滤。
+现在1为
+
+----
+Revision: 1290
+Author: hezhiming
+Date: 2016年7月2日 16:49:07
+Message:
+修改一个可能导致python引用计数不对的问题，因为如果反外挂的线程出现问题，那么游戏里面的一些引用的数据可能有问题。
+----
+Revision: 1289
+Author: wenlinda
+Date: 2016年7月2日 11:39:24
+Message:
+更新dump类型
+----
+Revision: 1288
+Author: huangshanquan
+Date: 2016年7月2日 10:58:12
+Message:
+csol_54508_4BE1DF13_1078_4420_9588_62241ACBC2A9.dmp 修正EffectMaterial::load和EffectMaterial::finishEffectInits在多线程情况下访问pEffects_崩溃的问题。
+----
+Revision: 1287
+Author: wenlinda
+Date: 2016年6月30日 11:17:30
+Message:
+修正dmp的参数~
+----
+Revision: 1286
+Author: wenlinda
+Date: 2016年6月29日 16:05:17
+Message:
+补充上传，禁止上传dmp代码。
+----
+Revision: 1285
+Author: wuxiaoou
+Date: 2016年6月29日 16:01:57
+Message:
+CSOL-7871：修正怪物在释放技能时朝向无法被正常修改的问题
+----
+Revision: 1284
+Author: wenlinda
+Date: 2016年6月29日 15:50:54
+Message:
+张老板赐旨，使用完全版的dmp。请保留起码4G以上的硬盘空间~
+----
+Revision: 1283
+Author: hezhiming
+Date: 2016年6月27日 17:30:09
+Message:
+修正一个如果客户端的NPGameMonCallback可能接收服务器反外挂数据后长达28s才会有反应，而之前是根据接收的时候加一个timer来将数据发给服务器，导致客户端不能够正常发送反外挂消息给服务器，从而服务器会认为客户端反外挂
+不正常，而将客户端关闭的问题。
+----
+Revision: 1282
+Author: shenbing
+Date: 2016年6月27日 16:15:40
+Message:
+issueID:CSOL-7851
+修正客户端寻路moveToPoint碰撞问题
+----
+Revision: 1281
+Author: shenbing
+Date: 2016年6月25日 14:00:59
+Message:
+issueID:CSOL-7851
+Bug—-玩家在水面上移动幻兽上天后落地
+----
+Revision: 1280
+Author: wenlinda
+Date: 2016年6月23日 10:45:35
+Message:
+紧急修复一个绘制透明物体时容易挡住光效，文字和血量条的问题。
+----
+Revision: 1279
+Author: wenlinda
+Date: 2016年6月20日 16:21:22
+Message:
+修正几个可能访问NULL指针的问题。
+----
+Revision: 1278
+Author: wenlinda
+Date: 2016年6月16日 12:04:26
+Message:
+issue ID: CSOL-7490 
+BUG——火奎崖被BOSS打死后复活游戏崩溃
+某个visual在绘制时以裸指针方式委任了一个回调。但是在调用回调之前被删除，故回调时会非法修改该内存地址，修改了其他内存内的东西，最终造成数据混乱，引起跳出。
+
+----
+Revision: 1277
+Author: wuxiaoou
+Date: 2016年6月13日 17:15:41
+Message:
+讲误传的本地修改回档到上一个版本
+----
+Revision: 1276
+Author: hezhiming
+Date: 2016年6月13日 16:52:55
+Message:
+删除两个错误提交的文件。
+----
+Revision: 1275
+Author: hezhiming
+Date: 2016年6月13日 15:26:39
+Message:
+修改由于反外挂返回的字符串里面含有一些解析为16进制是00的字符，导致将LPBYTE转换成const char *的时候，00后面的字符串被截断，从而导致服务器认为客户端修改了验证数据，将客户端玩家踢出的问题。现在改为用Base64进行编码和解码，
+来避免这种问题。
+
+例如下面的问题
+
+INFO: NPGameClient::addMsgToBufArray() string is 0c 47 29 91 20 8e 50 22 36 d5 78 b3 48 1c a1 44 3d 3f 63 f8 77 22 d6 5c 22 27 39 65 19 47 3b 13 f5 4f 18 ac 07 f6 00 27 c0 60 af a5 da e0 1b 0b 4d 85 30 49 9b fc c3 3a fa df 67 63 d9 49 a0 6a c1 5a 94 0e cb 9b 21 34 49 8c 80 c8 d4 28 52 14 67 9d 67 c2
+INFO: NPGameClient::sendMsgToServer() string is 0c 47 29 91 20 8e 50 22 36 d5 78 b3 48 1c a1 44 3d 3f 63 f8 77 22 d6 5c 22 27 39 65 19 47 3b 13 f5 4f 18 ac 07 f6 
+
+f6后面是00，将LPBYTE转换成const char *的时候，00后面的字符串都截断了。
+----
+Revision: 1274
+Author: wuxiaoou
+Date: 2016年6月12日 16:18:59
+Message:
+讲误传的本地修改回档到上一个版本
+----
+Revision: 1273
+Author: wuxiaoou
+Date: 2016年6月12日 16:13:42
+Message:
+将使用Launcher.exe登录的提示修改为中文
+----
+Revision: 1272
+Author: huangshanquan
+Date: 2016年6月12日 15:36:05
+Message:
+处理c++运行库崩溃不能产生崩溃文件的问题
+----
+Revision: 1271
+Author: wenlinda
+Date: 2016年6月8日 14:10:33
+Message:
+issue ID: CSOL-7496 
+程序内容需求——配置好的光效碰撞不能达到预期效果。 
+修改碰撞机制
+
+----
+Revision: 1270
+Author: huangshanquan
+Date: 2016年6月7日 15:04:35
+Message:
+修正切换地图导致ChunkManager::autoBootstrapSeedChunk()崩溃的BUG
+----
+Revision: 1269
+Author: wenlinda
+Date: 2016年6月7日 11:28:34
+Message:
+issue ID: CSOL-7496 
+程序内容需求——配置好的光效碰撞不能达到预期效果。 
+添加绘制OBB包围盒的功能。当开启绘制BoundingBox时也同时绘制，颜色为红色
+
+----
+Revision: 1268
+Author: wenlinda
+Date: 2016年6月6日 17:30:31
+Message:
+issue ID: CSOL-7704
+Bug--折射光效跑出头像边框
+在绘制头像的时候禁止折射光效（主要是光效的实现有点复杂，不适合在头像处绘制。
+----
+Revision: 1267
+Author: wenlinda
+Date: 2016年6月6日 16:21:55
+Message:
+issue ID: CSOL-7496 
+程序内容需求——配置好的光效碰撞不能达到预期效果。 
+添加新的碰撞算法。
+调用BigWorld.isCollide(bool u1,bool u2,int ei,int e2)。
+其中，u1和u2对应两个entity使用的包围盒，若为False则表示使用entity本身的boundingbox，即一个AABB包围盒。若为Truw则表示使用一个OBB包围盒。
+e1是一个entity的id，e2是另一个id。
+当u1或u2为True时，当entity包含多个模型时，则只使用第一个模型的包围盒做为包围盒。
+返回为True则碰撞了。若返回false，则表示有可能找不到ID对应的entity，或者该entity并没有可供使用的碰撞属性。
+----
+Revision: 1266
+Author: hezhiming
+Date: 2016年6月6日 14:42:36
+Message:
+增加一个注释，方便有需要调试的同事，取消掉
+//#define NO_GAMEGUARD	//关闭GameGuard,调试的时候使用
+的注释//即可进行调试。
+----
+Revision: 1265
+Author: hezhiming
+Date: 2016年6月4日 13:00:19
+Message:
+修改csauth3配置，以便服务器的初始化能够正常。
+----
+Revision: 1264
+Author: hezhiming
+Date: 2016年6月4日 11:40:10
+Message:
+增加一个NP反外挂服务器端的静态链接库文件。
+----
+Revision: 1263
+Author: hezhiming
+Date: 2016年6月4日 11:37:37
+Message:
+将客户端的反外挂由apex改为NPGameGuard。
+----
+Revision: 1262
+Author: wuxiaoou
+Date: 2016年6月2日 20:42:47
+Message:
+CSOL-7495:修正连线光效有几率导致游戏崩溃的问题
+----
+Revision: 1261
+Author: wenlinda
+Date: 2016年6月2日 11:45:09
+Message:
+issue ID: CSOL-7674 随机生命值支持 
+修正当粒子生命大于颜色时间时，不等比例延长颜色时间
+----
+Revision: 1260
+Author: wenlinda
+Date: 2016年5月27日 15:44:24
+Message:
+issue ID: CSOL-7674 随机生命值支持 
+修改tintShader的颜色计算方式。
+----
+Revision: 1259
+Author: wenlinda
+Date: 2016年5月26日 14:25:55
+Message:
+issue ID:CSOL-7594 希望提供一个粒子亮度参数 
+修正粒子编辑器UI，并且提供一个粒子亮度调节参数
+----
+Revision: 1258
+Author: wuxiaoou
+Date: 2016年5月24日 18:19:00
+Message:
+1.修正几个简单的错误
+2.将python.log修改为每次重新写入
+----
+Revision: 1257
+Author: wenlinda
+Date: 2016年5月23日 9:40:04
+Message:
+issue ID: CSOL-7107 粒子折射支持 
+添加折射粒子。
+----
+Revision: 1256
+Author: wuxiaoou
+Date: 2016年5月7日 16:55:58
+Message:
+CSOL-6917 修正homer的飞行异常问题
+----
+Revision: 1255
+Author: wenlinda
+Date: 2016年5月7日 11:15:23
+Message:
+CSOL-7326 打包版本BUG -- 全屏泛光设置无效
+去掉bloom中.fx文件的检测。
+
+----
+Revision: 1254
+Author: wenlinda
+Date: 2016年5月6日 14:30:38
+Message:
+issue ID: CSOL-6785 0310打包版本BUG—调整分辨率功能无效，并且全屏会会失帧
+修正窗口无法比屏幕大的问题，现在的客户区大小与设置的完美匹配。
+----
+Revision: 1253
+Author: wenlinda
+Date: 2016年4月29日 15:08:55
+Message:
+issue ID: CSOL-6785 0310打包版本BUG—调整分辨率功能无效，并且全屏会会失帧
+修正窗口只会出现在最上方的BUG
+
+----
+Revision: 1252
+Author: wuxiaoou
+Date: 2016年4月27日 17:00:33
+Message:
+在pysound stop的时候清除，以免造成内存一直增长
+----
+Revision: 1251
+Author: hejingke
+Date: 2016年4月26日 8:54:43
+Message:
+issue:CSOL-7097
+1、按张老板的要求，在新的账号和密码后面多加2位没用字符串，主要是防止使用账号密码明文进行登陆的问题；
+2、添加dmp文件名guid的字符串，防止同样文件名字出现。
+----
+Revision: 1250
+Author: huangshanquan
+Date: 2016年4月25日 15:37:50
+Message:
+CSOL-6941 游戏声音所用FMOD的版本提升,提交动态链接库模块
+----
+Revision: 1249
+Author: huangshanquan
+Date: 2016年4月25日 15:27:09
+Message:
+CSOL-6941 游戏声音所用FMOD的版本提升,通过engine_config.xml配置文件的<FmodStudioUse> 1 </FmodStudioUse>开启功能
+----
+Revision: 1248
+Author: wenlinda
+Date: 2016年4月20日 12:17:02
+Message:
+issue ID: CSOL-6785 0310打包版本BUG—调整分辨率功能无效，并且全屏会会失帧
+修正
+
+
+----
+Revision: 1247
+Author: wenlinda
+Date: 2016年4月19日 20:16:52
+Message:
+issue ID: CSOL-6785 0310打包版本BUG—调整分辨率功能无效，并且全屏会会失帧
+修正
+
+
+----
+Revision: 1246
+Author: wenlinda
+Date: 2016年4月19日 17:23:51
+Message:
+issue ID: CSOL-6785 0310打包版本BUG—调整分辨率功能无效，并且全屏会会失帧 
+修改分辨率计算流程，添加在最大化时的更改分辨率处理。
+
+
+----
+Revision: 1245
+Author: wenlinda
+Date: 2016年4月15日 12:02:44
+Message:
+issue ID: CSOL-6834 粒子之间遮挡问题
+程序BUG，已修正
+
+----
+Revision: 1244
+Author: wenlinda
+Date: 2016年4月13日 14:56:18
+Message:
+issue ID: CSOL-5541 BUG--鼠标非正常变化 
+修正物体在界面后，点击时仍能选中的问题。
+该修正与 《CSOL-58 Bug--单位选择异常 》相斥，经讨论无视csol-58中的问题。
+
+----
+Revision: 1243
+Author: wenlinda
+Date: 2016年4月13日 9:58:21
+Message:
+issue ID: CSOL-6287 Bug—小地图上位面区域异常 
+修正映射参数。
+
+
+----
+Revision: 1242
+Author: wenlinda
+Date: 2016年4月12日 10:14:26
+Message:
+issue ID: CSOL-6785 0310打包版本BUG—调整分辨率功能无效，并且全屏会会失帧 
+修改分辨率计算流程，添加在最大化时的更改分辨率处理。
+
+
+----
+Revision: 1241
+Author: hejingke
+Date: 2016年3月31日 11:47:24
+Message:
+issue:CSOL-5861
+添加ftp上传dmp文件支持
+----
+Revision: 1240
+Author: wenlinda
+Date: 2016年3月31日 11:39:11
+Message:
+应急修复
+issue ID: 
+CSOL-6789 
+0310打包版本BUG—全屏模式下鼠标会有移动不进对话框 
+CSOL-6887 
+北京JIRA问题--分辨率问题 
+CSOL-6785 
+0310打包版本BUG—调整分辨率功能无效，并且全屏会会失帧 
+----
+Revision: 1239
+Author: wuxiaoou
+Date: 2016年3月31日 11:35:36
+Message:
+修正一个FMOD音效错误导致的客户端崩溃
+----
+Revision: 1238
+Author: wenlinda
+Date: 2016年3月22日 16:16:01
+Message:
+扩充序列贴图的最大支持纹理数，原来是a~z，现在为a~z,A~Z。
+----
+Revision: 1237
+Author: wenlinda
+Date: 2016年3月22日 10:06:42
+Message:
+issue ID:CSOL-6737  对不规则序列图的支持
+原来的frameCount选项将会编程frameCountX和frameCountY，分别代表列数和行数。
+----
+Revision: 1236
+Author: wenlinda
+Date: 2016年3月21日 19:09:11
+Message:
+为动态纹理添加一个只播放一次的功能。
+----
+Revision: 1235
+Author: wenlinda
+Date: 2016年3月21日 14:23:20
+Message:
+ issue ID: CSOL-6630 Bug—光效模型一段时间后消失
+在效果编辑器中添加选项，让达到生存期的粒子再度重现。 
+----
+Revision: 1234
+Author: wenlinda
+Date: 2016年3月15日 20:22:52
+Message:
+ issue ID:  CSOL-6733 Bug_部分模型设置透明度导致模型直接消失
+
+修正蓝屏问题
+----
+Revision: 1233
+Author: hejingke
+Date: 2016年3月14日 15:10:01
+Message:
+issue:CSOL-5861
+添加dmp文件产生后自动上传到指令服务器的支持
+----
+Revision: 1232
+Author: hejingke
+Date: 2016年3月14日 15:08:37
+Message:
+issue:CSOL-5861
+添加libcurl库，支持dmp文件产生后自动上传到服务器
+----
+Revision: 1231
+Author: wenlinda
+Date: 2016年3月14日 11:57:58
+Message:
+ issue ID: CSOL-6703 北京JIRA问题--主线任务10 
+应该是原有的透明渲染流程照成了显存不足。现重做渲染流程，减少显存的使用。
+
+----
+Revision: 1230
+Author: wenlinda
+Date: 2016年3月10日 12:06:34
+Message:
+issue ID: CSOL-6338 程序内容需求——个人组合竞技修真至尊榜第二场活动血斗凤栖镇制作
+添加容错处理。
+
+----
+Revision: 1229
+Author: wenlinda
+Date: 2016年3月4日 15:14:18
+Message:
+issue ID: CSOL-6449 BUG - 粒子编辑器中粒子叠加问题
+应美术需求，更改排序的顺序。
+----
+Revision: 1228
+Author: wenlinda
+Date: 2016年3月4日 11:51:08
+Message:
+issue ID: CSOL-5985 1222打包测试——养魂木镜头播放时小地图显示异常.
+该技能光效在播放的时候需要采用一个模型，该模型设置ALPHAREF为255，该设置对小地图照成影响。
+并且在做透明混合的时候，ZWRITEENABLE被设置为FALSE，所以在渲染头像的时候无法写入Z，无法进行Z测试。
+----
+Revision: 1227
+Author: wuxiaoou
+Date: 2016年3月3日 11:37:12
+Message:
+MFC实现文件第一条语句都是：#include "stdafx.h"
+在它前面的所有代码将被忽略，所以其他的头文件应该在这一行后面被包含。否则，你将会得到“No such file or directory”这样让你百思不得其解的错误提示。
+----
+Revision: 1226
+Author: wenlinda
+Date: 2016年3月3日 11:24:39
+Message:
+issue ID: CSOL-6449 BUG - 粒子编辑器中粒子叠加问题
+添加缺失文件。
+----
+Revision: 1225
+Author: wenlinda
+Date: 2016年3月3日 9:33:11
+Message:
+issue ID: CSOL-6449 BUG - 粒子编辑器中粒子叠加问题
+为meta_particle_system（MPS）新增了一个选项，具体可以在粒子编辑器中点选对应的xml可打开对应的控制面板，可以控制该选项。
+该选项将决定MPS内的particle_system(PS)的渲染顺序。当该选项为FALSE时，按照原先的方式对距离进行排序后渲染，当选项为TRUE是，整个MPS将会生成一个新的particle(P)，该P将包含原有的部分PS，其距离为所有PS的距离平均值。P将按xml内部的配置顺序渲染PS。
+该修改将会修改MPS的xml文件的部分格式。用旧编辑器版本打开该新编辑器保存的xml文件时，将会导致错误。
+----
+Revision: 1224
+Author: wenlinda
+Date: 2016年2月18日 12:11:08
+Message:
+issue ID: CSOL-6448 需求——制作一个闪现功能
+上传配置文件。
+----
+Revision: 1223
+Author: wenlinda
+Date: 2016年2月18日 10:31:23
+Message:
+issue ID: CSOL-6448 需求——制作一个闪现功能
+PyModel提供了几个接口用来开启白色透明效果。
+$p.model.setPaleAlpha(float)用来设置透明度，输入的透明度会限定在[0.0,1.0]之间，默认是0.5。
+$p.model.paleEffect = True来开启透明，= False 来关闭透明。
+----
+Revision: 1222
+Author: wenlinda
+Date: 2016年2月3日 10:18:19
+Message:
+issue ID: CSOL-6342 程序需求—客户端播放镜头某光效的时候画质变差
+当播放光效的时候，有物体播放渐隐效果，激活了透明绘制。此时透明绘制将纹理过滤设置为就近点过滤，但是后面绘制的时候没有重置，所以一直影响到后面的渲染。
+----
+Revision: 1221
+Author: wenlinda
+Date: 2016年1月27日 9:33:43
+Message:
+CSOL-6288 BUG-传送门光效可以透过界面
+在进行透明混合的时候静止光效再次渲染。
+
+----
+Revision: 1220
+Author: wenlinda
+Date: 2016年1月15日 11:44:51
+Message:
+issue ID: CSOL-6332 雾的重叠问题 
+重写插值算法
+----
+Revision: 1219
+Author: wuxiaoou
+Date: 2016年1月9日 14:20:38
+Message:
+剧情编辑器：模型alpha事件
+----
+Revision: 1218
+Author: wuxiaoou
+Date: 2015年12月31日 14:37:26
+Message:
+暂时修正幻兽寻路会导致崩溃的问题
+----
+Revision: 1217
+Author: wuxiaoou
+Date: 2015年12月30日 12:55:04
+Message:
+3.修正getFirstValidTechnique中可能出现的d3dxeffect指针为NULL的问题
+----
+Revision: 1216
+Author: wenlinda
+Date: 2015年12月30日 11:07:14
+Message:
+修正在播放飞行动画后，更换分辨率时进入死循环的问题。
+修正两个可能存在的内存泄漏。
+----
+Revision: 1215
+Author: wenlinda
+Date: 2015年12月26日 11:22:32
+Message:
+issue ID: CSOL-5925 怪物透明状态透明度过高，透明度需要改低 
+优化渲染流程
+添加容错处理
+----
+Revision: 1214
+Author: huangshanquan
+Date: 2015年12月22日 15:27:24
+Message:
+增加文件读取时使用的内存大小配置debugoption/readfile会在调试控制台输出信息
+----
+Revision: 1213
+Author: wuxiaoou
+Date: 2015年12月21日 20:24:16
+Message:
+暂时修正两个智能指针调用时已经被释放引起的崩溃问题
+----
+Revision: 1212
+Author: wenlinda
+Date: 2015年12月16日 12:03:13
+Message:
+issue ID:  CSOL-5634 BUG-bigworld地图编辑器工具中水和粒子重叠 时渲染错误\
+修改水的绘制顺序。
+----
+Revision: 1211
+Author: wenlinda
+Date: 2015年12月15日 18:14:38
+Message:
+修正依赖项，让woldereditor正常编译
+----
+Revision: 1210
+Author: wuxiaoou
+Date: 2015年12月15日 11:22:01
+Message:
+1.将model_fader.cpp加到工程文件
+2.修正一个引起dmp错误的问题
+----
+Revision: 1209
+Author: wenlinda
+Date: 2015年12月12日 11:40:37
+Message:
+issue ID: CSOL-5571 BUG——模型调透明度之后会一闪一闪的 
+
+添加一个modelFader类用来处理半透明物体。另外该类似乎和playerFader冲突，所以必须将其放置在playerFader之后，也就不将其作为fullScrenBuffer::User的一个派生类来处理了。
+其具体处理方式见modelFader.hpp
+
+另外原pymodel中是用的fader_ovberdraw已经不被使用，是否还被其他类引用未知。
+----
+Revision: 1208
+Author: wuxiaoou
+Date: 2015年12月9日 10:55:11
+Message:
+csol-5665：修正一个可能导致运行时c++错误的问题
+----
+Revision: 1207
+Author: huangshanquan
+Date: 2015年12月4日 12:12:45
+Message:
+csol-5356 目录大写问题处理
+----
+Revision: 1206
+Author: wuxiaoou
+Date: 2015年12月1日 21:45:59
+Message:
+csol-5653：修正3D音效导致客户端崩溃的问题
+----
+Revision: 1205
+Author: wuxiaoou
+Date: 2015年11月25日 20:00:26
+Message:
+NPC表演者播放动作PlayAction事件，增加参数ShowWeapon
+----
+Revision: 1204
+Author: shenbing
+Date: 2015年11月18日 18:29:11
+Message:
+issueID:CSOL-5472
+创世--美术光效模型材质FX整合需求
+----
+Revision: 1203
+Author: wuxiaoou
+Date: 2015年11月16日 14:11:58
+Message:
+csol-5561:NPC表演者上坐骑AlightHorse事件，增加参数DelayShowTime
+----
+Revision: 1202
+Author: wuxiaoou
+Date: 2015年11月13日 21:35:19
+Message:
+1.NPC剧情表演者传送事件Teleport增加QUEST_NPC参数
+2.修正剧情编辑器拖动崩溃问题
+----
+Revision: 1201
+Author: wuxiaoou
+Date: 2015年11月12日 18:21:15
+Message:
+csol-5495:NPC表演者MoveTo移动事件，增加参数Caps
+----
+Revision: 1200
+Author: wenlinda
+Date: 2015年11月11日 14:05:27
+Message:
+issue ID: CSOL-5423 引擎支持需求--参考bw2.0的线性过滤的效果优化 
+新增脚本选项：
+BigWorld.setGraphicsSetting("FILTER_TYPE",x)
+其中，
+x=0的是表示采用最近点采样
+x=1的是表示线性采样
+x=2的是表示三线性采样
+x=3的是表示各向异性采样X2
+x=5的是表示各向异性采样X4
+x=6的是表示各向异性采样X8
+x=7的是表示各向异性采样X16
+----
+Revision: 1199
+Author: wuxiaoou
+Date: 2015年11月10日 11:46:42
+Message:
+CSOL-5498:NPC表演者的PlaySound事件进行扩展，增加is3DSound，该参数为1时，表明是3D音效
+CSOL-5384:剧情屏蔽鼠标全局参数MouseLostControl，默认为True
+----
+Revision: 1198
+Author: lizhenghui
+Date: 2015年11月4日 16:40:34
+Message:
+http://172.16.2.227/browse/CSOL-5426
+为避免12号字体影响其它内容的显示，这里只处理用于任务和对话使用的特殊字体
+
+----
+Revision: 1197
+Author: wenlinda
+Date: 2015年11月4日 11:26:22
+Message:
+issue ID:CSOL-5450 BUG—岩浆显示为白色需要改为红色 
+在water这一类类中，全部采用的是同一个Moo::EffectMaterialPtr的静态effect实例。所以对该实例进行修改将会影响到所有的water的渲染。
+而在water的加载机制中，所有的纹理资源在加载完毕后，将会直接写入effect实例中，所以当多个water加载的时候将会覆盖前面写入的数据。
+此时更改成先将纹理加载，并且在渲染前写入effect实例。 
+----
+Revision: 1196
+Author: lizhenghui
+Date: 2015年11月2日 15:03:03
+Message:
+http://172.16.2.227/browse/CSOL-5426
+将12号字体全部都按固定宽度12处理
+还对数字的显示作了偏移处理，让其显示更为居中
+----
+Revision: 1195
+Author: wenlinda
+Date: 2015年10月16日 10:47:41
+Message:
+issue ID:CSOL-5366 程序BUG——创世客户端中文路径会出错，导致小地图黑色 
+
+原本在代码中使用了std::fstream来打开DDS文件，但是该函数在VS2008的实现中，遇上中文时将会导致打开错误。
+
+先使用BEResource来进行资源的打开。由于本人并不能确保BEResource是线程安全的，所以可能有BUG。
+----
+Revision: 1194
+Author: wangzhen
+Date: 2015年9月30日 11:42:03
+Message:
+CSOL-5093 BUG -- 战斗形态的幻兽在水面无法移动
+客户端控制移动moveToPoint增加支持：
+1.增加参数 isFaceToMove，提供移动时不转向支持。
+2.增加水面上移动支持。
+----
+Revision: 1193
+Author: wenlinda
+Date: 2015年9月25日 14:34:31
+Message:
+issue ID: CSOL-5175 Bug——小地图显示异常
+
+提交工程文件
+----
+Revision: 1192
+Author: wenlinda
+Date: 2015年9月25日 10:07:13
+Message:
+issue ID: CSOL-5175 Bug——小地图显示异常
+
+异常的原因：
+小地图的多线程加载机制不完善，所以造成了莫名的黑屏和透明。
+现优化和完善了小地图的多线程加载机制。
+
+原本的加载流程：
+在脚本上将6*6个CHUNK的DDS的文件地址直接传到底层，在底层中直接传给后线程，在后线程中全部加载后，再混合到一个数组中，最后在传给主线程，上传到显存。
+现在的加载流程：
+在脚本上将7*7个chunk的dds的文件地址传到底层，其中6*6个是主要chunk，剩下的是后备chunk。主要chunk直接在主线程中处理，先是查看是否保存有内存数据，若没有则直接读取，然后查看是否有显存数据，若没有则直接上传，最后再将所有的显存数据在GPU中合成一张大的纹理，然后再输出。上传的显存数据会被保留，等下一次的调用。后备chunk则先查看有没有内存数据，若没有，则放到后线程中进行加载，加载完毕后，则直接保存到主线程中等待调用。
+
+由于小地图的特殊性，只有每次更换大地图的时候需要在主线程中进行大量文件IO外，其余时间文件IO均在后线程中完成。
+----
+Revision: 1191
+Author: yangkai
+Date: 2015年9月21日 16:55:29
+Message:
+issue ID: CSOL-5199
+pyModel增加 entityCollide 和 entityCollideReason 参数。用来与其他entity的模型BounddingBox碰撞。
+----
+Revision: 1190
+Author: wenlinda
+Date: 2015年9月16日 20:46:59
+Message:
+issue ID: CSOL-5175 Bug——小地图显示异常
+
+优化多线程模型，新镇一个单线程的更新函数。
+----
+Revision: 1189
+Author: yangkai
+Date: 2015年9月10日 19:57:48
+Message:
+issue ID: CSOL-5218
+TrailParticleRenderer增加渲染模式选择
+
+----
+Revision: 1188
+Author: wenlinda
+Date: 2015年9月10日 16:12:43
+Message:
+issue ID: CSOL-5175 Bug——小地图显示异常
+
+忘了删掉一个调试信息。
+----
+Revision: 1187
+Author: wenlinda
+Date: 2015年9月10日 15:35:34
+Message:
+issue ID: CSOL-5175 Bug——小地图显示异常
+
+主要解决黑屏的问题。
+优化了多线程模型。
+----
+Revision: 1186
+Author: yangkai
+Date: 2015年9月9日 19:02:00
+Message:
+issue ID: CSOL-5192
+AmpParticleRenderer增加渲染模式选择
+为了避免以前制作的粒子出错，增加默认渲染方式：Default
+----
+Revision: 1185
+Author: yangkai
+Date: 2015年9月9日 14:22:12
+Message:
+issue ID: CSOL-5192
+AmpParticleRenderer增加渲染模型选择
+----
+Revision: 1184
+Author: wenlinda
+Date: 2015年9月8日 17:02:19
+Message:
+issue ID: CSOL-5142  在用最大化按钮改变窗口大小时小地图显示异常 
+
+据分析应该是当使用最大化按钮改变窗口大小时，窗口的尺寸改变后，与调用脚本上的MapPanel类的成员函数__onResolutionChanged之间有一定的时间差。
+
+脚本上的__onResolutionChanged由底层调用，在personality中的createUnmanagedObjects中使用BigWorldClientScript::callNextFrame注册，这个注册的回调函数需要一定时间才会被调用。现改为直接调用。但是由于调用顺序的问题，将DeviceCallback的createUnmanagedObjects函数的调用方式由正向调整为反向。
+----
+Revision: 1183
+Author: wenlinda
+Date: 2015年8月25日 18:39:52
+Message:
+issue ID: CSOL-5033 程序功能需求——新的怪物死亡效果 
+
+修正两个文件
+
+
+
+----
+Revision: 1182
+Author: huangshanquan
+Date: 2015年8月25日 17:03:34
+Message:
+CSOL-5141  微端无法升级
+----
+Revision: 1181
+Author: wenlinda
+Date: 2015年8月25日 15:50:47
+Message:
+issue ID: CSOL-5000
+
+Revision: 1175的处理有问题。
+因为当设备丢失的时候需要需要将所有为D3DPOOL_DEFAULT的纹理全部删除才行，但是类中的纹理由于必须使用D3DUSAGE_RENDERTARGET，而其必须与D3DPOOL_DEFAULT一同使用。所以以前的将D3DPOOL_DEFAULT更改为D3DPOOL_MANAGED的措施将会照成位面区域显示的失效。
+
+所以现在将D3DPOOL_MANAGED重新换成D3DPOOL_DEFAULT，并且在设备丢失前删除，在拾回设备后在重新创建。
+
+
+
+----
+Revision: 1180
+Author: wenlinda
+Date: 2015年8月24日 8:34:27
+Message:
+issue ID: CSOL-5033 程序功能需求——新的怪物死亡效果 
+
+缺了两个文件
+
+
+
+----
+Revision: 1179
+Author: wuxiaoou
+Date: 2015年8月22日 15:56:49
+Message:
+csol-5128:剧情NPC的移动（MoveTo）事件新增EndYaw参数
+----
+Revision: 1178
+Author: wenlinda
+Date: 2015年8月21日 11:25:52
+Message:
+issue ID: CSOL-5033 程序功能需求——新的怪物死亡效果 
+
+把洞填上了，重新设计成通过修改DYE的方法来实现燃尽效果。
+
+
+
+----
+Revision: 1177
+Author: wuxiaoou
+Date: 2015年8月20日 19:31:04
+Message:
+csol-5083:加入了剧情NPC重生功能
+----
+Revision: 1176
+Author: wenlinda
+Date: 2015年8月19日 11:44:31
+Message:
+issue ID: CSOL-5033 程序功能需求——新的怪物死亡效果 
+
+1.visual 在draw的时候开了一个洞。可以传递一个VisualHacker的基类，这个基类能在draw之前更改EffectMaterial的属性。
+
+2.SuperModel 从nodefullmodel开到model开到supermodel开洞开洞，这样pymodel就可以通过传递visualHacker来控制visual的绘制。
+
+3.pymodel 开洞，添加两个用于控制燃尽效果的变量。导出burnIt()和coldItDown()两个方法，能在脚本层使用。
+
+
+
+----
+Revision: 1175
+Author: wenlinda
+Date: 2015年8月17日 16:42:16
+Message:
+issue ID: CSOL-5000
+
+将纹理的储存方式从D3DPOOL_DEFAULT更改为D3DPOOL_MANAGED
+原因：当更换分辨率的时候，需要更换设备，此时如果使用D3DPOOL_DEFAULT将倒是更换设备失败，所以就一直卡在这步上。
+换成D3DPOOL_MANAGED让DX自动管理该纹理，会在更换设备之前自动保存一份副本到内存，更换设备后放入到显存。
+
+
+
+----
+Revision: 1174
+Author: wenlinda
+Date: 2015年8月12日 16:16:17
+Message:
+issue ID: CSOL-5054 
+
+将策划提供的参数设为默认值
+
+
+----
+Revision: 1173
+Author: huangshanquan
+Date: 2015年8月12日 15:02:42
+Message:
+CSOL-5010Bug——玩家攻击之后滚轮事件失灵
+----
+Revision: 1172
+Author: wenlinda
+Date: 2015年8月6日 14:40:09
+Message:
+issue ID: CSOL-5054 
+
+新增四个接口用于调整动态模糊效果的值
+
+
+----
+Revision: 1171
+Author: wenlinda
+Date: 2015年7月31日 16:59:17
+Message:
+issue ID: CSOL-4419
+
+修改了窗体创建时的默认状态
+
+
+
+
+----
+Revision: 1170
+Author: wuxiaoou
+Date: 2015年7月30日 16:54:16
+Message:
+csol-4792:剧情NPC表演者增加设置模型alpha事件NpcAlpha
+----
+Revision: 1169
+Author: wenlinda
+Date: 2015年7月30日 12:03:13
+Message:
+issue ID: CSOL-4419
+应该是WINDOW的焦点机制的一个BUG。
+当函数执行到createwindow()这个winapi函数前，所有的窗体消息均不会被处理，此时如果将焦点移动到其他程序时，按道理应该会产生一个killfocus的消息，但是由于并未创建窗体，并不会收到这个消息，而当程序执行到该API时，开始处理事件，收到一个setfocus的消息，但是并未获得焦点，所以照成错误。
+
+修改方式：
+在创建窗体后，进入消息循环前，强制将焦点赋予游戏窗口。
+
+
+
+----
+Revision: 1168
+Author: wenlinda
+Date: 2015年7月29日 20:03:40
+Message:
+issue ID: CSOL-4405
+新增当获取位面边界坐标失败或为空时的错误处理
+
+
+----
+Revision: 1167
+Author: wuxiaoou
+Date: 2015年7月29日 16:45:32
+Message:
+描述增加默认值
+----
+Revision: 1166
+Author: huangshanquan
+Date: 2015年7月29日 10:58:14
+Message:
+CSOL-4339缺陷-微软拼音输入法会在按方向时输入中文
+----
+Revision: 1165
+Author: yangkai
+Date: 2015年7月28日 14:14:25
+Message:
+issue ID: CSOL-4405
+补上（温林达）未上传的project文件
+----
+Revision: 1164
+Author: wenlinda
+Date: 2015年7月27日 16:12:42
+Message:
+issue ID: CSOL-4405
+新增了一个类，该类将根据当前位面的多边形产生一张与之对应的中空的纹理贴图，并且能根据角色现实的物理坐标自动计算mapping值。该类支持仅支持简单的凸或凹变形。对于中间带孔的多边形将会造成渲染错误。
+内含了一个多边形三角化的算法，该算法时间复杂度为O(n^2)，凹点越多，将越耗费时间。
+----
+Revision: 1163
+Author: wenlinda
+Date: 2015年7月27日 15:28:02
+Message:
+issue ID: CSOL-4405
+新增了一个类，该类将根据当前位面的多边形产生一张与之对应的中空的纹理贴图，并且能根据角色现实的物理坐标自动计算mapping值。该类支持仅支持简单的凸或凹变形。对于中间带孔的多边形将会造成渲染错误。
+内含了一个多边形三角化的算法，该算法时间复杂度为O(n^2)，凹点越多，将越耗费时间。
+----
+Revision: 1162
+Author: huangshanquan
+Date: 2015年7月18日 16:06:39
+Message:
+CSOL-3970 资源下载器不能启动的提示
+----
+Revision: 1161
+Author: wuxiaoou
+Date: 2015年7月16日 20:09:18
+Message:
+csol:4580:给所有剧情事件增加描述功能以便策划后期观看、修改
+----
+Revision: 1160
+Author: wuxiaoou
+Date: 2015年7月10日 16:16:48
+Message:
+修正playEffect事件的目标无法自己手动设置为-1的问题
+----
+Revision: 1159
+Author: wuxiaoou
+Date: 2015年7月10日 14:44:13
+Message:
+CSOL-4867：剧情编辑器加入摄像机定位功能、雾化开关功能
+----
+Revision: 1158
+Author: yangkai
+Date: 2015年7月8日 15:52:54
+Message:
+issue ID: CSOL-4686
+增加微端资源未下载完全时的多开限制
+----
+Revision: 1157
+Author: huangshanquan
+Date: 2015年7月8日 10:27:03
+Message:
+CSOL-3970 微端更新后，有些人员的更新包出现文件丢失
+----
+Revision: 1156
+Author: wenlinda
+Date: 2015年7月7日 16:39:25
+Message:
+issue ID: CSOL-4871
+新增一个渲染模式 BLEND_PLAYER_UI_ONLY。
+该模式用以解决在渲染人物装备界面中，人物模型无法在边缘半透明化的问题。
+该模式需要获取将人物模型的四个映射点，将其按一定格式传入ashes.fx中。
+
+
+----
+Revision: 1155
+Author: wuxiaoou
+Date: 2015年7月4日 15:48:27
+Message:
+CSOL-4730：加入玩家自动骑乘事件AutoVehicle
+----
+Revision: 1154
+Author: huangshanquan
+Date: 2015年7月2日 10:03:45
+Message:
+CSOL-3970 修改启动检查包不正确自动运行检查修复程序
+----
+Revision: 1153
+Author: huangshanquan
+Date: 2015年6月19日 15:10:19
+Message:
+修改多线程下载资源导致线程堵塞的问题
+----
+Revision: 1152
+Author: yangkai
+Date: 2015年6月18日 11:19:15
+Message:
+issue ID: CSOL-4775
+editor_chunk_model 默认属性 casts Shadow 设置为False
+----
+Revision: 1151
+Author: yangkai
+Date: 2015年6月18日 10:50:39
+Message:
+更改Page_HPView的路径
+----
+Revision: 1150
+Author: yangkai
+Date: 2015年6月17日 19:26:07
+Message:
+issue ID:CSOL-4808
+delete #include "app.hpp"
+----
+Revision: 1149
+Author: yangkai
+Date: 2015年6月17日 16:49:59
+Message:
+issue ID:CSOL-4808
+动态全屏模糊效果，代码优化，合并fx效果（温林达）
+----
+Revision: 1148
+Author: yangkai
+Date: 2015年6月16日 15:09:33
+Message:
+issue ID:CSOL-4808
+动态全屏模糊效果（温林达）
+----
+Revision: 1147
+Author: wuxiaoou
+Date: 2015年6月16日 11:33:48
+Message:
+由于从配置上来决定是否编译fx的做法导致其他工具无法正常编译，还原到上版本
+----
+Revision: 1146
+Author: huangshanquan
+Date: 2015年6月12日 10:06:13
+Message:
+CSOL-4807 Bug——在允许误差范围内，服务器不会修正客户端位置，entity.moveToPoint方法的问题
+----
+Revision: 1145
+Author: wuxiaoou
+Date: 2015年6月10日 20:05:32
+Message:
+CSOL-4804：在engine_config中加入选项可以配置是否编译fx
+----
+Revision: 1144
+Author: wuxiaoou
+Date: 2015年6月10日 14:36:53
+Message:
+修正一个音效路径错误导致剧情编辑器崩溃的问题
+
+
+----
+Revision: 1143
+Author: wuxiaoou
+Date: 2015年6月8日 16:20:34
+Message:
+还原代码
+----
+Revision: 1142
+Author: wuxiaoou
+Date: 2015年6月6日 16:33:23
+Message:
+csol:4580: ①修正剧情编辑器剧情NPC播放音效、传送事件的时间条无法修改的问题
+     ②修正剧情编辑器表演者Effect和Environment的事件均无法设置时间，只能拖动时间条的问题
+----
+Revision: 1141
+Author: wuxiaoou
+Date: 2015年6月6日 11:13:50
+Message:
+csol:4580: 增加全局控制参数屏蔽UI开关 、增加屏蔽玩家操作开关
+----
+Revision: 1140
+Author: huangshanquan
+Date: 2015年6月5日 15:06:09
+Message:
+需改了不能在回调调用moveToPoint的问题
+----
+Revision: 1139
+Author: huangshanquan
+Date: 2015年6月4日 16:52:55
+Message:
+修改客户端控制怪物移动功能（回调函数使用类函数onCallbackMoveToPoint如果脚步定义了这个函数将调用它）一个参数1表示到达目标0表示超时moveToPoint函数参数
+----
+Revision: 1138
+Author: huangshanquan
+Date: 2015年6月2日 17:26:14
+Message:
+1：CSOL-3762 把微端下载独立成另外的进程。2：删除了启动时不需要加载的文件
+----
+Revision: 1137
+Author: wuxiaoou
+Date: 2015年5月29日 14:04:29
+Message:
+修正一个音效路径错误导致崩溃的问题
+----
+Revision: 1136
+Author: wuxiaoou
+Date: 2015年5月29日 14:01:28
+Message:
+1.根据策划要求黑幕默认值改为False
+2.动作播放可以配置多个以保证无缝播放，多个之间用分号
+3.添加事件按钮改为添加表演者
+----
+Revision: 1135
+Author: wuxiaoou
+Date: 2015年5月26日 20:25:39
+Message:
+csol:4580: NPC表演者增加半身像对话事件
+----
+Revision: 1134
+Author: yangkai
+Date: 2015年5月26日 17:12:41
+Message:
+issue ID:CSOL-4494
+支持光效线性碰撞
+----
+Revision: 1133
+Author: wuxiaoou
+Date: 2015年5月26日 15:08:33
+Message:
+csol:4580 NPC表演者的动作播放子事件修改 增加loop 是否循环播放，speed播放速率
+----
+Revision: 1132
+Author: shenbing
+Date: 2015年5月26日 14:20:59
+Message:
+issueID:CSOL-4591
+修正没有处理鼠标滚轮事件的问题
+----
+Revision: 1131
+Author: wuxiaoou
+Date: 2015年5月25日 14:41:35
+Message:
+csol:4580 增加NPC模型缩放子事件
+----
+Revision: 1130
+Author: huangshanquan
+Date: 2015年5月22日 15:26:50
+Message:
+CSOL-4725 优化客户端寻路
+----
+Revision: 1129
+Author: yangjinan
+Date: 2015年5月21日 15:05:51
+Message:
+1.修正删除第一个摄像机移动子事件导致崩溃的BUG
+----
+Revision: 1128
+Author: wuxiaoou
+Date: 2015年5月21日 14:34:10
+Message:
+csol:4580 地图选择窗口增加筛选框功能 
+----
+Revision: 1127
+Author: wuxiaoou
+Date: 2015年5月18日 19:37:53
+Message:
+csol:4580 地图选择窗口增加筛选框功能 
+----
+Revision: 1126
+Author: yangjinan
+Date: 2015年5月18日 16:50:43
+Message:
+1.解决F5调试时崩溃的问题
+----
+Revision: 1125
+Author: wuxiaoou
+Date: 2015年5月18日 11:13:48
+Message:
+1.是否黑幕 默认为True
+2.增加关闭提示界面
+----
+Revision: 1124
+Author: yangjinan
+Date: 2015年5月15日 15:12:24
+Message:
+1.支持方便设置子事件的位置和方向（当前仅支持摄像机子事件）
+----
+Revision: 1123
+Author: yangjinan
+Date: 2015年5月15日 10:55:25
+Message:
+1.修正旋转事件摄像机显示位置不正确的问题
+----
+Revision: 1122
+Author: yangjinan
+Date: 2015年5月13日 14:57:34
+Message:
+1.支持场景摄像机移动和旋转的速度设置
+----
+Revision: 1121
+Author: yangkai
+Date: 2015年5月6日 19:15:47
+Message:
+issue ID:CSOL-4546
+添加一种水效果用以模拟岩浆效果。
+----
+Revision: 1120
+Author: shenbing
+Date: 2015年4月23日 12:38:49
+Message:
+issueID:CSOL-4543
+增加进出室内回调：physics.setPassInsideCallBackFn(callbackFunction)
+----
+Revision: 1119
+Author: huangshanquan
+Date: 2015年4月23日 8:22:42
+Message:
+CSOL-4446 客户端新建角色载入背景视频卡顿，不能进入创建角色界面
+----
+Revision: 1118
+Author: yangjinan
+Date: 2015年4月10日 15:52:18
+Message:
+1.支持屏幕颜色设置alpah值
+----
+Revision: 1117
+Author: yangjinan
+Date: 2015年4月10日 14:20:49
+Message:
+1.修改上坐骑参数int --> String
+----
+Revision: 1116
+Author: yangjinan
+Date: 2015年4月10日 11:59:15
+Message:
+1.支持模型隐藏子事件
+2.支持模型碰撞打开/关闭事件
+----
+Revision: 1115
+Author: yangjinan
+Date: 2015年4月10日 10:21:04
+Message:
+1.支持上下坐骑子事件
+----
+Revision: 1114
+Author: yangjinan
+Date: 2015年4月10日 9:20:19
+Message:
+1.屏幕文本支持类型选择，支持2个自定义字符串参数
+----
+Revision: 1113
+Author: yangjinan
+Date: 2015年4月10日 8:50:51
+Message:
+1.支持编辑NPC传送子事件
+----
+Revision: 1112
+Author: yangjinan
+Date: 2015年4月9日 17:11:58
+Message:
+1.支持设置NPC事件（演员）是否为PC的标记
+----
+Revision: 1111
+Author: yangjinan
+Date: 2015年4月9日 16:43:15
+Message:
+1.支持雾化/闪屏/屏幕变色/屏幕扭曲等效果
+----
+Revision: 1110
+Author: huangshanquan
+Date: 2015年4月9日 9:25:16
+Message:
+CSOL-4461 实现客户端控制移动，在允许误差范围内，服务器不会修正客户端位置，应用于位面客户端控制怪MonsterPlane
+----
+Revision: 1109
+Author: huangshanquan
+Date: 2015年4月8日 9:36:38
+Message:
+因为使用vlc插件播放视频无法录像所以在options.xml增加开关<root><debugoption><videoPlugin> 1使用vlc播放插件播放视屏，0使用内置播放器播放
+----
+Revision: 1108
+Author: huangshanquan
+Date: 2015年4月8日 9:27:22
+Message:
+options.xml增加开关<root>
+----
+Revision: 1107
+Author: yangjinan
+Date: 2015年3月31日 12:14:03
+Message:
+1.增加移动到所选的对象功能
+----
+Revision: 1106
+Author: yangjinan
+Date: 2015年3月30日 15:48:03
+Message:
+1.将所有GUI ID的define统一放置于gui_id_define文件中，防止ID重复
+----
+Revision: 1105
+Author: yangjinan
+Date: 2015年3月30日 14:56:12
+Message:
+1.拖拉事件块时，重新计算时间条的大小
+----
+Revision: 1104
+Author: yangjinan
+Date: 2015年3月30日 12:12:47
+Message:
+1.控制点被选中状态的显示
+----
+Revision: 1103
+Author: yangjinan
+Date: 2015年3月30日 11:27:49
+Message:
+1.编辑器支持贴花效果
+----
+Revision: 1102
+Author: yangjinan
+Date: 2015年3月30日 9:48:09
+Message:
+1.效果支持延迟播放的功能！
+----
+Revision: 1101
+Author: yangjinan
+Date: 2015年3月28日 16:56:57
+Message:
+1.支持"SelfLoftEffect"类型效果
+----
+Revision: 1100
+Author: yangjinan
+Date: 2015年3月28日 15:01:36
+Message:
+1.支持“LinkEffect”类型效果（当前只支持单目标）
+----
+Revision: 1099
+Author: yangjinan
+Date: 2015年3月27日 13:42:40
+Message:
+1.修正编辑器中Npc播放跑和待机动作不正确的问题
+----
+Revision: 1098
+Author: yangjinan
+Date: 2015年3月27日 11:24:05
+Message:
+1.支持“HomerParaParPosEffect”类型光效，当前飞行目标位置参数在界面中填写
+----
+Revision: 1097
+Author: yangjinan
+Date: 2015年3月27日 10:27:40
+Message:
+支持“HomerParabolaModelEffect”
+PS：当前配置表中貌似没使用这种类型的效果，所以未测试
+----
+Revision: 1096
+Author: yangjinan
+Date: 2015年3月27日 10:03:20
+Message:
+1.支持”HomerParabolaParticleEffect“类型光效
+----
+Revision: 1095
+Author: yangkai
+Date: 2015年3月26日 20:45:20
+Message:
+issue ID:CSOL-4453 
+修正卫星视图下天空地图地板云没有渲染的BUG
+----
+Revision: 1094
+Author: yangjinan
+Date: 2015年3月26日 16:27:18
+Message:
+1.修正界面中一些选项无法正确设置的BUG
+
+----
+Revision: 1093
+Author: yangjinan
+Date: 2015年3月26日 14:35:51
+Message:
+1.支持声音路径的直接填写（按策划要求咱不需要资源选择列表框）
+----
+Revision: 1092
+Author: huangshanquan
+Date: 2015年3月26日 14:28:43
+Message:
+CSOL-4339 微软拼音输入法会在按方向时输入中文
+----
+Revision: 1091
+Author: yangjinan
+Date: 2015年3月26日 11:17:19
+Message:
+1.支持“TargetModelEffect”类型光效
+2.支持“TargetParticleEffect”类型光效
+
+----
+Revision: 1090
+Author: yangjinan
+Date: 2015年3月26日 10:51:07
+Message:
+1.支持“DisColorEffect”类型的模型变色效果
+----
+Revision: 1089
+Author: yangjinan
+Date: 2015年3月26日 9:22:05
+Message:
+1.修正绑定点无法正确获取的BUG
+2.支持“HomerModelEffect”类型光效
+----
+Revision: 1088
+Author: yangjinan
+Date: 2015年3月25日 14:44:25
+Message:
+1.支持“SelfModelEffect”类型光效
+----
+Revision: 1087
+Author: yangjinan
+Date: 2015年3月25日 9:32:02
+Message:
+1.支持飞行光效的目标的保存和加载
+2.修正"SubPlaySceneEffectEvent"无法保存数据的问题
+----
+Revision: 1086
+Author: yangjinan
+Date: 2015年3月24日 17:26:06
+Message:
+飞行光效支持设置目标模型
+----
+Revision: 1085
+Author: yangjinan
+Date: 2015年3月24日 13:55:15
+Message:
+1.飞行光效支持到达目标回调函数
+
+----
+Revision: 1084
+Author: yangjinan
+Date: 2015年3月23日 14:11:49
+Message:
+1.支持飞行粒子光效（到达目标点的回调函数暂未实现）
+----
+Revision: 1083
+Author: yangjinan
+Date: 2015年3月19日 17:42:54
+Message:
+1.修复无法删除XML配置中的事件字段的BUG
+----
+Revision: 1082
+Author: yangjinan
+Date: 2015年3月19日 17:23:02
+Message:
+1.效果模块支持"PositionEffect"类型的效果。
+2.效果选择面板增加显示类型。
+----
+Revision: 1081
+Author: yangjinan
+Date: 2015年3月19日 16:07:26
+Message:
+1.扩展增加了一个环境事件（演员），同时增加一个屏幕扭曲的子事件
+----
+Revision: 1080
+Author: yangjinan
+Date: 2015年3月19日 14:29:43
+Message:
+1.Npc支持播放音效(声音资源选择面板还是未实现)
+
+----
+Revision: 1079
+Author: yangjinan
+Date: 2015年3月19日 13:38:39
+Message:
+1.支持宽屏黑边效果
+2.支持场景中播放音效（音效配置暂未提供，所以选择音效资源面板功能未处理）
+----
+Revision: 1078
+Author: yangjinan
+Date: 2015年3月18日 15:32:31
+Message:
+1.资源选择面板（动作，NPC，光效）支持查找过滤功能
+----
+Revision: 1077
+Author: yangjinan
+Date: 2015年3月18日 11:14:43
+Message:
+1.编辑器支持添加文本事件，支持渲染文本到屏幕
+2.初始化声音管理模块
+----
+Revision: 1076
+Author: yangjinan
+Date: 2015年3月17日 16:04:21
+Message:
+1.光效播放支持“ComplexParticleEffect”类型
+----
+Revision: 1075
+Author: yangjinan
+Date: 2015年3月17日 15:16:07
+Message:
+1.支持镜头动画播放完毕之后恢复到摄像机初始位置。
+2.支持NPC原地旋转子事件。
+
+----
+Revision: 1074
+Author: yangjinan
+Date: 2015年3月17日 11:52:05
+Message:
+1.效果模块支持“CameraEffect”类型效果（震屏）
+----
+Revision: 1073
+Author: yangjinan
+Date: 2015年3月16日 17:22:33
+Message:
+1.支持粒子光效的播放，包括模型播放光效和场景光效
+2.编辑器中取出粒子系统的LOD
+3.支持摄像机震动
+
+----
+Revision: 1072
+Author: yangjinan
+Date: 2015年3月13日 11:17:24
+Message:
+1.暂时屏蔽粒子光效资源列表的初始化（数量太多，耗时）
+2.修正静态模型无法通过鼠标拾取的BUG
+----
+Revision: 1071
+Author: yangjinan
+Date: 2015年3月12日 14:48:59
+Message:
+1.修复场景中部分模型无法显示的问题
+2.NPC资源从NpcModelConfig中加载
+3.优化资源（光效/NPC）面板的初始化，仅在编辑器启动时配置一次。
+----
+Revision: 1070
+Author: huangshanquan
+Date: 2015年3月12日 9:17:43
+Message:
+CSOL-3351 片头CG播放问题
+----
+Revision: 1069
+Author: yangjinan
+Date: 2015年3月11日 14:57:47
+Message:
+1.剧情编辑器Show_Hybrid支持生成调试信息
+2.优化粒子资源面板的初始化
+----
+Revision: 1068
+Author: yangjinan
+Date: 2015年3月11日 11:41:48
+Message:
+1.镜头动画编辑器初步整合完成
+当前只提供Release和Hybrid两个编译选项
+----
+Revision: 1067
+Author: wuxiaoou
+Date: 2015年1月4日 14:17:02
+Message:
+CSOL-4152:修改地编快捷键c,针对camera_station将不会保存到chunk数据中
+----
+Revision: 1066
+Author: huangshanquan
+Date: 2014年12月31日 15:55:36
+Message:
+1:修改播放视频的内存释放问题。2：登录界面gui_progress没有释放的问题。3：修改了space空间数据在退出时没有释放的问题。4：修改BSP数据没有释放的问题。
+----
+Revision: 1065
+Author: wuxiaoou
+Date: 2014年12月30日 20:03:28
+Message:
+CSOL-4152:修改地编快捷键c,针对camera_station将不会保存到chunk数据中
+----
+Revision: 1064
+Author: yangkai
+Date: 2014年12月27日 17:49:12
+Message:
+CSOL-3923
+创世模型模型编辑器看不到绑定点的问题
+----
+Revision: 1061
+Author: huangshanquan
+Date: 2014年12月12日 15:43:01
+Message:
+CSOL-3211 多次使用命令在位面以及副本之间传送会导致客户端崩溃的问题
+----
+Revision: 1060
+Author: huangshanquan
+Date: 2014年12月1日 16:37:12
+Message:
+修改视频播放不能释放内存的问题
+----
+Revision: 1059
+Author: wuxiaoou
+Date: 2014年11月27日 15:01:10
+Message:
+CSOL-3913:雾的淡出淡入功能、雾的ID唯一化、增加动态创建雾接口参数、增加雾淡出接口
+----
+Revision: 1058
+Author: yangkai
+Date: 2014年11月18日 11:12:11
+Message:
+issue ID: CSOL-3880 
+修正mesh粒子的bounddingBox不正确的BUG
+----
+Revision: 1057
+Author: yangkai
+Date: 2014年11月17日 15:05:08
+Message:
+issue ID:CSOL-3890
+修正播放某些光效导致客户端卡死的BUG
+
+----
+Revision: 1056
+Author: yangkai
+Date: 2014年11月11日 10:41:12
+Message:
+issue ID:CSOL-2981
+折射效果支持
+----
+Revision: 1055
+Author: wuxiaoou
+Date: 2014年10月30日 11:15:23
+Message:
+csol-3718 支持玩家在平台上的跳跃，去掉vehicle在底层代码对跳跃流程的影响，改到脚本层限制
+----
+Revision: 1054
+Author: huangshanquan
+Date: 2014年10月29日 16:41:22
+Message:
+澶勭悊寰鍥剧墖鍚庡彴鍔犺浇
+----
+Revision: 1053
+Author: huangshanquan
+Date: 2014年10月29日 15:32:26
+Message:
+澶勭悊寰鍥剧墖鍚庡彴鍔犺浇
+----
+Revision: 1052
+Author: yangkai
+Date: 2014年10月24日 17:04:44
+Message:
+CSOL-3723 增加地板云用的特殊PrioritySortedChannel渲染管线，优先于其他物件渲染。
+
+
+
+----
+Revision: 1051
+Author: hejingke
+Date: 2014年10月18日 17:09:59
+Message:
+修正错误语法判断
+----
+Revision: 1050
+Author: hejingke
+Date: 2014年10月11日 10:09:25
+Message:
+issue:CSOL-3387
+修改位置崩溃的问题；
+1、当进行位面传送时，拒绝一切服务器销毁回调，当位面地图完成插入操作时再进行销毁；
+2、去掉多余没用的代码
+----
+Revision: 1049
+Author: huangshanquan
+Date: 2014年9月26日 14:35:26
+Message:
+CSOL-3452 微端图片资源的后台加载在恢复研究
+----
+Revision: 1048
+Author: yangkai
+Date: 2014年9月25日 17:36:32
+Message:
+移除了cameraNodeAnimationManager，已经没用了
+----
+Revision: 1047
+Author: yangkai
+Date: 2014年9月25日 16:20:51
+Message:
+修改res_packer2008工程定义，使能正常编译
+----
+Revision: 1046
+Author: yangkai
+Date: 2014年9月24日 19:02:43
+Message:
+issue ID: CSOL-3326
+支持小地图的边缘透明渐变效果
+----
+Revision: 1045
+Author: wuxiaoou
+Date: 2014年9月18日 10:52:26
+Message:
+CSOL-3527:csol模块增加skybox接口 用于在脚本层动态设置当前地图的天空盒
+----
+Revision: 1044
+Author: hejingke
+Date: 2014年9月11日 15:59:42
+Message:
+issue:CSOL-3387
+在地图插入的时候，参数addMapping里的插入，加了一个lcok尝试一下看还有没有问题
+----
+Revision: 1043
+Author: yangkai
+Date: 2014年8月28日 21:23:23
+Message:
+1、navGen加入多材质过滤功能。
+2、修正无法正常编译的问题。
+----
+Revision: 1042
+Author: yangkai
+Date: 2014年8月28日 19:06:58
+Message:
+为了不影响其他项目编译，加入宏定义 HYBRID_CSOL 
+----
+Revision: 1041
+Author: wuxiaoou
+Date: 2014年8月27日 18:49:47
+Message:
+CSOL-3446:修正当pVModel为NULL时客户端崩溃的问题
+----
+Revision: 1040
+Author: yangkai
+Date: 2014年8月26日 20:56:50
+Message:
+issue ID: CSOL-3179
+优化了BigWorld.findDropPoint 和 BigWorld.collide 方法的参数异常提示。
+----
+Revision: 1039
+Author: yangkai
+Date: 2014年8月26日 11:47:58
+Message:
+issue ID: CSOL-3179
+增加了自定义材质碰撞支持
+----
+Revision: 1038
+Author: yangkai
+Date: 2014年8月4日 17:06:40
+Message:
+增加位面测试所需接口
+----
+Revision: 1037
+Author: wuxiaoou
+Date: 2014年7月31日 14:37:31
+Message:
+graph的isChanged_属性初始化只有worldeditor才会用到
+----
+Revision: 1036
+Author: wuxiaoou
+Date: 2014年7月31日 14:30:15
+Message:
+graph的isChanged_属性初始化只有worldeditor才会用到
+----
+Revision: 1035
+Author: shenbing
+Date: 2014年7月30日 16:07:11
+Message:
+BoidsFilter 进入或离开Lod 距离用摄像机位置来判断
+----
+Revision: 1034
+Author: huangshanquan
+Date: 2014年7月29日 15:57:31
+Message:
+转换工程到2008
+----
+Revision: 1033
+Author: wuxiaoou
+Date: 2014年7月29日 14:37:54
+Message:
+没有修改的graph不会 在保存时执行save。
+----
+Revision: 1032
+Author: huangshanquan
+Date: 2014年7月25日 14:34:38
+Message:
+CSOL-2576 当前创世的默认字体显示错误
+----
+Revision: 1031
+Author: wuxiaoou
+Date: 2014年7月24日 19:01:52
+Message:
+CSOL-3141：给脚本增加BigWorld.isPlayerOutside()方法，用来判断玩家是否在室内（inShell）
+----
+Revision: 1030
+Author: wuxiaoou
+Date: 2014年7月15日 15:06:04
+Message:
+CSOL-3082：给worldeditor增加一个配置hidepatrolgraphs.xml用来配置不受options/Patrol Graphs选项勾选的影响，一直隐藏
+----
+Revision: 1029
+Author: yangkai
+Date: 2014年7月14日 16:31:21
+Message:
+CSOL-2675 修正在win7/win8 64位操作系统下N卡环境下草碰撞时有时无的问题。
+----
+Revision: 1028
+Author: huangshanquan
+Date: 2014年7月14日 9:59:25
+Message:
+CSOL-2023 程序内容需求--角色名称文字显示改善
+----
+Revision: 1027
+Author: wuxiaoou
+Date: 2014年7月1日 18:51:03
+Message:
+CSOL-3007：amp_particle类型的粒子在缩放时将不会对长度进行缩放
+----
+Revision: 1026
+Author: lizhenghui
+Date: 2014年6月16日 11:42:30
+Message:
+CSOL-2850：为了解决UI界面的模型贴图模糊，为模型添加了一个是否启用mipmap分层渲染的功能支持。
+----
+Revision: 1025
+Author: wuxiaoou
+Date: 2014年6月6日 11:12:47
+Message:
+CSOL-2956:canRotate_属性为True时，将模型的缩放信息考虑进去。
+----
+Revision: 1024
+Author: yangkai
+Date: 2014年5月26日 16:45:20
+Message:
+issue ID: CSOL-2023
+BillboardAttachment改为UnfilteredSortedChannel渲染，不受抗锯齿和全屏泛光影响。
+----
+Revision: 1023
+Author: yangkai
+Date: 2014年5月26日 9:54:00
+Message:
+issue ID:CSOL-2675
+草碰撞的支持
+修正了在传送过程中可能导致的客户端崩溃的问题
+
+----
+Revision: 1022
+Author: shenbing
+Date: 2014年5月22日 16:52:31
+Message:
+fix at revision 1021
+----
+Revision: 1021
+Author: shenbing
+Date: 2014年5月22日 16:31:57
+Message:
+issueID:CSOL-2675
+修正草的碰撞效果时有时无的问题（leaveWorld reset floraCollisionPos）
+----
+Revision: 1020
+Author: yangkai
+Date: 2014年5月22日 15:19:23
+Message:
+issue ID:CSOL-2675
+草碰撞的支持
+修正了碰撞体移动的过程中切换窗口大小或更改刷屏草设置可能会导致崩溃的问题
+
+----
+Revision: 1019
+Author: yangkai
+Date: 2014年5月20日 11:22:43
+Message:
+issue ID:CSOL-2675
+草碰撞的支持
+修正了以下两种情况可能会导致客户端崩溃的问题
+1、窗口大小切换。
+2、环境刷屏草设置改变。
+
+----
+Revision: 1018
+Author: huxilin
+Date: 2014年5月8日 10:46:07
+Message:
+CSOL-2787：打包版本问题 -- fx的重新编译的规则确认
+为了兼顾工具方面，只把release和hybrid开发版本不检测fxo，不编译fx
+
+----
+Revision: 1017
+Author: huxilin
+Date: 2014年5月7日 16:29:20
+Message:
+CSOL-2787：打包版本问题 -- fx的重新编译的规则确认
+release版本不检测fxo是否需要编译，直接认为不需要编译，不编译fx。
+----
+Revision: 1016
+Author: yangkai
+Date: 2014年5月5日 17:33:19
+Message:
+issue ID:CSOL-2675
+草碰撞的支持
+
+修正了草的碰撞距离没有计算Y值的BUG
+
+----
+Revision: 1015
+Author: huangshanquan
+Date: 2014年5月5日 14:39:46
+Message:
+改正UDirectorCameraApp中size函数没有返回值的问题
+----
+Revision: 1014
+Author: yangkai
+Date: 2014年4月30日 14:25:08
+Message:
+issue ID:CSOL-2019
+修改PyModelNoAlphaRenderer类型不受阴影影响
+----
+Revision: 1013
+Author: huangshanquan
+Date: 2014年4月30日 9:54:24
+Message:
+增加客户端和外部进程通信功能接口csol.SendTCPMessage,绘制线段接口csol.DCameraAddPoint,增加获取模型动作actionList接口
+----
+Revision: 1012
+Author: yangkai
+Date: 2014年4月24日 17:20:01
+Message:
+修正选择颜色时无法即时刷新草的颜色的BUG
+----
+Revision: 1011
+Author: yangkai
+Date: 2014年4月22日 16:32:20
+Message:
+pyModel增加useMipMapping属性。用于实现多种纹理采样。
+----
+Revision: 1010
+Author: yangkai
+Date: 2014年4月16日 16:56:01
+Message:
+issue ID:CSOL-2675
+草碰撞的支持
+
+1、优化的草的碰撞方向。
+2、增加了草的碰撞力度参数。
+3、修正了碰撞范围大于4时范围不正确的BUG。
+----
+Revision: 1009
+Author: huxilin
+Date: 2014年4月15日 14:12:31
+Message:
+CSOL-2661：游戏功能需求-- 寻路指引方式支持，为attachments增加yaw值可控制调节
+
+----
+Revision: 1008
+Author: huxilin
+Date: 2014年4月14日 18:58:56
+Message:
+CSOL-2391：程序内容需求——worldeditor优化
+----
+Revision: 1007
+Author: yangkai
+Date: 2014年4月11日 16:47:15
+Message:
+issue ID:CSOL-2675
+草碰撞的支持
+
+1、修正草坐标Y值小于0无法产生碰撞效果的问题
+2、修正切换地图导致无法产生碰撞的问题
+----
+Revision: 1006
+Author: yangkai
+Date: 2014年4月10日 12:37:01
+Message:
+issue ID:CSOL-2675
+草碰撞的支持
+
+修改了下代码风格
+----
+Revision: 1005
+Author: yangkai
+Date: 2014年4月10日 11:35:44
+Message:
+issue ID:CSOL-2675
+草碰撞的支持
+----
+Revision: 1004
+Author: shenbing
+Date: 2014年3月11日 17:29:48
+Message:
+delete method cursorInWindow
+----
+Revision: 1003
+Author: shenbing
+Date: 2014年3月11日 16:49:39
+Message:
+1、修正鼠标在游戏窗口外无法触发按键消息的问题；
+2、增加接口csol.cursorInWindow(),返回True表示鼠标在游戏窗口内，返回False表示鼠标在游戏窗口外。
+----
+Revision: 1002
+Author: wuxiaoou
+Date: 2014年3月6日 11:40:36
+Message:
+CSOL-2423:修正丢失创世窗口后再选中窗口，会出现第一次点击无效的问题
+----
+Revision: 1001
+Author: wuxiaoou
+Date: 2014年3月5日 19:51:02
+Message:
+CSOL-2423:修正丢失创世窗口后再选中窗口，会出现第一次点击无效的问题
+----
+Revision: 1000
+Author: yangkai
+Date: 2014年2月28日 14:32:04
+Message:
+issue ID: CSOL-2488
+
+1、支持多个光圈 
+2、支持光圈设置贴图 
+3、支持光圈设置大小 
+4、修正了当目标坐标为（0,0,0）时，光圈无法显示的BUG 
+漏上传一个文件
+----
+Revision: 999
+Author: yangkai
+Date: 2014年2月28日 14:04:59
+Message:
+issue ID: CSOL-2488
+
+1、支持多个光圈 
+2、支持光圈设置贴图 
+3、支持光圈设置大小 
+4、修正了当目标坐标为（0,0,0）时，光圈无法显示的BUG 
+
+----
+Revision: 998
+Author: wangshufeng
+Date: 2014年2月26日 9:11:08
+Message:
+issue ID:CSOL-2196
+位面传送优化：忽略位面传送时的服务器强制改变role entity客户端位置的消息。
+----
+Revision: 997
+Author: huangshanquan
+Date: 2014年2月22日 14:29:24
+Message:
+CSOL-2381 使用输入法导致卡客户端问题
+----
+Revision: 996
+Author: yangkai
+Date: 2014年1月27日 11:55:10
+Message:
+issue ID: CSOL-2445
+bwlockd 功能修改
+1、锁定边界改为1个chunk。
+2、不处理exitCode异常返回值，修正其导致无法更新上传的问题。
+----
+Revision: 995
+Author: wangshufeng
+Date: 2014年1月13日 14:58:46
+Message:
+issue ID:CSOL-2196
+修正位面传送时纯客户端entity的filter空间数据未更新导致的客户端崩溃问题。
+----
+Revision: 994
+Author: yangkai
+Date: 2014年1月11日 10:40:24
+Message:
+add res_packer2008.sln and res_packer2008.vcproj.
+----
+Revision: 993
+Author: yangkai
+Date: 2014年1月7日 16:02:46
+Message:
+issue ID: CSOL-2389
+修正EditorChunkStationNode由于跨度太长，导致保存station数据有误的BUG
+----
+Revision: 992
+Author: wuxiaoou
+Date: 2014年1月7日 14:37:23
+Message:
+增加pSlave为空时的判断，修正客户端莫名崩溃现象
+----
+Revision: 991
+Author: wangshufeng
+Date: 2014年1月4日 17:20:20
+Message:
+issue ID:CSOL-2196
+bw客户端加入跳转位面空间功能支持。
+----
+Revision: 990
+Author: huangshanquan
+Date: 2014年1月4日 10:25:55
+Message:
+CSOL-1537 聊天框显示异常
+----
+Revision: 989
+Author: huangshanquan
+Date: 2013年12月26日 11:55:01
+Message:
+增加资源下载速度设置options.xml下packagedownload/downloadrate配置速度bit/秒
+----
+Revision: 988
+Author: yangkai
+Date: 2013年12月25日 17:34:37
+Message:
+issue ID: CSOL-2070
+非local光效受绑定点缩放影响。
+----
+Revision: 987
+Author: shenbing
+Date: 2013年12月18日 11:25:19
+Message:
+fix:
+error C2664: 'bool WorldTriangle::intersects(const Vector3 &,const Vector3 &,float &) const' : cannot convert parameter 3 from 'const float' to 'float &'
+----
+Revision: 986
+Author: yangkai
+Date: 2013年12月18日 11:07:15
+Message:
+issue ID: CSOL-2293
+增加设置区域雾目标矩阵功能
+----
+Revision: 985
+Author: huxilin
+Date: 2013年12月17日 16:11:10
+Message:
+文件和文件夹下载改为优先级可调节（微端）
+----
+Revision: 984
+Author: shenbing
+Date: 2013年12月17日 15:56:52
+Message:
+issueID:CSOL-2191
+调高水体碰撞往下碰撞的距离，由原来的20调整为100
+----
+Revision: 983
+Author: huangshanquan
+Date: 2013年12月9日 16:25:59
+Message:
+获取def定义的方法信息
+----
+Revision: 982
+Author: huxilin
+Date: 2013年11月27日 17:41:18
+Message:
+增加本地文件夹查询功能
+----
+Revision: 981
+Author: huxilin
+Date: 2013年11月27日 16:19:33
+Message:
+增加微端文件夹下载
+----
+Revision: 980
+Author: huangshanquan
+Date: 2013年11月26日 14:04:00
+Message:
+CSOL-2114 BUG--频道中人名显示问题
+----
+Revision: 979
+Author: yangkai
+Date: 2013年11月25日 10:24:38
+Message:
+issue ID:CSOL-2155
+1、增加了区域雾的的fog Near/for far 控制功能。 
+2、增加了fog Naer/for far 淡入淡出功能。 
+3、编辑器可调。
+----
+Revision: 978
+Author: yangkai
+Date: 2013年11月20日 14:37:47
+Message:
+1、修正声音调试功能导致编辑器无法编译的问题。
+2、bigBang/modelEditor 工程增加fmod库引用
+----
+Revision: 977
+Author: huangshanquan
+Date: 2013年11月20日 11:22:43
+Message:
+鼠标事件增加针对模型编辑器的编辑条件
+----
+Revision: 976
+Author: huxilin
+Date: 2013年11月19日 17:55:16
+Message:
+CSOL-2129：刷新点功能改进
+----
+Revision: 975
+Author: shenbing
+Date: 2013年11月16日 14:24:46
+Message:
+1、刚好在水面的坐标toWater返回值为true；
+2、BigWorld.toWater(Vector3 srcPos)接口中地面碰撞判定距离由-2000至2000改为srcPos上下40米。
+
+----
+Revision: 974
+Author: huangshanquan
+Date: 2013年11月14日 14:33:59
+Message:
+CSOL-248 Bug--客户端与输入法的兼容问题
+----
+Revision: 973
+Author: yangkai
+Date: 2013年11月13日 11:04:59
+Message:
+issue ID:CSOL-2054
+音频播放曲线调试
+
+
+----
+Revision: 972
+Author: shenbing
+Date: 2013年10月29日 13:34:24
+Message:
+回退svn版本971
+----
+Revision: 971
+Author: shenbing
+Date: 2013年10月28日 16:41:27
+Message:
+issueID:CSOL-2027
+程序内容需求--程序运行后的鼠标位置
+----
+Revision: 970
+Author: huxilin
+Date: 2013年10月28日 13:48:33
+Message:
+窗口失去焦点时，鼠标按下和弹起消息异常
+----
+Revision: 969
+Author: yangkai
+Date: 2013年10月26日 17:33:46
+Message:
+issue ID: CSOL-1984
+实时阴影的优化
+
+1、实时阴影分辨率由4096*4096 改为 1024*1024。
+2、实时阴影品质配置支持。
+----
+Revision: 968
+Author: huangshanquan
+Date: 2013年10月18日 8:43:59
+Message:
+1，增加csol.CreateProcess脚本调用，创建一个后台进程。2，修改对csol.isFileAtLocal判断文件是否存在的处理。
+----
+Revision: 967
+Author: yangkai
+Date: 2013年10月12日 17:19:33
+Message:
+issue ID: CSOL-801
+实时阴影的farDist改为配置
+----
+Revision: 966
+Author: huangshanquan
+Date: 2013年9月30日 11:09:37
+Message:
+1:增加系统字体的使用.2:增加tcpk文件系统文件下载过滤规则.3:增加包内文件读取异常的处理
+----
+Revision: 965
+Author: yangkai
+Date: 2013年9月29日 17:31:09
+Message:
+issue ID: CSOL-1570
+1、textureLayer 改为浮点数格式，能更精准的控制颜色
+2、移除了无用的fx数据赋值代码
+
+----
+Revision: 964
+Author: yangkai
+Date: 2013年9月29日 9:07:16
+Message:
+issue ID: CSOL-1570
+修正旧刀光配置会导致崩溃的BUG
+
+----
+Revision: 963
+Author: yangkai
+Date: 2013年9月26日 11:47:13
+Message:
+issue ID: CSOL-1570
+刀光效果改进
+
+1、增加了刀光折射幅度控制，可在编辑器编辑
+
+----
+Revision: 962
+Author: yangkai
+Date: 2013年9月23日 17:10:44
+Message:
+issue ID: CSOL-1570
+刀光效果改进
+
+1、修正刀光延迟的问题
+2、增加了刀光长度控制，可在编辑器编辑
+3、增加了刀光折射效果。
+----
+Revision: 961
+Author: wuxiaoou
+Date: 2013年9月10日 14:53:13
+Message:
+issueID:CSOL-58 鼠标按下时移动再弹起无法触发脚本层的targetFocus函数 对上次修改的代码进行优化。
+----
+Revision: 960
+Author: huxilin
+Date: 2013年9月9日 18:01:03
+Message:
+延迟时间为0且model的alpha为1时，不刷新alpha值
+----
+Revision: 959
+Author: wuxiaoou
+Date: 2013年9月9日 16:49:19
+Message:
+issueID:CSOL-58 鼠标按下时移动再弹起无法触发脚本层的targetFocus函数
+----
+Revision: 958
+Author: yangkai
+Date: 2013年8月28日 10:52:20
+Message:
+issue ID: CSOL-1613
+贴花outTime_参数未初始化，导致异常。
+----
+Revision: 957
+Author: yangkai
+Date: 2013年8月23日 15:24:04
+Message:
+issue ID: CSOL-1771
+PyMethParticleSystem 增加脚本层属性scale。用来控制粒子的缩放。
+----
+Revision: 956
+Author: yangkai
+Date: 2013年8月22日 16:27:43
+Message:
+issue ID: CSOL-1613
+贴花decal增加color参数、time参数
+BigWorld.addDecal( Vector3 src, Vector3 dst , float scale, int32 index, Vector3 dir, Vector3 color, float time )
+param : dir ( 贴花的朝向，未指定时，值为( -1.f, -1.f, -1.f )将随机产生一个朝向)
+param : color( 贴花的颜色，会与贴图本身颜色混合相乘。未指定时候，为白色，值为( 1.f, 1.f, 1.f ) )
+param : time( 贴花的渐入时间，未指定时，值为0.f )
+
+BigWorld.delDecal( int32 index, float time )
+param : time ( 贴花的渐隐时间，未指定时，值为0.f )
+----
+Revision: 955
+Author: yangkai
+Date: 2013年8月20日 10:45:39
+Message:
+贴花fx修改：
+ALPHATESTENABLE = TRUE;
+ALPHAREF = 127;
+SRCBLEND = SRCALPHA;
+
+----
+Revision: 954
+Author: yangkai
+Date: 2013年8月20日 10:26:45
+Message:
+issue ID: CSOL-1613
+贴花decal增加了指定dir的参数。
+参数dir未指定时，将随机产生一个方向。
+----
+Revision: 953
+Author: yangkai
+Date: 2013年8月19日 11:09:18
+Message:
+多个子系统的效果预览
+----
+Revision: 952
+Author: yangkai
+Date: 2013年7月29日 17:40:50
+Message:
+loft用model增加了指定武器指定绑定点功能。
+----
+Revision: 951
+Author: yangkai
+Date: 2013年7月27日 16:47:17
+Message:
+注释了mesh类粒子的“初始朝向设置如果小于0，则随机”的功能，与新增的，初始随机配置功能重复。
+----
+Revision: 950
+Author: yangkai
+Date: 2013年7月27日 16:45:41
+Message:
+particleEditor 增加了loft类粒子的实时编辑预览功能。
+----
+Revision: 949
+Author: huxilin
+Date: 2013年7月16日 17:53:58
+Message:
+CSOL-717：Bug- 美术使用地图编辑器载入 摄像机路线会崩溃。 
+没有加载完chunk时，就导入相机路线fly.xml弹出对话框警告。
+----
+Revision: 948
+Author: yangkai
+Date: 2013年7月13日 11:22:00
+Message:
+修正声音系统初始化失败导致客户端崩溃的问题
+----
+Revision: 947
+Author: yangkai
+Date: 2013年7月12日 17:05:32
+Message:
+issue ID: CSOL-1555
+1、增加粒子的缩放功能
+2、scalePsa组件增加对mesh/visual粒子的缩放支持。
+3、mesh/visual/sprite 粒子增加“始终朝向发射方向”功能
+4、sprite 粒子增加“UV单独初始缩放”功能
+5、mesh/visual粒子增加 旋转、初始roll方向设置，初始随机Roll方向设置等功能。
+6、ParticleEditor界面支持。
+----
+Revision: 946
+Author: huangshanquan
+Date: 2013年7月12日 15:36:21
+Message:
+增加options.xml配置<root><openfile>openfile.log</openfile></root>如果有这个配置将会把游戏打开的文件名称写入指定的文件方便在制作微端时提取最小资源
+----
+Revision: 945
+Author: wanhaipeng
+Date: 2013年7月9日 16:57:44
+Message:
+1: Add fmodex_vc.lib.
+----
+Revision: 944
+Author: wuxiaoou
+Date: 2013年7月9日 16:14:15
+Message:
+issueID:CSOL-1542 对没有移动类动作的模型进行缩放支持。
+----
+Revision: 943
+Author: huangshanquan
+Date: 2013年7月9日 15:45:30
+Message:
+增加动态加载微端模块的处理和相关的脚本接口。字体声音的打包处理。
+----
+Revision: 942
+Author: huxilin
+Date: 2013年6月27日 17:45:38
+Message:
+处理同一个tick模型2次setAlpha失效的问题
+----
+Revision: 941
+Author: wuxiaoou
+Date: 2013年6月24日 19:47:23
+Message:
+issueID:CSOL-1379
+引擎启动过程中禁止最大化,启动完成恢复。
+----
+Revision: 940
+Author: yangkai
+Date: 2013年6月24日 14:37:15
+Message:
+issue ID: CSOL-903
+修正流光模型无法渲染的问题
+----
+Revision: 939
+Author: wuxiaoou
+Date: 2013年6月20日 20:02:42
+Message:
+issueID:CSOL-800
+修正缩放窗口（比如窗口最大化）时，鼠标左键事件多次触发的问题
+----
+Revision: 938
+Author: yangkai
+Date: 2013年6月19日 15:32:08
+Message:
+issue ID: CSOL-1270
+修改fog的效果表现，使进出fog之间效果渐入
+----
+Revision: 937
+Author: yangkai
+Date: 2013年6月18日 16:14:05
+Message:
+issue ID: CSOL-1464
+
+physics增加属性attackAngle（追击角度）attackFaceTo(是否始终面向目标)
+----
+Revision: 936
+Author: yangkai
+Date: 2013年6月7日 16:12:37
+Message:
+issue ID: CSOL-1384
+
+增加了繁体转简体的接口 csol::asSimplifiedString
+
+转换失败时，范围传入值
+----
+Revision: 935
+Author: yangkai
+Date: 2013年5月27日 12:07:02
+Message:
+issue ID: CSOL-1384
+
+增加了繁体转简体的接口 csol::asSimplifiedString
+
+修正使用在win7/Vista系统下，使用兼容模式运行chuangshi，出现转换出乱码的BUG
+----
+Revision: 934
+Author: yangkai
+Date: 2013年5月24日 10:11:45
+Message:
+issue ID: CSOL-1384
+
+增加了繁体转简体的接口 csol::asSimplifiedString
+----
+Revision: 933
+Author: yangkai
+Date: 2013年5月13日 10:24:44
+Message:
+issue ID: CSOL-1298
+连击动作增加追击效果
+
+physics新增python属性
+attackTargetMatrix //matrix 追击的目标
+attackTargetDis // float 追击目标时离目标的最小距离，默认1.0m
+attackMoveScale // float 追击目标时移动缩放倍率，默认-1.0,意为瞬间移到目标处
+attackTrackDis // float 追击目标时候超过该距离不再追击,默认6.0m
+
+----
+Revision: 932
+Author: fanxiao
+Date: 2013年4月28日 14:05:30
+Message:
+修改室内外判断方式，应该在获取状态时做判断。
+----
+Revision: 931
+Author: yangkai
+Date: 2013年3月28日 16:17:47
+Message:
+issue ID: CSOL-46
+恢复至上一版本。
+----
+Revision: 930
+Author: yangkai
+Date: 2013年3月27日 11:06:08
+Message:
+issue ID: CSOL-46
+修正第一次访问node点矩阵信息为空的BUG
+----
+Revision: 929
+Author: yangkai
+Date: 2013年3月26日 10:48:22
+Message:
+issue ID: CSOL-901
+修正开启凌波微步无掉落回调的BUG
+----
+Revision: 928
+Author: yangkai
+Date: 2013年3月20日 21:36:55
+Message:
+issue ID: CSOL-1082
+修正水体碰撞三角形计算错误的BUG
+----
+Revision: 927
+Author: yangkai
+Date: 2013年3月15日 16:55:51
+Message:
+issue ID: CSOL-772
+修正在两个三角形交界处下落时会出现抖动的问题
+----
+Revision: 926
+Author: wanhaipeng
+Date: 2013年2月21日 11:20:42
+Message:
+1: update小地图转为后台线程loading。
+   新加python属性bgLoaded，为True时表示loading小地图成功。
+   bgLoaded在每次load成功后，只返回一次True，其它所有时间为False。
+----
+Revision: 925
+Author: yangkai
+Date: 2013年2月21日 9:46:11
+Message:
+farPlane 上限500米
+----
+Revision: 924
+Author: wanhaipeng
+Date: 2013年2月1日 9:44:44
+Message:
+1: Hybrid|Win32的优化编译选项。
+----
+Revision: 923
+Author: wanhaipeng
+Date: 2013年2月1日 9:43:50
+Message:
+1: MAYA_VISUAL_EXPORTER for Single_Threaded_Debug。
+----
+Revision: 922
+Author: wanhaipeng
+Date: 2013年2月1日 9:42:30
+Message:
+1: cagame2.ico。
+----
+Revision: 921
+Author: wanhaipeng
+Date: 2013年2月1日 9:41:54
+Message:
+1: 更细致的WM_SIZE、WM_MOVE处理。
+----
+Revision: 920
+Author: wanhaipeng
+Date: 2013年2月1日 9:38:18
+Message:
+1: FarPlane最大限制为500米。
+----
+Revision: 919
+Author: fanxiao
+Date: 2013年1月30日 16:10:30
+Message:
+经过测试，还是关闭比较好。 -_-!
+----
+Revision: 918
+Author: fanxiao
+Date: 2013年1月30日 14:09:06
+Message:
+1，开启umbra；
+2，将默认阴影产生距离由120米修改为50米；
+----
+Revision: 917
+Author: yangkai
+Date: 2013年1月30日 11:48:04
+Message:
+issue ID: CSOL-699
+PyModelNoAlphaRenderer增加抗锯齿效果
+漏上传了hpp文件
+----
+Revision: 916
+Author: yangkai
+Date: 2013年1月29日 19:19:52
+Message:
+issue ID: CSOL-699
+PyModelNoAlphaRenderer增加抗锯齿效果
+----
+Revision: 915
+Author: wanhaipeng
+Date: 2013年1月28日 11:19:22
+Message:
+1: Add directx s_isRTShadowSupported variable，用来控制是否渲染RT。
+----
+Revision: 914
+Author: yangkai
+Date: 2013年1月23日 17:08:31
+Message:
+1、修正实时阴影总是打开的BUG。实时阴影默认为关闭。
+
+
+----
+Revision: 913
+Author: yangkai
+Date: 2013年1月17日 15:07:38
+Message:
+issue ID: CSOL-508
+水体判定距离由5000改为40。
+----
+Revision: 912
+Author: wanhaipeng
+Date: 2013年1月16日 17:14:51
+Message:
+1: 添加创世2图标。
+----
+Revision: 911
+Author: fanxiao
+Date: 2013年1月16日 10:01:42
+Message:
+修改传输fx属性的方式，避免崩溃。
+----
+Revision: 910
+Author: yangkai
+Date: 2013年1月11日 11:04:35
+Message:
+加入真实位移类动作位移时对遮挡片的碰撞
+----
+Revision: 909
+Author: yangkai
+Date: 2013年1月9日 17:37:55
+Message:
+issue ID: CSOL-433
+修正通过快捷键（ALT+ENTER）切换游戏窗口/全屏时，模式索引（modeIndex）不正确的BUG
+----
+Revision: 908
+Author: fanxiao
+Date: 2013年1月5日 16:12:49
+Message:
+渐淡渲染时传入正常渲染的自发光参数
+----
+Revision: 907
+Author: yangkai
+Date: 2012年12月28日 17:37:12
+Message:
+issue ID:CSOL-553
+游戏中设置贴图精度不再提示“要重启客户端”
+----
+Revision: 906
+Author: yangkai
+Date: 2012年12月25日 14:18:38
+Message:
+修改为异常模型或者遮挡片直接显示BSP。模型不再闪烁，会导致内存泄露
+----
+Revision: 905
+Author: yangkai
+Date: 2012年12月24日 20:03:43
+Message:
+增加遮挡片检查功能，对roll值大于指定值的chunkModel以特殊的黑色显示BSP（遮挡片）或者闪烁显示（其他模型）。
+用以排查数据异常的遮挡片或者模型。
+----
+Revision: 904
+Author: yangkai
+Date: 2012年12月22日 10:11:09
+Message:
+BoidsFilter 优化。
+进入Lod距离调用脚本层方法onEnterLod
+离开Lod距离调用脚本层方法onLeaveLod
+----
+Revision: 903
+Author: yangkai
+Date: 2012年12月12日 14:42:54
+Message:
+issue ID: CSOL-242
+场景模型丢失的问题
+
+LOD优化中修改chunkItem刷新方式，摄像机移动幅度超过20米（可设置）将进行刷新。
+
+旧的处理方式会有盲区。以特殊的角度进入chunk会导致某些场景模型会不被渲染。
+----
+Revision: 902
+Author: fanxiao
+Date: 2012年12月12日 14:30:13
+Message:
+修改代码中对17根骨架的限制
+----
+Revision: 901
+Author: yangkai
+Date: 2012年12月4日 15:15:38
+Message:
+1、模型渐入渐出支持指定alpha。
+setAlpha( float alpha, float time ) 
+参数time为0时，瞬间到指定alpha
+2、移除了旧版的alpha 功能。
+----
+Revision: 900
+Author: yangkai
+Date: 2012年12月4日 15:10:15
+Message:
+移除了调试代码
+----
+Revision: 899
+Author: fanxiao
+Date: 2012年12月3日 14:18:41
+Message:
+1，修改粒子渐淡颜色算法；
+2，为所有粒子渲染器添加渐淡支持。
+----
+Revision: 898
+Author: fanxiao
+Date: 2012年12月1日 16:54:20
+Message:
+添加一个fade override以实现模型淡入淡出功能，同时关联到附属的粒子系统。
+----
+Revision: 897
+Author: yangkai
+Date: 2012年11月22日 14:57:06
+Message:
+addFlashFreQuence 改成  setFlashFreQuence
+----
+Revision: 896
+Author: fanxiao
+Date: 2012年11月21日 17:56:58
+Message:
+1，增加py接口
+2，增加帧动画功能
+----
+Revision: 895
+Author: yangkai
+Date: 2012年11月21日 17:09:46
+Message:
+增加FLASH_COLOR的py使用示例
+----
+Revision: 894
+Author: fanxiao
+Date: 2012年11月20日 10:50:44
+Message:
+增加FlashColor功能所需属性和接口
+----
+Revision: 893
+Author: fanxiao
+Date: 2012年11月20日 10:49:36
+Message:
+1，创建一个用于放文档的目录
+2，增加FlashColor的设计文档
+----
+Revision: 892
+Author: yangkai
+Date: 2012年11月6日 16:29:28
+Message:
+issue ID: CSOL-67
+对实际位移类的动作做了碰撞处理。
+----
+Revision: 891
+Author: yangkai
+Date: 2012年10月18日 11:35:42
+Message:
+issue ID: CSOL-12707
+修正模型观察器使用terrain后地表显示一半黑一半白的问题。
+----
+Revision: 890
+Author: yangkai
+Date: 2012年10月18日 10:37:21
+Message:
+issue ID: CSOL-58
+修正当镜头被障碍物前移时，单位选取异常的BUG
+
+选取起始碰撞点拉近0.5米
+----
+Revision: 889
+Author: yangkai
+Date: 2012年10月10日 15:19:28
+Message:
+issueID: CSOL-12327
+修正只做删除节点操作或者只涉及link的操作无法保存graph的BUG
+----
+Revision: 888
+Author: fanxiao
+Date: 2012年9月27日 14:36:54
+Message:
+忘了保存文件，重新上传。汗~
+----
+Revision: 887
+Author: fanxiao
+Date: 2012年9月27日 14:14:05
+Message:
+粒子使用Grounded属性后，与地表相同高度，导致深度冲突。现改为增加一个高度偏移。
+
+position.y += 0.01f;
+
+----
+Revision: 886
+Author: yangkai
+Date: 2012年9月24日 16:38:09
+Message:
+issue ID: CSOL-12735
+修改billboard的渲染顺序，用以修正billboard在玩家模型半透明状态下会被挡住的问题
+----
+Revision: 885
+Author: yangkai
+Date: 2012年9月6日 17:20:20
+Message:
+issue ID: CSOL-11334
+1、修改提示信息
+2、decal上限改为100
+----
+Revision: 884
+Author: yangkai
+Date: 2012年9月6日 17:15:32
+Message:
+issue ID: CSOL-11334
+按策划需求，decalTexture 支持256*256贴图
+----
+Revision: 883
+Author: yangkai
+Date: 2012年9月4日 11:43:09
+Message:
+addCameraModel 与 removeCameraModel 会changedStationnode
+用以修正CameraEditor面板中出现的add或者remove CameraModel不保存的问题
+----
+Revision: 882
+Author: yangkai
+Date: 2012年8月29日 20:05:04
+Message:
+issue ID: CSOL-11594
+玩家角色阴影出现残缺、破碎、不显示的修正
+修改方案： 
+1、高级光照开启同时开启实时阴影，关闭bw自带阴影。阴影品质不可调。阴影数量可调（只影响玩家角色阴影）
+2、关闭高级光照时开启bw自带阴影，阴影品质可调，阴影数量可调（只影响玩家角色阴影）。
+----
+Revision: 881
+Author: yangkai
+Date: 2012年8月23日 14:27:57
+Message:
+issue ID CSOL-12604
+镜头工具中，修正使用了lookAt功能后，镜头节点顺序错乱的问题
+----
+Revision: 880
+Author: yangkai
+Date: 2012年8月22日 10:59:36
+Message:
+issue ID: CSOL-12638
+根据策划新规则：在跳跃全程都支持多段跳跃。
+----
+Revision: 879
+Author: yangkai
+Date: 2012年8月8日 11:14:29
+Message:
+issue ID: CSOL-12569
+CameraNode 增加stopTime属性，用以实现暂停镜头的预览。
+----
+Revision: 878
+Author: fanxiao
+Date: 2012年8月2日 10:58:53
+Message:
+在拷贝backbuffer的过程中增加放射模糊效果的处理，可以用脚本控制开关：BigWorld.setGraphicsSetting("RADIO_BLUR", 1);
+----
+Revision: 877
+Author: yangkai
+Date: 2012年8月1日 18:04:41
+Message:
+issue ID: CSOL-12492
+【程序需求】远程攻击中抛物线形式的弹道表现
+
+1、BigWorld.CurveHomer()可用了。
+2、修正CurveHomer飞行起点的一个BUG
+----
+Revision: 876
+Author: yangkai
+Date: 2012年7月27日 15:00:43
+Message:
+issue ID: CSOL-11395
+修正Orbitor纵向速度计算错误的问题
+
+析构时移除awayCallback_的引用
+Py_XDECREF( awayCallback_ );
+----
+Revision: 875
+Author: yangkai
+Date: 2012年7月27日 11:34:09
+Message:
+issue ID: CSOL-11395
+修正Orbitor纵向速度计算错误的问题
+增加读写属性
+away// 远离距离
+awayCallback//远离回调
+----
+Revision: 874
+Author: yangkai
+Date: 2012年7月25日 14:59:02
+Message:
+issue ID:CSOL-12501
+支持三段跳
+physics 增加方法
+setJumpSecondUpFn//二段跳回调
+setJumpThreeUpFn//三段跳回调
+setjumpSecondPrepareFn//准备二段跳回调
+setjumpThreePrepareFn//准备三段跳回调
+
+跳跃状态调整：
+#define STATE_JUMP_DEFAULT	-1
+#define STATE_JUMP_START	0
+#define STATE_JUMP_UP		1
+#define STATE_JUMP_START2	2
+#define STATE_JUMP_UP2		3
+#define STATE_JUMP_START3	4
+#define STATE_JUMP_UP3		5
+#define STATE_JUMP_DOWN		6
+----
+Revision: 873
+Author: yangkai
+Date: 2012年7月20日 16:08:07
+Message:
+漏掉的issue ID:CSOL-12475
+增加BoundingBox数据显示
+漏掉的
+#ifdef EDITOR_ENABLED
+...
+#endif
+----
+Revision: 872
+Author: yangkai
+Date: 2012年7月20日 11:39:37
+Message:
+issue ID: CSOL-11948
+地编工具中镜头点及飞翔路径点增加注释标签
+----
+Revision: 871
+Author: yangkai
+Date: 2012年7月18日 11:47:35
+Message:
+issue ID:CSOL-12475
+增加BoundingBox数据显示
+----
+Revision: 870
+Author: wanhaipeng
+Date: 2012年7月18日 10:48:37
+Message:
+1: 解决Editor_Hybrid ProcessShellCommand 中发生的crash。
+----
+Revision: 869
+Author: yangkai
+Date: 2012年7月16日 14:15:57
+Message:
+issue ID: CSOL-11916
+地图编辑器增加了SpaceBox查看功能。
+
+改为通过世界坐标来确定盒子大小。
+----
+Revision: 868
+Author: yangkai
+Date: 2012年7月13日 14:56:40
+Message:
+issue ID: CSOL-11916
+地图编辑器增加了SpaceBox查看功能。
+
+遮挡片改为美术单独制作的 space/tong_yong/zhe_dang_pian/space_box_pian.model
+----
+Revision: 867
+Author: yangkai
+Date: 2012年7月13日 10:33:08
+Message:
+issue ID: CSOL-11916
+地图编辑器增加了SpaceBox查看功能。
+----
+Revision: 866
+Author: yangkai
+Date: 2012年6月26日 9:45:11
+Message:
+issue ID: CSOL-12292
+粒子显示分级管理。
+----
+Revision: 865
+Author: wuwei
+Date: 2012年6月15日 9:34:19
+Message:
+1，调整求水面碰撞点的计算
+----
+Revision: 864
+Author: wuwei
+Date: 2012年6月15日 9:30:56
+Message:
+1,去掉WindowGUIComponent::update中无用的计算
+----
+Revision: 863
+Author: wuwei
+Date: 2012年6月15日 9:21:12
+Message:
+1,刀光编辑的补充参数
+----
+Revision: 862
+Author: wuwei
+Date: 2012年6月15日 9:08:04
+Message:
+1,曲线飞行类CurveHomer
+----
+Revision: 861
+Author: shenbing
+Date: 2012年6月14日 11:22:52
+Message:
+issue:CSOL-12173
+取消室外场景物件投射到室内的阴影（修正语法错误）
+----
+Revision: 860
+Author: yangkai
+Date: 2012年6月6日 11:18:09
+Message:
+按老宛的建议，增加了方法clearCameraData,避免了出现重复代码的问题。
+----
+Revision: 859
+Author: yangkai
+Date: 2012年5月31日 15:21:38
+Message:
+issue ID: CSOL-12121
+( isFixedTime_ ? startTime_ : time_ / HOURS_IN_DAY )修改为( ( isFixedTime_ ? startTime_ : time_ ) / HOURS_IN_DAY )
+----
+Revision: 858
+Author: yangkai
+Date: 2012年5月31日 14:15:27
+Message:
+remove #include "cameraNodeAnimationManager.hpp"
+----
+Revision: 857
+Author: shenbing
+Date: 2012年5月31日 11:57:23
+Message:
+issue:CSOL-12173
+修正一处代码错误
+
+----
+Revision: 856
+Author: shenbing
+Date: 2012年5月25日 10:40:37
+Message:
+issue:CSOL-12173
+取消室外场景物件投射到室内的阴影
+----
+Revision: 855
+Author: yangkai
+Date: 2012年5月22日 10:56:50
+Message:
+remove 
+cameraDatas_.erase( i++ );
+
+会导致程序崩溃。
+----
+Revision: 854
+Author: shenbing
+Date: 2012年5月8日 16:42:09
+Message:
+issue:CSOL-12173
+在室内，取消阴影处理的处理(只针对场景物件）
+----
+Revision: 853
+Author: fanxiao
+Date: 2012年5月8日 9:42:46
+Message:
+因为效果调整，重新开启静态光源照明。
+----
+Revision: 852
+Author: yangkai
+Date: 2012年4月28日 18:17:30
+Message:
+issue ID:CSOL-11334
+1、方法 BigWorld.addDecal 返回一个整型索引。
+2、增加方法 BigWorld.deleteDecal( index )，删除指定索引的贴花
+
+----
+Revision: 851
+Author: yangkai
+Date: 2012年4月28日 18:03:01
+Message:
+1、add page CameraEditor
+----
+Revision: 850
+Author: wuwei
+Date: 2012年4月28日 9:32:56
+Message:
+station node增加修改标志，只有编辑行为才保存
+----
+Revision: 849
+Author: wanhaipeng
+Date: 2012年4月18日 10:29:31
+Message:
+1: 修改全角和半角空格的宽度。
+----
+Revision: 848
+Author: wuwei
+Date: 2012年3月13日 15:13:54
+Message:
+1,雾化计算调整漏传
+----
+Revision: 847
+Author: wuwei
+Date: 2012年3月13日 15:12:46
+Message:
+1,调整雾化远近距离计算代码
+----
+Revision: 846
+Author: scm
+Date: 2012年1月17日 15:54:42
+Message:
+解决bigworld1.8.7 地编、模型和粒子编辑器在vc2008编译的exe运行时崩溃问题，on Editor_Debug mode.
+
+----
+Revision: 845
+Author: scm
+Date: 2012年1月17日 15:51:58
+Message:
+解决bigworld1.8.7 地编、模型和粒子编辑器在vc2008编译的exe运行时崩溃问题，on Editor_Debug mode.
+
+----
+Revision: 844
+Author: scm
+Date: 2012年1月13日 17:07:38
+Message:
+解决vc2008编译的模型和粒子编辑器的运行时崩溃问题，on Editor_Hybrid mode.
+
+----
+Revision: 843
+Author: scm
+Date: 2012年1月13日 16:48:26
+Message:
+1\解决vc2008编译的bigbang场景编辑器，运行时崩溃的问题，on Editor_Hybrid mode.
+2\清除一下垃圾文件。
+
+----
+Revision: 842
+Author: yangjinan
+Date: 2011年12月13日 15:30:42
+Message:
+玩家角色的阴影添加到shadowMap模块
+----
+Revision: 841
+Author: fanxiao
+Date: 2011年12月5日 9:46:40
+Message:
+屏蔽加载chunk时使用静态光照的代码
+----
+Revision: 840
+Author: qiulinhui
+Date: 2011年11月23日 10:11:47
+Message:
+(1)解决关闭粒子编辑器时必崩溃产生dump文件的问题。
+(2)vc7.1工程加入freetype lib。
+----
+Revision: 839
+Author: yangjinan
+Date: 2011年11月22日 10:30:40
+Message:
+1.客户端增加播放镜头动画结束后的脚本接口。
+2.恢复ChunkItem编辑时的BoundiongBox缩放的限制。
+----
+Revision: 838
+Author: yangjinan
+Date: 2011年11月15日 11:28:35
+Message:
+镜头动画编辑器BUG
+----
+Revision: 837
+Author: yangjinan
+Date: 2011年11月14日 11:31:01
+Message:
+1.增加实时阴影设置接口
+BigWorld.setGraphicsSetting("REALTIME_SHADOW", 0)//打开
+BigWorld.setGraphicsSetting("REALTIME_SHADOW", 1)//关闭
+----
+Revision: 836
+Author: yangjinan
+Date: 2011年11月11日 15:29:48
+Message:
+1.修复镜头动画编辑的BUG
+----
+Revision: 835
+Author: wanhaipeng
+Date: 2011年11月11日 10:04:50
+Message:
+1: isEntitySelectable在有skeletonCollider时，不判断visual文件中的BoundingBox。
+----
+Revision: 834
+Author: qiulinhui
+Date: 2011年11月9日 16:35:44
+Message:
+CSOL-11374: 自定义预览图片的大小，默认值为128*128；调整模型生成预览图片时的角度。
+----
+Revision: 833
+Author: yangjinan
+Date: 2011年11月8日 17:20:00
+Message:
+1.上一次更新所遗漏的代码
+----
+Revision: 832
+Author: yangjinan
+Date: 2011年11月8日 17:18:16
+Message:
+1.地图编辑器和客户端添加实时阴影效果
+----
+Revision: 831
+Author: yangjinan
+Date: 2011年10月31日 11:19:32
+Message:
+1。镜头动画编辑功能的修改
+----
+Revision: 830
+Author: wuwei
+Date: 2011年10月24日 11:34:08
+Message:
+1,添加lzo三方库路径
+----
+Revision: 829
+Author: yangjinan
+Date: 2011年10月19日 11:28:19
+Message:
+1.减小EditorChunkLink包围盒，方便鼠标选取摄像机节点
+----
+Revision: 828
+Author: yangjinan
+Date: 2011年10月14日 9:31:15
+Message:
+1.上传镜头动画需要的资源
+----
+Revision: 827
+Author: yangjinan
+Date: 2011年10月14日 9:11:17
+Message:
+1.减小EditorChunkLiunk的包围盒大小（包围盒太大会影响摄像机节点的选取）
+2.修正摄像机运行过程中没有更新chunkCamera的BUG。
+----
+Revision: 826
+Author: qiulinhui
+Date: 2011年10月13日 10:37:08
+Message:
+新增BigWorld.switchScreenBlur(int i)脚本接口；参数i:-1 关闭， 0、1、2模糊程度递增。
+
+效果启用方式：GraphicsSetting中BLOOM_FILTER设置“ON”或者“OFF”；重启生效。
+----
+Revision: 825
+Author: fanxiao
+Date: 2011年10月12日 13:55:30
+Message:
+添加接口以控制全屏模糊的级别
+bool switchScreenBlur(int screenBlurLevel);
+----
+Revision: 824
+Author: yangjinan
+Date: 2011年10月8日 11:07:41
+Message:
+1.镜头动画编辑功能及客户端调用接口
+----
+Revision: 823
+Author: wanhaipeng
+Date: 2011年9月23日 15:49:22
+Message:
+1: 增加一个调试键AppMenu，功效等同CAPSLOCK。
+----
+Revision: 822
+Author: wanhaipeng
+Date: 2011年9月21日 20:01:20
+Message:
+1: Add simple_camera files.
+----
+Revision: 821
+Author: wanhaipeng
+Date: 2011年9月21日 19:59:11
+Message:
+1: 出错信息使用英文。
+----
+Revision: 820
+Author: wanhaipeng
+Date: 2011年9月21日 19:50:42
+Message:
+1: 修复video callback引用计数的Bug。
+----
+Revision: 819
+Author: wanhaipeng
+Date: 2011年9月21日 18:55:02
+Message:
+1: 增加视频播放功能。
+   csol.prepareVideo( filename )
+   csol.playVideo()
+   csol.stopVideo()
+   csol.clearVideo()
+   csol.setVideoCallback( cb )
+     define cb( event ):
+----
+Revision: 818
+Author: fanxiao
+Date: 2011年9月20日 9:35:37
+Message:
+修改Vector4View使其初始数值区间为[-10.0, 10.0]。
+----
+Revision: 817
+Author: fanxiao
+Date: 2011年9月9日 14:22:16
+Message:
+增加文件格式转换规则：
+_spec : DXT5
+_pt   : DXT1
+_lk   : DXT3
+_tm   : DXT5
+----
+Revision: 816
+Author: qiulinhui
+Date: 2011年9月5日 16:49:25
+Message:
+issue_id: CSOL-11157  修正“使用连跳加鼠标点击的方法飞檐走壁”的问题。
+----
+Revision: 815
+Author: qiulinhui
+Date: 2011年9月2日 9:56:31
+Message:
+AvatarDropFilter.outputCallback(dTime)：dTime 为两个Tick间的时间间隔（单位秒），类型float。
+
+----
+Revision: 814
+Author: qiulinhui
+Date: 2011年8月31日 14:54:46
+Message:
+（1）CSOL-11106: AvatarFilter.outputCallback 读写属性，绑定AvatarFilter::output处理时，用于修正所属entity的position的脚本回调函数。回调函数格式 def onOutputCallback(time):    返回值修正所属entity的position，类型Vector3。
+（2）CSOL-11087: BaseCamera.hitModelAlpha 读写属性，类型float。大于等于0时，启用“摄像机不会因为和角色之间有建筑物，而自动拉近与角色的距离。 维持原来的位置不变，角色和摄像机之间的非entity模型半透明处理”，默认值为-1.
+(3)CSOL-11052: 底层处理的配置数据路径，在resources.xml/environment中，defaultFogNearScale, defaultFogFarScale，defaultLod。
+
+
+
+
+----
+Revision: 813
+Author: wuwei
+Date: 2011年8月25日 16:37:48
+Message:
+1,win7 64位下窗口焦点异常问题
+----
+Revision: 812
+Author: qiulinhui
+Date: 2011年8月11日 14:24:10
+Message:
+CSOL-11052 "视频选项中的“视野距离”设置增加选项"的底层支持
+新增脚本层接口
+csol.setFogScale(float nearScale, float farScale, bool fogProfileFromMap) 
+
+
+----
+Revision: 811
+Author: wuwei
+Date: 2011年8月11日 14:12:24
+Message:
+1,调整flora的点光源代码
+----
+Revision: 810
+Author: wuwei
+Date: 2011年8月10日 16:23:17
+Message:
+1,flora增加点光源光照计算
+----
+Revision: 809
+Author: wuwei
+Date: 2011年8月3日 10:25:24
+Message:
+1,PyShockParticleRenderer_token未使用的笔误。
+----
+Revision: 808
+Author: qiulinhui
+Date: 2011年7月27日 11:59:09
+Message:
+Bug Fix：水体渲染状态与正常渲染状态切换时，特定位置出现chunk模型不能显示的Bug。
+----
+Revision: 807
+Author: qiulinhui
+Date: 2011年7月22日 10:21:15
+Message:
+新增SimpleCamera，创建方法BigWorld.SimpleCamera()
+
+脚本方法：
+shake(float duration, Vector3 amount, Vector3 posAmout = Vector3(0.f, 0.f, 0.f)) 震屏效果
+
+脚本读写属性：
+roll：roll旋转值， float，默认值（0）
+dirInWS：摄像机镜头的朝向， Vector3， 默认值（ 0， 0， 1）
+posInWS：摄像机的位置， Vector3， 默认值（0， 0， 0）
+uprightDir 摄像机上方的朝向， Vector3，默认值 （0， 1， 0）
+updateCallback 绑定update回调函数， 函数格式 def update(dTime)
+
+例如：控制摄像机移动的用法
+
+simpleCram = None
+speed = Vector3(0, 0, 1)
+
+def updata(dTime):
+   global simpleCram, speed
+   simpleCram.posInWS += speed * dTime
+
+simpleCram = BigWorld.SimpleCamera()
+simpleCram.updateCallback = updata
+BigWorld.camera(simpleCram)
+
+----
+Revision: 806
+Author: qiulinhui
+Date: 2011年7月15日 11:13:02
+Message:
+修正偶尔出现读取“primitives/indices”有误的Bug。
+----
+Revision: 805
+Author: qiulinhui
+Date: 2011年7月12日 11:11:20
+Message:
+新增脚本层接口 BigWorld.fetchTexture(textureName, callback)
+
+def callback(guiTexture):
+    pass
+----
+Revision: 804
+Author: qiulinhui
+Date: 2011年7月1日 16:50:58
+Message:
+BoidsFilter中修改脚本层读写属性：去除暂时没用的yawEnable，加入modelScale，heightClipMax， heightClipMin。
+----
+Revision: 803
+Author: qiulinhui
+Date: 2011年6月30日 17:43:44
+Message:
+(1)BoidsFilter加入脚本读写属性yawEnable，pitchEnable， rollEnable，以解决鱼侧身游泳的问题。
+(2)水面加入Alpha编辑控制参数edgeAlphaBase_, edgeAlphaClipMin_, edgeAlphaClipMax_。
+----
+Revision: 802
+Author: qiulinhui
+Date: 2011年6月29日 17:20:35
+Message:
+(1)pyModel新增读写属性 reflectionVisible， reflectionVisibleAttachments。
+(2)worldeditor 新增水体的“use frame alpha”，编辑是否启用水边框的柔边效果。
+----
+Revision: 801
+Author: wuwei
+Date: 2011年6月28日 14:57:28
+Message:
+1,worldeditor粒子增加scale功能
+----
+Revision: 800
+Author: qiulinhui
+Date: 2011年6月28日 14:04:53
+Message:
+解决浮点运算误差导致界面偶尔出现闪烁的问题。
+----
+Revision: 799
+Author: wuwei
+Date: 2011年6月27日 16:57:30
+Message:
+1,选择性使用D3DXSHADER_USE_LEGACY_D3DX9_31_DLL选项
+----
+Revision: 798
+Author: qiulinhui
+Date: 2011年6月27日 16:26:57
+Message:
+新增GUI.Texture受GUI.AlphaShader影响的处理。
+----
+Revision: 797
+Author: wuwei
+Date: 2011年6月22日 10:16:39
+Message:
+1,worldeditor增加model lod编辑功能
+----
+Revision: 796
+Author: wuwei
+Date: 2011年6月21日 14:55:57
+Message:
+1,仅在客户端去掉31dll的编译选项，工具暂保留，否则会崩溃，原因待查。
+----
+Revision: 795
+Author: wuwei
+Date: 2011年6月21日 9:00:58
+Message:
+1,bigbang中和zheDang相关的全局变量名字，加前缀‘g_
+----
+Revision: 794
+Author: wuwei
+Date: 2011年6月20日 17:35:16
+Message:
+1,去掉fx的31_DLL编译选项，此选项会导致复杂的fx编译不过
+2，增加fxaa抗锯齿效果
+----
+Revision: 793
+Author: qiulinhui
+Date: 2011年6月20日 11:45:01
+Message:
+navGen对SpaceBB的支持。
+----
+Revision: 792
+Author: qiulinhui
+Date: 2011年6月11日 17:38:41
+Message:
+修正浮在水面上跳跃时，jumpEnd动作播放有误的问题。
+
+----
+Revision: 789
+Author: wanhaipeng
+Date: 2011年5月26日 12:12:04
+Message:
+1: 修改和lodDistance/zheDang相关的全局变量名字，加前缀‘g_’。
+----
+Revision: 788
+Author: fanxiao
+Date: 2011年5月25日 14:13:30
+Message:
+将AMD TootleLIB整合到maya7导出插件中，在导出模型前优化三角形排序。
+----
+Revision: 787
+Author: wuwei
+Date: 2011年5月23日 16:25:27
+Message:
+1，billboard显示错误的bug
+2，在角色影子中去掉billboard
+----
+Revision: 786
+Author: wanhaipeng
+Date: 2011年5月20日 17:14:55
+Message:
+1: Rollback, aband sort callbacks modifications.
+----
+Revision: 785
+Author: wuwei
+Date: 2011年5月19日 17:18:59
+Message:
+1,修改terrain点光源崩溃的bug
+2,SunAngleConstantSetter做方向光源数目判断，以防不测
+----
+Revision: 784
+Author: fanxiao
+Date: 2011年5月17日 10:14:48
+Message:
+去掉水面的高光颜色
+----
+Revision: 783
+Author: wuwei
+Date: 2011年5月13日 12:02:18
+Message:
+1,billboard渲染放到最后，以免受post影响
+2,shockWaveChannel命名改为postChannel
+3,添加terrain受点光源影响
+----
+Revision: 782
+Author: qiulinhui
+Date: 2011年4月29日 17:27:46
+Message:
+一， avatarStyleTick方式对“水面行走”的脚本支持。 
+（1）physics.canFloatOnWater 类型bool，读写属性，默认值False
+（2）physics.setFloatOnWaterCallbackFn(callbackFunction)。绑定floatOnWater状态改变时回调的脚本接口， callbackFunction函数原型 def callbackFunction(floatOnWater)：
+
+二，simpleStyleTick方式对“空间绑定盒约束”，“水面行走”的支持。
+
+
+
+----
+Revision: 781
+Author: wuwei
+Date: 2011年4月2日 11:09:40
+Message:
+1,BigWorld.callback按时间排序
+----
+Revision: 780
+Author: wuwei
+Date: 2011年3月23日 9:34:37
+Message:
+修复entity静态绑定点异常跳动问题
+----
+Revision: 779
+Author: fanxiao
+Date: 2011年3月16日 15:46:05
+Message:
+1，在loft_particle_renderer中添加一个参数textureLayer以控制纹理叠加层数。
+2，在ps_renderer_properties中添加一个Edit控件用于输入参数。
+----
+Revision: 778
+Author: qiulinhui
+Date: 2011年3月15日 17:21:35
+Message:
+新增脚本属性：
+受位移及其速度影响的模型动作播放缩放因子： ActionMatcher.playAniScale，类型float，默认值1.0。
+
+----
+Revision: 777
+Author: qiulinhui
+Date: 2011年3月9日 11:00:26
+Message:
+调整 Resize Space Page 的默认按钮为Cancel； Delete Chunk Items Page 的默认按钮为Close。
+----
+Revision: 776
+Author: qiulinhui
+Date: 2011年3月9日 9:19:52
+Message:
+新增“删除指定高度范围内的Chunk items”的功能。
+----
+Revision: 775
+Author: qiulinhui
+Date: 2011年3月7日 17:33:50
+Message:
+代码整理：去掉接口“PyObject * Physics::collideAround( Vector3 extent )”，无用的调试信息。
+
+----
+Revision: 774
+Author: qiulinhui
+Date: 2011年3月7日 17:25:20
+Message:
+CSOL-10300：修正加载相应的shader失败时，启用FX_ALPHA Technique导致客户端崩溃的Bug。
+----
+Revision: 773
+Author: mushuang
+Date: 2011年2月15日 14:37:28
+Message:
+issueID:CSOL-10312
+1、修正Physics.collideAround中的一处bug，此bug的表现为：
+在角色还没有进入“世界状态”时调用collideAround会导致客户端崩溃。
+----
+Revision: 772
+Author: mushuang
+Date: 2011年2月14日 17:02:39
+Message:
+issueID:CSOL-10312
+1、在Physics对象中增加检测狭窄场景的接口collideAround
+----
+Revision: 771
+Author: qiulinhui
+Date: 2011年1月24日 16:44:37
+Message:
+更新navgen Tool用的工程。
+----
+Revision: 770
+Author: qiulinhui
+Date: 2011年1月24日 12:17:23
+Message:
+（1）飞行状态时，角色模型垂直与运动方向的底层支持。
+（2）新增的脚本层接口：
+     (a)entity.pitchTwistSpeed 类型float,pitch翻转的角速度,默认值为 2PI / s
+     (b)entity.detectLandPitch 类型float，下降时，恢复站立状态的最小角度。
+     (c)entity.pitchNotifier 绑定角色pitch改变时的回调函数; 回调函数格式 def onPitchNotifier( pitch ) pitch类型float，将要更改的值；函数返回值：类型float，底层接受的目标pitch值。
+     (d)model.pitch; model.roll 类型float，获取或者设置X轴或者Z轴的旋转弧度。
+----
+Revision: 769
+Author: qiulinhui
+Date: 2011年1月12日 15:46:56
+Message:
+（1）向上飞行时，开启向上碰撞处理。
+（2）修正飞行状态时，seek方式无法抵达目标点的问题。
+----
+Revision: 768
+Author: qiulinhui
+Date: 2010年12月28日 11:52:06
+Message:
+解决186地编退出必崩溃的Bug。
+----
+Revision: 767
+Author: scm
+Date: 2010年12月27日 17:57:48
+Message:
+提交了不该提交的配置文件。sorry
+----
+Revision: 766
+Author: scm
+Date: 2010年12月27日 17:50:47
+Message:
+bigbang2008 run ok now, only on debug configure.
+----
+Revision: 765
+Author: qiulinhui
+Date: 2010年12月27日 11:55:08
+Message:
+新增跳跃上升过程中，头碰到东西下落时回调jumpDown脚本接口处理。
+----
+Revision: 764
+Author: qiulinhui
+Date: 2010年12月25日 18:41:32
+Message:
+(1) 整理地编（BigBang）的VS2003解决方案（注意：BigBang for VS2008编译后的执行体运行后，调用WinAPI字符串相关操作时出现崩溃的现象，非常诡异！因此186地编暂时还采用VS2003解决方案。）
+(2) 新增地编调整空间大小的功能。
+----
+Revision: 763
+Author: qiulinhui
+Date: 2010年12月7日 11:58:20
+Message:
+(1) 新增贴近地面侦测处理的脚本接口。
+    physics.fallToGroundDetectLen 距离地面的侦测长度，大于等于0时，该侦测有效。默认关闭，其值为-1.0。
+    physics.setFallToGroundCallBackFn(callbackFn) 绑定小于fallToGroundDetectLen时的回调函数；注：回调函数不带存入参数，没有返回值。
+(2) 向下穿越最低高度侦测处理挪到SpaceBoundingBox约束后。
+
+----
+Revision: 762
+Author: wanhaipeng
+Date: 2010年11月29日 10:12:33
+Message:
+1: Remove ClassDiagram1.cd ClassDiagram2.cd。
+----
+Revision: 761
+Author: qiulinhui
+Date: 2010年11月18日 12:07:26
+Message:
+(1)新增脚本接口
+   physics.minHeightDetect 侦测最低高度值，读写属性，类型Float, 默认值FLT_MIN。
+   physics.setMinHeightDetectCallBackFn(CallbackFunc) 绑定跨越最低高度的回调函数。
+   physics.setSpaceBoundingBoxClipCallBackFn(CallbackFunc) 绑定受SpaceBoundingBox裁剪时的回调函数。
+   physics.spaceBoundingBox() 获取SpaceBoundingBox。
+   physics.spaceBoundingBox(Vector3 min, Vector3 max) 设置SpaceBoundingBox。
+   physics.useSpaceBoundingBox 读写属性，类型Bool； 为True时，开启SpaceBoundingBox Clip，默认值为False。
+(2)控制是否启用弹跳地表处理的脚本属性physics.fly的名称严格定义为physics.popToTerrain (读写属性，类型Bool, 默认值为False)。
+----
+Revision: 760
+Author: qiulinhui
+Date: 2010年11月9日 11:31:55
+Message:
+新增Python读写属性Physics.fly，类型：Bool，值为True时不做弹跳地表处理。默认值为False。
+
+----
+Revision: 759
+Author: qiulinhui
+Date: 2010年11月8日 15:19:03
+Message:
+（1）因为res_packer不引入ashes lib，故将TextGUIComponent::s_defFont()函数调用展开。
+（2）Reviewed by 伍委。
+----
+Revision: 758
+Author: mushuang
+Date: 2010年11月5日 10:10:39
+Message:
+issueID:CSOL-9774
+1、增加一个粒子系统的Action，用来实现诸如生命抽取，法力抽取等粒子效果
+2、修改增加此Action的必须的相关文件
+----
+Revision: 757
+Author: wuwei
+Date: 2010年9月29日 8:34:36
+Message:
+1,解决CSOL-9618角色视野拉近会闪蓝屏问题
+2,reviewed by 邱林辉
+----
+Revision: 756
+Author: wuwei
+Date: 2010年9月28日 9:19:13
+Message:
+回到历史版本233，vs2003下编译崩溃
+----
+Revision: 755
+Author: qiulinhui
+Date: 2010年9月27日 16:58:12
+Message:
+补上与规范字体相关源文件名(FTFontExDecoder, IFontExDecoder, TrueTypeFont)关联的project文件.
+
+----
+Revision: 754
+Author: qiulinhui
+Date: 2010年9月27日 15:04:03
+Message:
+(1)新增DTMFont字体渲染和数据生成解决方案，BillboardAttachment和TextGUIComponent新增相应的接口，说明文档请参考bigworld\tools\DTMFontDataGen\readMe.txt.
+(2)规范字体相关的源文件的名字(FTFontExDecoder, IFontExDecoder, TrueTypeFont).
+(3)reviewed by 杨金安
+----
+Revision: 753
+Author: qiulinhui
+Date: 2010年9月22日 16:30:21
+Message:
+CSOL-9552: 修正BoidsFilter Lod 处理的Bug。
+----
+Revision: 752
+Author: wanhaipeng
+Date: 2010年9月2日 17:13:08
+Message:
+1: Account界面3D场景支持。
+   可能还有问题。
+----
+Revision: 751
+Author: wuwei
+Date: 2010年8月31日 15:58:44
+Message:
+1,heatshimmer增加单独的显示控件
+----
+Revision: 750
+Author: wuwei
+Date: 2010年8月31日 15:57:58
+Message:
+1，heatshimmer增加单独的显示控件，解决粒子系统shimmer效果不显示的问题
+----
+Revision: 749
+Author: wuwei
+Date: 2010年8月30日 10:54:59
+Message:
+1,漏掉的更新：震荡波在工具中调用
+----
+Revision: 748
+Author: wuwei
+Date: 2010年8月30日 10:51:26
+Message:
+1,粒子系统source组件cylinder增加内半径参数的编辑
+2,reviewed by 杨金安
+----
+Revision: 747
+Author: wuwei
+Date: 2010年8月6日 10:46:16
+Message:
+1，增加震荡波光效
+2，reviewed by 杨金安
+----
+Revision: 746
+Author: wuwei
+Date: 2010年8月6日 10:39:48
+Message:
+1，增加震荡波光效
+2，reviewed by 杨金安
+----
+Revision: 745
+Author: wuwei
+Date: 2010年7月30日 15:10:17
+Message:
+1，water增加id字段，用于标识
+2，pywater增加id属性
+3，reviewed by 杨金安
+----
+Revision: 744
+Author: wanhaipeng
+Date: 2010年7月28日 11:03:48
+Message:
+1: drawThreadEntry将moo::g_renderThread置为True。
+----
+Revision: 743
+Author: qiulinhui
+Date: 2010年7月23日 11:21:02
+Message:
+(1)新增FringeGUIShader.gray属性的保存和加载。
+(2)reviewed by 杨金安
+----
+Revision: 742
+Author: wanhaipeng
+Date: 2010年7月16日 10:16:32
+Message:
+1: 天上人间版的夜晚改为00:00～09:00。
+----
+Revision: 741
+Author: wanhaipeng
+Date: 2010年7月16日 10:09:55
+Message:
+1: clearBuffer里面的strlen(imeBuffer)内存越界。
+----
+Revision: 740
+Author: wanhaipeng
+Date: 2010年7月16日 10:05:10
+Message:
+1: 从options.xml里面读windowTitle。
+   devicePreferences/windowTitle。
+----
+Revision: 739
+Author: qiulinhui
+Date: 2010年7月12日 17:15:25
+Message:
+（1）issue_id: CSOL-3156 entity BoundingBox 的摄像机视野裁剪处理： 新增脚本接口 Entity.viewProjectionCull()
+（2）reviewed by 杨金安
+----
+Revision: 738
+Author: wuwei
+Date: 2010年7月9日 14:25:09
+Message:
+1,解决pymodel.alpha影响chunkmodel的bug
+2,reviewed by 杨金安
+----
+Revision: 737
+Author: wanhaipeng
+Date: 2010年7月7日 14:49:55
+Message:
+1: 打包版本存在fxo的时候，即使文件日期和fx不匹配，也不重新编译。
+----
+Revision: 736
+Author: qiulinhui
+Date: 2010年7月7日 10:39:34
+Message:
+(1)9方输入法的底层支持。
+(2)reviewed by 杨金安
+----
+Revision: 735
+Author: qiulinhui
+Date: 2010年7月2日 12:02:24
+Message:
+(1)修正某些Chunk生成客户端的navMesh为空时，保存失败的Bug。
+(3)类girth改名为Girth，整合控制是否需要生成navMesh的全局控制变量到Girth里面。
+(3)reviewed by 伍委
+----
+Revision: 734
+Author: scm
+Date: 2010年6月30日 20:55:10
+Message:
+disable generate manifest.
+----
+Revision: 733
+Author: scm
+Date: 2010年6月30日 20:49:05
+Message:
+enable force conformance in for loop scope.
+----
+Revision: 732
+Author: scm
+Date: 2010年6月30日 20:39:53
+Message:
+navgen2008.sln build ok now, just only hybrid building option.
+----
+Revision: 731
+Author: qiulinhui
+Date: 2010年6月30日 18:36:46
+Message:
+添加遗漏的navgen2008解决方案的工程
+----
+Revision: 730
+Author: qiulinhui
+Date: 2010年6月30日 18:22:41
+Message:
+（1）同步更新navgen工具，并整合到vs2008（暂时python工程在navgen工具link时有点问题，提交后，让老季整理下）
+（2）在navgen配置中，新增是否生成客户端navMesh及其路径过滤，服务器navMesh的配置。
+----
+Revision: 729
+Author: wuwei
+Date: 2010年6月26日 17:21:30
+Message:
+1,增加雾，天空盒，环境光全局控制接口
+2,reviewed by 杨金安
+----
+Revision: 728
+Author: wuwei
+Date: 2010年6月24日 16:41:23
+Message:
+1,增加fog animation，并在世界编辑器中增加编辑功能
+2，reviewed by 杨金安
+----
+Revision: 727
+Author: wanhaipeng
+Date: 2010年6月24日 9:37:33
+Message:
+1: 判断imageCount除0错误。
+----
+Revision: 726
+Author: wanhaipeng
+Date: 2010年6月24日 9:14:46
+Message:
+1: Draw的时候techniques可能未初始化完毕。
+   此问题在天上人间版本会crash。
+2: Reviewed by 伍委。
+----
+Revision: 725
+Author: wuwei
+Date: 2010年6月23日 17:17:12
+Message:
+1,增加控制环境光，雾随时间变化的接口
+2,天空盒增加环境光照
+----
+Revision: 724
+Author: qiulinhui
+Date: 2010年6月23日 15:29:19
+Message:
+(1) 修正角色有一定概率掉落出所处的Chunk的Bug。
+(2) reviewed by 杨金安。
+----
+Revision: 723
+Author: wanhaipeng
+Date: 2010年6月22日 16:43:03
+Message:
+1: loadingScreen image自动识别数量。
+----
+Revision: 722
+Author: wanhaipeng
+Date: 2010年6月21日 17:23:23
+Message:
+1: 天上人间版loading screen night贴图。
+----
+Revision: 721
+Author: wuwei
+Date: 2010年6月21日 17:22:07
+Message:
+1,BigWorld.addFogEmitter()追加对天空盒雾化的参数
+----
+Revision: 720
+Author: wanhaipeng
+Date: 2010年6月13日 16:08:08
+Message:
+1: 更换天上人间图标。
+----
+Revision: 719
+Author: scm
+Date: 2010年6月12日 16:19:00
+Message:
+
+----
+Revision: 718
+Author: wanhaipeng
+Date: 2010年6月11日 17:10:38
+Message:
+1: 使用launcher.exe的提示改成英文。
+----
+Revision: 717
+Author: wanhaipeng
+Date: 2010年6月11日 17:09:10
+Message:
+1: 天上人间图标。
+----
+Revision: 716
+Author: wuwei
+Date: 2010年6月7日 10:44:32
+Message:
+1,FindNextValidTechnique在find first technique时，有时会失败，现改为GetTechnique；
+2,reviewed by 邱林辉
+----
+Revision: 715
+Author: wanhaipeng
+Date: 2010年6月5日 17:12:39
+Message:
+1: 更改loading dds目录。
+----
+Revision: 714
+Author: wanhaipeng
+Date: 2010年6月5日 16:53:10
+Message:
+1: 更改loading bmp目录。
+
+----
+Revision: 713
+Author: wanhaipeng
+Date: 2010年6月5日 15:00:38
+Message:
+1: 更改loading bmp目录。
+----
+Revision: 712
+Author: wuwei
+Date: 2010年6月4日 9:45:47
+Message:
+1,增加csol.originalTexture( string )，创建未拉伸的纹理接口
+2,reviewed by 杨金安
+----
+Revision: 711
+Author: scm
+Date: 2010年6月1日 16:32:24
+Message:
+commit particle_editor solution for vc2008, only hybrid build ok now.
+----
+Revision: 710
+Author: scm
+Date: 2010年6月1日 15:03:54
+Message:
+commit model_editor2008 solution for vc2008, only hybrid is ok now.
+----
+Revision: 709
+Author: scm
+Date: 2010年6月1日 14:28:24
+Message:
+commit bigbang2008 solution.
+----
+Revision: 708
+Author: wuwei
+Date: 2010年5月31日 16:29:53
+Message:
+1,增加pymodel.alpha接口及相应处理
+2,visual_channel增加多pass处理
+----
+Revision: 707
+Author: wuwei
+Date: 2010年5月24日 12:14:33
+Message:
+1,上传遗漏刀光读取热扭曲参数代码
+2,相机震屏效果增加对相对原点的震动
+3,reviewed by 杨金安
+----
+Revision: 706
+Author: wuwei
+Date: 2010年5月21日 16:43:18
+Message:
+1,刀光增加热扭曲效果
+----
+Revision: 705
+Author: qiulinhui
+Date: 2010年5月18日 17:45:50
+Message:
+(1) CSOL-8757 进入帮派地图之后在特定地点会出现屏幕抖动的现象
+原因：原摄像机水面碰撞有问题导致。
+(2) reviewed by 伍委
+----
+Revision: 704
+Author: qiulinhui
+Date: 2010年5月11日 16:11:05
+Message:
+（1）：issue_id:CSOL-8686 自动战斗栏贴图缺失
+        原因：原TextureFrameGUIComponent组件drawSelf中，缺少WVP转换导致。
+（2）reviewed by 杨金安
+
+----
+Revision: 703
+Author: wanhaipeng
+Date: 2010年5月6日 17:08:41
+Message:
+1: 台湾版命令行参数‘--id’‘--key’‘csol.getTwLoginId’‘csol.getTwLoginKey’。
+----
+Revision: 702
+Author: qiulinhui
+Date: 2010年5月6日 11:06:08
+Message:
+（1）根据永伟的要求,引擎首次初始化界面的进度条分为：前50%，底层控制进度；后50%，脚本层控制进度。
+ 新增接口：(a) BigWorld.setCustomProgress(proc) 调用参数：proc：float，值域[0~1]；返回值：调用失败（引擎未初始化完成，即在50%以前，或者已经调用onEngineInitialized）时，返回0.正常调用，proc为[0～1）间,返回1；proc = 1，回调onEngineInitialized成功返回2，失败返回3
+
+(b) personality指定模块（love3.py）的底层回调接口 onEngineInitialized().当首次脚本层调用BigWorld.setCustomProgress(1)时，回调该接口。
+
+（2） reviewed by 杨金安
+----
+Revision: 701
+Author: qiulinhui
+Date: 2010年4月29日 15:27:18
+Message:
+issue_id: CSOL-8627 跳出全屏模式时，UI界面异常
+（1）修改全屏模式下因窗口失去焦点而修改分辨率和全屏/窗口模式的设置
+（2）reviewed by 伍委
+
+----
+Revision: 700
+Author: wuwei
+Date: 2010年4月29日 14:53:21
+Message:
+1,添加地编隐藏/显示entity选项相关控件
+2,reviewed by 邱林辉
+----
+Revision: 699
+Author: wuwei
+Date: 2010年4月29日 14:52:13
+Message:
+1,添加隐藏/显示entity的选项
+2,reviewed by 邱林辉
+----
+Revision: 698
+Author: qiulinhui
+Date: 2010年4月28日 15:18:39
+Message:
+issue_id: CSOL-8608 模型通体变红的底层支持
+(1) 说明文档请参考 alienbrain://ABSERVER/程序/BigWorld文档/Color Blend Effect for PyModel.txt
+(2) reviewed By 杨金安
+
+----
+Revision: 697
+Author: qiulinhui
+Date: 2010年4月27日 14:29:46
+Message:
+issue_id: CSOL-8580 场景穿透问题
+(1)entity_picker.cpp，统一定义遮挡片的质材类型
+(2)player.cpp, toWater接口忽略质材类型由0改为0xffffffff
+(3)script_bigworld.cpp,忽略质材类型的默认值由0改为 0xffffffff
+(4)reviewed by 杨金安
+----
+Revision: 696
+Author: wuwei
+Date: 2010年4月21日 18:17:00
+Message:
+1: update中targetRoll设置为0，否则2008 release有问题。
+----
+Revision: 695
+Author: qiulinhui
+Date: 2010年4月21日 16:37:41
+Message:
+(1)从基类SimpleGUIComponent调整仅文字组件使用的fringeShader到TextGUIComponent
+(2)修正旧字体方案无法启用删除线，下划线，fringeShader无法应用AlphaShader的问题
+(3)reviewed by 杨金安
+----
+Revision: 694
+Author: qiulinhui
+Date: 2010年4月19日 10:28:11
+Message:
+(1)添加freetype-2.3.12 lib
+(2)reviewed by 杨金安
+----
+Revision: 693
+Author: qiulinhui
+Date: 2010年4月19日 10:27:44
+Message:
+(1)添加freetype-2.3.12 lib依赖
+(2)reviewed by 杨金安
+----
+Revision: 692
+Author: qiulinhui
+Date: 2010年4月19日 10:26:40
+Message:
+(1)改版的新字体解码方案，说明文档请参考： “alienbrain://ABSERVER/程序/BigWorld文档/新字体方案.txt”
+(2)reviewed by 杨金安
+----
+Revision: 691
+Author: wuwei
+Date: 2010年4月14日 17:14:54
+Message:
+HeatShimmer.s_alpha缺省值改为0.0
+----
+Revision: 690
+Author: wuwei
+Date: 2010年4月14日 17:12:00
+Message:
+1.shimmer增加BigWorld.enableShimmer(bool)接口，用于控制是否调用shimmer效果
+2.GraphicsSetting中under_water,shimmer缺省值恢复前一版本，以兼容以前客户端
+
+----
+Revision: 689
+Author: wuwei
+Date: 2010年3月31日 14:42:06
+Message:
+1,GraphicsSetting中under_water,shimmer缺省改为关闭
+2,UnderWater::s_alpha缺省值改为0.0
+3,reviewed by 老宛
+----
+Revision: 688
+Author: wanhaipeng
+Date: 2010年3月31日 10:16:56
+Message:
+1: Compiler warnings.
+2: Reviewed by 邱林辉。
+----
+Revision: 687
+Author: wanhaipeng
+Date: 2010年3月30日 17:05:42
+Message:
+1: 中文信息改成英文。
+2: Reviewed by 伍委。
+----
+Revision: 686
+Author: wanhaipeng
+Date: 2010年3月30日 17:00:22
+Message:
+1: UMBRA directory.
+----
+Revision: 685
+Author: wanhaipeng
+Date: 2010年3月30日 15:42:04
+Message:
+1: UMBRA 1.5.4.
+----
+Revision: 684
+Author: qiulinhui
+Date: 2010年3月29日 15:47:27
+Message:
+(1) TrueType 字体解决方案
+(2) Reviewed By 杨金安
+----
+Revision: 683
+Author: wuwei
+Date: 2010年3月3日 14:33:34
+Message:
+1,保存flora animation相关参数到space.settings文件
+2,reviewed by 邱林辉
+----
+Revision: 682
+Author: wuwei
+Date: 2010年3月2日 11:32:39
+Message:
+1,增加shimmer参数编辑功能，并存入配置
+2,增加模拟Caustics侦动画
+3,合并2.0water侦听功能，以方便进出水面处理
+4,增加场景模糊变颜色控制。
+5，reviewed by 邱林辉
+----
+Revision: 681
+Author: wanhaipeng
+Date: 2010年2月25日 21:22:09
+Message:
+1: Script::setData( std::wstring )支持32K字符串。
+----
+Revision: 680
+Author: wanhaipeng
+Date: 2010年2月24日 11:35:50
+Message:
+1: wsprintfW只支持1024的字符串，改为MultiByteToWideChar。
+2: Script::setData只转换255的wideString，所以asString只支持255的wideString。
+----
+Revision: 679
+Author: wanhaipeng
+Date: 2010年2月24日 9:50:05
+Message:
+1: 喔活～昨天没改对。
+   wsprintfW L"%.65536S"。
+----
+Revision: 678
+Author: wanhaipeng
+Date: 2010年2月23日 16:41:15
+Message:
+1: asString/asWideString buf -> 64KBytes。
+----
+Revision: 677
+Author: wanhaipeng
+Date: 2010年2月23日 16:40:40
+Message:
+1: Add Personality::onSpaceData()。
+----
+Revision: 676
+Author: qiulinhui
+Date: 2010年2月4日 12:21:24
+Message:
+（1）合并BW2.0中SkyLightMap的GraphicsSetting，新增关闭云层阴影时，不渲染云层阴影处理
+（2） reviewed by 老宛
+----
+Revision: 675
+Author: wanhaipeng
+Date: 2010年2月3日 14:28:12
+Message:
+1: 修复outOfBB Model的node matrix不刷新的Bug。
+2: Reviewed by 伍委。
+----
+Revision: 674
+Author: qiulinhui
+Date: 2010年2月2日 12:08:57
+Message:
+(1)在资源加载进度侦测处理：spaceLoadStatus中，加入判断navmesh是否加载完成的判断。防止navmesh加载线程因为某种原因阻塞，导致navmesh没加载完成便进入游戏世界，引起跨场景寻路失败的问题。
+(2) reviewed by 老宛
+----
+Revision: 673
+Author: qiulinhui
+Date: 2010年2月2日 12:01:17
+Message:
+修正处理ChunkWaypoint结合时，没有结合相应的ChunkWaypointSet导致某些地方寻路失败的Bug。
+----
+Revision: 672
+Author: wanhaipeng
+Date: 2010年1月30日 11:53:13
+Message:
+1: 绿色创世图标。
+----
+Revision: 671
+Author: wanhaipeng
+Date: 2010年1月30日 11:34:55
+Message:
+1: Hybrid版本下加入每Tick Python Profiler，使用Watch "pythonProfile/tickProfile" set to true激活。
+----
+Revision: 670
+Author: wanhaipeng
+Date: 2010年1月29日 11:35:50
+Message:
+1: 把UseCompound关闭，野外FPS大幅提高。
+2: Reviewed by 邱林辉。
+----
+Revision: 669
+Author: wanhaipeng
+Date: 2010年1月29日 11:21:01
+Message:
+1: VisualExporter Maya2009 编译配置。
+----
+Revision: 668
+Author: qiulinhui
+Date: 2010年1月27日 14:32:32
+Message:
+（1） 修正客户端BSP优化导致地编生成阴影出错的Bug。
+（2） reviewed by 老宛
+----
+Revision: 667
+Author: wuwei
+Date: 2010年1月27日 11:49:09
+Message:
+世界编辑器去掉粒子MaxCount优化，因为不方便编辑
+----
+Revision: 666
+Author: qiulinhui
+Date: 2010年1月26日 10:38:37
+Message:
+(1) 改版的ChunkWaypoint连接方案
+(2) reviewed by 杨金安
+----
+Revision: 665
+Author: wuwei
+Date: 2010年1月20日 13:55:30
+Message:
+modelScale回调处理做以下更改：
+1，copy model时scale不再累积相乘，只在原大小上乘scale
+2，添加modelScale控件响应
+3，modelscale返回值tuple改为float
+reviewed by 老宛
+----
+Revision: 664
+Author: qiulinhui
+Date: 2010年1月19日 15:42:27
+Message:
+(1) 修正Chunks没有加载完全就进入游戏世界，导致刚进入世界时，客户端很卡的问题。
+(2) reviewed by 伍委
+----
+Revision: 663
+Author: wuwei
+Date: 2010年1月18日 19:09:36
+Message:
+世界编辑器增加对entity modelScale回调函数的处理
+----
+Revision: 662
+Author: qiulinhui
+Date: 2010年1月15日 17:06:16
+Message:
+(1) 加上BoidsFilter中output的Lod处理，可以减低其CPU消耗。对于yun_meng_ze_01地图，其output消耗由1.2ms左右，减低到0.2ms左右
+(2) reviewed by 老宛
+----
+Revision: 661
+Author: qiulinhui
+Date: 2010年1月14日 15:56:48
+Message:
+（1）修正角色在地面上下落时，没有下落处理的Bug。
+（2）reviewed by 杨金安
+----
+Revision: 660
+Author: qiulinhui
+Date: 2010年1月13日 12:07:56
+Message:
+(1)tcpk_file_system.cpp中g_hWnd和maya插件工程有冲突，加宏定义MAYA_VISUAL_EXPORTER屏蔽之
+(2) 将宏约束
+#ifndef EDITOR_ENABLED
+#ifndef  NAV_GEN_TOOL
+改为
+#if !defined( EDITOR_ENABLED ) && !defined( NAV_GEN_TOOL )
+(3) reviewed by 老宛
+----
+Revision: 659
+Author: qiulinhui
+Date: 2010年1月13日 12:03:43
+Message:
+(1)修改Maya导出插件，在visible文件新增BSPBoundingBox
+(2)reviewed by 老宛
+----
+Revision: 658
+Author: qiulinhui
+Date: 2010年1月13日 11:58:12
+Message:
+(1) 加上BSP的BoundingBox，可以加快Chunk的加载和碰撞处理的速度。通过读取.visual文件的BSPBoundingBox Section； 如果没有BSPBoundingBox Section时，通过BSP来动态生成其BoundingBox
+(2) reviewed by 老宛
+----
+Revision: 657
+Author: wanhaipeng
+Date: 2010年1月11日 9:33:42
+Message:
+1: Animation::load增加一点对动画文件的容错性。
+----
+Revision: 656
+Author: wanhaipeng
+Date: 2010年1月11日 9:32:59
+Message:
+1: 简化grabTry中的代码写法。
+----
+Revision: 655
+Author: wanhaipeng
+Date: 2010年1月11日 9:32:25
+Message:
+1: Add versionGT25630()，改接口仅用来判定客户端EXE的版本。
+----
+Revision: 654
+Author: wanhaipeng
+Date: 2010年1月11日 9:31:31
+Message:
+1: 在spaceLoadStatus中微调loader thread相关的参数。
+----
+Revision: 653
+Author: luochengdi
+Date: 2010年1月9日 15:33:02
+Message:
+删除不必要的注释。
+----
+Revision: 652
+Author: luochengdi
+Date: 2010年1月9日 15:04:15
+Message:
+SimpleMutex改用关键代码段，这里修改CHCEnd( )的位置，以避免死锁问题。
+----
+Revision: 651
+Author: wanhaipeng
+Date: 2010年1月8日 14:51:20
+Message:
+1: 修复从新手村一线切换到二线灌木出现碰撞的Bug。
+2: Reviewed by 邱林辉。
+----
+Revision: 650
+Author: wanhaipeng
+Date: 2010年1月8日 14:47:26
+Message:
+1: Release 版本的FMOD依赖。
+----
+Revision: 649
+Author: qiulinhui
+Date: 2010年1月8日 10:07:41
+Message:
+加上waypoint工程的混合版本的fmod依赖
+----
+Revision: 648
+Author: qiulinhui
+Date: 2010年1月8日 9:54:18
+Message:
+加上waypoint工程的Debug & Release版本的fmod依赖
+----
+Revision: 647
+Author: wanhaipeng
+Date: 2010年1月7日 15:08:19
+Message:
+1: 修复树的碰撞消失问题。
+2: Reviewed by 邱林辉。
+----
+Revision: 646
+Author: qiulinhui
+Date: 2010年1月7日 9:51:05
+Message:
+（1）补上fmod工程依赖
+（2）reviewed by 伍委
+----
+Revision: 645
+Author: qiulinhui
+Date: 2010年1月6日 12:25:03
+Message:
+(1) 改版，挪动显示寻路网格的功能到waypoint工程
+(2) 新增 MF_WATCH( "Render/Draw NavMesh" )
+(4) Reviewed By 伍委
+
+----
+Revision: 644
+Author: qiulinhui
+Date: 2010年1月6日 12:22:06
+Message:
+(1) 新增显示寻路网格功能
+(2) 新增的文件导致的工程属性改动
+(3) Reviewed By 伍委
+----
+Revision: 643
+Author: qiulinhui
+Date: 2010年1月6日 12:16:17
+Message:
+(1) 解决extern bool processOutstandingMessages()不能在NavGenTool中不能链接的问题
+(2) Reviewed By 伍委
+----
+Revision: 642
+Author: wanhaipeng
+Date: 2010年1月5日 10:49:33
+Message:
+1: TryEnterCriticalSection link error.
+----
+Revision: 641
+Author: wanhaipeng
+Date: 2010年1月5日 9:31:01
+Message:
+1: VC2003编译问题，加入TryEnterCriticalSection定义。
+----
+Revision: 640
+Author: wanhaipeng
+Date: 2010年1月4日 11:29:27
+Message:
+1: 跳帧BigWorld Timing GraphTrack的尺寸，增加100ms的刻度。
+----
+Revision: 639
+Author: wanhaipeng
+Date: 2010年1月4日 11:27:45
+Message:
+1: 如果所有的material碰撞都是TRIANGLE_NOT_IN_BSP，Visual的bspTree置为NULL，加快ChunkManager的ChunkModelObstacle构建速度。
+   可平滑Loading过程导致的跳帧现象。
+----
+Revision: 638
+Author: wanhaipeng
+Date: 2010年1月4日 11:25:04
+Message:
+1: Add MatrixMutexHolder grabTry/give。
+2: Win32 SimpleMutex改用CRITICAL_SECTION实现，大幅降低进入Ring0的WaitingTime。
+----
+Revision: 637
+Author: wanhaipeng
+Date: 2010年1月4日 11:20:36
+Message:
+1: Column::heldObstacles_ reserve to 16 items, avoid too many realloc in std::vector。
+----
+Revision: 636
+Author: wanhaipeng
+Date: 2010年1月4日 11:19:00
+Message:
+1: Add DogWatch collideStat。
+----
+Revision: 635
+Author: qiulinhui
+Date: 2009年12月25日 18:05:27
+Message:
+修正outOfBB计算有误导致的模型动作匹配问题：visible为false时，模型动作不进行匹配。
+----
+Revision: 634
+Author: wanhaipeng
+Date: 2009年12月23日 21:09:14
+Message:
+1: VC2003 compile problem.
+----
+Revision: 633
+Author: wanhaipeng
+Date: 2009年12月23日 20:45:28
+Message:
+1: 粒子MaxCount优化：WorldApp::tick中调用MetaParticleSystem::resetNearest()。
+2: 解决笔记本上rdtsc不正确的问题。
+----
+Revision: 632
+Author: wanhaipeng
+Date: 2009年12月23日 20:44:24
+Message:
+1: 粒子MaxCount优化：同屏最多渲染多少粒子。
+2: 需要在WorldApp::tick中调用MetaParticleSystem::resetNearest()。
+----
+Revision: 631
+Author: wuwei
+Date: 2009年12月23日 9:43:14
+Message:
+解决extern bool processOutstandingMessages()不能在worldeditor中不能编译的问题
+----
+Revision: 630
+Author: qiulinhui
+Date: 2009年12月22日 11:07:07
+Message:
+伍委修正被绑定的模型的visible为false时，其绑定的组件不参与裁剪。解决角色隐身状态时，无法显示其名字等绑定的组件。
+----
+Revision: 629
+Author: wanhaipeng
+Date: 2009年12月21日 14:06:31
+Message:
+1: 窗口最小尺寸限制为800x600。
+----
+Revision: 628
+Author: wanhaipeng
+Date: 2009年12月21日 14:04:36
+Message:
+1: 创建options.xml devicePreferences定义大小的窗口。
+----
+Revision: 627
+Author: wanhaipeng
+Date: 2009年12月21日 14:03:07
+Message:
+1: 修改一些错误的C++写法。
+----
+Revision: 626
+Author: wanhaipeng
+Date: 2009年12月21日 14:02:23
+Message:
+1: Release版本disable SELECT_FIRST_NATIVE。
+----
+Revision: 625
+Author: wanhaipeng
+Date: 2009年12月21日 14:01:51
+Message:
+1: lzoBuffer增加到128K bytes。
+2: 去掉一些Try/Catch。
+----
+Revision: 624
+Author: wanhaipeng
+Date: 2009年12月19日 9:55:00
+Message:
+1: VC2008编译目录与2003分开。
+----
+Revision: 623
+Author: qiulinhui
+Date: 2009年12月18日 9:13:02
+Message:
+bool forceDraw(bool f) 改为 void forceDraw( bool f )，本机VS03居然编译通过，导致笔误。
+----
+Revision: 622
+Author: qiulinhui
+Date: 2009年12月17日 18:00:25
+Message:
+Issue_id: CSOL-7728  角色头发消失问题
+
+对于绑定在模型节点上的模型，其BoundingBox会随着被绑定节点的变化而变化。当绑定的模型的BoundingBox超出摄像机视野范围时，不被渲染，其变换矩阵未更新导致。
+
+解决方案：对于绑定的模型，随着被绑定模型的裁剪而作裁剪处理。
+----
+Revision: 621
+Author: qiulinhui
+Date: 2009年12月16日 14:29:26
+Message:
+根据老宛的要求，优化了加载资源的方案：刚进入加载场景时，WorldDrawEnabled置为False；加载完毕后，置为True，并渲染一定次数（暂定为8次）后，BigWorld.spaceLoadStatus()返回1，正常进入游戏。
+
+一些测试结果：对于凤鸣城地图，可以节省13s左右的时间；新手村可以节省4s左右。（打包与非打包的资源上，节省的时间差不多）
+----
+Revision: 620
+Author: qiulinhui
+Date: 2009年12月14日 15:38:37
+Message:
+客户端从启动到初次出现进度条间插入其进程的Windows消息处理，改善这段时间其进程的Windows消息没有及时处理导致窗口假死情况。
+----
+Revision: 619
+Author: wanhaipeng
+Date: 2009年12月14日 12:08:58
+Message:
+1: 老季的FWC。
+----
+Revision: 618
+Author: wuwei
+Date: 2009年12月14日 11:40:57
+Message:
+extern HWND g_hWnd;在res_packer中不能编译的问题
+----
+Revision: 617
+Author: wanhaipeng
+Date: 2009年12月14日 11:24:58
+Message:
+1: 不再使用OPENMP的tick/draw ‘for循环’ 并行，改为drawThread。
+2: BigWorld线程除了drawThread外，全部在第一个CPU上运行，希望能大幅减少多核版本的DMP。
+----
+Revision: 616
+Author: wanhaipeng
+Date: 2009年12月14日 11:19:08
+Message:
+1: csol.threads()调试接口，返回(threadID, eip, affinityMask)PyList。
+----
+Revision: 615
+Author: wanhaipeng
+Date: 2009年12月14日 11:17:31
+Message:
+1: WIN32多核机器上，SimpleThread缺省分配到第一个CPU。
+2: ThreadID debug info。
+----
+Revision: 614
+Author: qiulinhui
+Date: 2009年12月11日 16:56:36
+Message:
+修正回写二进制的动作文件（.anca）时，少处理一个blocks_导致开发版本的动画播放到最后一帧时，出现抖动的问题。
+需要删除原来的anca文件，启用客户端重新导出anca文件。
+----
+Revision: 613
+Author: wanhaipeng
+Date: 2009年12月10日 14:51:07
+Message:
+1: Moo::rc().checkDevice()可能调用resetDevice，D3D要求resetDevice和createDevice的调用在同一个线程中，故OMP draw需要把checkDevice单独拿出来。
+----
+Revision: 612
+Author: qiulinhui
+Date: 2009年12月10日 11:47:51
+Message:
+(1)修正BinaryBlock加上构造函数BinaryBlock( int len, bool clearMemory )后，调用new BinaryBlock(NULL, size)，编译器由构造函数BinaryBlock( const void* data, int len, BinaryPtr pOwner = 0 )识别到构造函数BinaryBlock( int len, bool clearMemory )造成的navgen工具崩溃的Bug。
+(2)加入navgen工程专用的项目（romp_navgen.vcproj 和 waypoint_navgen.vcproj )防止其他工程对其感染。
+(3) water_scene_renderer.cpp中某些代码段以navgen工具有冲突，使用宏指令NAV_GEN_TOOL屏蔽之。
+----
+Revision: 611
+Author: wanhaipeng
+Date: 2009年12月10日 9:55:44
+Message:
+1: 因为vertexBuffer_是D3DPOOL_DEFAULT，实现DeviceCallback deleteUnmanagedObjects/createUnmanagedObjects接口。
+----
+Revision: 610
+Author: wanhaipeng
+Date: 2009年12月10日 9:54:13
+Message:
+1: update贴图前释放旧贴图。
+----
+Revision: 609
+Author: wanhaipeng
+Date: 2009年12月10日 9:53:07
+Message:
+1: 修改CAPS+F2窗口尺寸。
+----
+Revision: 608
+Author: qiulinhui
+Date: 2009年12月7日 11:06:26
+Message:
+(1) issue_id:CSOL-7539 镜头拉到最近，然后仰视，会出现模型身体消失的BUG
+(2) issue_id:CSOL-7570 头部头发消失问题。
+(3) 因为super_model.cpp文件和navgen 项目有冲突，加入NAV_GEN_TOOL宏定义屏蔽之。
+
+原因：CSOL-7539 因为有动画的模型组件（NodefullModel）在播放动画时，某个动作某个时刻的模型组件位置和初始的BoundingBox误差很大导致；
+CSOL-7570：Attachments的裁剪方式因NodefullModel裁剪有问题导致
+
+修改裁剪方案：
+（1）NodefullModel：对于有动画的模型，只要有一个模型组件进入摄像机的裁剪范围内，都进行渲染。
+（2）NodelessModel：沿用以前的裁剪方案
+（3）Attachments: 如果其owner（被Attach的模型）完全被裁剪掉，则裁剪掉不参与渲染。
+----
+Revision: 607
+Author: qiulinhui
+Date: 2009年12月5日 16:02:59
+Message:
+Circle.endRadian_ 初始值由MATH_2PI改为MATH_2PI - 0.000001f，略小于MATH_2PI，省去初始化时脚本层重设endRadian_的步骤也可以显示整个CircleGUI组件。
+----
+Revision: 606
+Author: wuwei
+Date: 2009年12月3日 14:44:06
+Message:
+适应BinaryBlock新增的Constructor
+----
+Revision: 605
+Author: wuwei
+Date: 2009年12月3日 14:35:54
+Message:
+extern bool g_inWorldSceneRendering在bigbang中无法编译的问题
+----
+Revision: 604
+Author: huangyongwei
+Date: 2009年12月2日 19:12:21
+Message:
+删除了 texture_component 的 layerNum_ 属性。该属性已经没用，上次修改时忘记删除。
+----
+Revision: 603
+Author: qiulinhui
+Date: 2009年12月2日 14:11:21
+Message:
+新增seek方式和一般的s = v*t方式的物理处理：onlyMoveStyleTick; 类型为5
+脚本层调用方案： entity.physics = 5
+----
+Revision: 602
+Author: wanhaipeng
+Date: 2009年12月1日 20:12:25
+Message:
+1: VC2008 ifstream/ofstream locale，解决fstream中文目录名的支持。
+----
+Revision: 601
+Author: qiulinhui
+Date: 2009年12月1日 9:57:38
+Message:
+(1) 新增是否启用字体阴影效果的读写脚本属性：FringeGUIShader.shadow ， 类型 bool
+(2) 修正GUI组件，save & load 界面配置后，出现位置稍微错乱的问题。原因：DataSection的float数据精度问题。
+----
+Revision: 600
+Author: wanhaipeng
+Date: 2009年12月1日 8:59:40
+Message:
+1: VC2003 omp 编译错误。
+----
+Revision: 599
+Author: scm
+Date: 2009年11月30日 20:16:02
+Message:
+把老宛调整的几个变量，由static变量改成普通类成员变量。
+----
+Revision: 598
+Author: wanhaipeng
+Date: 2009年11月30日 19:13:57
+Message:
+1: Sleep time 1ms -> 0ms。
+2: handleTick/handleDraw改为信号量机制。
+----
+Revision: 597
+Author: scm
+Date: 2009年11月30日 11:21:11
+Message:
+调整下性能，这样会导致draw多消耗些cpu资源，但能提升点性能.
+----
+Revision: 596
+Author: scm
+Date: 2009年11月27日 14:59:24
+Message:
+调整代码规范时导致的问题。fwc，没编译就提交了代码。
+----
+Revision: 595
+Author: wanhaipeng
+Date: 2009年11月27日 14:58:40
+Message:
+1: Remove ‘MF_SERVER’ definition.
+----
+Revision: 594
+Author: scm
+Date: 2009年11月27日 14:46:48
+Message:
+vc2008的openMP多cpu支持版本。
+----
+Revision: 593
+Author: scm
+Date: 2009年11月26日 15:27:54
+Message:
+添加与编译头文件。
+----
+Revision: 592
+Author: huangyongwei
+Date: 2009年11月26日 14:37:02
+Message:
+对 TextureElement 增加 colour 属性，以方便用一张空白贴图产生多种颜色的纹理。
+----
+Revision: 591
+Author: wanhaipeng
+Date: 2009年11月26日 11:41:15
+Message:
+1: 2008 VCProj add pymodel_fader.cpp。
+----
+Revision: 590
+Author: wanhaipeng
+Date: 2009年11月26日 10:03:27
+Message:
+1: BigWorld的一个笔误：deleteUnmanagedObjects。
+----
+Revision: 589
+Author: wanhaipeng
+Date: 2009年11月26日 10:00:19
+Message:
+1: 改变分辨率重新创建的贴图没有必要Create MipMap。
+----
+Revision: 588
+Author: qiulinhui
+Date: 2009年11月25日 17:30:43
+Message:
+整理优化UnitSelect类，去掉无效和无用的处理。
+PS：经过对比测试，UnitSelect类的CPU消耗减低到原来的1/3以下。对于位于复杂场景或者静止的目标，其CPU消耗减低到原来的1/15以下.
+
+目前UnitSelect的脚本层接口。
+(1)方法
+UnitSelect.setEntity( instance of Entity ) ：绑定到一个Entity上，和setModel方法互斥
+UnitSelect.setModel( instance of Model ) ：绑定到一个模型上，和setEntity方法互斥
+(2)读写属性
+UnitSelect.entityID ：返回光圈绑定的目标Entity的ID
+UnitSelect.visible ：光圈是否可见
+UnitSelect.maxUnitSize ：光圈的最大尺寸
+UnitSelect.minUnitSize ：光圈的最小尺寸
+UnitSelect.curUnitSize ：当前光圈的尺寸，此值大于0时, 光圈的尺寸初始值取此值, 否则根据绑定的Model/Entity的boundingBox计算, 然后归约到[minUnitSize_, maxUnitSize_]
+
+
+
+----
+Revision: 587
+Author: wuwei
+Date: 2009年11月25日 11:53:22
+Message:
+1,entity.cpp 去掉类EntitiesFader
+2,增加PyModel_fader.cpp,PyModel_fader.hpp
+3,csol.setEntitiesAlpha->csol.setModelsAlpha
+----
+Revision: 586
+Author: wanhaipeng
+Date: 2009年11月24日 20:14:49
+Message:
+1: updateFrame使用rdtsc抵抗‘变速齿轮’等加速器，系列加速器经过测试已经不能取得加速效果：
+     变速齿轮、变速精灵、SpeedGear等。
+----
+Revision: 585
+Author: wuwei
+Date: 2009年11月24日 9:40:17
+Message:
+issue ID:7463 按杨凯要求，去掉entity.fader属性，增加pymodle.fader属性，解决法宝未半透明问题
+----
+Revision: 584
+Author: qiulinhui
+Date: 2009年11月23日 18:16:26
+Message:
+根据老宛的要求，加上Physics.lodDistance的脚本读写属性，可以单独对每个Physics进行设置，默认值为120.0m
+----
+Revision: 583
+Author: luochengdi
+Date: 2009年11月23日 16:15:37
+Message:
+修改apex 的客户端，删除无用的代码。
+
+----
+Revision: 582
+Author: wanhaipeng
+Date: 2009年11月23日 13:45:48
+Message:
+1: Release版本的编译错误。
+----
+Revision: 581
+Author: wanhaipeng
+Date: 2009年11月23日 9:28:29
+Message:
+1: 暂时关闭Hybrid版本的playAnimation相关DMP。
+----
+Revision: 580
+Author: wanhaipeng
+Date: 2009年11月21日 17:11:59
+Message:
+1: Physics增加LOD优化，远处的Flock/Creature等Entity的Physics忽视tick。
+----
+Revision: 579
+Author: wanhaipeng
+Date: 2009年11月20日 15:41:40
+Message:
+1: 多CPU ReferenceCount的线程同步。
+----
+Revision: 578
+Author: qiulinhui
+Date: 2009年11月20日 10:11:35
+Message:
+加上设置TextureComponent::visible属性对其owner的dirty处理。
+----
+Revision: 577
+Author: wanhaipeng
+Date: 2009年11月18日 16:57:03
+Message:
+1: 只在WorldScene渲染过程中计算SuperModel::outOfBB。
+----
+Revision: 576
+Author: wanhaipeng
+Date: 2009年11月17日 16:52:00
+Message:
+1: FetchModel的SuperModel强制打开checkBB_。
+2: SuperModel Fashion的outOfBB优化。
+3: PyModel drawGlow的outOfBB优化。
+----
+Revision: 575
+Author: qiulinhui
+Date: 2009年11月17日 16:45:49
+Message:
+(1) 去除TextureFrameGUIComponent没用的preWidthInClipCoords_, preHeightInClipCoords_处理。
+(2) 采用dirty_标记是否需要更新elements的mesh,优化TextureFrameGUIComponent.updata接口处理。
+----
+Revision: 574
+Author: wanhaipeng
+Date: 2009年11月16日 11:54:15
+Message:
+1: 关掉workingSet交换功能。
+2: binaryToTexture不创建带MipMap的贴图，不new BinaryBlock。
+----
+Revision: 573
+Author: wanhaipeng
+Date: 2009年11月16日 9:18:46
+Message:
+1: 删除调试粒子memleak的调试代码。
+----
+Revision: 572
+Author: wanhaipeng
+Date: 2009年11月16日 9:15:30
+Message:
+1: 作为智能指针对象的类，增加refCount接口。
+   这个统一的接口调试可能有用。
+----
+Revision: 571
+Author: wuwei
+Date: 2009年11月14日 10:39:37
+Message:
+增加csol.binaryToTexture()方法，由binaryblock创建纹理
+----
+Revision: 570
+Author: qiulinhui
+Date: 2009年11月13日 11:35:14
+Message:
+Issue_id: CSOL-7380 部分装备在阴影下会显现出黑色的片的BUG.
+
+原因：底层阴影算法中，投影到模型身上时，计算有误导致。 
+
+解决方案：模型本身不画阴影（模型少渲染一趟，降低CPU的消耗），模型的阴影投影到其它障碍物表面。 
+----
+Revision: 569
+Author: wanhaipeng
+Date: 2009年11月12日 16:03:28
+Message:
+1: Add psapi.lib for csol.memoryUsage()。
+----
+Revision: 568
+Author: wanhaipeng
+Date: 2009年11月12日 15:58:58
+Message:
+1: Add csol.memoryUsage()。
+----
+Revision: 567
+Author: wanhaipeng
+Date: 2009年11月12日 15:55:54
+Message:
+1: Dont load MipMap for GUI textures.
+----
+Revision: 566
+Author: wanhaipeng
+Date: 2009年11月12日 15:50:54
+Message:
+1: Try to fix a null pointer effect_material finishInit bug???
+----
+Revision: 565
+Author: huangyongwei
+Date: 2009年11月11日 18:43:56
+Message:
+① 修正了 TextureFrame 以及其孩子不能接收消息的问题。
+② 去除了 simple_gui_component.cpp 中一段无用的循环找出窗口的父窗口的代码。
+③ 对 GUI.Texture 向脚本公开 owner
+④ 丘林辉修正了 GUI.Window 和 GUI.Texture 共用时，会出现纹理错位问题。
+----
+Revision: 564
+Author: scm
+Date: 2009年11月5日 16:20:20
+Message:
+vc2008的工程release下一些选项的设定，对应的代码会影响现有2003的工程暂不提交。
+----
+Revision: 563
+Author: wanhaipeng
+Date: 2009年11月3日 17:02:55
+Message:
+1: effectInitQueue安全访问。
+----
+Revision: 562
+Author: wanhaipeng
+Date: 2009年11月3日 14:10:47
+Message:
+1: removeSimpleComponent没有必要reSort，drawOrder虽然不连续，但是不影响drawOrder的排序。
+----
+Revision: 561
+Author: qiulinhui
+Date: 2009年11月2日 15:07:53
+Message:
+优化过滤特定材质类型的碰撞方式，去掉ChunkSpace::collideEx接口,由ChunkSpace::collide接口统一处理，过滤材质由回调因子处理。
+
+新方案统一了接口，且速度较原来的ChunkSpace::collideEx快点。
+----
+Revision: 560
+Author: wanhaipeng
+Date: 2009年10月30日 14:54:18
+Message:
+1: update中targetRoll设置为0，否则2008 release有问题。
+----
+Revision: 559
+Author: wanhaipeng
+Date: 2009年10月30日 14:40:31
+Message:
+1: leaveWorld还应该set isFader_为false。
+----
+Revision: 558
+Author: wuwei
+Date: 2009年10月30日 14:23:22
+Message:
+leaveWorld时从EntitiesFader中删除entity
+----
+Revision: 557
+Author: wuwei
+Date: 2009年10月30日 14:14:50
+Message:
+std::vector<Entity*> pEntities_->std::vector<EntityPtr> entities_
+----
+Revision: 556
+Author: wuwei
+Date: 2009年10月30日 12:48:13
+Message:
+entity析构时应从Entitiesfader中删除
+----
+Revision: 555
+Author: wuwei
+Date: 2009年10月30日 12:32:11
+Message:
+1,EntityFader->EntitiesFader
+2,EntityPtr->Entity*
+3,setEntityAlpha->setEntitiesAlpha
+4,EntitiesFader::addEntity()增加对entity判断，以免重复
+----
+Revision: 554
+Author: wanhaipeng
+Date: 2009年10月30日 11:04:14
+Message:
+1: rootWatcher().addChild( "Nub", ... )应该藏在ENABLE_WATCHERS里面。
+----
+Revision: 553
+Author: wanhaipeng
+Date: 2009年10月30日 10:54:28
+Message:
+1: 把2008的编译目录和目标lib文件名和2003区分开。
+----
+Revision: 552
+Author: wuwei
+Date: 2009年10月27日 19:15:58
+Message:
+issue ID:csol-7149 entity增加半透明
+----
+Revision: 551
+Author: wanhaipeng
+Date: 2009年10月27日 11:15:30
+Message:
+1: In AnimationManager::find：res->pStreamer_ is NULL？
+----
+Revision: 550
+Author: wanhaipeng
+Date: 2009年10月27日 10:38:23
+Message:
+1: Fix StreamDataCache释放后相关的Animation依然存在的Bug。
+----
+Revision: 549
+Author: wanhaipeng
+Date: 2009年10月27日 10:29:41
+Message:
+1: 内/外部版本DMP的文件名和内容区别开，在内部使用的客户端DUMP全内存。
+----
+Revision: 548
+Author: wanhaipeng
+Date: 2009年10月27日 10:27:39
+Message:
+1: fopen可以同时打开的文件数目从512(缺省值)改为1024个。
+----
+Revision: 547
+Author: wanhaipeng
+Date: 2009年10月27日 10:25:45
+Message:
+1: ReadOnly posixFileOpen optimization。
+----
+Revision: 546
+Author: wanhaipeng
+Date: 2009年10月24日 17:41:23
+Message:
+1: TextureDetailLevel : public SafeReferenceCount
+   因为该对象可能在多个线程中使用。
+----
+Revision: 545
+Author: wanhaipeng
+Date: 2009年10月24日 17:40:28
+Message:
+1: 最后一个block的size为0时，可能产生DMP。
+----
+Revision: 544
+Author: qiulinhui
+Date: 2009年10月23日 10:01:13
+Message:
+CSOL-7217 窗口及全屏分辨率问题.
+修正：“如果是全屏模式，游戏中的显示会发生变形，所有显示均发生纵向压缩。”
+分析：全屏后，DX窗口大小固定且不允许图像拉伸缩放处理，只能设置游戏的分辨率为当前系统设置的桌面分辨率。 
+----
+Revision: 543
+Author: scm
+Date: 2009年10月22日 17:49:12
+Message:
+解决vc2008下，hybrid和release版本运行是崩溃的问题。
+----
+Revision: 542
+Author: wanhaipeng
+Date: 2009年10月22日 16:54:20
+Message:
+1: 解决VolatileInfo open/close带来的表现问题。
+----
+Revision: 541
+Author: scm
+Date: 2009年10月21日 19:00:28
+Message:
+添加对应的Vc2008的solution和project，不会影响到现在的2003的工程。
+----
+Revision: 540
+Author: huangyongwei
+Date: 2009年10月20日 15:13:00
+Message:
+① 限制了 UI 组件把自己作为自己的孩子 addChild，从而避免不小心把 UI 组件作为自己的孩子，使得客户端突然关闭。
+② 修正了调用 GUI.TextureFrame::load( ... ) 会产生非法的问题。
+③ 对 GUI.Texture 作了如下修改：
+   * 修改 position, size, tileSize 为返回引用（即，修改属性的其中一维也可以实现改变属性），从而减少调用，简化语法
+   * 将原来的 position 从 Vector2 改为 Vector3，增加第三维作为纹理渲染的深度值。
+   * 去掉 layNum 成员（原来以它来表达纹理深度值）
+④ 给 GUI.TextureFrame 添加了 resortElements 方法，用于根据 Texture.position.z 手动重排纹理渲染顺序。
+----
+Revision: 539
+Author: wanhaipeng
+Date: 2009年10月20日 14:18:58
+Message:
+1: 笔误～笔误。
+----
+Revision: 538
+Author: wanhaipeng
+Date: 2009年10月20日 14:16:43
+Message:
+1: Fix 16.0*N totalTime 的ANCA文件版本陈旧的Bug。
+2: NodefullModel destructor中不delete pAnimCache，因为该StreamedDataCache可能还在被其它动画文件使用。
+----
+Revision: 537
+Author: wanhaipeng
+Date: 2009年10月19日 10:29:36
+Message:
+1: 增加TextureGUIComponent。
+----
+Revision: 536
+Author: qiulinhui
+Date: 2009年10月17日 17:50:12
+Message:
+根据永伟的要求,修改了GUI.Texture 和 GUI.TextureFrame 的脚本接口, 其使用说明,请参考:alienbrain://ABSERVER/程序/BigWorld文档/Texture && TextureFrame 组件说明.txt
+
+----
+Revision: 535
+Author: qiulinhui
+Date: 2009年10月17日 17:44:30
+Message:
+CSOL-7147 凤鸣巡逻NPC走路动作异常
+原因： filter处理中，位置误差修正因子posError误差太大（达到0.06），和上一个位置容差范围有重叠，拉回上一个位置导致。
+位置容差范围：( 当前位置 -  posError, 当前位置 +  posError )
+
+修正方案：限定posError误差范围。经过测试，定为0.03m/s，这样静态NPC不会出现走路动作，巡逻NPC不会出现一抖一抖的移动。
+----
+Revision: 534
+Author: qiulinhui
+Date: 2009年10月16日 9:52:30
+Message:
+本人以前改版字体时，挪动了simple_gui_component的runTimeTransform_，filterType_私有属性到protect层，实际上，可以采用接口访问。
+现改为公有接口访问方式。
+----
+Revision: 533
+Author: qiulinhui
+Date: 2009年10月16日 9:12:57
+Message:
+按照永伟的要求，新增的GUI.Texture 和 GUI.TextureFrame组件， 具体使用方法请参照文档：“alienbrain://ABSERVER/程序/BigWorld文档/Texture && TextureFrame 组件说明.txt”
+----
+Revision: 532
+Author: qiulinhui
+Date: 2009年10月16日 9:06:33
+Message:
+按照永伟的要求，新增的GUI.Texture 和 GUI.TextureFrame组件， 具体使用方法请参照文档：“alienbrain://ABSERVER/程序/BigWorld文档/Texture && TextureFrame 组件说明.txt”
+----
+Revision: 531
+Author: wanhaipeng
+Date: 2009年10月10日 17:32:48
+Message:
+1: NodefullModel::Animation::~Animation fix a bug，不完全正确的方式。
+----
+Revision: 530
+Author: huangshanquan
+Date: 2009年10月10日 17:07:14
+Message:
+增加登录状态
+LOGIN_ACCOUNT_BLOCKED = 249, //被封存
+LOGIN_CONTROL_BY_GM = 250, //被接管
+----
+Revision: 529
+Author: qiulinhui
+Date: 2009年10月10日 12:08:09
+Message:
+issue_id: CSOL-7105 在猰貐副本坐标-68:-40处和-10:-21处类似阶梯的地方都会出现错误的光圈效果. 
+原因：光圈拾取地表的三角形时，没有判断是否为挖空的三角形导致。
+----
+Revision: 528
+Author: wanhaipeng
+Date: 2009年10月10日 11:46:07
+Message:
+1: BigWorld 1.8.7.6 upgrade。
+----
+Revision: 527
+Author: wanhaipeng
+Date: 2009年10月9日 16:36:32
+Message:
+1: 客户端多CPU支持。
+----
+Revision: 526
+Author: qiulinhui
+Date: 2009年10月9日 9:41:29
+Message:
+修正“bool enableShine(bool enable) { enableShine_ = enable; }”， get fwc！
+----
+Revision: 525
+Author: qiulinhui
+Date: 2009年10月8日 17:47:02
+Message:
+新增模型高亮特效
+脚本属性说明：
+model.enableShine 类型bool； 是否启用模型高亮效果； 默认值False
+model.shineFactor 类型Vector4； 高亮因子， 格式(R, G, B, A); 默认值(0.5, 0.5, 0.3, 0)
+----
+Revision: 524
+Author: wanhaipeng
+Date: 2009年9月27日 18:08:05
+Message:
+1: 增加邱林辉的edgeGlow_draw_override。
+----
+Revision: 523
+Author: qiulinhui
+Date: 2009年9月27日 15:53:39
+Message:
+根据老宛的要求，修改接口enableEdgeGlow粘合脚本层的方式。
+----
+Revision: 522
+Author: huangshanquan
+Date: 2009年9月27日 14:19:48
+Message:
+修正代码中的命名错误LoginRegisteRequest->LoginRregisteRequest
+----
+Revision: 521
+Author: qiulinhui
+Date: 2009年9月27日 14:12:42
+Message:
+issue_id: CSOL-6560 鼠标指向角色、宠物、怪物、NPC时的模型外沿发光效果
+新增的脚本层属性接口：
+model.enableEdgeGlow  类型：bool，    设置，获取是否启用外沿发光效果
+model.edgeGlowColour  类型：Vector4， 设置，获得外沿发光效果的颜色
+model.edgeGlowScale   类型：Vector4,  设置，获得外沿发光效果的轮廓宽度
+----
+Revision: 520
+Author: huangshanquan
+Date: 2009年9月26日 15:50:15
+Message:
+增加使用web server自动激活功能。
+----
+Revision: 519
+Author: wuwei
+Date: 2009年9月23日 14:27:35
+Message:
+增加接口：model.showAttachmentsOfNode()用于在隐藏模型的情况下，仍能显示指定HardPoint上绑定的Attachment对象。
+----
+Revision: 518
+Author: wanhaipeng
+Date: 2009年9月22日 15:33:31
+Message:
+1: 非发布版本下加入调试Particle是否内存泄漏的手段。
+----
+Revision: 517
+Author: qiulinhui
+Date: 2009年9月22日 13:55:56
+Message:
+适应BinaryBlock新增的Constructor。
+----
+Revision: 516
+Author: wanhaipeng
+Date: 2009年9月22日 11:52:32
+Message:
+1: 适应BinaryBlock新增的Constructor。
+----
+Revision: 515
+Author: wuwei
+Date: 2009年9月22日 11:23:58
+Message:
+new BinaryBlock( NULL, 0 )->new BinaryBlock( NULL, 0, NULL )
+----
+Revision: 514
+Author: qiulinhui
+Date: 2009年9月21日 19:42:55
+Message:
+issue_id: CSOL-6879 最小化音效问题
+问题表征：引擎底层中， 最小化窗体时，操作系统除了发送 WM_SIZE 到应用程序后，随后再发送 WM_ACTIVATE 消息，而且辅助参数标志为窗口激活状态导致
+解决方案：仅捕获WM_ACTIVATE，并判断窗口激活状态和最小化窗口状态进行相应的处理。
+----
+Revision: 513
+Author: wanhaipeng
+Date: 2009年9月21日 18:39:19
+Message:
+1: setEntity/setModel的参数由Entity*/PyMode*改为SmartPointer，因为Script::setData对PyObject*增加引用。
+----
+Revision: 512
+Author: wanhaipeng
+Date: 2009年9月19日 14:50:50
+Message:
+1: 使用32K bytes lzoBuffer，稍微优化TCPKFileSystem::readFileInternal，建设new/delete小内存块次数。
+2: 增加BinaryBlock::BinaryBlock( int len, bool clearMemory )，可选择在constructor不memset。
+----
+Revision: 511
+Author: wanhaipeng
+Date: 2009年9月19日 14:47:17
+Message:
+1: Merge BigWorld 1.8.7.4。
+----
+Revision: 510
+Author: qiulinhui
+Date: 2009年9月17日 19:54:30
+Message:
+issue_id: CSOL-6823 玩家由雷兽精英地区自动寻路去温樱,玩家会有几率卡住-560:-592处
+问题原因： chunk waypoint 的结合问题。
+解决方案：修改waypoint 的 addBackLink 的算法。
+----
+Revision: 509
+Author: scm
+Date: 2009年9月16日 15:16:40
+Message:
+解决strdup操作隐式申请的内存和后面显示free不匹配导致的崩溃问题。
+----
+Revision: 508
+Author: wanhaipeng
+Date: 2009年9月15日 21:29:03
+Message:
+1: ERROR_MSG while cant find the attachment in PyModelNode::detach().
+----
+Revision: 507
+Author: wanhaipeng
+Date: 2009年9月15日 18:11:25
+Message:
+1: Add PyModel.nodes()，to get the accessed nodes list。
+   使用案例：GameObject::__clearAttachments。
+----
+Revision: 506
+Author: wuwei
+Date: 2009年9月11日 18:46:13
+Message:
+将ShadowManager的tick，render从WorldApp类中移到LensApp类，并在靠后位置渲染。
+这样可以避免角色的阴影不会被一些半透明的材质遮挡。
+----
+Revision: 505
+Author: wuwei
+Date: 2009年9月11日 17:52:09
+Message:
+1，修改newViewport.Width=widthPerCamera;
+原widthPerCamera=width_/cameras_.size(); newViewport.Width=width_/cameras_.size();
+newViewport.Height=height_;
+原newViewport.Height为oldViewport.Height;
+
+2，修改Moo::rc().screenWidth( newViewport.Width );
+原Moo::rc().screenWidth( widthPerCamera );
+Moo::rc().screenHeight( newViewport.Height );
+原Moo::rc().screenHeight( height_ );
+修改前并不能保证newViewport.Height == height_;
+现与Moo::rc().device()->SetViewport( &newViewport );保持一致
+
+----
+Revision: 504
+Author: wuwei
+Date: 2009年9月11日 17:29:25
+Message:
+max( bufferW, bufferW )->max( bufferW, bufferH )
+此处应用bw的笔误
+----
+Revision: 503
+Author: wanhaipeng
+Date: 2009年9月10日 17:44:59
+Message:
+1: 处理没有足够内存的情况。
+----
+Revision: 502
+Author: wanhaipeng
+Date: 2009年9月10日 17:43:46
+Message:
+1: 处理LockBuffer为NULL的情况。
+----
+Revision: 501
+Author: qiulinhui
+Date: 2009年9月10日 12:11:33
+Message:
+Fix A Bug：邻接Chunks的Waypoint链接因计算误差致路径不合理的问题。 
+问题表征：邻接Chunks间的waypoint A 和 waypoint B因为顶点非常接近，本来waypoint A应链接到waypoint B，但由于数值误差，算到waypoint B的邻接waypoint上。对于面积较大的凸边形waypoint，生成的路径偏差较为严重。
+解决方案：将查找邻接Chunks的探测点沿着下一个顶点的方向挪动1cm（不超过waypoint的解析度：0.5m)
+----
+Revision: 500
+Author: qiulinhui
+Date: 2009年9月5日 16:25:50
+Message:
+issue_id: CSOL-6126 微软拼音2007输入法，使用“- =”寻找汉字时，符号会直接录入输入框。
+原因：微软拼音2007输入法在选取汉字时，没有完全捕获“- =”的WM_KEYDOWN消息， 而客户端进程的InputHandle模块处理WM_KEYDOWN消息时没有判断是否处于IME状态，重复处理“- =”。其他常用的中文输入法和微软拼音2003不会出现此情况。
+
+解决方案：处于IME状态时，客户端进程的InputHandle模块不捕获WM_KEYDOWN消息。
+----
+Revision: 499
+Author: wanhaipeng
+Date: 2009年9月5日 11:15:49
+Message:
+1: 有关安装包的错误，不再使用CRITICAL_MSG。
+----
+Revision: 498
+Author: luochengdi
+Date: 2009年8月31日 12:08:43
+Message:
+这是第一可用版本的反外挂lib
+----
+Revision: 497
+Author: qiulinhui
+Date: 2009年8月28日 11:41:08
+Message:
+(1) 优化效率：在bool projectPointToLine( const Vector2& start, const Vector2& end, Vector2& outPoint )接口中，使用lengthSquared方法来替代较为耗时的length方法，进行长度比较。
+(2) 新增csol.navExGetHitWaypoints( testPos ) 接口，获取testPos位置上，竖直方向上命中的寻路点。脚本层上判断立体多层的waypoint用得上。
+
+接口说明：csol.navExGetHitWaypoints( testPos )
+参数类型：testPos      ：Vector3
+返回类型： 元素类型为Vector3的python list； 没有找到时，返回一个空列表。
+----
+Revision: 496
+Author: qiulinhui
+Date: 2009年8月27日 21:01:11
+Message:
+issue_id: CSOL-6665 双击NPC角色反方向自动移动
+Waypoint::addBackLink 计算有误！导致路径不合理，get fwc！
+----
+Revision: 495
+Author: wuwei
+Date: 2009年8月27日 14:40:09
+Message:
+1,更改了billboard深度计算方法
+原计算方法:children.depth = parent.depth / 10.0f
+改为：topparent.depth = 0.0f; children.depth = parent.depth - 0.0001;
+原计算方法children.depth可能被除成非常小的数，有可能造成血条闪烁等类似问题
+2，增加调用SimpleGUIComponent::tile()的限制条件。避免重复调用
+----
+Revision: 494
+Author: wanhaipeng
+Date: 2009年8月25日 16:46:17
+Message:
+1: lzo1x_decompress_asm_safe失败则认为安装包损坏，终止客户端进程。
+----
+Revision: 493
+Author: wanhaipeng
+Date: 2009年8月25日 16:40:42
+Message:
+1: Remove readFile() miss pFileSystem debug message.
+----
+Revision: 492
+Author: wanhaipeng
+Date: 2009年8月25日 16:39:56
+Message:
+1: lzo_init in WinMain。
+2: 修改WM_PAINT消息处理，避免包文件出错时的WM_PAINT重入死循环。
+----
+Revision: 491
+Author: wanhaipeng
+Date: 2009年8月25日 16:37:08
+Message:
+1: Release编译。
+----
+Revision: 490
+Author: wanhaipeng
+Date: 2009年8月25日 16:36:18
+Message:
+1: 调试代码crash和msgbox放入SVN，避免本机代码和SVN不一致。
+   CONSUMER_CLIENT_BUILD下，这两个函数直接return。
+----
+Revision: 489
+Author: wanhaipeng
+Date: 2009年8月25日 9:20:29
+Message:
+1: Flush log file in PyOutputWriter::PyOutputWriter()。
+----
+Revision: 488
+Author: wuwei
+Date: 2009年8月20日 20:04:09
+Message:
+1,变量s_pUnitSlect 改为 pUnitSelect
+2,删掉几行废代码
+----
+Revision: 487
+Author: wuwei
+Date: 2009年8月20日 18:57:44
+Message:
+issue ID:CSOL-6349
+1,调整UnitSelect的渲染顺序
+2,将UnitSelect顶点位置上拉0.015（原bw计算方法数值）
+----
+Revision: 486
+Author: wuwei
+Date: 2009年8月19日 15:37:23
+Message:
+按狼人要求，去掉worldNavmesh
+----
+Revision: 485
+Author: wuwei
+Date: 2009年8月19日 15:33:38
+Message:
+extern bool notDrawZhedang在res_packer编译无法通过。
+用RESPACKER_HYBRID宏，条件编译之。
+----
+Revision: 484
+Author: wuwei
+Date: 2009年8月19日 15:15:22
+Message:
+函数updatePointDir调用少写了()
+----
+Revision: 483
+Author: wanhaipeng
+Date: 2009年8月19日 9:30:25
+Message:
+1: Fix rainSplashes_ null pointer access in ~Rain()。
+----
+Revision: 482
+Author: wanhaipeng
+Date: 2009年8月18日 11:53:18
+Message:
+1: Fix simpleDraw pSuperModel NULL pointer bug.
+----
+Revision: 481
+Author: qiulinhui
+Date: 2009年8月17日 20:56:28
+Message:
+issue_id: CSOL-6518
+修改和邻接Chunk的waypointset结合点的计算方式，由 ( pos1 + pos2 ) / 2.0f 改为 pos1.
+因为中心点不严谨，会导致卡位的情况。
+
+----
+Revision: 480
+Author: qiulinhui
+Date: 2009年8月17日 18:11:41
+Message:
+按照杨凯要求：最小化窗口时，回调csol.setWindowActiveCallback绑定的函数， 其参数值为False
+----
+Revision: 479
+Author: wanhaipeng
+Date: 2009年8月17日 16:16:30
+Message:
+1: 调整Release的编译配置。
+----
+Revision: 478
+Author: wanhaipeng
+Date: 2009年8月17日 12:05:41
+Message:
+1: 增加csol::isPublished()，Release compiled时返回True。
+----
+Revision: 477
+Author: qiulinhui
+Date: 2009年8月17日 11:06:44
+Message:
+按照老宛要求，将csol.setWindowActiveCallbackFunction 改名为 csol.setWindowActiveCallback
+----
+Revision: 476
+Author: qiulinhui
+Date: 2009年8月17日 11:00:57
+Message:
+CallBack 改为 Callback
+----
+Revision: 475
+Author: qiulinhui
+Date: 2009年8月17日 10:34:30
+Message:
+新增设置WindowsActive回调的脚本层绑定函数： csol.setWindowActiveCallBackFunction( Fn )
+绑定回调函数的格式 def Function( isAcvite )
+示例：
+import csol
+def onWindowsActive( isAcvite ):
+    """
+    @type   isAcvite: bool
+    @param  isAcvite: 窗口是否处于前台运行
+    """
+    print isAcvite
+
+csol.setWindowActiveCallBackFunction( onWindowsActive )
+----
+Revision: 474
+Author: wanhaipeng
+Date: 2009年8月15日 17:58:49
+Message:
+1: Add navigatorEx.cpp and common.cpp。
+----
+Revision: 473
+Author: qiulinhui
+Date: 2009年8月15日 17:55:18
+Message:
+新增生成新寻路方案处理的数据的功能
+----
+Revision: 472
+Author: qiulinhui
+Date: 2009年8月15日 17:52:12
+Message:
+新增 physics.canMoveToWithSlideWall( Vector3 testPos ) 脚本接口，用于测试从当前位置到testPos向量中，可以到达的位置。
+----
+Revision: 471
+Author: qiulinhui
+Date: 2009年8月15日 17:48:14
+Message:
+新增新寻路方案相关的脚本接口
+csol.navExLoadNavMesh(const std::string & spaceFolder, float girth, int version);
+csol.navExLoadingProgress();
+csol.navExIsInWaypoint( const Vector3 & testPos, float yHack );
+csol.navExFindPath( const Vector3 & src, const Vector3 & dst, bool usePathFilter );
+csol.navExSimpleFindPath( const Vector3 & src, const Vector3 & dst );
+csol.navExCanNavigateTo( const Vector3 & src, const Vector3 & dst );
+csol.navExClear();
+----
+Revision: 470
+Author: qiulinhui
+Date: 2009年8月15日 17:46:21
+Message:
+在PhyCollisionAdvance中新增碰撞处理时忽略材质类型的参数
+----
+Revision: 469
+Author: qiulinhui
+Date: 2009年8月15日 17:45:17
+Message:
+改版的新寻路方案
+----
+Revision: 468
+Author: wanhaipeng
+Date: 2009年8月15日 11:54:12
+Message:
+1: fread return 0?
+----
+Revision: 467
+Author: wanhaipeng
+Date: 2009年8月15日 11:43:28
+Message:
+1: Set lastFileSystem_ NULL while copy constructor, delete fileSystem.
+----
+Revision: 466
+Author: qiulinhui
+Date: 2009年8月13日 20:28:56
+Message:
+Fix A Bug: 由于属性nLineVertices_在clipVertices接口里面计算得出，所以不应该使用nLineVertices_ 与0作比较，作为条件来判断是否clipVertices接口
+----
+Revision: 465
+Author: wanhaipeng
+Date: 2009年8月8日 13:31:28
+Message:
+1: 不再动态调整ChunkLoader Thread的优先级，同时前台UpdateFrame在ChunkLoading的Sleep时间有45ms调整至10ms。
+   原因：有些机器在ChunkLoading时Network Timeout。
+----
+Revision: 464
+Author: wuwei
+Date: 2009年8月7日 14:01:31
+Message:
+更正世界编辑器怪物活动范围的标志，有时不显示的bug
+----
+Revision: 463
+Author: wuwei
+Date: 2009年8月7日 10:15:55
+Message:
+根据黄大人的建议，修改了billboard的child与parent深度计算问题，保证child.depth<parent.depth
+以解决billboard写入深度后血条没有显示红色条的问题
+----
+Revision: 462
+Author: wanhaipeng
+Date: 2009年8月6日 17:49:40
+Message:
+1: 断线/小退的时候，彻底删除Player和PlayerSpace。
+----
+Revision: 461
+Author: wuwei
+Date: 2009年8月6日 14:52:35
+Message:
+issue ID:CSOL-6053
+simple如果是一个billboard，则写入深度且过滤掉alpha全透明的部分
+----
+Revision: 460
+Author: wanhaipeng
+Date: 2009年8月5日 16:44:42
+Message:
+1: 保存spaceData中的spaceID，在entityMove的spaceID为0时，使用保存的spaceID。
+   能消灭部分spaceID为0时的模型消失Bug。
+----
+Revision: 459
+Author: wuwei
+Date: 2009年8月3日 12:04:02
+Message:
+1，clipVertices()调用之前使用条件判断，LineVertices_有可能为NULL
+2，更正：number错写成munber
+----
+Revision: 458
+Author: wanhaipeng
+Date: 2009年8月2日 11:11:12
+Message:
+1: 修改Filter Hybrid调试接口。
+----
+Revision: 457
+Author: wanhaipeng
+Date: 2009年8月2日 10:52:10
+Message:
+1: 修改Crash后的提示信息。
+----
+Revision: 456
+Author: wanhaipeng
+Date: 2009年8月2日 10:50:53
+Message:
+1: Fix调用BigWorld.cameraSpaceID返回0的Bug。
+----
+Revision: 455
+Author: wanhaipeng
+Date: 2009年8月2日 10:50:06
+Message:
+1: 修改Hybrid调试接口。
+----
+Revision: 454
+Author: qiulinhui
+Date: 2009年7月31日 10:26:44
+Message:
+issue_id: CSOL-6148, CSOL-6128 修正角色卡位的问题
+----
+Revision: 453
+Author: qiulinhui
+Date: 2009年7月30日 10:16:42
+Message:
+issue_id:  CSOL-6161 新增“当镜头位置达到此最小高度时，继续增加仰角，摄象机将在此最小高度的平面上向角色靠近，而不再降低垂直高度，直到靠近至与角色的水平距离为摄象机的最小距离。”的限制 
+
+新增的接口：
+（1）CursorCamera.minHeightOffsetLimit 最低高度偏差限制，摄像机的y值不小于跟踪目标的y值 + minHeightOffsetLimit
+（2）CursorCamera.enableMinHeightOffsetLimit 是否启用最低高度偏差限制
+----
+Revision: 452
+Author: wanhaipeng
+Date: 2009年7月30日 9:14:51
+Message:
+1: Fix SIZE_MAXIMIZED->SIZE_RESTORED下UI比例不正确的Bug。
+----
+Revision: 451
+Author: wanhaipeng
+Date: 2009年7月29日 21:19:11
+Message:
+1: 避免EffectMaterial重复push_back effectInitQueue。
+   如果重复push_back，在EffectMaterial的destructor中不能完全从queue中删除，会导致调用deleted EffectMaterail的finishInit，产生Crash。
+----
+Revision: 450
+Author: wanhaipeng
+Date: 2009年7月29日 21:16:06
+Message:
+1: 对全局变量Moo::StreamedAnimation::s_loadingAnimCache的设置进行线程保护。
+   此处按理应该发生Bug，不过似乎从来没有发生。
+----
+Revision: 449
+Author: wanhaipeng
+Date: 2009年7月29日 21:12:58
+Message:
+1: 由于我们游戏中的水不使用玩家移动的内置模拟效果，暂时关闭Movements。因为此处可能引发new 140M的Bug。
+----
+Revision: 448
+Author: wanhaipeng
+Date: 2009年7月29日 17:19:04
+Message:
+1: 从最小化Restore到窗口模式，我认为不需要ResizeWindow。
+----
+Revision: 447
+Author: wanhaipeng
+Date: 2009年7月25日 19:24:38
+Message:
+1: 增加personality.preloadLoginSpace()，返回登录场景spaceID，ChunkManager在摄像头位置处开始Loading 3 秒场景。
+----
+Revision: 446
+Author: wanhaipeng
+Date: 2009年7月25日 19:02:03
+Message:
+1: BigWorld.connect增加参数keepEntities。keepEntities为True表示不删除当前场景的客户端Entity，缺省为False。
+----
+Revision: 445
+Author: wanhaipeng
+Date: 2009年7月23日 17:12:10
+Message:
+1: ServerSide关闭volatileInfo发送lastPosition时，网络拥堵Entity的latency比较大的情况下，entity在lastPostion后会有小碎步，Fix此Bug。
+2: 增加若干有必要调试信息，用DEBUG_FILTER Mark。
+----
+Revision: 444
+Author: wanhaipeng
+Date: 2009年7月23日 17:04:41
+Message:
+1: Add BigWorld.callbacks() for debugging, return a list of tuple(timerID, function).
+----
+Revision: 443
+Author: wanhaipeng
+Date: 2009年7月23日 9:06:06
+Message:
+1: Disable draw while create a ModelRenderer.
+----
+Revision: 442
+Author: qiulinhui
+Date: 2009年7月22日 21:42:43
+Message:
+将setNodes方法中，由原来的延时到updata方法计算线段的方式改为即时计算方式。用于小地图寻路点的显示。
+----
+Revision: 441
+Author: wuwei
+Date: 2009年7月22日 14:45:56
+Message:
+刀光效果一静态变量改为成员变量
+----
+Revision: 440
+Author: wuwei
+Date: 2009年7月22日 11:36:46
+Message:
+声音接听者位置改为player，原为camera
+----
+Revision: 439
+Author: wuwei
+Date: 2009年7月22日 11:34:27
+Message:
+更改了刀光效果中几处错误
+----
+Revision: 438
+Author: qiulinhui
+Date: 2009年7月21日 17:28:47
+Message:
+issue_id: CSOL-5901 角色在某些机子上，某个位置上会卡位的问题
+原因：物理模块中，应用重力处理拾取hitItem有Bug导致
+----
+Revision: 437
+Author: wanhaipeng
+Date: 2009年7月20日 19:47:20
+Message:
+1: 可耻啊，这么两行代码居然出错了。。。
+----
+Revision: 436
+Author: wanhaipeng
+Date: 2009年7月20日 16:17:54
+Message:
+1: 增加chuangshi.exe命令行参数，要求用户从Launcher.exe启动创世客户端。
+----
+Revision: 435
+Author: wanhaipeng
+Date: 2009年7月20日 11:02:17
+Message:
+1: Filter增加restartMoving()和setLastPosition(pos)接口，用于从Server向Client主动同步Entity位置信息。
+----
+Revision: 434
+Author: qiulinhui
+Date: 2009年7月17日 21:07:41
+Message:
+issue_id: CSOL-5835  广场阶梯处人物容易掉入地下
+原因：应用重力处理计算出了问题导致。
+----
+Revision: 433
+Author: qiulinhui
+Date: 2009年7月16日 18:57:42
+Message:
+issue_id:   CSOL-5330 
+     a.新增了simpleStyleTick处理，其处理包括seek移动和一般的 s = v×t 移动。
+     b.新增了一个三角形碰到的接口collision
+     c.修改了applyGravity接口,新增一个isForPlayer，标识该接口是否给角色用。（角色用的碰撞较为精确，需要用到两个三角形进行两次碰撞，故较为耗时）
+
+我们在脚本层上设置simpleStyleTick的方法： Entity.physics = 4
+----
+Revision: 432
+Author: wanhaipeng
+Date: 2009年7月14日 10:48:18
+Message:
+1: Model::playAnimation中的Animation插值result exception "Error playing animation"改成DEBUG_MSG。
+----
+Revision: 431
+Author: wuwei
+Date: 2009年7月13日 20:58:11
+Message:
+解决窗口最大尺寸限制计算方法有误的bug，并有可能使字体模糊的bug
+----
+Revision: 430
+Author: qiulinhui
+Date: 2009年7月13日 15:18:03
+Message:
+优化了画线的效率
+（1）当管理的顶点没有发生变化时，可以采用已经计算好的结果来渲染线段，没必要重新进行计算
+（2）没添加，删除，设置一个顶点时，没必要都重新计算要渲染的线段，可以在update事件里统一计算一次即可
+----
+Revision: 429
+Author: wanhaipeng
+Date: 2009年7月13日 11:26:10
+Message:
+1: Release版本不显示动画播放错误。
+2: Bypass ( s_cacheSize_ - block->size_ ) <= s_cacheSize_ 错误，象1.9.3.1一样。
+----
+Revision: 428
+Author: wanhaipeng
+Date: 2009年7月11日 21:39:01
+Message:
+1: Add lzo2 lib.
+----
+Revision: 427
+Author: wanhaipeng
+Date: 2009年7月11日 21:38:18
+Message:
+1: ModelEditor下没有Enity，把setEntity的Python接口在EDITOR_ENABLED下Mark掉。
+----
+Revision: 426
+Author: wanhaipeng
+Date: 2009年7月11日 21:37:03
+Message:
+1: Fix StreamedAnimation::load blocks总数可能计算少一个的Bug。
+----
+Revision: 425
+Author: wuwei
+Date: 2009年7月10日 9:00:53
+Message:
+怪物锁定光环水中渲染代码，bigbang中无法编译通过，现用宏EDITOR_ENABLED屏蔽之
+----
+Revision: 424
+Author: luochengdi
+Date: 2009年7月9日 19:40:32
+Message:
+由于apex客户端有变，客户端的代码稍作修改
+----
+Revision: 423
+Author: wanhaipeng
+Date: 2009年7月8日 10:50:17
+Message:
+1: Fix配置文件中Water为最低级的，然后再游戏中改成带倒影的水，贴图为黑色的Bug。
+----
+Revision: 422
+Author: wuwei
+Date: 2009年7月7日 10:06:00
+Message:
+修复怪物锁定光环在水中不显示的bug
+----
+Revision: 421
+Author: wanhaipeng
+Date: 2009年7月6日 20:18:39
+Message:
+1: Print error message with model file name while excetption occurs in anim->play。
+----
+Revision: 420
+Author: wanhaipeng
+Date: 2009年7月6日 20:17:22
+Message:
+1: Set FPS to 10 while lost focus.
+----
+Revision: 419
+Author: wanhaipeng
+Date: 2009年7月6日 20:10:12
+Message:
+1: Draw ZheZhangPian in WorldEditor。
+----
+Revision: 418
+Author: wanhaipeng
+Date: 2009年7月6日 20:08:10
+Message:
+1: Disable SEPARATE_READ_THREAD for streamed_data_cache。
+----
+Revision: 417
+Author: wanhaipeng
+Date: 2009年7月6日 20:06:38
+Message:
+1: Maybe posixFileOpen return NULL file？
+----
+Revision: 416
+Author: luochengdi
+Date: 2009年7月4日 21:42:05
+Message:
+修改发送返回值，如果不成功，就放到队列里，下次发送。
+----
+Revision: 415
+Author: wanhaipeng
+Date: 2009年7月3日 16:37:39
+Message:
+1: 加入防外挂Apex库。
+----
+Revision: 414
+Author: wanhaipeng
+Date: 2009年7月3日 16:10:39
+Message:
+1: Add apex includes and libs.
+----
+Revision: 413
+Author: luochengdi
+Date: 2009年7月3日 15:36:12
+Message:
+增加AHClientInterface.lib的链接
+----
+Revision: 412
+Author: luochengdi
+Date: 2009年7月3日 11:56:27
+Message:
+修改makefile,编译反外挂部分
+----
+Revision: 411
+Author: luochengdi
+Date: 2009年7月3日 11:54:30
+Message:
+在服务端增加反外挂的功能
+----
+Revision: 410
+Author: luochengdi
+Date: 2009年7月3日 10:58:20
+Message:
+增加反外挂的功能，在客户端使用反外挂
+----
+Revision: 409
+Author: luochengdi
+Date: 2009年7月3日 10:53:18
+Message:
+增加反外挂的功能
+----
+Revision: 408
+Author: qiulinhui
+Date: 2009年7月1日 11:45:31
+Message:
+（1）issue_id: CSOL-5302 野外场景卡位 
+原因：原有的jumpUpCollision碰撞测试点没有往反方向移动一段距离，导致测试点刚好非常接近BSP空间的某个三角形时，则该三角形没有被碰撞模块拾取导致
+（2）：修正角色连续跳跃，可以跳出遮挡片的问题
+原因：getModelFloorHeight中，忽略大于某个角度的设置，应设置为略小于MATH_PI/2.0f, 解决因为浮点精度而拾取到侧边的问题
+----
+Revision: 407
+Author: wanhaipeng
+Date: 2009年6月29日 10:04:14
+Message:
+1: 后台streamed_data_cache可能有奇怪的file同步Bug，关闭之。
+----
+Revision: 406
+Author: wuwei
+Date: 2009年6月26日 10:30:23
+Message:
+issue ID: CSOL-5324
+timeofday增加固定时间的功能,同时worldeditor增加相关控件
+----
+Revision: 405
+Author: wuwei
+Date: 2009年6月24日 10:05:28
+Message:
+一处W误写H，并修改一处风格不好的代码
+----
+Revision: 404
+Author: wuwei
+Date: 2009年6月22日 19:31:23
+Message:
+修复text在分辩率改变后会变模糊的bug
+----
+Revision: 403
+Author: qiulinhui
+Date: 2009年6月22日 16:26:52
+Message:
+修改了ChunkWaypointSet::deleteConnection删除边信息（edgeLabels_）的方式
+----
+Revision: 402
+Author: wanhaipeng
+Date: 2009年6月22日 16:26:47
+Message:
+1: 修改创世图标。
+2: 增加创世客户端窗口左上角Win32 图标。
+----
+Revision: 401
+Author: qiulinhui
+Date: 2009年6月22日 12:03:45
+Message:
+Fix Bugs:
+(1)chunks_waypoint_set.cpp 优化了ChunkWaypointSet::deleteConnection函数， 原来的方式多加一个临时变量，且connections_中重复擦除同一个值
+(2)Navigator.cpp 的ChunkWPSetState::getAdjacency接口中，修正了neigh.position_计算有误的Bug。（受BW原版的错误计算方式影响，计算坐标时，应用了相应chunk转换矩阵的变换，实际上不需要，因为最新版本的navigate数据保存的way point坐标是世界坐标）
+----
+Revision: 400
+Author: wanhaipeng
+Date: 2009年6月22日 11:29:56
+Message:
+1: Fix ScissorRect within bug，该Bug会导致WindowGUI的childrend的渲染区域不能完全覆盖Window。
+----
+Revision: 399
+Author: qiulinhui
+Date: 2009年6月20日 8:54:20
+Message:
+Fix Bugs:
+(1)因为新版本的navigate数据在相邻的Chunk相互交叠0.5m，所以 ChunkWaypointState计算相邻的ChunkWayPoint时，不需要额外的向前添加一段距离（添加后，会导致添加的位置如果为navigate不可到达的区域时，角色卡住而导致寻路中断的问题）
+(2)修正ChunkWPSetState计算相邻的ChunkWayPointSet出错而导致角色寻路时，出现兜大圈的问题
+----
+Revision: 398
+Author: wuwei
+Date: 2009年6月18日 15:31:06
+Message:
+更改billboard景深计算错误的bug
+----
+Revision: 397
+Author: qiulinhui
+Date: 2009年6月17日 17:28:32
+Message:
+Fix A Bug：处于seek状态时，因为下滑处理而导致寻路失败的问题
+解决方案：seek状态时，不做下滑处理
+----
+Revision: 396
+Author: qiulinhui
+Date: 2009年6月17日 14:46:49
+Message:
+Fix A Bug: 在应用重力拾取地面的处理的碰撞中，设置检测的裁剪角度略小于MATH_PI/2.0f, 解决因为浮点精度而拾取到侧边的问题
+----
+Revision: 395
+Author: qiulinhui
+Date: 2009年6月15日 15:14:24
+Message:
+优化了碰撞处理：当水平方向上运动量为0，则不需要向前碰撞，因为跳跃处理时，作了向上碰撞处理。
+----
+Revision: 394
+Author: wuwei
+Date: 2009年6月15日 10:29:06
+Message:
+改写风格不良的代码
+----
+Revision: 393
+Author: wuwei
+Date: 2009年6月15日 9:31:16
+Message:
+issueID:CSOL-3275
+BillboardGuiAttachment增加鼠标消息响应
+----
+Revision: 392
+Author: qiulinhui
+Date: 2009年6月15日 9:23:47
+Message:
+Fix Bugs:
+(1)去掉以前碰撞方式导致角色挂在墙上的处理
+(2)修复角色跳跃过程中，运动过程出现不流畅的情况
+----
+Revision: 391
+Author: qiulinhui
+Date: 2009年6月12日 15:33:59
+Message:
+Fix A Bug: 修正PhyCollisionAdvance::operator()接口中，计算碰撞三角形倾斜角度的Bug。
+问题产生原因：原计算方案没有将局部坐标的三角形转换到世界坐标里，便用来计算倾斜角度
+----
+Revision: 390
+Author: qiulinhui
+Date: 2009年6月11日 16:53:22
+Message:
+Fix Bugs:
+(1)向下运动处理应该在弹出地表处理前，故将下滑处理部分提到弹出地表处理的前面
+(2)修正应用重力处理，向下碰撞拾取三角面的Bug
+----
+Revision: 389
+Author: wuwei
+Date: 2009年6月11日 16:42:13
+Message:
+将indoor chunk添加到spacemap
+----
+Revision: 388
+Author: wanhaipeng
+Date: 2009年6月11日 13:56:35
+Message:
+1: Fix 共骑下马时，player.Vehicle有内存非法的Bug。原因：Vehicle的leaveWorld可能在两个Player的disMount中间，leaveWorld完成后，Vehicle被C++Delete。
+   解决办法：Entity增加对Vehicle的refcount。
+----
+Revision: 387
+Author: 
+Date: (no date)
+Message:
+
+----
+Revision: 386
+Author: wanhaipeng
+Date: 2009年6月5日 15:35:31
+Message:
+1: Add renderSelf timing watcher.
+----
+Revision: 385
+Author: wanhaipeng
+Date: 2009年6月5日 15:09:06
+Message:
+1: WorldEditor support NVPerfHud.
+----
+Revision: 384
+Author: wanhaipeng
+Date: 2009年6月5日 15:01:10
+Message:
+1: Add fmod for romp vcproj.
+----
+Revision: 383
+Author: wanhaipeng
+Date: 2009年6月5日 15:00:20
+Message:
+1: Add lzo for bigbang vcproj.
+----
+Revision: 382
+Author: wanhaipeng
+Date: 2009年6月4日 11:36:43
+Message:
+1: WorldEditor中关闭ChunkModel的Camera Distance LOD。
+----
+Revision: 381
+Author: qiulinhui
+Date: 2009年6月2日 17:35:17
+Message:
+issue_id:  	 CSOL-4534 NPC“莫何”自动寻路有点问题，角色在自动寻路快到该NPC的时候，突然会转头向后跑一段居然再回来跑回该NPC处
+
+原因：进行chunks的A×搜索时，重置neigh.position_的计算有误导致
+----
+Revision: 380
+Author: wuwei
+Date: 2009年6月2日 13:58:01
+Message:
+issue ID:CSOL-4607
+尝试解决文字定位及显示问题
+
+----
+Revision: 379
+Author: wanhaipeng
+Date: 2009年6月2日 10:52:27
+Message:
+1: Fix候选m_iTotalPage为0时候的内存访问越界Crash。
+----
+Revision: 378
+Author: wanhaipeng
+Date: 2009年5月26日 13:56:00
+Message:
+1: Fix csol::openUrl中url参数长度不足的内存越界潜在Bug。
+----
+Revision: 377
+Author: wanhaipeng
+Date: 2009年5月26日 13:46:31
+Message:
+1: 修复Entity.pFilter_为NULL的Bug，经过对脚本文件的分析，理论上pFilter_不应该为NULL。
+   防御性编程，只能是。
+----
+Revision: 376
+Author: 
+Date: (no date)
+Message:
+
+----
+Revision: 375
+Author: 
+Date: (no date)
+Message:
+
+----
+Revision: 374
+Author: wanhaipeng
+Date: 2009年5月23日 13:58:19
+Message:
+1: 取消BigWorld ShiXiaoMing的Moo::UnfilteredSortedChannel，该Channel会导致NPC头顶标志产生倒影的Bug。
+----
+Revision: 373
+Author: 
+Date: (no date)
+Message:
+
+----
+Revision: 372
+Author: qiulinhui
+Date: 2009年5月21日 14:05:35
+Message:
+Fix A Bug:
+对于某些space中不存在“space.localsettings”配置，且使用默认值(0, 2, 0)，但当该坐标点不在任何一个chunk上时，无法定位摄像机导致navgen加载chunks失败的Bug
+解决方案：不存在“space.localsettings”配置时，尝试读取”space.settings"里面的“startPosition” 和 “startDirection” 的值， 当“space。settings”配置不存在时，再使用默认的值(0, 2, 0)
+----
+Revision: 371
+Author: qiulinhui
+Date: 2009年5月20日 16:51:36
+Message:
+根据华伟的要求，新增摄像机对遮挡片的过滤处理
+----
+Revision: 370
+Author: wanhaipeng
+Date: 2009年5月20日 15:52:55
+Message:
+1: Add ClientCollisionAdvance。
+----
+Revision: 369
+Author: qiulinhui
+Date: 2009年5月20日 15:20:09
+Message:
+根据老宛的要求，将ClientCollisionAdvance.h, ClientCollisionAdvance.cpp 移动到chunk工程下后，修改了相应的引用头文件的路径
+----
+Revision: 368
+Author: qiulinhui
+Date: 2009年5月20日 15:19:25
+Message:
+根据老宛的要求，将ClientCollisionAdvance.h, ClientCollisionAdvance.cpp 移动到chunk工程下后，修改了相应的引用头文件的路径
+----
+Revision: 367
+Author: wanhaipeng
+Date: 2009年5月20日 15:04:07
+Message:
+Move to src/lib/chunk.
+----
+Revision: 366
+Author: wanhaipeng
+Date: 2009年5月20日 15:03:55
+Message:
+Move to src/lib/chunk.
+----
+Revision: 365
+Author: qiulinhui
+Date: 2009年5月20日 14:19:27
+Message:
+新增了预下滑碰撞处理，使得角色无法爬上的斜坡上不生成navigate网格
+在navgen_settings.xml新增girth字段中新增下滑角度“slideAngel”子字段，类型为float，默认值45
+
+eg.
+<girth>	0.5
+    <ignoreMaterialKind>	-1	</ignoreMaterialKind>
+    <scrambleHeight>	0.4	</scrambleHeight>
+    <slideAngel>	45	</slideAngel>
+    <always>	</always>
+    <width>	0.4	</width>
+    <height>	2.0	</height>
+    <depth>	0.3	</depth>
+</girth>
+----
+Revision: 364
+Author: qiulinhui
+Date: 2009年5月20日 14:11:17
+Message:
+issue id:CSOL-4491, CSOL-4536
+（1）新增预下滑碰撞处理，使角色无法爬上大于下滑角度且高于攀爬高度的斜坡
+（2）改版了跳跃过程处理，修复原来沿着斜坡向上移动，并跳跃的话，会出现跳跃在空中明显停滞不前的Bug
+（3）优化了滑坡处理中拾取模型高度的碰撞
+----
+Revision: 363
+Author: qiulinhui
+Date: 2009年5月20日 14:02:47
+Message:
+因为navgen Tool在新增的“预下滑碰撞处理”中用到PhyCollisionAdvance类；考虑到类TopTriangle，pyUnitSelectClosestTriangle在physics.cpp中没有用到，以后可能用到，故也顺便移动到这里；类FlatCollisionAdvance也移到到这里统一管理。
+修改了PhyCollisionAdvance类对小于某个设定角度的碰撞三角面的过滤（用于下滑预碰撞中）的支持
+----
+Revision: 362
+Author: wuwei
+Date: 2009年5月18日 15:09:33
+Message:
+修正了model.OnActionStart的一个bug，并改写回调代码
+----
+Revision: 361
+Author: huangshanquan
+Date: 2009年5月18日 15:04:59
+Message:
+在人物装备窗口model_renderer ，modelnoalpha_renderer 模块中增加bool类型脚本接口enableDrawModel控制是否渲染窗口中的模型
+
+
+----
+Revision: 360
+Author: wuwei
+Date: 2009年5月18日 11:30:06
+Message:
+更新bigworld support将#ifndef EDITOR_ENABLED写成#ifndef EDITOR_ENABLE错误
+----
+Revision: 359
+Author: wuwei
+Date: 2009年5月16日 8:57:00
+Message:
+SimpleGUIComponent类成员变量Moo::EffectMaterial*全部改为static Moo::EffectMaterial*，并调整相关调用代码
+----
+Revision: 358
+Author: wuwei
+Date: 2009年5月15日 9:48:25
+Message:
+1,根据美术要求，更改了刀光的计算方式
+2,注释掉使用固定拟合曲线的代码，每帧调用可以少做if
+3,更改了函数返回值为bool时，错写成const不合理的语句
+----
+Revision: 357
+Author: 
+Date: (no date)
+Message:
+
+----
+Revision: 356
+Author: wuwei
+Date: 2009年5月14日 14:58:50
+Message:
+更正将bool写成const bool的错误
+----
+Revision: 355
+Author: wuwei
+Date: 2009年5月14日 14:22:48
+Message:
+粒子编辑器，SpriteParticleRenderer增加参数viewRotated的控件
+----
+Revision: 354
+Author: wuwei
+Date: 2009年5月13日 14:41:43
+Message:
+增加描边效果FringeShader
+----
+Revision: 353
+Author: wuwei
+Date: 2009年5月13日 13:17:27
+Message:
+修改刀光代码中部分不合理的语句
+----
+Revision: 352
+Author: huangshanquan
+Date: 2009年5月13日 13:14:01
+Message:
+
+----
+Revision: 351
+Author: wuwei
+Date: 2009年5月13日 11:36:22
+Message:
+修改刀光数组有可能越界的bug
+----
+Revision: 350
+Author: wanhaipeng
+Date: 2009年5月12日 15:52:36
+Message:
+1: BigWorld 20090512 time patch.
+----
+Revision: 349
+Author: wanhaipeng
+Date: 2009年5月9日 10:56:10
+Message:
+1: 增加一些Time不同步的调试信息。
+----
+Revision: 348
+Author: 
+Date: (no date)
+Message:
+
+----
+Revision: 347
+Author: qiulinhui
+Date: 2009年5月7日 15:10:40
+Message:
+修正CircleGUI鼠标拾取处理失败的Bug
+产生原因：CircleGUIComponent::hitTest函数中，椭圆扇形的圆心坐标计算有误
+----
+Revision: 346
+Author: qiulinhui
+Date: 2009年5月7日 10:25:59
+Message:
+修改CircleGUIComponent，使其支持椭圆扇形的效果
+(1) 渲染方式：顺时针方向，从起始弧度（startRadian_）到终止弧度（endRadian_）所在位置的椭圆扇形
+(2) 在gui配置文件新增的起始弧度“startRadian”和终止弧度“endRadian”字段，类型为float
+(3) 脚本层次上新增的相应可读写属性：Circle.startRadian 默认值为0.0, Circle.endRadian 默认值为 2_PI
+----
+Revision: 345
+Author: wuwei
+Date: 2009年5月7日 9:55:24
+Message:
+增加新的刀光效果
+----
+Revision: 344
+Author: wanhaipeng
+Date: 2009年5月7日 9:21:27
+Message:
+1: 删除Loft_token。
+2: 非Release版本的，缺省打开NVIDIA PerfHUD。
+----
+Revision: 343
+Author: wuwei
+Date: 2009年5月7日 8:52:52
+Message:
+删除旧刀光loftAttachment
+----
+Revision: 342
+Author: wuwei
+Date: 2009年5月7日 8:34:42
+Message:
+water RenderTarge最小尺寸调整到64
+----
+Revision: 341
+Author: wanhaipeng
+Date: 2009年5月6日 9:48:19
+Message:
+1: PYTHONHOME include -> ingame python engine include.
+----
+Revision: 340
+Author: wanhaipeng
+Date: 2009年5月6日 9:45:39
+Message:
+1: BigWorld OnControlledCallback patch.
+----
+Revision: 339
+Author: qiulinhui
+Date: 2009年5月5日 14:28:28
+Message:
+由于xml文档转换为py文档后的配置文件路径转移到entities\common\config目录下，所以新增了csol.setAutoPathFolder(autoPathProfileFolder)脚本层接口，设定autopath配置文档的文件夹路径。默认值为原来的“config\client\auto_path\”
+PS: autoPathProfileFolder以斜杠或者反斜杠结束
+----
+Revision: 338
+Author: wanhaipeng
+Date: 2009年4月30日 10:00:36
+Message:
+1: 优化TCImporter::find_module，使用csol.resourceExists判断python module是否存在，加快TCPackage版本的Python Import。
+----
+Revision: 337
+Author: wanhaipeng
+Date: 2009年4月28日 14:37:22
+Message:
+1: 修改onEnityMove，按照BigWorld的说法，可以Fix onPoseVolatile的Bug。
+----
+Revision: 336
+Author: wanhaipeng
+Date: 2009年4月24日 9:59:26
+Message:
+1: Fix Bug：提前转换大小写后，生成的pyc文件名和py文件名不一致，导致pyc编译出size0文件。
+----
+Revision: 335
+Author: qiulinhui
+Date: 2009年4月23日 8:25:33
+Message:
+issue_id: CSOL-4006 
+（1）下滑处理问题：新增沿着斜坡向上运动，滑坡处理后的回调绑定属性  physics.upsideSlideOverCallback = script CallBackFuntion
+（2）fix a Bug: Physics::py_setSeekCallBackFn 和 Physics::py_setSeekCollisionCallBackFn接口取消绑定时，python object的引用计数器没有作相应递减释放的处理
+
+----
+Revision: 334
+Author: wanhaipeng
+Date: 2009年4月22日 16:17:51
+Message:
+1: 支持Entities.tcpk。
+2: 不扫描pyd文件。
+3: 如果clientName_为空String，不去查找对应的Python实现，因为肯定没有……
+----
+Revision: 333
+Author: wanhaipeng
+Date: 2009年4月22日 16:03:28
+Message:
+1: 缺省关闭UMBRA。
+----
+Revision: 332
+Author: wanhaipeng
+Date: 2009年4月22日 16:01:45
+Message:
+1: TCPKFileSystem使用lzo compress，能大幅缩短GUI中Loading DDS的时间。
+----
+Revision: 331
+Author: wanhaipeng
+Date: 2009年4月22日 15:51:05
+Message:
+1: 修改创世图标。
+----
+Revision: 330
+Author: wanhaipeng
+Date: 2009年4月22日 15:48:44
+Message:
+1: 增加App::setLoadingSleepTime，在spaceLoadStatus中将前台的Render每Frame延迟40ms，降低FPS，以让ChunkLoader线程获得更多的CPU时间。
+----
+Revision: 329
+Author: wanhaipeng
+Date: 2009年4月21日 16:39:18
+Message:
+1: Add lzo lib.
+----
+Revision: 328
+Author: wanhaipeng
+Date: 2009年4月17日 15:06:38
+Message:
+1: 优化了RC4::Encrypt/Decrypt，打包版本的Python Import大幅提高速度。
+----
+Revision: 327
+Author: qiulinhui
+Date: 2009年4月17日 11:06:21
+Message:
+FIX A BUG: 在Inside chunk里，遮挡片一直显示出来的问题
+----
+Revision: 326
+Author: wanhaipeng
+Date: 2009年4月14日 17:14:08
+Message:
+1: Fix sink properties dialog没有mininumAge的错误。
+----
+Revision: 325
+Author: wanhaipeng
+Date: 2009年4月14日 14:37:20
+Message:
+1: 调整水的反射和倒影。
+----
+Revision: 324
+Author: wuwei
+Date: 2009年4月13日 14:56:54
+Message:
+更正了model.action开始回调有时没有回调的bug
+----
+Revision: 323
+Author: wanhaipeng
+Date: 2009年4月13日 14:42:11
+Message:
+1: DDX_CONTROL用的ID和rc文件里面的不匹配，IDC_PSA_SOURCE_STARTPERIOD -> IDC_PSA_SOURCE_STARTTIME。
+----
+Revision: 322
+Author: wanhaipeng
+Date: 2009年4月13日 13:45:52
+Message:
+1: Merge from cvs love3/bw181。
+----
+Revision: 321
+Author: qiulinhui
+Date: 2009年4月13日 9:38:50
+Message:
+在Physics::avatarStyleTick函数去掉了过时的注释，和调试信息。
+俯卧撑，我的:(
+----
+Revision: 320
+Author: wanhaipeng
+Date: 2009年4月13日 8:38:27
+Message:
+1: WorldEditor下缺省使用BigWorld最高质量的渲染。
+----
+Revision: 319
+Author: qiulinhui
+Date: 2009年4月13日 8:21:02
+Message:
+issue_id:CSOL-3901
+（1）新增seek方式对跳跃事件的支持
+ (2) 优化jumpProcessingUnit函数中上一帧高度的获取，由pSlave_->position().y改为oldPos.y
+----
+Revision: 318
+Author: wanhaipeng
+Date: 2009年4月11日 11:08:25
+Message:
+1: 修改setEntity，在非常罕见的情况下pEntity_->pPrimaryEmbodiment为NULL，Crash。
+2: 美化了一下setEntity的Code。
+----
+Revision: 317
+Author: qiulinhui
+Date: 2009年4月11日 11:05:29
+Message:
+(1)修改了向前碰撞方式：由一个三角形改为两个三角形模拟的矩形，保持和客户端的物理碰撞规则一致
+(2)游戏中角色的攀爬高度另外设置，不为高度的1/3,因此新增了scrambleHeight到navgen_settings.xml配置表，默认值为高度的1/4 (PS:略低于1/3,可以避免客户端中因为计算精度误差，在某个高度很低的障碍物上，生成了一条路径而角色无法过去的情况）
+----
+Revision: 316
+Author: wuwei
+Date: 2009年4月10日 15:49:40
+Message:
+chunk_packer.cpp保留“worldNavmesh”
+----
+Revision: 315
+Author: wuwei
+Date: 2009年4月10日 13:55:05
+Message:
+cdata_packer.cpp保留“worldNavmesh”
+----
+Revision: 314
+Author: wanhaipeng
+Date: 2009年4月10日 11:57:44
+Message:
+1: Fix'maps2'访问'maps'所在TCPackage的Bug，同时能微小提高不命中的效率。
+----
+Revision: 313
+Author: wanhaipeng
+Date: 2009年4月10日 10:28:59
+Message:
+1: 在低端TI4200的显卡上创建D3DUSAGE_DYNAMIC拼接的小地图，可能导致Crash，Fix之。
+----
+Revision: 312
+Author: wanhaipeng
+Date: 2009年4月7日 17:18:29
+Message:
+1: 小明的Heaven/Earth Portal优化会导致Chunk内Light错误，回退。
+----
+Revision: 311
+Author: wanhaipeng
+Date: 2009年4月7日 14:27:08
+Message:
+1: Heaven/Earth Portal的优化。
+----
+Revision: 310
+Author: wanhaipeng
+Date: 2009年4月6日 16:51:45
+Message:
+1: Deconstrutor中需要DecRef homeerCallback。
+----
+Revision: 309
+Author: wanhaipeng
+Date: 2009年4月6日 16:50:50
+Message:
+1: update() PyObject* 参数 改为 PyObjectPtr，Fix Script::setData(PyObject*, PyObject*)增加的引用计数导致的内存泄漏Bug。
+----
+Revision: 308
+Author: support
+Date: 2009年4月3日 13:51:38
+Message:
+Some GUI objects using alpha blending have been added into BW and they are added to the SortedChannel. The SortedChannel is used to draw transparent objects. Problem arises when those GUI objects are used with shimmer. Usually GUI is drawn after shimmer so shimmer will not displace GUI. But as those objects are drawn with other alpha objects, they are displaced.
+To fix this, I have added a new channel named UnfilteredSortedChannel and put all transparent GUI stuffs into it. It will be drawn after shimmer and before all other GUI component.
+The potential problem is, as alpha objects must be drawn sorted and those GUI objects has there depth in world. So if they are covered by another transparent object that is close to the camera, the pixles in the common part should be blended. However, in this case they will not be blended correctly as we draw them in the wrong order.
+----
+Revision: 307
+Author: 
+Date: (no date)
+Message:
+
+----
+Revision: 306
+Author: support
+Date: 2009年4月3日 10:14:44
+Message:
+automatically downgrade the water texture quality if the creation of higher quality one fails.
+it fails when creating a 1024 * 1024 rtt on a 128M graphics card.
+----
+Revision: 305
+Author: 
+Date: (no date)
+Message:
+
+----
+Revision: 304
+Author: wuwei
+Date: 2009年4月1日 17:36:40
+Message:
+1.res_packer工程及依赖工程添加编译配置respacker_hybrid,此配置是bybrid的复制，仅多定义一个宏：RESPACKER_HYBRID
+2.由于依赖工程有更改的可能，新增加代码在res_packer工程不能编译成功的，且与res_packer无关的，全部用宏RESPACKER_HYBRID过滤
+3，bigworld support解决效率低下问题，timestamp.cpp->static uint64 calcStampsPerSecond()增加：
+#ifdef RESPACKER_HYBRID
+	return 1;
+#endif
+直接返回
+----
+Revision: 303
+Author: wuwei
+Date: 2009年4月1日 16:58:20
+Message:
+packer_helper.cpp一处Moo::RenderContext::instance->Moo::rc
+----
+Revision: 302
+Author: penghuawei
+Date: 2009年4月1日 16:51:35
+Message:
+Adding register file descriptor extention
+
+
+----
+Revision: 301
+Author: support
+Date: 2009年4月1日 10:57:32
+Message:
+
+----
+Revision: 300
+Author: penghuawei
+Date: 2009年4月1日 9:13:43
+Message:
+Added plugin to temporarily add cellAppID to cellapp.
+To access:
+id = int(BigWorld.getWatcher("cellAppID"))
+
+
+----
+Revision: 299
+Author: support
+Date: 2009年3月30日 15:43:01
+Message:
+Adding getXZError
+----
+Revision: 298
+Author: support
+Date: 2009年3月30日 14:55:20
+Message:
+Fixed a bug that caused entities to move short distances even when they are not moving on the server.
+----
+Revision: 297
+Author: wanhaipeng
+Date: 2009年3月28日 10:41:16
+Message:
+1: CreateBG (PyObject* callback) -> (PyObjectPtr callback), for Script::setData(PyObject* obj, PyObject* dstObj) inc obj reference count.
+----
+Revision: 296
+Author: penghuawei
+Date: 2009年3月27日 15:46:25
+Message:
+Added usage information
+
+----
+Revision: 295
+Author: penghuawei
+Date: 2009年3月27日 11:41:04
+Message:
+Adding server c++ extensions for monitoring clients, and executing scripts on cellapps.
+
+
+----
+Revision: 294
+Author: wanhaipeng
+Date: 2009年3月25日 11:30:33
+Message:
+1: Moo::RenderContext::instance() -> Moo::rc()。
+----
+Revision: 293
+Author: support
+Date: 2009年3月25日 9:19:30
+Message:
+add tick flag and draw flag to chunk items, also doing updates when the relative distance to camera is changed
+----
+Revision: 292
+Author: wanhaipeng
+Date: 2009年3月24日 10:45:18
+Message:
+1: 删除SimpleGUIComponent::loadTexture，避免重复调用buildMaterial的消耗。
+----
+Revision: 291
+Author: qiulinhui
+Date: 2009年3月24日 8:32:33
+Message:
+修正处于大于角色下滑角度的斜坡下有障碍物的环境下，卡住角色的Bug
+----
+Revision: 290
+Author: wanhaipeng
+Date: 2009年3月23日 17:13:13
+Message:
+1: 不Release DXTexture改变分辨率会出问题。
+----
+Revision: 289
+Author: wanhaipeng
+Date: 2009年3月23日 16:19:24
+Message:
+1: Fix重复Release Bug，此Bug有可能引起Crash。
+----
+Revision: 288
+Author: support
+Date: 2009年3月23日 15:09:32
+Message:
+LOD distance calculation is a relative expensive operation.
+use chunk's distance to current camera near plane to filter the distance first so we needn't calculate LOD distance for all models.
+----
+Revision: 287
+Author: wanhaipeng
+Date: 2009年3月23日 10:48:34
+Message:
+1: Fix重复Loading GUI处理中的潜在未初始化指针Bug。
+----
+Revision: 286
+Author: wanhaipeng
+Date: 2009年3月23日 9:38:07
+Message:
+1: Fix WinXP ‘默认输入语言’是中文输入法会产生Crash。
+   因为g_imeHandle未初始化就响应IME Message。
+----
+Revision: 285
+Author: qiulinhui
+Date: 2009年3月21日 15:42:16
+Message:
+修改了：
+（1）角色的向上碰撞方式（原有的在X-Z碰面上碰撞方向矢量上加上0.001偏差逻辑不严谨，对于角色沿着斜面上移，角色头顶的平面水平方向矢量偏差大于0.001时，碰撞失败）
+（2）滑坡处理（原有滑坡处理出现旋转摄像机时，角色不跟随转动的Bug）
+
+新增：
+  Physics.seekColCBKMaxMoveLen 碰到障碍物时，回调seekColCBKFn_指定函数的最小移动的约束量
+   点击鼠标控制角色走动，直接走过去和寻路过去两个方式，碰到障碍物做滑墙等处理时得到的位移长度偏差容忍不一样，所以以读写属性开放到脚本控制层
+----
+Revision: 284
+Author: wanhaipeng
+Date: 2009年3月21日 13:59:45
+Message:
+1: 万一ImmGetCandidateList == 0，也是要ImmReleaseContext的。。。
+----
+Revision: 283
+Author: wanhaipeng
+Date: 2009年3月21日 13:54:52
+Message:
+1: Fix m_pCandList释放的内存泄漏，应为‘delete[]’。
+2: 修改了一个也许永远不会发生的Bug：
+   ImmGetCandidateList == 0，会发生吗？
+----
+Revision: 282
+Author: wanhaipeng
+Date: 2009年3月21日 13:28:39
+Message:
+1: Fix StreamedDataCache preload/immsave tracker 可能为NULL的BUg。
+----
+Revision: 281
+Author: huangshanquan
+Date: 2009年3月21日 11:54:02
+Message:
+1，根据老宛意见把光效模型的偏移量参数独立出来。增加getSubModelOffset和setSubModelOffset对它进行设置。
+2，对getSubModelColour，getSubModelScale等函数进行越界检查
+----
+Revision: 280
+Author: huangshanquan
+Date: 2009年3月21日 9:37:47
+Message:
+修改在模型贴片发光效果中setSubModelScale中的vector4(x,y,z,w)参数,
+前面的x,y就是产生贴图片的大小,z，w标识贴片的x，y偏移量。
+----
+Revision: 279
+Author: wanhaipeng
+Date: 2009年3月21日 9:04:04
+Message:
+1: Fix MultiFileSystem中lastFilesystem_因为多线程带来的Bug。
+   对lastFilesystem_的get/set区域进行critical保护。
+----
+Revision: 278
+Author: wanhaipeng
+Date: 2009年3月21日 9:01:39
+Message:
+1: Fix TCPKFileSystem 读String Memory Overrun Bug：
+   key = id(path2.c_str() + rootPrefixLen_ + 1, path2.size() - rootPrefixLen_ - 1);
+----
+Revision: 277
+Author: wuwei
+Date: 2009年3月20日 10:35:53
+Message:
+chunk_vlo.cpp
+去掉两个多余的include
+去掉不一致的空行
+----
+Revision: 276
+Author: wuwei
+Date: 2009年3月20日 10:18:44
+Message:
+ChunkVLO去掉removeCollisionScene()方法的说明部分
+----
+Revision: 275
+Author: wuwei
+Date: 2009年3月20日 9:43:26
+Message:
+toWater(Vector3 srcPos, Vector3& dstPos)＝》toWater(const Vector3& srcPos, Vector3& dstPos)
+----
+Revision: 274
+Author: wuwei
+Date: 2009年3月19日 17:14:26
+Message:
+增加BigWorld.toWater(Vector3 pos)接口，用于求pos在水面的垂足，无水返回None
+----
+Revision: 273
+Author: huangshanquan
+Date: 2009年3月19日 10:43:58
+Message:
+增加打开网页接口csol::openUrl( const std::string& url)
+使用:csol.openUrl("http://127.0.0.1")
+----
+Revision: 272
+Author: qiulinhui
+Date: 2009年3月18日 14:40:52
+Message:
+issue id: CSOL-3318
+修正了碰到障碍物后沿着障碍物表面滑动处理时，卡住在障碍物表面的Bug。
+----
+Revision: 271
+Author: wanhaipeng
+Date: 2009年3月18日 10:18:41
+Message:
+1: Fix pyGet_mapping返回((),(),(),())的Bug。
+   // 10个俯卧撑……
+----
+Revision: 270
+Author: wanhaipeng
+Date: 2009年3月18日 8:33:26
+Message:
+1: 增加isDestroyed接口，调试内存错误使用。
+2: 将GUI XML Section发到DataCensus Cache中，加快重复Loading的速度。
+3: Fix pyGet_mapping bluePrint_地址越界Bug。
+----
+Revision: 269
+Author: wuwei
+Date: 2009年3月17日 9:02:16
+Message:
+雾编辑增加fogfarscale参数。雾化效果不再受far plane影响
+----
+Revision: 268
+Author: qiulinhui
+Date: 2009年3月16日 15:01:56
+Message:
+（1）新增：生成navigate数据时，对某种特定纹理类型忽略处理： 在“navgen_settings.xml”中<girth>字段下新增<ignoreMaterialKind>子字段，默认值为 -1（uint：为0xffffffff，无效纹理类型，表示不作忽略处理）
+（2）新增：在Render窗口中显示遮挡片
+----
+Revision: 267
+Author: wanhaipeng
+Date: 2009年3月12日 15:25:02
+Message:
+
+----
+Revision: 266
+Author: wanhaipeng
+Date: 2009年3月10日 10:41:20
+Message:
+1: Fix a Bug in hole():
+   unsigned int index = x() + z() * tb_.blocksWidth_ < 0;
+   "< 0"是多余的Bug。
+
+----
+Revision: 265
+Author: wuwei
+Date: 2009年3月9日 10:56:23
+Message:
+issue ID:CSOL-3148
+修复打包转换过程中某些字体文件的dds被删除的问题
+----
+Revision: 264
+Author: wuwei
+Date: 2009年3月5日 10:30:15
+Message:
+FogController::Emitter参数skyboxUseMask_缺省值改为false，
+参数skyboxUseMask_意义：是否用fogAmount参数雾化天空
+----
+Revision: 263
+Author: wanhaipeng
+Date: 2009年3月4日 19:23:55
+Message:
+1: Add CrashDump for unexpected exception.
+----
+Revision: 262
+Author: wanhaipeng
+Date: 2009年3月4日 18:56:54
+Message:
+1: 取消邱林辉Version 258的修改，Navigator中不能完全去除遮挡片。
+----
+Revision: 261
+Author: wuwei
+Date: 2009年3月4日 18:30:03
+Message:
+更改控件“use mask texture”为“use fogAmount”，控件意义相反
+----
+Revision: 260
+Author: qiulinhui
+Date: 2009年3月4日 17:25:27
+Message:
+issue id:  CSOL-3095
+修复physics模块中上跳时的碰撞检测处理， 并修正了原来角色向前紧贴障碍物时，无法上跳的不方便操作
+----
+Revision: 259
+Author: huangshanquan
+Date: 2009年2月27日 13:57:16
+Message:
+issue ID: CSOL-2762 桌面分辨率为1024时显示大小的问题
+----
+Revision: 258
+Author: qiulinhui
+Date: 2009年2月27日 12:34:40
+Message:
+(1) 新增碰撞检测对遮挡片的过滤处理
+(2) 在渲染窗口中加入遮挡片的渲染
+----
+Revision: 257
+Author: wanhaipeng
+Date: 2009年2月26日 10:32:12
+Message:
+1: Revert to Version 220.
+----
+Revision: 256
+Author: qiulinhui
+Date: 2009年2月26日 8:13:08
+Message:
+issue id: CSOL-2913 
+
+修改filterDropPoint算法，由射线碰撞改为面碰撞
+
+此Bug出现的原因：模型间吻合不充分且下一个面（A）斜插出上面一个面（B），引起射线碰撞拾取了面A导致
+----
+Revision: 255
+Author: qiulinhui
+Date: 2009年2月25日 14:44:31
+Message:
+issue id：CSOL-2262
+
+新增 SimpleGUIComponent 色彩混合功能
+----
+Revision: 254
+Author: qiulinhui
+Date: 2009年2月25日 14:32:49
+Message:
+issue id：CSOL-2262
+
+新增 SimpleGUIComponent 色彩混合功能
+
+1)加入颜色混合的属性 
+   调节亮度因子：colourLightFactor， 类型 Vector4， 默认值： （0.8， 0.8， 0.8， 1.0） 
+                它的元素：[x, y, z, w], 元素类型：float，元素的取值范围 0.0～1.0 
+                xyzw 分别对应于像素色彩的 RGBA；其中w值为0：全透明， 为1：非透明 
+   调节RGB混合比例因子： colourBlendFactor， 类型 Vector3， 默认值：(0.3,0.59,0.11) 
+                它的元素: [x, y, z]， 元素类型： float：元素的取值范围 0.0～1.0 
+                xyz 分别对应与像素的色彩的RGB 
+
+计算公式： 输入像素点colourInput， 输出像素点colourOutput 
+float tmp = colourInput.r*colourBlendFactor.x + colourInput.g*colourBlendFactor.y + colourInput.b*colourBlendFactor.z 
+          colourOutput = (tmp*colourLightFactor.x , tmp*colourLightFactor.y ,tmp*colourLightFactor.z, colourInput.a*colourLightFactor.w) 
+
+(2) 新增materialFX属性: COLOUR_EFF 
+    通过设置SimpleGUIComponent 类及其派生类的materialFX为 “COLOUR_EFF”， 可以启用界面颜色混合效果。 默认效果：非透明，0.8亮度的灰色效果
+----
+Revision: 253
+Author: wanhaipeng
+Date: 2009年2月25日 11:42:23
+Message:
+1: 增加csol.swapWorkingSet()接口，将不用的Physics Memory Page交换到page.sys。
+----
+Revision: 252
+Author: qiulinhui
+Date: 2009年2月24日 8:24:18
+Message:
+修改发生碰撞时， 其回调函数的约束条件为： 发生碰撞且角色不能滑动时，便回调该脚本接口
+----
+Revision: 251
+Author: qiulinhui
+Date: 2009年2月24日 8:21:21
+Message:
+issue id：CSOL-2982
+修改 navigate 路线的坐标系： 由世界坐标改为游戏用到的局部坐标
+----
+Revision: 250
+Author: qiulinhui
+Date: 2009年2月21日 18:47:50
+Message:
+修正了 Physics::avatarStyleTick 函数中速度的判断问题
+----
+Revision: 249
+Author: wuwei
+Date: 2009年2月21日 10:01:21
+Message:
+修改了模型编辑器读取hardpoint数据的错误
+----
+Revision: 248
+Author: qiulinhui
+Date: 2009年2月20日 19:03:32
+Message:
+issue id: CSOL-2848 
+
+修改KeyEvent::KEY_SYSRQ的处理
+fix：当焦点处于输入框中时，按PrintScreen键截图无效的问题
+
+----
+Revision: 247
+Author: qiulinhui
+Date: 2009年2月20日 15:44:16
+Message:
+issue id: CSOL-2927
+在physic。stop 里面加上MovingNotifier 回调脚本接口
+修正运动平滑缓冲处理方式运动过程中， 脚本层控制速度改变时，MovingNotifier不回调的问题
+----
+Revision: 246
+Author: wanhaipeng
+Date: 2009年2月20日 11:38:27
+Message:
+1: 1.8.7.1新增文件。
+----
+Revision: 245
+Author: wanhaipeng
+Date: 2009年2月20日 10:50:38
+Message:
+1: 退出时直接调用TerminateProcess，Skip app.desstructor，快！
+----
+Revision: 244
+Author: qiulinhui
+Date: 2009年2月19日 18:39:08
+Message:
+修改了 ChunkSpace::collideEx 的算法
+----
+Revision: 243
+Author: qiulinhui
+Date: 2009年2月19日 15:09:07
+Message:
+issue id: CSOL-2719  鼠标选取问题
+
+entity_picker: 采用新增的 chunkSpace.collieEx 方法进行遮挡片过滤处理
+
+修改了两个脚本接口：
+BigWorld.collide( spaceID, vSrc, vDst,  ignoreMaterialType = 0 )
+BigWorld.findDropPoint(spaceID, testPos, ignoreMaterialType = 0)
+其中ignoreMaterialType 为碰撞时，忽略的材质类型。 为0： 表示全部不忽略
+----
+Revision: 242
+Author: qiulinhui
+Date: 2009年2月19日 15:04:43
+Message:
+issue id: CSOL-2719  鼠标选取问题
+
+还原了 ChunkObstacle.collide 方法
+
+新增方法： ChunkSpace。collideEx(const Vector3 & source, const Vector3 & extent, FDPTriangle & fdpt, 
+							uint32 ignoreMaterialType)const
+
+----
+Revision: 241
+Author: qiulinhui
+Date: 2009年2月19日 9:27:39
+Message:
+issue id: CSOL-2719     鼠标选取问题
+
+修改脚本接口， 加上遮挡片的过滤处理参数：
+BigWorld.findDropPoint( SpaceID spaceID, const Vector3 & inPt, bool isIgnoreBaffleBoard = false)//isIgnoreBaffleBoard是否忽略遮挡片
+BigWorld.collide( SpaceID spaceID, const Vector3 & src, const Vector3 & dst, 
+						  bool isIgnoreBaffleBoard = false )//isIgnoreBaffleBoard是否忽略遮挡片
+
+
+----
+Revision: 240
+Author: qiulinhui
+Date: 2009年2月19日 9:24:13
+Message:
+issue id: CSOL-2719  鼠标选取问题
+
+新增碰撞检测时， 对遮挡片的过滤处理
+----
+Revision: 239
+Author: qiulinhui
+Date: 2009年2月19日 9:22:55
+Message:
+issue id: CSOL-2719  鼠标选取问题
+
+新增碰撞检测时， 对遮挡片的过滤处理
+----
+Revision: 238
+Author: qiulinhui
+Date: 2009年2月18日 14:33:53
+Message:
+issue id: CSOL-2859 
+
+修正了原有下滑处理算法的Bug 导致 “避世涧场景”
+
+----
+Revision: 237
+Author: wuwei
+Date: 2009年2月17日 15:54:20
+Message:
+解决modeleditor崩溃的bug
+----
+Revision: 236
+Author: wanhaipeng
+Date: 2009年2月17日 14:28:00
+Message:
+1: R234多CheckIn了这些代码，恢复至上一版本。
+----
+Revision: 235
+Author: qiulinhui
+Date: 2009年2月17日 14:00:26
+Message:
+修改： function BigWorld.spaceLoadStatus(float distance = -1) 脚本接口里面的实现部分
+原接口的用法不变！
+修改了原来 BigWorld.spaceLoadStatus( ) 返回为1， 但还没有加载完全的问题
+----
+Revision: 234
+Author: qiulinhui
+Date: 2009年2月17日 13:22:46
+Message:
+issue id: CSOL-1820
+新增 lod 及其调试相关的脚本接口
+csol.setChunkModelUseCompound(bool isSet);    When enabled, ChunkModel will use the VisualCompound to render suitable models
+csol.setChunkModelDrawBaffle(bool isDraw);    设置是否显示遮挡片， 在游戏中测试遮挡片用
+csol.setChunkModelEnableLod(bool isEnable);    When enabled, all chunk model has same lod distance
+csol.setChunkModelLodMaxDistance(float lodDist); 设置Lod 的裁剪距离
+csol.setChunkModelVisible(bool isVisible);   Set visibility of all chunk model
+----
+Revision: 233
+Author: wanhaipeng
+Date: 2009年2月17日 11:12:16
+Message:
+
+----
+Revision: 232
+Author: wuwei
+Date: 2009年2月17日 9:14:33
+Message:
+解决天空盒雾化问题更改的资源文件
+----
+Revision: 231
+Author: wuwei
+Date: 2009年2月17日 9:03:44
+Message:
+issue ID:CSOL-2651
+解决天空盒雾化的问题
+----
+Revision: 230
+Author: wuwei
+Date: 2009年2月16日 12:30:01
+Message:
+修正了两个宏错误
+----
+Revision: 229
+Author: qiulinhui
+Date: 2009年2月16日 10:17:38
+Message:
+修改了关闭调试用的显示碰撞三角形定义的Bug
+----
+Revision: 228
+Author: wuwei
+Date: 2009年2月14日 9:45:20
+Message:
+issue ID:CSOL-2584
+1,世界编辑器增加了怪物活动范围的显示，并不是问题所描述的“警戒范围”
+
+----
+Revision: 227
+Author: qiulinhui
+Date: 2009年2月13日 10:02:26
+Message:
+关闭碰撞信息的显示
+----
+Revision: 226
+Author: qiulinhui
+Date: 2009年2月13日 9:55:26
+Message:
+issue id: CSOL-2786
+修改了原有的下滑处理 和 向上碰撞检测部分
+
+
+----
+Revision: 225
+Author: huangshanquan
+Date: 2009年2月12日 14:27:56
+Message:
+增加接口getCurrentDisplayModes()取得当前使用的桌面分辨率
+----
+Revision: 224
+Author: wuwei
+Date: 2009年2月10日 14:37:28
+Message:
+issue ID: CSOL-1922
+解决NPC无故抖动问题
+----
+Revision: 223
+Author: wanhaipeng
+Date: 2009年2月9日 16:38:01
+Message:
+1: 一个拼写错误，居然能编译过去？
+----
+Revision: 222
+Author: wuwei
+Date: 2009年2月9日 14:00:50
+Message:
+issue ID: CSOL-2664
+解决世界编辑器中水不能单击选取的问题
+----
+Revision: 221
+Author: huangshanquan
+Date: 2009年2月9日 9:34:52
+Message:
+issue ID: CSOL-2643 水面精度设置出现的问题
+----
+Revision: 220
+Author: qiulinhui
+Date: 2009年2月7日 10:38:23
+Message:
+issue id: CSOL-2107
+在 void BoidsFilter::output( double time ) 接口中 删除了 state != STATE_LANDING 时，Y坐标不能少于-20的限定。 因为游戏中某些地图的水面（例如：云梦泽西）Y坐标低于-20， 这就导致鱼在天空中飞翔的现象
+----
+Revision: 219
+Author: qiulinhui
+Date: 2009年2月5日 13:32:37
+Message:
+新增： 
+当physics 为seek 模式移动时，碰到障碍物的回调函数
+physics.setSeekCollisionCallBackFn(Func）设定Seek Collision 回调函数 
+
+当physics 为seek 模式移动时， 超时，或者到达目的地时的回调函数
+physics.setSeekCallBackFn（FunC） 设定seek 回调函数， Func 参数和
+
+两个函数的参数：Func Type：def onSeekCollision(self) 
+     当Func 为None时， 取消该回调函数的绑定
+----
+Revision: 218
+Author: wanhaipeng
+Date: 2009年2月4日 10:39:22
+Message:
+1: 非Focus的游戏客户端，不再把鼠标挪至窗口中央。
+----
+Revision: 217
+Author: wanhaipeng
+Date: 2009年2月3日 10:35:24
+Message:
+1: WM_CLOSE调用Python Callback。
+----
+Revision: 216
+Author: huangshanquan
+Date: 2009年2月2日 9:53:11
+Message:
+增加了UnitSelect().length设置脚底光圈的固定大小（小于0.25就使用绑定合的大小）
+----
+Revision: 215
+Author: wanhaipeng
+Date: 2009年1月20日 16:05:12
+Message:
+1: 尝试解决网络比较卡的情况下oldestUnackedSeq_ == SEQ_NULL。
+----
+Revision: 214
+Author: qiulinhui
+Date: 2009年1月19日 17:37:47
+Message:
+关闭向后碰撞检测，修复角色卡在箱子边缘的问题
+----
+Revision: 213
+Author: wuwei
+Date: 2009年1月19日 16:46:12
+Message:
+LineGUIComponent类
+1，修改了几处'u'误写为'v'的错误
+2，坐标计算时，改为像素坐标，以避免图形变形问题
+----
+Revision: 212
+Author: qiulinhui
+Date: 2009年1月17日 11:50:11
+Message:
+修复角色粘在墙上的问题
+----
+Revision: 211
+Author: huangshanquan
+Date: 2009年1月17日 10:44:09
+Message:
+修改了由于把水面效果开到最高而导致的人物血条消失的BUG
+http://172.16.0.234/browse/CSOL-2504
+----
+Revision: 210
+Author: wuwei
+Date: 2009年1月16日 15:26:26
+Message:
+修改了LineGUIComponent类的纹理渲染方式
+----
+Revision: 209
+Author: huangshanquan
+Date: 2009年1月16日 10:08:09
+Message:
+增加csol.setKeyState函数打开或关闭CAPSLOCK，NUMLOCK，SCROLL 小键盘灯
+csol.setKeyState("CAPSLOCK",1)
+----
+Revision: 208
+Author: huangshanquan
+Date: 2009年1月15日 16:52:16
+Message:
+增加PyModelNoAlphaRenderer类增加人物装备界面使用背景
+backgroundTextureName = “背景贴图路径”
+和修正（http://172.16.0.234/browse/CSOL-2449）
+----
+Revision: 207
+Author: wuwei
+Date: 2009年1月15日 15:58:19
+Message:
+模型编辑器,HardPoint增加绑定物品功能
+----
+Revision: 206
+Author: qiulinhui
+Date: 2009年1月14日 16:42:46
+Message:
+修复 CSOL-2399  碰撞检测失败的Bug。
+http://172.16.0.234/browse/CSOL-2399
+bug出现的原因：之前的碰撞检测算法过于简单（但很高效），碰撞用到三角及其检测点刚好无法检测 角色右边 的向底部倾斜度三角形（特例） 
+解决方案： 由原来角色用到的一个碰撞三角形改为两个碰撞三角形（组成一个四边形），并在碰撞三角形的每个顶点和中心点作为采用点，检测前面是否有障碍物。修改算法后，可以避免模型几何不规则而造成的碰撞检测失败。 
+----
+Revision: 205
+Author: wuwei
+Date: 2009年1月14日 15:29:42
+Message:
+再次修复遮挡板在世界编辑器中不能选取的问题
+----
+Revision: 204
+Author: wuwei
+Date: 2009年1月12日 17:24:52
+Message:
+修复遮挡板消除阴影后，遮挡板在世界编辑器中不能选取的问题
+----
+Revision: 203
+Author: wanhaipeng
+Date: 2009年1月12日 9:51:57
+Message:
+1: Delete internal F1 help.
+----
+Revision: 202
+Author: wanhaipeng
+Date: 2009年1月10日 14:12:56
+Message:
+1: Save each chunk dds.
+----
+Revision: 201
+Author: wuwei
+Date: 2009年1月7日 9:27:44
+Message:
+解决遮挡板阴影问题
+http://172.16.0.234/browse/CSOL-2372
+----
+Revision: 200
+Author: wuwei
+Date: 2009年1月4日 15:49:20
+Message:
+世界编辑器修改几个区域雾化的参数
+----
+Revision: 199
+Author: wuwei
+Date: 2008年12月31日 14:25:47
+Message:
+修改雾编辑界面上一个错误
+----
+Revision: 198
+Author: huangshanquan
+Date: 2008年12月31日 10:02:37
+Message:
+1,修改了最小化后还原字体模糊的问题.
+2,增加了模型光效在人物身上时可以用setSubModelBindPoint(0,"HP_hitPoint")设定光效的绑定点
+----
+Revision: 197
+Author: wuwei
+Date: 2008年12月30日 12:24:42
+Message:
+fog.xml增加nearMultiplier参数
+----
+Revision: 196
+Author: wuwei
+Date: 2008年12月30日 12:21:49
+Message:
+1,修复了chunk的boundingbox不断长大的问题
+2,修改了区域雾
+3,worldeditor增加了sky fog参数调整的控件
+----
+Revision: 195
+Author: qiulinhui
+Date: 2008年12月29日 19:59:08
+Message:
+修改原有查找邻接Chunk的方式
+----
+Revision: 194
+Author: qiulinhui
+Date: 2008年12月29日 19:58:29
+Message:
+修改原有查找邻接Chunk的方式
+----
+Revision: 193
+Author: wanhaipeng
+Date: 2008年12月29日 17:11:45
+Message:
+1: 再次打开小地图DDS的Cache功能。
+----
+Revision: 192
+Author: wanhaipeng
+Date: 2008年12月29日 17:11:12
+Message:
+1: 关闭自动提升Loader线程优先级。
+----
+Revision: 191
+Author: wanhaipeng
+Date: 2008年12月29日 17:10:42
+Message:
+1: Add SELECT_FIRST_NATIVE，打包版本可以优先选择res目录下资源。
+----
+Revision: 190
+Author: wanhaipeng
+Date: 2008年12月29日 17:00:43
+Message:
+1: Add viewRotated_，彻底解决随视角的Spirte粒子渲染问题。
+----
+Revision: 189
+Author: wanhaipeng
+Date: 2008年12月29日 16:05:14
+Message:
+1: Portal内的NodelessModel不做Batch渲染，因为Batch渲染会破坏Portal内的光照。
+----
+Revision: 188
+Author: qiulinhui
+Date: 2008年12月27日 8:50:50
+Message:
+修改NavGen查找邻接Chunk的计算方式（原有的计算方式会出现找不到邻接Chunk的Bug）
+----
+Revision: 187
+Author: huangshanquan
+Date: 2008年12月26日 9:51:27
+Message:
+增加了PyModelNoAlphaRenderer类使用在人物装备渲染中过滤掉人物身体的alpha值
+----
+Revision: 186
+Author: huangshanquan
+Date: 2008年12月26日 9:48:40
+Message:
+1,增加了新的模型光效
+2,增加了PyModelNoAlphaRenderer类使用在人物装备渲染中过滤掉人物身体的alpha值
+----
+Revision: 185
+Author: qiulinhui
+Date: 2008年12月22日 16:51:29
+Message:
+还原原来Input 类库中的 InputHandler 类，
+新增GSInputHandler 继承 InputHandler 的子类， 
+防止代码相互污染
+----
+Revision: 184
+Author: qiulinhui
+Date: 2008年12月20日 16:32:41
+Message:
+（1） 修复 navGen 工具有时不能 根据顶点找到相邻 chunk 的 bug
+（2） 新增修复CDATA 的功能  从 菜单 Chunk> Fix All CDATA Files 
+    进入：）
+----
+Revision: 183
+Author: qiulinhui
+Date: 2008年12月20日 16:30:07
+Message:
+修复 navGen 工具有时不能 根据顶点找到相邻 chunk 的 bug
+新增CData 数据的修复功能
+
+新增的函数 有 “//By MST 标识” ， 和相应的说明 
+----
+Revision: 182
+Author: qiulinhui
+Date: 2008年12月20日 16:28:07
+Message:
+修复 navGen 工具有时不能 根据顶点找到相邻 chunk 的 bug
+新增的函数 有 “//By MST 标识” ， 和相应的说明 
+----
+Revision: 181
+Author: wuwei
+Date: 2008年12月19日 10:09:59
+Message:
+修改worldeditor
+1，再次修改走出雾区，仍保留前一次雾效果的bug,不再直接关闭雾效果，而清除雾参数，以免影响雾区包围球的绘制
+2，修改拖动控件崩溃的bug
+----
+Revision: 180
+Author: wanhaipeng
+Date: 2008年12月18日 14:37:11
+Message:
+1: Dont create "" particle.
+----
+Revision: 179
+Author: wuwei
+Date: 2008年12月18日 11:39:30
+Message:
+修正动态删除fog或走出雾区，仍会保留前一雾化效果的bug
+----
+Revision: 178
+Author: wuwei
+Date: 2008年12月18日 9:55:19
+Message:
+1,世界编辑器，增加了fog编辑功能
+2,修改了镜面光参数
+3,修改了颜色衰减参数
+----
+Revision: 177
+Author: wanhaipeng
+Date: 2008年12月13日 12:02:20
+Message:
+1: 一个使用Win32 FileMapping的TCPackage实现，没有效率改善，备用。
+----
+Revision: 176
+Author: huangshanquan
+Date: 2008年12月13日 9:04:54
+Message:
+增加编译fx文件的工具.代码全部引用csol
+----
+Revision: 175
+Author: wanhaipeng
+Date: 2008年12月12日 16:28:59
+Message:
+1: 修改TextureManager::detailLevel，PackageVersion不检查.texFormat文件。
+----
+Revision: 174
+Author: wanhaipeng
+Date: 2008年12月12日 16:26:14
+Message:
+1: IFileSystem增加getName和getRootPath接口。
+2: MultiFileSystem中rootPath 在 filesystemMaps 中查找，不循环。大幅提高getFileType和readDirectory效率。
+3: TCPKFileSystem中的EntryMap改成hash_map。
+----
+Revision: 173
+Author: wanhaipeng
+Date: 2008年12月12日 16:09:51
+Message:
+1: 修改csol.resourceExists()，调用BWResource::fileExists，稍微快一点。
+----
+Revision: 172
+Author: wanhaipeng
+Date: 2008年12月12日 16:08:15
+Message:
+1: 增加 Python csol.getAutoPathVerticesCount()接口。
+2: findAutoPath中，如果src和dst最近点一样，返回这个点的list，而不是[]。
+----
+Revision: 171
+Author: wanhaipeng
+Date: 2008年12月12日 16:06:15
+Message:
+1: Add LoftAttachment token.
+----
+Revision: 170
+Author: huangshanquan
+Date: 2008年12月10日 15:24:31
+Message:
+去掉了调试用的观察线段
+----
+Revision: 169
+Author: wuwei
+Date: 2008年12月10日 9:49:37
+Message:
+解决搜狗输入法崩溃的bug
+----
+Revision: 168
+Author: huangshanquan
+Date: 2008年12月10日 9:34:40
+Message:
+增加了直接从地形取一个区域的三角形函数.更改脚底光圈代码优化效率.
+----
+Revision: 167
+Author: wuwei
+Date: 2008年12月9日 16:22:24
+Message:
+按狼人要求修改：
+1，接口setStartCB改为OnActionStart,接口setEndCB改为OnActionEnd
+2，将接口方法调用改为参数方式使用，
+----
+Revision: 166
+Author: wuwei
+Date: 2008年12月9日 16:18:05
+Message:
+LineGUIComponent类
+修改getNodes方法问题
+----
+Revision: 165
+Author: wanhaipeng
+Date: 2008年12月9日 15:47:17
+Message:
+1: Version信息改成中文CodePage。
+----
+Revision: 164
+Author: wanhaipeng
+Date: 2008年12月9日 15:46:34
+Message:
+1: Add LoftAttachment。
+----
+Revision: 163
+Author: wuwei
+Date: 2008年12月9日 10:07:24
+Message:
+增加action开始，结束回调函数
+PyModel.setStartCB(PyObject* args)
+PyModel.setEndCB(PyObject* args)
+----
+Revision: 162
+Author: wanhaipeng
+Date: 2008年12月6日 16:37:03
+Message:
+1: PyModel增加BoundingBox检查属性checkBoundingBox。
+   缺省为True。
+----
+Revision: 161
+Author: huangshanquan
+Date: 2008年12月6日 16:26:04
+Message:
+去掉了模型边界光效会渲染粒子系统的问题
+增加了pymodel接口
+getSubModelColour(id) //取得子模型颜色
+setSubModelColour(id,(0,0,0,0)) //设置子模型边界发光颜色
+getSubModelScale(id)  //取得子模型边界发光缩放
+setSubModelScale(id,(0,0,0,0)) //设置子模型边界发光缩放
+----
+Revision: 160
+Author: wuwei
+Date: 2008年12月5日 11:09:08
+Message:
+修改LineGUIComponent类
+1,按黄永伟要求修改一系统接口名称
+2，增加getNodes接口,用于返回点列表
+3，修正传入点列表中相邻点值相同，导致崩溃的bug
+----
+Revision: 159
+Author: huangshanquan
+Date: 2008年12月5日 10:59:06
+Message:
+修改了模型边缘光效需要打开阴影的问题..
+----
+Revision: 158
+Author: huangshanquan
+Date: 2008年12月2日 18:28:16
+Message:
+增加了isStencilenable打开模板缓存开关
+----
+Revision: 157
+Author: huangshanquan
+Date: 2008年12月2日 16:16:50
+Message:
+把2组的模型发光效果(模型外围发光)添加到游戏中
+----
+Revision: 156
+Author: wuwei
+Date: 2008年12月2日 15:58:56
+Message:
+修改技能栏，物品栏，快捷栏重叠后，物品无法拖动的bug
+----
+Revision: 155
+Author: wanhaipeng
+Date: 2008年12月1日 16:08:27
+Message:
+1: PackageVersion的情况下，不为DDS文件查找对应TGA/BMP/JPG文件做转换。
+2: 修改TCPK getFileType，先按照目录层次查找，避免过多的Hash查找，Package很多的时候能快一倍。
+----
+Revision: 154
+Author: huangshanquan
+Date: 2008年11月28日 18:33:02
+Message:
+修改UVAnimGUIComponent播放动画的贴图坐标不对的BUG
+----
+Revision: 153
+Author: wuwei
+Date: 2008年11月26日 16:08:45
+Message:
+增加entity.setAlpha接口，设置角色透明通道
+----
+Revision: 152
+Author: huangshanquan
+Date: 2008年11月26日 15:18:11
+Message:
+因为脚本陷阱TrapID初始化为0是不使用的所以把底层代码的nextTrapID_初始化为1
+----
+Revision: 151
+Author: wuwei
+Date: 2008年11月25日 10:59:00
+Message:
+修正LineGUIComponent类影响软键盘显示的bug
+----
+Revision: 150
+Author: wuwei
+Date: 2008年11月24日 17:20:14
+Message:
+LineGUIComponenet类
+1,方法colour改为colour1
+2,方法width改为lineWidth
+----
+Revision: 149
+Author: wanhaipeng
+Date: 2008年11月24日 10:33:08
+Message:
+1: Add 伍委 line_gui_component。
+----
+Revision: 148
+Author: wanhaipeng
+Date: 2008年11月24日 10:12:25
+Message:
+1: hitTest function comment '// *' -> '*'.
+----
+Revision: 147
+Author: wuwei
+Date: 2008年11月22日 16:59:59
+Message:
+1,simple_gui_component修改读取shader文件部分
+2,增加LineGUIComponent类
+----
+Revision: 146
+Author: huangshanquan
+Date: 2008年11月22日 16:21:56
+Message:
+修改了爬坡时坡度大于设定的高度时沿着坡走.
+和打开了向前碰撞检测的y轴的值
+----
+Revision: 145
+Author: huangshanquan
+Date: 2008年11月21日 9:05:57
+Message:
+截屏时文件名称产生时日期和时间采用数字补齐方式产生.
+----
+Revision: 144
+Author: wanhaipeng
+Date: 2008年11月19日 17:30:40
+Message:
+1: Fix寻路文件xxxx_path.xml中的路点为不完全联通时的Crash。
+----
+Revision: 143
+Author: wanhaipeng
+Date: 2008年11月15日 11:37:30
+Message:
+
+----
+Revision: 142
+Author: wanhaipeng
+Date: 2008年11月15日 11:29:10
+Message:
+1: Add ResMgr.isDirectory( resourceID )。
+----
+Revision: 141
+Author: wanhaipeng
+Date: 2008年11月12日 8:54:22
+Message:
+1: Fix clearModelList 'Modle' 拼写错误。
+----
+Revision: 140
+Author: wanhaipeng
+Date: 2008年11月11日 8:53:26
+Message:
+1: Add python BigWorld interface clearWeaponModelList，小退进入场景worldDrawEnabled True时调用，避免weaponEffect和PyModel的渲染顺序错误。
+2: Fix clearModelList 'Modle' 拼写错误。
+----
+Revision: 139
+Author: huangshanquan
+Date: 2008年11月8日 16:15:24
+Message:
+增加了脚本中修改model文件dye中fx文件的float参数的值
+----
+Revision: 138
+Author: wanhaipeng
+Date: 2008年11月8日 15:15:21
+Message:
+1: 关闭按需Loading GUI Texture，界面第一次加载快。
+----
+Revision: 137
+Author: wuwei
+Date: 2008年11月7日 10:08:08
+Message:
+modeleditor boundingBox编辑增加以下功能：
+1，增加default按钮
+2，增加edit控件的取值范围，保证boundingBox的min永远小于max
+----
+Revision: 136
+Author: wanhaipeng
+Date: 2008年11月6日 9:20:55
+Message:
+1: 不能Navigator寻路的点，将src dst坐标信息输出到Python ValueError Exception。
+----
+Revision: 135
+Author: wanhaipeng
+Date: 2008年11月5日 16:11:27
+Message:
+1: Fix {Role, PlayerRole} 阴影关闭不了的Bug。
+----
+Revision: 134
+Author: wanhaipeng
+Date: 2008年11月5日 8:51:37
+Message:
+1: 增加接口BigWorld.releaseServerSpace(spaceID)，用来释放小退的当前角色场景。
+----
+Revision: 133
+Author: wanhaipeng
+Date: 2008年11月4日 16:19:30
+Message:
+1: Sort this material for error render order in 凤鸣场景。
+----
+Revision: 132
+Author: yangjing
+Date: 2008年10月30日 9:25:15
+Message:
+由于全拼，极品五笔都要向窗口发送
+WM_IME_ENDCOMPOSITION消息,使字母在没有转化为汉字时就在编辑框中显示出来，而旧的五笔没有问题是因为他不触发此消息，并且在resource.xml中将他的五笔名称加载到程序中
+
+----
+Revision: 131
+Author: wanhaipeng
+Date: 2008年10月29日 16:40:48
+Message:
+1: Fix navigator search path saveWayPath() outof bounds crash bug.
+----
+Revision: 130
+Author: yangjing
+Date: 2008年10月27日 16:51:37
+Message:
+创建了一个对话框，有三个编辑框设定相机的三维中心位置。在对话框的窗口过程函数中，设定OK的响应函数
+响应函数做两件事情
+1：读取编辑框的三个坐标值
+2：将相机的矩阵中心位置设为这三个坐标值。
+----
+Revision: 129
+Author: yangjing
+Date: 2008年10月23日 16:07:52
+Message:
+bigbang 工程无法打开datas\universes\zly_bi_shi_jian_bad 空间
+问题原因查找和解决办法
+
+原因：
+
+由于程序初始化的时候，相机的中心点在（0，2，0）位置，如果文件中有space.localsetting文件,由于程序中产生一个ChunkDirMapping 对象
+而此对象有一个XZ平面上的一个范围，如果相机不在这个范围内。就无法生成 CameraChunk 对象 ，程序始终在相机附近寻找在此范围内的Chunk对象直到找到为止。显然不可能找到
+
+方法：
+
+
+首先判断相机中心位置，是否在ChunkDirMapping 对象
+规定的一个XZ平面上的一个范围内，如果不在这个范围内，让相机的中心位于此范围的中心
+
+----
+Revision: 128
+Author: wanhaipeng
+Date: 2008年10月15日 11:31:08
+Message:
+1: Fix UV Texture Transform动画瀑布Bug。
+----
+Revision: 127
+Author: wanhaipeng
+Date: 2008年10月13日 16:41:00
+Message:
+1: 增加ChunkModel的Distance Cull功能，缺省150m。
+2：增加MetaParticleSystem的Distance Cull功能，确实120m。
+3: Watcher "Chunks/Lod" and "Chunks/Particles Lod"。
+----
+Revision: 126
+Author: wanhaipeng
+Date: 2008年10月10日 15:07:25
+Message:
+1: Center the game window.
+----
+Revision: 125
+Author: wanhaipeng
+Date: 2008年10月8日 15:49:31
+Message:
+1: BW186的Water的VextexBuffer与181不同，Fix Merge Bug。
+----
+Revision: 124
+Author: wanhaipeng
+Date: 2008年10月6日 17:37:20
+Message:
+1: setWindowTitle() BOOL to bool warning.
+----
+Revision: 123
+Author: wuwei
+Date: 2008年10月6日 16:52:08
+Message:
+csol增加接口 setWindowTitle
+----
+Revision: 122
+Author: wanhaipeng
+Date: 2008年9月26日 17:10:24
+Message:
+1: Fix多层GUIComponent鼠标点击事件Bug。
+----
+Revision: 121
+Author: wuwei
+Date: 2008年9月25日 16:26:46
+Message:
+增加hardpoint和boundingbox编辑功能
+----
+Revision: 120
+Author: wuwei
+Date: 2008年9月25日 14:35:22
+Message:
+修改读取剪贴板为非文本挂掉的bug
+----
+Revision: 119
+Author: wuwei
+Date: 2008年9月25日 11:30:43
+Message:
+增加剪贴板扩展接口
+----
+Revision: 118
+Author: wanhaipeng
+Date: 2008年9月23日 14:05:04
+Message:
+1: BigWorld Tech提交的Bug修改意见。
+   The bug that was introduced can cause some background tasks to never complete, such as BigWorld.fetchModel.
+----
+Revision: 117
+Author: wuwei
+Date: 2008年9月22日 14:17:41
+Message:
+修心hardpoin偏移计算的问题
+----
+Revision: 116
+Author: huangshanquan
+Date: 2008年9月22日 11:34:39
+Message:
+1,把"UnitSelect"中检测投影地面的高度参数"projheight_"由原来的0.6米改为高于默认跳跃高度的2.0米.
+2,增加"projheight_"参数的python接口"BigWorld.UnitSelect.projheight"
+----
+Revision: 115
+Author: huangshanquan
+Date: 2008年9月20日 15:26:40
+Message:
+修改了小退后角色没有删除的bug
+----
+Revision: 114
+Author: huangshanquan
+Date: 2008年9月19日 12:41:37
+Message:
+项目文件的增加
+----
+Revision: 113
+Author: huangshanquan
+Date: 2008年9月19日 12:20:41
+Message:
+修改了跳跃不起来的问题.
+增加了模型发光效果.
+修改了在阻挡片会不断上升到问题.
+鼠标在GUI处理后不再传递给实体.
+----
+Revision: 112
+Author: wanhaipeng
+Date: 2008年9月19日 10:22:28
+Message:
+Rotation和Local的渲染处理，Sprite粒子播放正常。
+----
+Revision: 111
+Author: wanhaipeng
+Date: 2008年9月17日 10:46:38
+Message:
+1: Print invalid technique sourceID.
+
+----
+Revision: 110
+Author: wuwei
+Date: 2008年9月5日 17:19:32
+Message:
+编译无法通过
+增加全局变量HWND g_hWnd;
+
+----
+Revision: 109
+Author: wuwei
+Date: 2008年9月5日 17:17:58
+Message:
+boundingbox,hardpoint编辑实现代码函数
+
+----
+Revision: 108
+Author: wuwei
+Date: 2008年9月5日 17:17:03
+Message:
+增加boundingbox,hardpoint编辑功能
+
+----
+Revision: 107
+Author: phw
+Date: 2008年9月1日 15:59:00
+Message:
+用于在光效中支持半透时动画模型的fx
+
+----
+Revision: 106
+Author: phw
+Date: 2008年9月1日 15:58:33
+Message:
+流光效果（uv动画for skinned版）
+
+----
+Revision: 105
+Author: phw
+Date: 2008年9月1日 15:57:58
+Message:
+发光玉石效果
+
+----
+Revision: 104
+Author: wanhaipeng
+Date: 2008年9月1日 11:20:16
+Message:
+1: Dont call SimpleGuiComponent update() if not visible.
+
+----
+Revision: 103
+Author: wanhaipeng
+Date: 2008年8月29日 15:34:25
+Message:
+1: Load minimap DDS in Cache while chunk load.
+
+----
+Revision: 102
+Author: wanhaipeng
+Date: 2008年8月29日 15:31:26
+Message:
+1: Move minimap DDS Cache to chunk.cpp.
+
+----
+Revision: 101
+Author: wanhaipeng
+Date: 2008年8月27日 14:49:25
+Message:
+1: Bypass power(res, 4).
+
+----
+Revision: 100
+Author: wanhaipeng
+Date: 2008年8月27日 14:48:00
+Message:
+1: Set DESTBLEND INVSRCCOLOR, original is ONE.
+
+----
+Revision: 99
+Author: wanhaipeng
+Date: 2008年8月27日 14:47:28
+Message:
+1: Add water_texAnim_noPs technique.
+
+----
+Revision: 98
+Author: wanhaipeng
+Date: 2008年8月27日 12:01:43
+Message:
+1: Sky farplane 1000 -> 500.
+
+----
+Revision: 97
+Author: wanhaipeng
+Date: 2008年8月27日 12:01:22
+Message:
+1: Add csol_Obstacle material.
+
+----
+Revision: 96
+Author: wanhaipeng
+Date: 2008年8月27日 11:14:01
+Message:
+1: preCreateAllFonts clear the initial 3D device, bypass it.
+
+----
+Revision: 95
+Author: wanhaipeng
+Date: 2008年8月27日 11:13:18
+Message:
+1: Fix startup window size error.
+
+----
+Revision: 93
+Author: wanhaipeng
+Date: 2008年8月26日 10:00:33
+Message:
+1: Add FMOD VC32 library.
+
+----
+Revision: 92
+Author: wanhaipeng
+Date: 2008年8月26日 9:57:42
+Message:
+1: Move umbra to third-party.
+
+----
+Revision: 91
+Author: wanhaipeng
+Date: 2008年8月26日 9:54:55
+Message:
+1: Add UMBRA library.
+
+----
+Revision: 90
+Author: wanhaipeng
+Date: 2008年8月26日 8:44:44
+Message:
+1: Add OpenSSL VC32 lib.
+
+----
+Revision: 89
+Author: wanhaipeng
+Date: 2008年8月25日 19:05:28
+Message:
+1: Let's the texAnim be affected by options.xml/<WATER_QUALITY>.
+
+----
+Revision: 88
+Author: wanhaipeng
+Date: 2008年8月25日 19:04:49
+Message:
+1: Add texAnimWater.
+2: Let's the texAnim be affected by options.xml/<WATER_QUALITY>.
+
+----
+Revision: 87
+Author: wanhaipeng
+Date: 2008年8月25日 19:03:40
+Message:
+1: Add setWaterColor and getWaterColor.
+
+----
+Revision: 86
+Author: wanhaipeng
+Date: 2008年8月25日 19:02:55
+Message:
+1: Batch zhiwu if single dye.
+2: Add lod level parameter for controlling:s_lodLevel.
+
+----
+Revision: 85
+Author: wanhaipeng
+Date: 2008年8月25日 19:02:09
+Message:
+1: Add lod level parameter for controlling:s_lodLevel.
+
+----
+Revision: 84
+Author: wanhaipeng
+Date: 2008年8月25日 19:01:28
+Message:
+1: Add parameter "Client Settings/std fog/fogNearScale", in order to push the fog back.
+
+----
+Revision: 83
+Author: wanhaipeng
+Date: 2008年8月25日 19:00:37
+Message:
+1: Randomise choice loading screen background.
+
+----
+Revision: 82
+Author: wanhaipeng
+Date: 2008年8月25日 18:59:38
+Message:
+1: Add chinese font.
+
+----
+Revision: 81
+Author: wanhaipeng
+Date: 2008年8月25日 18:59:19
+Message:
+1: Add chinese font and unitselect.
+
+----
+Revision: 80
+Author: wanhaipeng
+Date: 2008年8月25日 18:59:05
+Message:
+1: Add unitselect.
+
+----
+Revision: 79
+Author: wanhaipeng
+Date: 2008年8月25日 18:58:14
+Message:
+1: Add getWayPath for auto_path.
+
+----
+Revision: 78
+Author: wanhaipeng
+Date: 2008年8月25日 18:56:55
+Message:
+1: Server project to client, for autopath.
+
+----
+Revision: 77
+Author: wanhaipeng
+Date: 2008年8月25日 18:56:20
+Message:
+1: Add precompiler header.
+
+----
+Revision: 76
+Author: wanhaipeng
+Date: 2008年8月25日 18:47:42
+Message:
+1: Add TCPK filesystem.
+
+----
+Revision: 75
+Author: wanhaipeng
+Date: 2008年8月25日 18:46:00
+Message:
+1: Add pathfinding.
+
+----
+Revision: 74
+Author: wanhaipeng
+Date: 2008年8月25日 18:44:42
+Message:
+1: Add "this->flush();" for dynamic output msg into log file.
+
+----
+Revision: 73
+Author: wanhaipeng
+Date: 2008年8月25日 18:44:11
+Message:
+1: Add getGraph() func for pathfinding.
+
+----
+Revision: 72
+Author: wanhaipeng
+Date: 2008年8月25日 18:43:24
+Message:
+1: Add getPackageRoot for TCPK file.
+
+----
+Revision: 71
+Author: wanhaipeng
+Date: 2008年8月25日 18:40:29
+Message:
+1: Add tcimp module.
+
+----
+Revision: 70
+Author: wanhaipeng
+Date: 2008年8月25日 18:39:33
+Message:
+1: Add builtin pythoncode for TCImporter.
+
+----
+Revision: 69
+Author: wanhaipeng
+Date: 2008年8月25日 18:39:10
+Message:
+1: Add AStar BigWorld.findPath(...) funcs for pathfinding.
+
+----
+Revision: 68
+Author: wanhaipeng
+Date: 2008年8月25日 18:37:13
+Message:
+1: Particle merge, need comment in details.
+
+----
+Revision: 67
+Author: wanhaipeng
+Date: 2008年8月25日 18:27:57
+Message:
+1: Log finding broadcast from 1seconds to 0.05seconds.
+
+----
+Revision: 66
+Author: wanhaipeng
+Date: 2008年8月25日 18:27:18
+Message:
+1: Modify screeshot directory and filename prefix.
+2: "NVIDIA NVPerfHUD" -> "NVIDIA PerfHUD".
+3: Change presentParameters_.Flags value for IME window when user toggles to fullscreen.
+4: In case use the default IME windows & show.
+
+----
+Revision: 65
+Author: wanhaipeng
+Date: 2008年8月25日 18:24:32
+Message:
+1: Bypass cachesize error.
+
+----
+Revision: 64
+Author: wanhaipeng
+Date: 2008年8月25日 18:23:22
+Message:
+1: Add new construction.
+   SysMemTexture( int width, int height, DX::Texture *pTexture, D3DFORMAT format = D3DFMT_R5G6B5, const std::string resourceID = "" ).
+
+----
+Revision: 63
+Author: wanhaipeng
+Date: 2008年8月25日 18:21:49
+Message:
+1: Fix mip_count 1 dds generation bug.
+
+----
+Revision: 62
+Author: wanhaipeng
+Date: 2008年8月25日 18:20:05
+Message:
+1: Disable SSE_MATH because of usage of SSE2 instruction.
+
+----
+Revision: 61
+Author: wanhaipeng
+Date: 2008年8月25日 18:17:44
+Message:
+1: Bypass outside LEFT_MOUSE click event.
+2: The ime can resolve input event more efficient and accurate.
+
+----
+Revision: 60
+Author: wanhaipeng
+Date: 2008年8月25日 18:16:04
+Message:
+1: Add ime_handle.
+
+----
+Revision: 59
+Author: wanhaipeng
+Date: 2008年8月25日 18:15:19
+Message:
+1: Set FMOD_SUPPORT 1.
+
+----
+Revision: 58
+Author: wanhaipeng
+Date: 2008年8月25日 18:12:56
+Message:
+1: Add PyModelObstacle python attribute visible.
+
+----
+Revision: 57
+Author: wanhaipeng
+Date: 2008年8月25日 18:11:09
+Message:
+1: Add lookAt/lookFrom python property.
+2: Modify render for EquipmentWindow.
+
+----
+Revision: 56
+Author: wanhaipeng
+Date: 2008年8月25日 18:10:20
+Message:
+1: Add bool hasAction( std::string actName ) mothod for model.
+
+----
+Revision: 55
+Author: wanhaipeng
+Date: 2008年8月25日 17:53:03
+Message:
+1: Add RC4 crypt alogrithm.
+
+----
+Revision: 54
+Author: wanhaipeng
+Date: 2008年8月25日 17:51:42
+Message:
+1: Add auto thread priority.
+
+----
+Revision: 53
+Author: wanhaipeng
+Date: 2008年8月25日 17:42:33
+Message:
+1: Fix Big Model obstacle cross chunk bug.
+
+----
+Revision: 52
+Author: wanhaipeng
+Date: 2008年8月25日 17:41:53
+Message:
+1: Add chunk_model lod.
+2: Fix chunk occulusion cull bug.
+
+----
+Revision: 51
+Author: wanhaipeng
+Date: 2008年8月25日 17:41:07
+Message:
+1: Add zhedang_ attribute.
+
+----
+Revision: 50
+Author: wanhaipeng
+Date: 2008年8月25日 17:39:15
+Message:
+1: Add ChunkDirMapping::outsideChunkIdentifier(x, z).
+
+----
+Revision: 49
+Author: wanhaipeng
+Date: 2008年8月25日 17:25:03
+Message:
+1: Add path finding function supports.
+
+----
+Revision: 48
+Author: wanhaipeng
+Date: 2008年8月25日 17:16:11
+Message:
+1: Set UMBRA_ENABLE 1.
+
+----
+Revision: 47
+Author: wanhaipeng
+Date: 2008年8月25日 17:14:44
+Message:
+1: RightMouseDown to roll the camera.
+
+----
+Revision: 46
+Author: wanhaipeng
+Date: 2008年8月25日 17:13:55
+Message:
+1: Add py_closestFocus().
+2: Only handle visible components key event.
+3: Add IME.
+4: Add visible roots to make event handler fast.
+5: Add moveFocusList_ to resolve the mouseMoveFocusEvent for fixed the bug of moveEvent.
+6: Add focusLists and reSortFocusList.
+
+----
+Revision: 45
+Author: wanhaipeng
+Date: 2008年8月25日 17:12:19
+Message:
+1: Add py_closestFocus().
+2: Add visible roots to make event handler fast.
+3: Add moveFocusList_ to resolve the mouseMoveFocusEvent for fixed the bug of moveEvent.
+4: Add focusLists and reSortFocusList.
+
+----
+Revision: 44
+Author: wanhaipeng
+Date: 2008年8月25日 16:57:36
+Message:
+1: Add zOrder.
+2: Fix children keyEvent order.
+3: Add visible roots to make event handler fast.
+4: Add parent/topParent.
+5: load()/save() for mappings.
+6: Adjust the UV to mapping Texels/Pixels。
+7: 修改screenToClient/hitTest。
+8: Add moveFocusList to resolve mouse move event.
+
+----
+Revision: 43
+Author: wanhaipeng
+Date: 2008年8月25日 16:55:40
+Message:
+1: Scroll单位修改为象素。
+2: 因为Position可能不是到象素的，渲染Text Child时会模糊，修改了这个Bug。
+
+----
+Revision: 42
+Author: wanhaipeng
+Date: 2008年8月25日 16:54:48
+Message:
+1: 将label、update、width设置为虚函数。
+
+----
+Revision: 41
+Author: wanhaipeng
+Date: 2008年8月25日 16:54:21
+Message:
+1: Add python currentColour attribute.
+
+----
+Revision: 40
+Author: wanhaipeng
+Date: 2008年8月25日 16:52:12
+Message:
+1: Add uvanim_gui_component.
+
+----
+Revision: 39
+Author: wanhaipeng
+Date: 2008年8月25日 16:50:40
+Message:
+1: Add GUI.UVAnim() component.
+
+----
+Revision: 38
+Author: wanhaipeng
+Date: 2008年8月25日 16:47:32
+Message:
+1: Disable Alt+Space sysmenu message.
+2: Randomise choice loading screen background.
+3: Let csol client window can be moved.
+4: If window is iconic, call updateFrame while 'not g_bActive'.
+5: Add IME.
+
+----
+Revision: 37
+Author: wanhaipeng
+Date: 2008年8月25日 16:34:29
+Message:
+1: No log.
+
+----
+Revision: 36
+Author: wanhaipeng
+Date: 2008年8月25日 16:33:43
+Message:
+1: Add csol python extension.
+
+----
+Revision: 35
+Author: wanhaipeng
+Date: 2008年8月25日 16:28:40
+Message:
+1: Add CursorTargetMProv.
+
+----
+Revision: 34
+Author: wanhaipeng
+Date: 2008年8月25日 16:24:58
+Message:
+1: Add pch.
+
+----
+Revision: 33
+Author: wanhaipeng
+Date: 2008年8月25日 16:16:03
+Message:
+1: DDS_Format structures, needed by merger_texture.
+
+----
+Revision: 32
+Author: wanhaipeng
+Date: 2008年8月25日 16:14:40
+Message:
+1: Add auto_path.
+   ToDo:
+     Has crash bug!!!
+
+----
+Revision: 31
+Author: wanhaipeng
+Date: 2008年8月25日 16:00:16
+Message:
+1: Add BillboardGuiAttachment.
+   ToDo:
+     Maybe has performantce problem.
+
+----
+Revision: 30
+Author: wanhaipeng
+Date: 2008年8月25日 15:59:21
+Message:
+1: Add RickTextGuiComponent.
+   ToDo:
+     Maybe has performantce problem.
+
+----
+Revision: 29
+Author: wanhaipeng
+Date: 2008年8月25日 15:54:14
+Message:
+1: Add CircleGuiComponent.
+
+----
+Revision: 28
+Author: wanhaipeng
+Date: 2008年8月25日 15:50:26
+Message:
+1: Add DiamondGuiComponent.
+
+----
+Revision: 27
+Author: wanhaipeng
+Date: 2008年8月25日 15:50:07
+Message:
+1: Add TriangleGuiComponent.
+
+----
+Revision: 26
+Author: wanhaipeng
+Date: 2008年8月25日 15:47:48
+Message:
+1: Add TianCheng Python Importer.
+
+----
+Revision: 25
+Author: wanhaipeng
+Date: 2008年8月25日 15:44:51
+Message:
+1: Add BigWorld.PyMergerTextureProvider module.
+   Merger many small dds image to a large one with r5g6b5.
+   Usage:
+     m = BigWorld.PyMergerTextureProvider( destImageW, destImageH )
+     l = ["a.dds","b.dds"]
+     p = m.update( l )
+     simpleGui.texture = p
+  ToDo:
+     Move the datasection cache to chunk.
+
+----
+Revision: 24
+Author: wanhaipeng
+Date: 2008年8月25日 15:40:57
+Message:
+1: Add csol VC7.1 project.
+
+----
+Revision: 23
+Author: wanhaipeng
+Date: 2008年8月25日 15:40:16
+Message:
+1: Add csol Win32 resources.
+
+----
+Revision: 22
+Author: wanhaipeng
+Date: 2008年8月25日 15:34:07
+Message:
+1: Add jump.
+2: Modify 坡度.
+
+----
+Revision: 21
+Author: wanhaipeng
+Date: 2008年8月25日 15:32:58
+Message:
+1: Add EntityPosProvider.
+
+----
+Revision: 20
+Author: wanhaipeng
+Date: 2008年8月25日 15:27:07
+Message:
+1: Add PlayerPositionMProv.
+
+----
+Revision: 19
+Author: wanhaipeng
+Date: 2008年8月25日 15:25:55
+Message:
+1: Save lodLevel section by savePreferences().
+2: Add method for lod controlling:BigWorld.lodLevel(...).
+3: Add BigWorld.findPath(...) funcs for pathfinding.
+4: Add BigWorld.getSpaceName().
+5: Add BigWorld.getSpaceData, BigWorld.getSpaceDataForKey, BigWorld.getSpaceDataFirstForKey.
+   Which are same as cell interface.
+
+----
+Revision: 18
+Author: wanhaipeng
+Date: 2008年8月25日 15:19:31
+Message:
+1: Allow Client only entities can reside on vehicle.
+
+----
+Revision: 17
+Author: wanhaipeng
+Date: 2008年8月25日 15:17:44
+Message:
+1: BoidsFilter can let birds flying.
+
+----
+Revision: 16
+Author: wanhaipeng
+Date: 2008年8月25日 15:16:01
+Message:
+1: 调用targetBlur前，判断Entity是否有效。
+2: Entity CursorRay Target方式。
+3: Entity Target的边界检测降为(0.1, 0.1)。
+
+----
+Revision: 15
+Author: wanhaipeng
+Date: 2008年8月25日 14:42:31
+Message:
+1: Add BoxTrap.
+
+----
+Revision: 14
+Author: wanhaipeng
+Date: 2008年8月25日 14:36:56
+Message:
+1: Add TCP Proxy.
+
+----
+Revision: 13
+Author: wanhaipeng
+Date: 2008年8月25日 14:36:26
+Message:
+1: Add tcp_proxy.
+
+----
+Revision: 12
+Author: wanhaipeng
+Date: 2008年8月25日 14:35:10
+Message:
+1: Add switchFullscreen(), alt+tab is ok while in fullscreen.
+2: Decrease FPS to 10 while lost focus.
+3: Add GUI timer statics.
+4: Add UnitSelect.
+5: Persist window width/height to 2n.
+6: Modify closing.
+
+----
+Revision: 11
+Author: wanhaipeng
+Date: 2008年8月25日 14:27:45
+Message:
+1: Add switchFullscreen(), alt+tab is ok while in fullscreen.
+
+----
+Revision: 10
+Author: wanhaipeng
+Date: 2008年8月25日 14:25:51
+Message:
+1: Add tcp_proxy, try to act as a udp2tcp gateway between client and server.
+   Test is failure at internet but successful at internel net.
+   ToDo: Try to find the bug of internet.
+
+----
+Revision: 9
+Author: wanhaipeng
+Date: 2008年8月25日 14:21:28
+Message:
+1: Add selfIllumination parameter: float selfIllumination = 0.3.
+
+----
+Revision: 8
+Author: wanhaipeng
+Date: 2008年8月25日 14:20:09
+Message:
+1: Add effect for object with animation.
+
+----
+Revision: 7
+Author: wanhaipeng
+Date: 2008年8月25日 14:19:26
+Message:
+1: Add effect for water model.
+
+----
+Revision: 5
+Author: wanhaipeng
+Date: 2008年8月25日 12:06:10
+Message:
+1: BigWorld186-svnTag1860.
+
+----
+Revision: 3
+Author: wanhaipeng
+Date: 2008年7月31日 15:20:28
+Message:
+
+----
+Revision: 1
+Author: 
+Date: 2008年7月31日 15:20:28
+Message:
+
+----

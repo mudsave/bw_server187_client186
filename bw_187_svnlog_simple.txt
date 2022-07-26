@@ -1,0 +1,688 @@
+Revision: 152
+Author: hezhiming
+Date: 2016年6月13日 15:41:38
+Message:
+对于服务器，加入Base64编码和解码的过程，以避免出现编码和解码的时候，因为控制字符以及00被当成字符串结束而导致的字符串截断的问题。
+客户端对应的svn版本号为1275，对应的svn地址为svn://172.16.0.234/home/svnroot/bw186/trunk/bigworld。
+
+对应客户端的修改描述：
+修改由于反外挂返回的字符串里面含有一些解析为16进制是00的字符，导致将LPBYTE转换成const char *的时候，00后面的字符串被截断，从而导致服务器认为客户端修改了验证数据，将客户端玩家踢出的问题。现在改为用Base64进行编码和解码，
+来避免这种问题。
+
+例如下面的问题
+
+INFO: NPGameClient::addMsgToBufArray() string is 0c 47 29 91 20 8e 50 22 36 d5 78 b3 48 1c a1 44 3d 3f 63 f8 77 22 d6 5c 22 27 39 65 19 47 3b 13 f5 4f 18 ac 07 f6 00 27 c0 60 af a5 da e0 1b 0b 4d 85 30 49 9b fc c3 3a fa df 67 63 d9 49 a0 6a c1 5a 94 0e cb 9b 21 34 49 8c 80 c8 d4 28 52 14 67 9d 67 c2
+INFO: NPGameClient::sendMsgToServer() string is 0c 47 29 91 20 8e 50 22 36 d5 78 b3 48 1c a1 44 3d 3f 63 f8 77 22 d6 5c 22 27 39 65 19 47 3b 13 f5 4f 18 ac 07 f6 
+
+f6后面是00，将LPBYTE转换成const char *的时候，00后面的字符串都截断了。
+----
+Revision: 151
+Author: hezhiming
+Date: 2016年6月4日 12:58:08
+Message:
+修改对应的csauth3配置文件，同时增加遗漏的静态链接库。
+----
+Revision: 150
+Author: hezhiming
+Date: 2016年6月4日 11:42:37
+Message:
+增加NP反外挂的服务器端C++扩展。
+----
+Revision: 149
+Author: hezhiming
+Date: 2016年4月26日 9:07:10
+Message:
+将固定账号的模块放入到一个文件夹中，同时修改相应的C++导入的地方。
+----
+Revision: 148
+Author: hezhiming
+Date: 2016年4月25日 20:27:14
+Message:
+修改机器人账号添加部分的处理，如果是固定账号，调用脚本目录bots下面的FixedAccount.py的getFixedAccount方法来得到对应的固定账号名字，从而方便北京那边需要固定机器人账号，同时让玩家通过社区验证的问题。
+----
+Revision: 147
+Author: huangshanquan
+Date: 2016年3月21日 11:48:42
+Message:
+北京自动激活webserver接口的更改
+----
+Revision: 146
+Author: huangshanquan
+Date: 2016年3月21日 11:29:58
+Message:
+北京自动激活webserver接口的更改
+----
+Revision: 145
+Author: huangshanquan
+Date: 2016年3月21日 9:48:25
+Message:
+修正不能注册用户的问题
+----
+Revision: 144
+Author: huangshanquan
+Date: 2016年3月18日 10:57:31
+Message:
+北京自动激活webserver接口的更改
+----
+Revision: 143
+Author: hezhiming
+Date: 2015年12月25日 21:54:29
+Message:
+issue ID:CSOL-5847
+修改创建的几个表的引擎为InnoDB。
+修改的表格为：
+   bigworldGameTime
+   bigworldSpaceData
+   bigworldSpaces
+
+----
+Revision: 142
+Author: hejingke
+Date: 2015年11月25日 14:38:34
+Message:
+去掉entitiesInRangeExt的C++优化方法，改回用python的方法来代替
+----
+Revision: 141
+Author: huangshanquan
+Date: 2015年11月14日 9:53:23
+Message:
+增加dbmgr的webserver通讯模块
+----
+Revision: 140
+Author: hejingke
+Date: 2015年8月4日 11:37:13
+Message:
+issue:CSOL-4826
+创世GM工具服务器端上传
+----
+Revision: 139
+Author: wangzhen
+Date: 2015年5月14日 15:40:58
+Message:
+去掉优化方法entitiesInRangeExt里面排除掉SpawnPoint的处理。
+----
+Revision: 138
+Author: wangzhen
+Date: 2014年12月18日 11:09:39
+Message:
+同步脚本47609的修改，修正不检查checkAndMove标记位的bug
+----
+Revision: 137
+Author: ganjinxing
+Date: 2014年7月1日 19:32:25
+Message:
+issueID:CSOL-2043
+根据最新版的AI修改，把对应的C++优化代码也进行修改。
+----
+Revision: 136
+Author: hejingke
+Date: 2014年6月6日 16:18:19
+Message:
+添加entity extra方法：
+entitiesInRnageExt,isSamePlanesExt
+提供于位面entity的范围entity的搜索以及是否同一位面判断使用
+----
+Revision: 135
+Author: ganjinxing
+Date: 2013年10月31日 14:54:32
+Message:
+issueID:CSOL-2043
+修正在 xin_ban_xin_shou_cun 101 45 33 位置怪物无法攻击玩家的问题。在这个位置，虽然看起来怪物离玩家不到2米，但distanceBB返回的距离却大到8米，检查发现是C++优化时，在获取玩家地面点的时候没有正确设置碰撞检测参数导致的。
+----
+Revision: 134
+Author: ganjinxing
+Date: 2013年9月6日 14:34:24
+Message:
+issueID: CSOL-1794
+1、遗漏上传makefile
+2、去掉一处无用的代码
+----
+Revision: 133
+Author: ganjinxing
+Date: 2013年9月5日 17:48:19
+Message:
+issueID: CSOL-1794
+1、修正执行onFightAIHeartbeat_AIInterface_cpp时会提示找不到setAITargetID方法的问题；
+2、将utils和AIInterface的最新修改同步到c++
+----
+Revision: 132
+Author: ganjinxing
+Date: 2013年8月24日 17:48:33
+Message:
+修正远程怪物散开时会跑到目标跟前的问题。
+----
+Revision: 131
+Author: ganjinxing
+Date: 2013年8月14日 14:33:22
+Message:
+修改了怪物散开的算法，解决部分怪物因移动速度较慢，在下一个tick到达时，还未移动到目标位置就再次进行散开检测，导致怪物总是在进行散开却无法走到正确的散开位置的问题。（忘记将服务器的文件同步到本地，导致上传的文件有错）
+----
+Revision: 130
+Author: ganjinxing
+Date: 2013年8月14日 14:20:09
+Message:
+修改了怪物散开的算法，解决部分怪物因移动速度较慢，在下一个tick到达时，还未移动到目标位置就再次进行散开检测，导致怪物总是在进行散开却无法走到正确的散开位置的问题。
+----
+Revision: 129
+Author: wangshufeng
+Date: 2013年7月31日 11:27:18
+Message:
+实现一个controller每一个tick检测宠物和主人的位置，设定在进入(onPetEnterRange)或离开(onPetLeaveRange)某一个范围后回调主人entity脚本。（暂不发布）
+----
+Revision: 128
+Author: wangshufeng
+Date: 2013年5月7日 14:46:51
+Message:
+transToGroundPosition向下碰撞时的策略调整：返回遇到第一个障碍点时的点坐标。
+----
+Revision: 127
+Author: wangshufeng
+Date: 2013年5月2日 11:54:47
+Message:
+修改moveToPointObstacle_cpp碰撞策略为遇到第一个障碍物时停下
+----
+Revision: 126
+Author: wangshufeng
+Date: 2013年4月24日 12:36:47
+Message:
+实现了带碰撞效果的moveToPoint功能moveToPointObstacle_cpp。参数crossHight为移动时可跨越障碍的高度0.5，参数distance为碰撞反弹的距离，避免嵌入碰撞体内部，默认为0.5.
+/**
+ *  直线移动到目标点，如果移动路线中有障碍物则停下
+ * 
+ *	@param destination		The location to which we should move
+ *	@param velocity			Velocity in metres per second
+ *	@param crossHight		Ignoring the barrier height
+ *  @param distance			Stop once we collide with obstacle within this range
+ *	@param faceMovement		Whether or not the entity should face in the
+ *							direction of movement.
+ *	@param moveVertically	Whether or not the entity should move vertically.
+ * 
+ */
+----
+Revision: 125
+Author: wangshufeng
+Date: 2013年4月22日 15:44:59
+Message:
+修正index_modelScale_和index_modelNumber_有可能初始化不成功的bug，在使用index获取数据时检查如果初始化不成功则重新初始化。
+----
+Revision: 124
+Author: ganjinxing
+Date: 2013年4月15日 16:50:59
+Message:
+将cell/utils.py中的moveOut、checkAndMove、checkAndMoveByDis方法改写为C++，并在脚本调用中加入C++切换开关；
+----
+Revision: 123
+Author: ganjinxing
+Date: 2013年3月26日 12:09:11
+Message:
+对tempMapping属性的获取结果进行判定，如果是NULL则触发脚本异常，并输出错误提示。由于tempMapping是CELL_PRIVATE属性，如果entity是ghost，则获取到的是一个NULL，对NULL操作会导致服务器崩溃。
+----
+Revision: 122
+Author: wangshufeng
+Date: 2013年3月14日 10:14:11
+Message:
+根据教授对服务器coredump的分析，有可能无法获取到entity的def属性导致服务器崩溃。因此加入对entity tempmapping属性的检测和处理。
+----
+Revision: 121
+Author: ganjinxing
+Date: 2013年3月12日 14:37:52
+Message:
+修正moveOut_csol不能让怪物正确分散开的问题；
+----
+Revision: 120
+Author: wangshufeng
+Date: 2013年3月8日 16:03:33
+Message:
+重新加上ganjinxing覆盖丢失的代码：增加extra方法getDownToGroundPos_cpp，对应脚本方法getDownToGroundPos：获取Entity.position对应的地表点。
+----
+Revision: 119
+Author: ganjinxing
+Date: 2013年3月7日 10:38:08
+Message:
+修正getMonsterExtra方法定义遗漏后面的“}”的错误
+----
+Revision: 118
+Author: ganjinxing
+Date: 2013年3月6日 17:44:33
+Message:
+1、修改cell/utils.py的checkAndMove为C++方法，并加入到BigWorld模块中，名称是；checkAndMove_cpp；
+2、将bigworld_module_extra模块并入cellextra模块中，原因是bigworld_module_extra模块的方法需要调用cellextra模块的方法和类，如果分开这两个模块，则需要多次编译csolExtra类，导致csolExtra定义的extras方法无法使用，若不多次编译，则需要保证cellExtra.so库在bigworld_module_extra.so库之前加载，但因不知道bigworld内部的动态库加载规则，因此选择使用合并这两个库的方式解决此问题；
+----
+Revision: 117
+Author: wangshufeng
+Date: 2013年2月27日 14:56:00
+Message:
+增加extra方法getDownToGroundPos_cpp，对应脚本方法getDownToGroundPos：获取Entity.position对应的地表点。
+----
+Revision: 116
+Author: wangshufeng
+Date: 2013年2月26日 14:45:50
+Message:
+使用PY_AUTO_MODULE_FUNCTION附加c++改写的py函数到BigWorld模块，集中置于bigworld_module_extra.cpp中，函数命名格式为"脚本函数名_csol".
+----
+Revision: 115
+Author: ganjinxing
+Date: 2013年2月20日 11:54:10
+Message:
+issueID:CSOL-904
+修正distanceBB方法C++和python计算结果不一致导致怪物技能无法释放的问题；
+由于distanceBB计算距离时，会把怪物的modelScale和modelNumber考虑在内，而C++端只在初始化时计算一次，其后不在考虑modelScale和modelNumber发生改变的情况，因此不一致；
+----
+Revision: 114
+Author: wangshufeng
+Date: 2013年1月31日 9:54:56
+Message:
+extra对entity属性索引值的初始化修改为在extra的构造函数中进行，不再需要脚本来做初始化调用。
+----
+Revision: 113
+Author: ganjinxing
+Date: 2013年1月16日 20:36:12
+Message:
+按照索引获取属性时（即propertyByLocalIndex），应该使用localIndex而不是index，否则获取到的是一些无法预料的地址值，会轻易导致服务器崩溃。
+----
+Revision: 112
+Author: ganjinxing
+Date: 2013年1月14日 10:19:42
+Message:
+修正脚本调用时，对参数是PyObjectPtr的方法，如果传入一个None则会导致服务器崩溃的问题。
+原因：脚本传入None时，c++转换后得到一个NULL指针，而c++未进行NULL的判定就直接对指针进行处理，所以导致出错。
+修改：先判定指针是否为NULL，并对NULL的情况进行处理。
+----
+Revision: 111
+Author: wangshufeng
+Date: 2013年1月8日 9:13:17
+Message:
+修正extra析构时mapInstancePtr还未被初始化导致服务器崩溃的bug。
+----
+Revision: 110
+Author: ganjinxing
+Date: 2013年1月7日 20:24:21
+Message:
+根据新的框架，修改GameObject.py的queryTemp方法；
+----
+Revision: 109
+Author: wangshufeng
+Date: 2013年1月4日 15:22:41
+Message:
+重构csol extra：
+1、GameObject和Monster不再继承于entityExtra，相应调整代码；
+2、去掉冗余变量，修改变量名，修改类名；
+
+----
+Revision: 108
+Author: wangshufeng
+Date: 2012年12月29日 17:19:03
+Message:
+整理代码，修改函数名，调整变量和函数的私有公有属性以便更合理
+----
+Revision: 107
+Author: wangshufeng
+Date: 2012年12月28日 20:01:47
+Message:
+1、完善了csolExtra，确立了对应于entity脚本继承层次的extra实现方式；
+2、修正了distanceBB_GameObject_cpp找不到相应Extra导致服务器崩溃的bug，并把此函数纳入新csolExtra框架。
+----
+Revision: 106
+Author: wangshufeng
+Date: 2012年12月26日 16:51:43
+Message:
+csol extra新架构，脱胎换骨。
+----
+Revision: 105
+Author: wangshufeng
+Date: 2012年12月26日 11:22:26
+Message:
+1、csol extra架构修改：MonsterExtra继承于GameObjectExtra；
+2、去掉AIInterface的一行冗余代码；
+----
+Revision: 104
+Author: huangshanquan
+Date: 2012年12月25日 11:32:02
+Message:
+增加调用接口发现对方扩展没初始化就调用初始化扩展
+----
+Revision: 103
+Author: ganjinxing
+Date: 2012年12月24日 20:24:03
+Message:
+GameObject.py中的queryTemp方法改写为c++方法。查询不存在的值时，性能提升达到50%，查询存在的值时性能提升达到15%。
+----
+Revision: 102
+Author: huangshanquan
+Date: 2012年12月20日 10:56:05
+Message:
+1:把方法调用改成PyObject_CallMethodObjArgs或PyObject_CallMethod. 2:判断绑定盒大小为0时重新获取.
+----
+Revision: 101
+Author: huangshanquan
+Date: 2012年12月19日 13:55:43
+Message:
+增加MonsterExtra::InitMonsterExtra对不是Monster调用时直接返回
+----
+Revision: 100
+Author: huangshanquan
+Date: 2012年12月18日 11:54:54
+Message:
+使用propertyByLocalIndex获取本地定义属性以提高运行效率
+----
+Revision: 99
+Author: huangshanquan
+Date: 2012年12月14日 16:11:20
+Message:
+去掉GameObjectExtra::GetBoundingBoxZ 非正常返回
+----
+Revision: 98
+Author: huangshanquan
+Date: 2012年12月14日 14:58:34
+Message:
+修改初始化函数。pGetBoundingBox返回的不是tuple
+----
+Revision: 97
+Author: wangshufeng
+Date: 2012年12月14日 11:32:34
+Message:
+添加getDownToGroundPos_GameObject_cpp方法。
+----
+Revision: 96
+Author: ganjinxing
+Date: 2012年12月13日 19:12:54
+Message:
+修改了onFightAIHeartbeat_AIInterface_cpp的代码，去掉大多数临时变量的定义，该修改与前一版本相比，性能提升30%，与脚本方法相比，性能提升达到40%，测试循环次数是10000次。
+----
+Revision: 95
+Author: ganjinxing
+Date: 2012年12月12日 20:36:12
+Message:
+改写AIInterface模块的aiCommonCheck方法为c++实现方式
+----
+Revision: 94
+Author: wangshufeng
+Date: 2012年12月12日 17:10:25
+Message:
+修正ai行为会被重复调用的bug。
+----
+Revision: 93
+Author: huangshanquan
+Date: 2012年12月11日 17:13:44
+Message:
+把distanceBB_GameObject_Extr改成distanceBB_GameObject_cpp\nqueryRelation_Monster_Extr改成queryRelation_Monster_cpp\n增加对属性是否存在的检查
+----
+Revision: 92
+Author: wangshufeng
+Date: 2012年12月11日 15:47:39
+Message:
+1、修正Py方法调用没有释放引用计数的bug；
+2、去掉没必要的调试信息。
+----
+Revision: 91
+Author: wangshufeng
+Date: 2012年12月6日 20:34:16
+Message:
+1、csol extra AI模块框架；
+2、onFightAIHeartbeat脚本函数实现为onFightAIHeartbeat_AIInterface_cpp；
+----
+Revision: 90
+Author: huangshanquan
+Date: 2012年12月5日 17:29:28
+Message:
+增加GameObject的distanceBB函数c++扩展
+----
+Revision: 89
+Author: huangshanquan
+Date: 2012年12月4日 16:10:21
+Message:
+增加脚本entity对象的c++函数开展
+----
+Revision: 88
+Author: huangshanquan
+Date: 2012年12月4日 16:08:32
+Message:
+增加脚本entity对象的c++函数开展
+----
+Revision: 87
+Author: huangshanquan
+Date: 2011年2月19日 17:29:06
+Message:
+增加脚本接口
+ResMgr.updateData 更新数据结构
+ResMgr.openEntity 打开定义的数据
+ResMgr.saveEntity 保存更改的数据到内存数据库
+ResMgr.saveData   保存数据到xml文件
+----
+Revision: 86
+Author: huangshanquan
+Date: 2011年2月18日 15:42:30
+Message:
+去掉sqlite3数据库的支持增加直接对xml文件的操作
+----
+Revision: 85
+Author: huangshanquan
+Date: 2010年12月13日 17:08:15
+Message:
+1，屏蔽掉linux下的LDLINUX_TLS_IS_BROKEN定义因为它会使用自己的线程本地存储，这将导致解析xml时出现异常。
+2，修改了entity更新时不能更新子表数据的问题。因为新版本使用更新子表时会使用affectedRows这在sqlite里没有实现。
+3，增加打开多文件存储的开关。multiDBFile_ 在编译时使用。
+----
+Revision: 84
+Author: huangshanquan
+Date: 2010年11月20日 17:27:34
+Message:
+增加ResMgr.runStatement用来运行sql语句
+----
+Revision: 83
+Author: huangshanquan
+Date: 2010年11月18日 16:18:43
+Message:
+把ResMgr做成python模块并且加入dbmgr的数据库读写功能
+----
+Revision: 82
+Author: qiulinhui
+Date: 2010年10月27日 16:53:49
+Message:
+(1)修正服务器怪物寻路出现来回晃悠或者卡位的Bug。
+(2)reviewed by 老宛。
+----
+Revision: 81
+Author: huangshanquan
+Date: 2010年8月26日 15:27:07
+Message:
+因为数据库语句不区分大小写所以把字符串变成大写后查找字符“COLLATE”,用以比较字段定义.
+----
+Revision: 80
+Author: huangshanquan
+Date: 2010年8月26日 10:46:29
+Message:
+增加对字段字符校验的过滤.
+----
+Revision: 79
+Author: huangshanquan
+Date: 2010年8月14日 16:42:32
+Message:
+CSOL-9383 	 查找loginapp在接受超时重新连接异常崩溃的问题
+(因为断线重连和判断超时重连重叠导致异常)
+----
+Revision: 78
+Author: huangshanquan
+Date: 2010年6月30日 10:29:13
+Message:
+因为find_first_of是匹配字符串中单个字符的，所以分割字符串会错误。改成使用find进行查找.
+----
+Revision: 77
+Author: penghuawei
+Date: 2010年6月23日 15:08:51
+Message:
+史晓明提供的修正服务器端navigate功能会使entity在某些chunk边界无法导路的问题。
+http://support.bigworldtech.com/cgi-bin/pdesk.cgi?do=view&cid=2163&lang=en
+----
+Revision: 76
+Author: penghuawei
+Date: 2010年6月5日 10:05:15
+Message:
+BigWorld给的修正关于control_cluster.py输出的cpu使用率不正确的问题
+seealso: http://support.bigworldtech.com/cgi-bin/pdesk.cgi?do=view&cid=2235&lang=
+
+----
+Revision: 75
+Author: penghuawei
+Date: 2010年6月5日 10:03:41
+Message:
+BigWorld给的修正关于control_cluster.py输出的cpu使用率不正确的问题
+seealso: http://support.bigworldtech.com/cgi-bin/pdesk.cgi?do=view&cid=2235&lang=
+
+----
+Revision: 74
+Author: huangshanquan
+Date: 2010年5月27日 12:02:41
+Message:
+修改了字符串分割符只能是单字符的问题。
+----
+Revision: 73
+Author: huangshanquan
+Date: 2010年5月20日 16:50:51
+Message:
+修改了因為tcp連接無法獲得服務器是否掉線導致登錄失敗的問題。
+----
+Revision: 72
+Author: huangshanquan
+Date: 2010年5月20日 9:20:29
+Message:
+CSOL-8709 修改日志数据切割方式
+1,修改了在建立表時如果沒有指定字符集就是用數據庫默認字符集
+2,在使用ping獲得重新連接時設置連接的字符集。以避免長時間沒有數據寫入時會導致以后寫入是亂碼的問題.
+----
+Revision: 71
+Author: huangshanquan
+Date: 2010年5月11日 14:42:21
+Message:
+CSOL-8632 	 修改loginapp以支持繁体版运营方的用户认证要求
+要在bw.xml里面增加設置
+	<loginApp>
+		<useWGSServer> true </useWGSServer> <!-- Type: Boolean -->
+		<!--WGSServerAddress> 211.76.177.239 </WGSServerAddress--> <!-- Type: String -->
+		<WGSServerAddress> 172.16.0.123 </WGSServerAddress> <!-- Type: String -->
+		<WGSServerPort> 9104 </WGSServerPort> <!-- Type: Integer -->
+	</loginApp>
+
+----
+Revision: 70
+Author: wanhaipeng
+Date: 2010年4月2日 11:07:56
+Message:
+1: without any logs.
+
+----
+Revision: 69
+Author: huangshanquan
+Date: 2010年4月1日 14:11:15
+Message:
+修改了判断建立索引字符串时因为空格原因导致重新建立索引的问题。
+----
+Revision: 68
+Author: wanhaipeng
+Date: 2010年3月26日 10:09:15
+Message:
+1: clientChannel() to public method.
+
+----
+Revision: 67
+Author: luochengdi
+Date: 2010年3月24日 11:07:54
+Message:
+先调用CHSEnd()结束apex线程，再清空缓冲数据。
+----
+Revision: 66
+Author: wanhaipeng
+Date: 2010年3月19日 17:28:20
+Message:
+1: BigWorld 1.8.7.7.
+
+----
+Revision: 65
+Author: wanhaipeng
+Date: 2010年3月19日 11:05:51
+Message:
+1: BigWorld 1.8.7.7.
+
+----
+Revision: 64
+Author: wanhaipeng
+Date: 2010年3月19日 11:02:39
+Message:
+1: BigWorld 1.8.7.7.
+
+----
+Revision: 63
+Author: huangshanquan
+Date: 2010年3月19日 9:24:35
+Message:
+修改了原来多处判断是否要更新导致遗漏判断的问题。
+----
+Revision: 62
+Author: huangshanquan
+Date: 2010年3月17日 11:16:05
+Message:
+修改了因为同时更改字段类型和增加自定义索引，
+导致运行dbmgr没有更新bigworldTableMetadata表但是更新了字段类型的问题。
+----
+Revision: 61
+Author: huangshanquan
+Date: 2010年3月11日 14:03:39
+Message:
+增加编译定义项MF_SERVER_DBMGR
+----
+Revision: 60
+Author: huangshanquan
+Date: 2010年3月11日 14:00:46
+Message:
+根据老宛要求把关于自定义索引更改用定义MF_SERVER_DBMGR区别开 
+编译entitydef模块使用:make DBMGR_USE=1
+----
+Revision: 59
+Author: penghuawei
+Date: 2010年3月8日 18:24:57
+Message:
+来自史晓明的帮助，由于没有cellapp、baseapp的源码，
+所以只能在此处添加import encodings模块的代码，
+以解决*.py不支持“# -*- coding: gb18030 -*-”的问题。
+如果将来bigworld修正了此问题，里面的代码应该去掉。
+----
+Revision: 58
+Author: penghuawei
+Date: 2010年3月8日 17:51:58
+Message:
+来自晓明的帮助，修正dbmgr不支持“# -*- coding: gb18030 -*-”的问题。
+----
+Revision: 57
+Author: huangshanquan
+Date: 2010年3月2日 8:57:16
+Message:
+mysql_database.cpp:2442: 警告：second operand of conditional 不起作用
+mysql_database.cpp:2442: 警告：third operand of conditional 不起作用
+修改了产生上面警告的地方
+----
+Revision: 56
+Author: huangshanquan
+Date: 2010年3月1日 9:23:08
+Message:
+dbmgr 增加对数据库索引是否相同的处理和判断数据库版本低于5.0程序自动退出处理
+----
+Revision: 55
+Author: huangshanquan
+Date: 2010年2月9日 16:52:04
+Message:
+增加 -upindex 参数，如果启动时增加这个参数将更新改动过的索引。不加这个参数只提示不更新。
+----
+Revision: 54
+Author: huangshanquan
+Date: 2010年1月16日 9:28:57
+Message:
+增加了对传入写数据库字符串结尾是回车的判断。
+----
+Revision: 53
+Author: huangshanquan
+Date: 2009年12月29日 10:57:38
+Message:
+dbmgr 对建立和删除字段索引配置的支持（text和blob不能使用）
+<IndexType> Normal </IndexType> 
+<IndexType> Unique </IndexType>  //唯一索引
+----
